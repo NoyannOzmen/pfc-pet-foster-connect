@@ -1,1 +1,3 @@
-# projet-pet-foster-connect
+# Pet Foster Connect
+
+## Présentation
