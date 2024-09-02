@@ -1,6 +1,13 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "ANIMAL", "ASSOCIATION", "ESPECE", "FAMILLE", "TAG", "UTILISATEUR", "CARACTERISER", "DEMANDE";
+DROP TABLE IF EXISTS "ANIMAL", "ASSOCIATION", "ESPECE", "FAMILLE", "TAG", "UTILISATEUR", "ANIMAL_TAG", "DEMANDE";
+
+CREATE TYPE sexe AS ENUM ('Mâle', 'Femelle', 'Inconnu');
+
+CREATE TYPE statut AS ENUM ('En refuge', "En famille d'accueil", 'Adopté');
+
+CREATE TYPE statut_demande AS ENUM ('En attente', 'Validée', 'Refusée');
+
 
 CREATE TABLE ANIMAL (
   PRIMARY KEY (animal_id),
@@ -9,9 +16,9 @@ CREATE TABLE ANIMAL (
   couleur          TEXT,
   age              INT,
   photo            TEXT,
-  sexe             ENUM,
+  sexe             sexe,
   description      TEXT,
-  statut           ENUM,
+  statut           statut,
   association_id   INT NOT NULL,
   famille_id       INT,
   espece_id        INT NOT NULL
@@ -32,17 +39,17 @@ CREATE TABLE ASSOCIATION (
   UNIQUE (utilisateur_id)
 );
 
-CREATE TABLE CARACTERISER (
+CREATE TABLE ANIMAL_TAG(
   PRIMARY KEY (animal_id, tag_id),
   animal_id INT NOT NULL,
   tag_id    INT NOT NULL
 );
 
-CREATE TABLE DEMANDER (
+CREATE TABLE DEMANDE (
   PRIMARY KEY (famille_id, animal_id),
-  famille_id   INT NOT NULL,
-  animal_id    INT NOT NULL,
-  statut_demande ENUM
+  famille_id      INT NOT NULL,
+  animal_id       INT NOT NULL,
+  statut_demande  statut_demande
 );
 
 CREATE TABLE ESPECE (

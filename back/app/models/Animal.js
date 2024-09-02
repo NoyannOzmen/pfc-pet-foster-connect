@@ -23,7 +23,7 @@ Animal.init(
     },
     sexe: {
       type: DataTypes.ENUM,
-      values: ['Male', 'Femelle', 'N/C'],
+      values: ['Mâle', 'Femelle', 'Inconnu'],
       allowNull: true,
     },
     description: {
@@ -32,7 +32,7 @@ Animal.init(
     },
     statut: {
       type: DataTypes.ENUM,
-      values: ['Au refuge', 'Adopté', 'Autre'],
+      values: ['Au refuge', "En famille d'accueil", 'Adopté'],
       allowNull: true,
     }
   },

@@ -1,9 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../database.js';
 
-class Demander extends Model {}
+class Demande extends Model {}
 
-Demander.init(
+Demande.init(
     {
         famille_id: DataTypes.INTEGER,
         animal_id: DataTypes.INTEGER,
@@ -19,4 +19,4 @@ Demander.init(
     }
 );
 
-export { Demander };
+export { Demande };

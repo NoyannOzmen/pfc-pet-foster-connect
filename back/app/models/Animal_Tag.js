@@ -1,9 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../database.js';
 
-class Caracteriser extends Model {}
+class Animal_Tag extends Model {}
 
-Caracteriser.init(
+Animal_Tag.init(
     {
         animal_id: DataTypes.INTEGER,
         tag_id: DataTypes.INTEGER,
@@ -14,4 +14,4 @@ Caracteriser.init(
     }
 );
 
-export { Caracteriser };
+export { Animal_Tag };
