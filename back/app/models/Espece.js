@@ -10,7 +10,7 @@ Espece.init(
       allowNull: false,
     },
     race: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
       allowNull: true,
     }
   },
@@ -21,3 +21,11 @@ Espece.init(
 );
 
 export { Espece };
+
+/**
+ * A Espece
+ * @typedef  {object} Espece
+ * @property {string} id.required - Identifiant
+ * @property {string} nom.required - Nom
+ * @property {string} race - Race
+ */

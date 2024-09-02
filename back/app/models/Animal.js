@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../database.js';
+import { sequelize } from './sequelizeClient.js';
 
 class Animal extends Model {}
 
@@ -7,7 +7,7 @@ Animal.init(
   {
     nom: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     couleur: {
       type: DataTypes.TEXT,
@@ -23,6 +23,7 @@ Animal.init(
     },
     sexe: {
       type: DataTypes.ENUM,
+      values: ['Male', 'Femelle', 'N/C'],
       allowNull: true,
     },
     description: {
@@ -31,6 +32,7 @@ Animal.init(
     },
     statut: {
       type: DataTypes.ENUM,
+      values: ['Au refuge', 'Adopté', 'Autre'],
       allowNull: true,
     }
   },
@@ -41,3 +43,16 @@ Animal.init(
 );
 
 export { Animal };
+
+/**
+ * A Animal
+ * @typedef  {object} Animal
+ * @property {string} id.required - Identifiant
+ * @property {string} nom.required - Nom
+ * @property {string} couleur - Couleur
+ * @property {number} age - Age
+ * @property {string} photo - Photo
+ * @property {string} sexe - Enum sexe
+ * @property {string} description - Description
+ * @property {string} statut - Enum statut
+ */

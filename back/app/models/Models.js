@@ -1,11 +1,8 @@
 import { Animal } from './Animal.js';
-import { Association } from './Association.js';
 import { Caracteriser } from './Caracteriser.js';
 import { Demander } from './Demander.js';
-import { Espece } from './Espece.js';
 import { Famille } from './Famille.js';
 import { Tag } from './Tag.js';
-import { Utilisateur } from './Utilisateur.js';
 
 Tag.belongsToMany(Animal, {
   foreignKey: 'code_tag',
@@ -43,4 +40,4 @@ Famille.belongsToMany(Animal, {
 });
 
 
-export { Animal, Association, Caracteriser, Demander, Espece, Famille, Tag, Utilisateur }
+export { Animal, Caracteriser, Demander, Famille, Tag }

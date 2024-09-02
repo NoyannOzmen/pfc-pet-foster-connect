@@ -5,9 +5,13 @@ class Demander extends Model {}
 
 Demander.init(
     {
-        code_famille: DataTypes.INTEGER,
-        code_animal: DataTypes.INTEGER,
-        statut_demande: DataTypes.ENUM
+        famille_id: DataTypes.INTEGER,
+        animal_id: DataTypes.INTEGER,
+        statut_demande: {
+            type: DataTypes.ENUM,
+            values: ['En attente', 'Validée', 'Refusée'],
+            allowNull: false,
+          }
     },
     {
         sequelize: sequelize,

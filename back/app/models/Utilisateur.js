@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../database.js';
+import { sequelize } from './sequelizeClient.js';
 
 class Utilisateur extends Model {}
 
@@ -21,3 +21,11 @@ Utilisateur.init(
 );
 
 export { Utilisateur };
+
+/**
+ * A Utilisateur
+ * @typedef  {object} Utilisateur
+ * @property {string} id.required - Identifiant
+ * @property {string} email.required - Adresse Email
+ * @property {string} mot_de_passe.required- Mot de passe
+ */

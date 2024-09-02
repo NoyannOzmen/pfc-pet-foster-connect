@@ -7,7 +7,7 @@ Tag.init(
   {
     nom: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
@@ -21,3 +21,11 @@ Tag.init(
 );
 
 export { Tag };
+
+/**
+ * A Tag
+ * @typedef  {object} Tag
+ * @property {string} id.required - Identifiant
+ * @property {string} nom.required - Nom
+ * @property {string} description - Description
+ */
