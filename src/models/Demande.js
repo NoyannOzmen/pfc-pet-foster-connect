@@ -11,7 +11,15 @@ Demande.init(
             type: DataTypes.ENUM,
             values: ['En attente', 'Validée', 'Refusée'],
             allowNull: false,
-          }
+        },
+        date_debut: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+          date_fin: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        }
     },
     {
         sequelize: sequelize,
