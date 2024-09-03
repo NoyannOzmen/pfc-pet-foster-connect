@@ -1,14 +1,26 @@
 <%- include('partials/header') %>
 
 <main>
-<h2>Connextion</h2>
+	<h1>
+		Connexion
+	</h1>
+	<section>
+		<div>
+			<form action="" method="post">
+				<div>
+					<label for="email"><b>E-mail</b></label>
+					<input type="text" placeholder="Entrez votre e-mail" name="email" id="email" required />
+				</div>
+				<div>
+					<label for="password"><b>Mot de Passe</b></label>
+					<input type="text" placeholder="Entrez votre mot de passe" name="password" id="password" required />
+				</div>
+				<a href=#>Mot de passe oublié ?</a>
+				<button type="submit">Connexion</button>
+			</form>
+		</div>
+	</section>
 
-<form action="POST">
-  <!-- email -->
-  <!-- Mot de Passe -->
-  <!-- Se Connecter -->
-  <a href=#>Mot de passe oublié ?</a>
-</form>
 </main>
 
 <%- include('partials/footer') %>
