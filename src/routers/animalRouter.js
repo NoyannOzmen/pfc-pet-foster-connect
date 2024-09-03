@@ -5,13 +5,13 @@ import { catchErrors } from "../middlewares/catchErrors";
 
 const animalRouter = Router();
 
-//* Récupérer tout les animaux DISPONIBLES à l'accueil
+//* Rendu de la page avec tout les animaux disponibles
 animalRouter.get('/animaux', catchErrors(animalController.availableAnimalsList));
 
-//* 
-animalRouter.get('/animals/:id(\\d+)', catchErrors(animalController.detailAnimal));
+//* Rendu de la page de détail d'un animal
+animalRouter.get('/animaux/:id(\\d+)', catchErrors(animalController.detailAnimal));
 
 
-
-animalRouter.post('/animals/:id(\\d+)/demande')
+//! Vérifier que l'utilisateur.ice est connecté.e
+animalRouter.post('/animaux/:id(\\d+)/demande', catchErrors(animalController.hostRequest))
 
