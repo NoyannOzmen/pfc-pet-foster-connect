@@ -22,10 +22,11 @@ export const animalController = {
     
     async detailAnimal(req,res){
         
+ feature/routesControllerAnimal
         const animalId=req.params.id
         
         const animalData = await Animal.findByPk(animalId,{
-            include : ['tags','associations']
+            include : ['tags','associations','especes']
         });
         
         if (!animalData) {
