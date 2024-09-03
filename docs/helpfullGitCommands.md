@@ -29,7 +29,7 @@ from : https://stackoverflow.com/questions/52107252/how-to-take-latest-changes-f
 
 - D'abord __git fetch -p__ pour récupérer le statut des branches remote
 
-  - git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -d
+- git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -d
 
  Ou si l'on veut supprimer des branches qui n'ont pas été merge, remplacer le dernier -d par -D pour forcer la supression.
 
