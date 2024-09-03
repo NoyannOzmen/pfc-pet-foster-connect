@@ -21,9 +21,17 @@ Animal.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    photo: {
+    photo_principale: {
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    photo_secondaire: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    photo_tertiaire: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
     sexe: {
       type: DataTypes.ENUM,
