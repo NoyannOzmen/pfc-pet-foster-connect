@@ -5,6 +5,13 @@ import { catchErrors } from "../middlewares/catchErrors";
 
 const animalRouter = Router();
 
-animalRouter.get('/animals', catchErrors(animalController.getAll));
-animalRouter.get('/animals/:id(\\d+)', catchErrors(animalController.getOne))
+//* Récupérer tout les animaux DISPONIBLES à l'accueil
+animalRouter.get('/animaux', catchErrors(animalController.availableAnimalsList));
+
+//* 
+animalRouter.get('/animals/:id(\\d+)', catchErrors(animalController.detailAnimal));
+
+
+
+animalRouter.post('/animals/:id(\\d+)/demande')
 

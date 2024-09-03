@@ -24,7 +24,7 @@ Tag.belongsToMany(Animal, {
   through: Caracteriser,
   as: "animaux"
 });
-
+ 
 Animal.belongsToMany(Famille, {
   foreignKey: 'code_animal',
   otherKey: 'code_famille',
