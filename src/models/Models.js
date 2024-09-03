@@ -1,18 +1,22 @@
 import { Animal } from './Animal.js';
 import { Animal_Tag } from './Animal_Tag.js';
-import { Association, Association} from './Association.js';
+import { Association, Association, Association} from './Association.js';
 import { Demande } from './Demande.js';
 import { Espece } from './Espece.js';
 import { Famille } from './Famille.js';
 import { Tag } from './Tag.js';
-import { Utilisateur, Utilisateur, Utilisateur, Utilisateur} from './Utilisateur.js';
+import { Utilisateur, Utilisateur, Utilisateur, Utilisateur, Utilisateur} from './Utilisateur.js';
 
 /* Relations One-to-One : Association <-> Utilisateur <-> Famille */
+
+Utilisateur.hasOne(Association);
 
 Association.belongsTo(Utilisateur, {
   foreignKey: 'utilisateur_id',
   as: 'identifiant',
 })
+
+Utilisateur.hasOne(Famille);
 
 Famille.belongsTo(Utilisateur, {
   foreignKey: 'utilisateur_id',
