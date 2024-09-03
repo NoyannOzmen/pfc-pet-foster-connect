@@ -8,10 +8,6 @@ Espece.init(
     nom: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
-    race: {
-      type: DataTypes.TEXT,
-      allowNull: true,
     }
   },
   {
@@ -27,5 +23,4 @@ export { Espece };
  * @typedef  {object} Espece
  * @property {string} id.required - Identifiant
  * @property {string} nom.required - Nom
- * @property {string} race - Race
  */
