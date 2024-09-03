@@ -11,7 +11,7 @@ Tag.init(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     }
   },
   {

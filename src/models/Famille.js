@@ -11,27 +11,27 @@ Famille.init(
     },
     telephone: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     rue: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     commune: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     code_postal: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     pays: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     hebergement: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     }
   },
   {
