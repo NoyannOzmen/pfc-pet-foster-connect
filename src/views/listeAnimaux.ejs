@@ -1,15 +1,36 @@
 <%- include('partials/header') %>
 
 <main>
-
-<section class=#>
-  <!-- Insérer Search Bar ici -->
-</section>
-
-<section class=#>
-  <!-- Insérer Grid ici -->
-</section>
-
-</main>
-
-<%- include('partials/footer') %>
+  
+  <!-- Proto-searchbar ici (juste par espèces)-->
+  <div class=#>
+    <form action="/animaux" method="GET">
+      <select tabindex=0 class=#>
+        <option value="" disabled selected hidden>Espèce</option>
+        <% especes.forEach(espece => { %>
+          <option value="<%= espece.nom %>"><%= espece.nom %></option>
+          <% }) %>
+        </select>
+        <input class=# tabindex=0 type="submit" value="Rechercher">
+      </form>
+    </div>
+    
+    <section class=#>
+      <% animals.forEach(animal => { %>
+        <div class=#>
+          <img class=# src="<%= animal.photo %>" alt="Photo de <%= animal.nom %>"">
+          <div class=#>
+            <h3 class=#><%= animal.nom %></h3>
+            <h4 class=#><%= animal.espece %></h4>
+            <hr>
+            <p class=#>Age : <%= animal.age %></p>
+            <p class=#>Localisation : <%= animal.departement %></p>
+          </div>
+          <a class="btn" href="/animaux/<%= animal.id %>">Découvrir</a>
+        </div>
+      <% }) %>
+    </section>
+    
+  </main>
+  
+  <%- include('partials/footer') %>
