@@ -2,6 +2,8 @@ import { Router } from "express";
 
 import { animalController } from "../controllers/animalController";
 import { catchErrors } from "../middlewares/catchErrors";
+import { auth } from "../middlewares/auth";
+import { isRole } from "../middlewares/isRole";
 
 const animalRouter = Router();
 
@@ -12,6 +14,6 @@ animalRouter.get('/animaux', catchErrors(animalController.availableAnimalsList))
 animalRouter.get('/animaux/:id(\\d+)', catchErrors(animalController.detailAnimal));
 
 
-//! Vérifier que l'utilisateur.ice est connecté.e
-animalRouter.post('/animaux/:id(\\d+)/demande', catchErrors(animalController.hostRequest))
+//* Route de demande d'accueil d'un animal par un.e user
+animalRouter.post('/animaux/:id(\\d+)/demande',[auth,isRole.famille], catchErrors(animalController.hostRequest))
 

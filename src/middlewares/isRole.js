@@ -7,7 +7,7 @@ export const isRole = {
         if (req.session.role==='association'){
             return next();
         }
-        req.status=401;
+        res.status=401;
         return next(new Error('Unauthorized'))
     },
 
@@ -16,7 +16,7 @@ export const isRole = {
         if (req.session.role==='famille'){
             return next();
         }
-        req.status=401;
+        res.status=401;
         return next(new Error('Unauthorized'))
     }
 }
