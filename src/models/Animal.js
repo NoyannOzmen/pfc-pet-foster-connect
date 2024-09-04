@@ -9,31 +9,31 @@ Animal.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    couleur: {
+    race: {
       type: DataTypes.TEXT,
       allowNull: true,
+    },
+    couleur: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     age: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    photo: {
-      type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     sexe: {
       type: DataTypes.ENUM,
       values: ['Mâle', 'Femelle', 'Inconnu'],
-      allowNull: true,
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     statut: {
       type: DataTypes.ENUM,
       values: ['Au refuge', 'Accueilli', 'Adopté'],
-      allowNull: true,
+      allowNull: false,
     }
   },
   {
@@ -49,9 +49,9 @@ export { Animal };
  * @typedef  {object} Animal
  * @property {string} id.required - Identifiant
  * @property {string} nom.required - Nom
+ * @property {string} race - Race
  * @property {string} couleur - Couleur
  * @property {number} age - Age
- * @property {string} photo - Photo
  * @property {string} sexe - Enum sexe
  * @property {string} description - Description
  * @property {string} statut - Enum statut
