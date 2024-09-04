@@ -1,7 +1,33 @@
 <%- include('partials/header') %>
 
 <main>
-
+		<Section>
+			<address>
+				<p>Adresse postale</p>
+				<a href="tel:+33XXXXXXXXX">+33XXXXXXXXX</a>
+				<a href="mailto:association@mail.com">association@mail.com</a>
+			</address>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus magni rerum, unde sunt beatae ipsam rem
+				est sequi minus eligendi doloremque aliquid laudantium eos perspiciatis obcaecati ea voluptas harum et?Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aliquam perferendis ipsam aperiam earum numquam rerum, eum quasi unde dolores temporibus laboriosam eaque, vel hic sapiente cum explicabo debitis! Quo!</p>
+				<button type="button">Voir tous nos pensionnaires</button>
+		</Section>
+		
+		<section>
+			<h1>Nom de l'assiociation</h1>
+			<img src="#" alt="Logo de l'association">
+		</section>
+		
+		
+		<Section>
+			<h3>Nos derniers arrivants</h3>
+			<%- include('partials/carousel') %>
+		</Section>
+		
+		<Section>
+			<h3>Coup de coeur près de chez vous</h3>
+			<%- include('partials/carousel') %>
+		</Section>
+		
 </main>
-
+	
 <%- include('partials/footer') %>

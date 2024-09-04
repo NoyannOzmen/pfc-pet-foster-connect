@@ -1,7 +1,49 @@
 <%- include('partials/header') %>
 
 <main>
-
+	<h1>
+		Nous contacter
+	</h1>
+	<section>
+		<article>
+			<h4>Par téléphone :</h4>
+			<a href="tel:+33XXXXXXXXX">+33X.XX.XX.XX.XX</a>
+			<p>Du lundi au vendredi : 9h - 18h</p>
+		</article>
+		<article>
+			<img src=# alt="Une jolie photo des locaux">
+			<h4>Sur place ou par courrier :</h4>
+			<p>9 rue de l'Arche de Noé, 50450 LA BALEINE, France </p>
+			<p>Du lundi au vendredi : 10h - 17h30</p>
+		</article>
+		<article>
+			<h4>Par e-mail :</h4>
+			<a href="mailto:mr.poulpe@petfosterconnect.com">mr.poulpe@petfosterconnect.com</a>
+		</article>
+	</section>
+	<section>
+		<div>
+			<form action="" method="post">
+				<div>
+					<label for="name"><b>Votre Nom</b></label>
+					<input type="text" placeholder="Entrez votre e-mail" name="name" id="name" required />
+				</div>
+				<div>
+					<label for="firstname"><b>Votre Prénom</b></label>
+					<input type="text" placeholder="Entrez votre Prénom" name="firstname" id="firstname" required />
+				</div>
+				<div>
+					<label for="name"><b>Votre E-mail</b></label>
+					<input type="text" placeholder="Entrez votre e-mail" name="email" id="email" required />
+				</div>
+				<div>
+					<label for="msg"><b>Message</b></label>
+					<input type="text" placeholder="Entrez votre message" name="msg" id="msg" required />
+				</div>
+				<button type="submit">Envoyer</button>
+			</form>
+		</div>
+	</section>
 </main>
 
 <%- include('partials/footer') %>
