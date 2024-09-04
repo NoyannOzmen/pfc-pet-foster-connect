@@ -1,0 +1,208 @@
+<%- include('partials/header') %>
+
+<main>
+<h2>Bienvenue sur votre espace personnel</h2>
+
+<div class=#>
+  <ul>
+    <li><button class=#>Mon profil</button></li>
+    <li><button class=#>Rechercher un animal</button></li>
+    <li><button class=#>Rechercher un refuge</button></li>
+  </ul>
+</div>
+
+<div class=#>
+  <h3>Rechercher un animal</h3>
+
+  <form action="#" method="POST">
+    <div>
+      <h4>Caractéristiques</h4>
+
+      <!-- Choix de l'espèce -->
+      <label class=# for="espece-dropdown">Espèce</label>
+      <select name="espece-dropdown" id="espece-dropdown"></select>
+      <option value="" disabled selected hidden>--Choisissez une espèce--</option>
+        <% especes.forEach(espece => { %>
+          <option value="<%= espece.name %>"><%= espece.name %></option> 
+        <% }) %>
+    
+      <!-- Sexe -->
+      <div>
+        <p>Sexe</p>
+        <div>
+          <label class=# for="Mâle">Mâle</label>
+          <input class=# type="radio" id="Mâle" name="Mâle" />
+        </div>
+        <div>
+          <label class=# for="Femelle">Femelle</label>
+          <input class=# type="radio" id="Femelle" name="Femelle" />
+        </div>
+        <div>
+          <label class=# for="sex-o">Inconnu</label>
+          <input class=# type="radio" id="sex-o" name="sex-o" />
+        </div>
+      </div>
+
+      <!-- Selection Age -->
+       <div>
+        <p>Age :</p>
+        <label class=# for="age-min">De</label>
+        <input class=# id="age-min" name="age-min" type="number" tabindex=0  placeholder="1" min="0" max="100">
+        <label class=# for="age-min">à</label>
+        <input class=# id="age-max" name="age-max" type="number" tabindex=0  placeholder="12" min="1" max="100">
+       </div>
+    </div>
+     <!-- Sélection Tags -->
+    <div>
+      <p>Exclure si :</p>
+      <% tags.forEach(tag => { %>
+        <div>
+          <label class=# for="<%= tag.nom %>"><%= tag.nom %></label>
+          <input class=# type="checkbox" id="<%= tag.nom %>" name="<%= tag.nom %>" />
+        </div>
+      <% }) %>
+    </div>
+
+    <div>
+      <!-- Région -->
+      <label class=# for="region-select">Région</label>
+      <select tabindex=0 class=# id="dpt-select">
+          <option value="" disabled selected hidden>--Choisissez une région--</option>
+          <option value="1">Auvergne-Rhône-Alpes</option> 
+          <option value="2">Bourgogne-Franche-Comté</option> 
+          <option value="3">Bretagne</option> 
+          <option value="4">Centre-Val de Loire</option> 
+          <option value="5">Corse</option> 
+          <option value="6">Grand Est</option> 
+          <option value="7">Hauts-de-France</option> 
+          <option value="8">Île-de-France</option> 
+          <option value="9">Normandie</option> 
+          <option value="10">Nouvelle-Aquitaine</option>
+          <option value="11">Occitanie</option>
+          <option value="12">Pays de la Loire</option>
+          <option value="13">Provence-Alpes-Côte d'Azur</option>
+          <option value="14">Guadeloupe</option> 
+          <option value="15">Guyane</option> 
+          <option value="16">La Réunion</option> 
+          <option value="17">Martinique</option> 
+          <option value="18">Mayotte</option> 
+      </select>
+      
+      <!-- Département -->
+      <label for="dpt-select">Département</label>
+      <select tabindex=0 class=# id="dpt-select">
+          <option value="" disabled selected hidden>--Choisissez un département--</option>
+          <option value="1">1 - Ain</option> 
+          <option value="2">2 - Aisne</option> 
+          <option value="3">3 - Allier</option> 
+          <option value="4">4 - Alpes-de-Haute-Provence</option> 
+          <option value="5">5 - Hautes-Alpes</option> 
+          <option value="6">6 - Alpes-Maritimes</option> 
+          <option value="7">7 - Ardèche</option> 
+          <option value="8">8 - Ardennes</option> 
+          <option value="9">9 - Ariège</option> 
+          <option value="10">10 - Aube</option> 
+          <option value="11">11 - Aude</option> 
+          <option value="12">12 - Aveyron</option> 
+          <option value="13">13 - Bouches-du-Rhône</option> 
+          <option value="14">14 - Calvados</option> 
+          <option value="15">15 - Cantal</option> 
+          <option value="16">16 - Charente</option> 
+          <option value="17">17 - Charente-Maritime</option> 
+          <option value="18">18 - Cher</option> 
+          <option value="19">19 - Corrèze</option> 
+          <option value="21">21 - Côte-d'Or</option> 
+          <option value="22">22 - Côtes-d'Armor</option> 
+          <option value="23">23 - Creuse</option> 
+          <option value="24">24 - Dordogne</option> 
+          <option value="25">25 - Doubs</option> 
+          <option value="26">26 - Drôme</option> 
+          <option value="27">27 - Eure</option> 
+          <option value="28">28 - Eure-et-Loir</option> 
+          <option value="29">29 - Finistère</option> 
+          <option value="2A">2A - Corse-du-Sud</option> 
+          <option value="2B">2B - Haute-Corse</option> 
+          <option value="30">30 - Gard</option> 
+          <option value="31">31 - Haute-Garonne</option> 
+          <option value="32">32 - Gers</option> 
+          <option value="33">33 - Gironde</option> 
+          <option value="34">34 - Hérault</option> 
+          <option value="35">35 - Ille-et-Vilaine</option> 
+          <option value="36">36 - Indre</option> 
+          <option value="37">37 - Indre-et-Loire</option> 
+          <option value="38">38 - Isère</option> 
+          <option value="39">39 - Jura</option> 
+          <option value="40">40 - Landes</option> 
+          <option value="41">41 - Loir-et-Cher</option> 
+          <option value="42">42 - Loire</option> 
+          <option value="43">43 - Haute-Loire</option> 
+          <option value="44">44 - Loire-Atlantique</option> 
+          <option value="45">45 - Loiret</option> 
+          <option value="46">46 - Lot</option> 
+          <option value="47">47 - Lot-et-Garonne</option> 
+          <option value="48">48 - Lozère</option> 
+          <option value="49">49 - Maine-et-Loire</option> 
+          <option value="50">50 - Manche</option> 
+          <option value="51">51 - Marne</option> 
+          <option value="52">52 - Haute-Marne</option> 
+          <option value="53">53 - Mayenne</option> 
+          <option value="54">54 - Meurthe-et-Moselle</option> 
+          <option value="55">55 - Meuse</option> 
+          <option value="56">56 - Morbihan</option> 
+          <option value="57">57 - Moselle</option> 
+          <option value="58">58 - Nièvre</option> 
+          <option value="59">59 - Nord</option> 
+          <option value="60">60 - Oise</option> 
+          <option value="61">61 - Orne</option> 
+          <option value="62">62 - Pas-de-Calais</option> 
+          <option value="63">63 - Puy-de-Dôme</option> 
+          <option value="64">64 - Pyrénées-Atlantiques</option> 
+          <option value="65">65 - Hautes-Pyrénées</option> 
+          <option value="66">66 - Pyrénées-Orientales</option> 
+          <option value="67">67 - Bas-Rhin</option> 
+          <option value="68">68 - Haut-Rhin</option> 
+          <option value="69">69 - Rhône</option> 
+          <option value="70">70 - Haute-Saône</option> 
+          <option value="71">71 - Saône-et-Loire</option> 
+          <option value="72">72 - Sarthe</option> 
+          <option value="73">73 - Savoie</option> 
+          <option value="74">74 - Haute-Savoie</option> 
+          <option value="75">75 - Paris</option> 
+          <option value="76">76 - Seine-Maritime</option> 
+          <option value="77">77 - Seine-et-Marne</option> 
+          <option value="78">78 - Yvelines</option> 
+          <option value="79">79 - Deux-Sèvres</option> 
+          <option value="80">80 - Somme</option> 
+          <option value="81">81 - Tarn</option> 
+          <option value="82">82 - Tarn-et-Garonne</option> 
+          <option value="83">83 - Var</option> 
+          <option value="84">84 - Vaucluse</option> 
+          <option value="85">85 - Vendée</option> 
+          <option value="86">86 - Vienne</option> 
+          <option value="87">87 - Haute-Vienne</option> 
+          <option value="88">88 - Vosges</option> 
+          <option value="89">89 - Yonne</option> 
+          <option value="90">90 - Territoire de Belfort</option> 
+          <option value="91">91 - Essonne</option> 
+          <option value="92">92 - Hauts-de-Seine</option> 
+          <option value="93">93 - Seine-Saint-Denis</option> 
+          <option value="94">94 - Val-de-Marne</option> 
+          <option value="95">95 - Val-d'Oise</option> 
+          <option value="971">971 - Guadeloupe</option> 
+          <option value="972">972 - Martinique</option> 
+          <option value="973">973 - Guyane</option> 
+          <option value="974">974 - La Réunion</option> 
+          <option value="976">976 - Mayotte</option> 
+      </select>
+      
+      <!-- Agrandir aux départements limitrophes -->
+      <label class=# for="nearby-dpt">Départements limitrophes</label>
+      <input class=# type="checkbox" id="nearby-dpt" name="nearby-dpt" />
+    </div>
+
+  <input class=# type="submit" value="Rechercher">
+  </form>
+</div>
+</main>
+
+<%- include('partials/footer') %>
