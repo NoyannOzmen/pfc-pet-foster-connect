@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./views/**/*.{html,js}"],
+  content: ["./src/views/**/*.{html,js,ejs,jsx}", "./src/assets/integration/**/*.{html,js,ejs,jsx}"],
   theme:{
     colors: {
       'blue': '#1fb6ff',
@@ -24,7 +24,12 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '2rem',
-      }
+      },
+      
+      fontFamily: {      
+        'grands': ['Grandstander', 'cursive'],
+        'body': ['Noto', 'sans-serif']
+      },
     }
   },
   plugins: [],
