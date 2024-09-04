@@ -21,18 +21,6 @@ Animal.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    photo_principale: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    photo_secondaire: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    photo_tertiaire: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
     sexe: {
       type: DataTypes.ENUM,
       values: ['Mâle', 'Femelle', 'Inconnu'],
@@ -64,7 +52,6 @@ export { Animal };
  * @property {string} race - Race
  * @property {string} couleur - Couleur
  * @property {number} age - Age
- * @property {string} photo - Photo
  * @property {string} sexe - Enum sexe
  * @property {string} description - Description
  * @property {string} statut - Enum statut
