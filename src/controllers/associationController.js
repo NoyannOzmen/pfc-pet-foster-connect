@@ -62,6 +62,17 @@ const associationController = {
     
     /* Supprimer une association */
     async destroy(req, res, next) {
+
+        //*Vérification que l'utilisateur.ice connecté.e est bien cellui qui doit être supprimé.e
+        //* (on ne veut pas que n'importe qui puisse supprimer un compte asso)
+
+        if (!(parseInt(req.session.id)===parseInt(req.params.id))){
+            
+            res.status=401;
+            return next(new Error('Unauthorized'))
+            
+        }
+
         // Récupérer l'Id de l'association à supprimer
         const associationId = req.params.id;
         

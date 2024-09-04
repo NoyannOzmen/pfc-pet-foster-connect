@@ -43,8 +43,8 @@ export const animalController = {
         
         const animalId=req.params.id
         
-        //!Il faut récupérer la familleId depuis la session
-        const familyId=1
+        // On sait que l'id est celui d'un user famille car on a vérifié le rôle avant
+        const familyId=req.session.id
         
         //* Si l'animal n'existe pas on sort du middleware
         if (!Animal.findByPk(animalId)){

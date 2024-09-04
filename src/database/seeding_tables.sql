@@ -26,9 +26,16 @@ VALUES
 ;
 
 INSERT INTO "animal"
-  ("id", "nom", "race", "couleur", "age", "photo_principale", "photo_secondaire", "photo_tertiaire", "sexe", "description", "statut", "association_id", "espece_id")
+  ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id")
 VALUES
-  ( 1, 'Chat', 'Angora', 'Noir', 4, 'https://www.photodechatmignon.fr', NULL, NULL, 'Mâle', 'Un chat', 'Accueilli', 1, 1)
+  ( 1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1)
+;
+
+INSERT INTO "media"
+  ("id", "url", "ordre", "animal_id", "association_id")
+VALUES
+  ( 1, 'https://www.photodechatmignon.fr', 1, 1, NULL ),
+  ( 2, 'https://www.refuge-a-chats.io', 1, NULL, 1)
 ;
 
 INSERT INTO "tag"
@@ -91,6 +98,18 @@ SELECT
                 "animal"
         )
     );
+
+SELECT
+    setval(
+        'media_id_seq',
+        (
+            SELECT
+                MAX(id)
+            from
+                "media"
+        )
+    );
+
 
 SELECT
     setval(

@@ -553,3 +553,8 @@ video {
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
 }
+
+.font-grands {
+  font-family: Grandstander, cursive;
+}
+
