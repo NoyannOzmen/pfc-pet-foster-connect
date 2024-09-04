@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "animal", "association", "espece", "famille", "tag", "utilisateur", "animal_tag", "demande";
+DROP TABLE IF EXISTS "media","animal", "association", "espece", "famille", "tag", "utilisateur", "animal_tag", "demande";
 DROP TYPE IF EXISTS sexe, statut, statut_demande;
 
 CREATE TYPE sexe AS ENUM ('Mâle', 'Femelle', 'Inconnu');
