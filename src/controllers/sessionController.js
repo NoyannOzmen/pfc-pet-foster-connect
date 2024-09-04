@@ -45,12 +45,26 @@ export const sessionController = {
 
         } else {
 
-        //* On supprime les hash des mots de passe de user avant de l'envoyer dans la session par sécurité
+        //* Check si user est association OU famille en vérifiant si les sous-champs id existent.
+        //* Normalement l'include ne devrait renvoyer que l'un OU l'autre.
+        //* On ajoute ensuite en session :
+        //*     - loggedIn : true pour vérifier facilement si la session est celle d'un.e user logged in
+        //*     - role : Pour vérifier le rôle du user et personnaliser l'affichage dans les vues accès restreint
+        //*     - nom : pour afficher sur toutes les vues le nom du user
+        //*     - id : Pour faciliter les futurs appels BDD pour afficher les infos des profils etc...
 
-            delete user.dataValues.mot_de_passe;
-            delete user.__previousDataValues.mot_de_passe;
-
-            req.session.user = user;
+            if (user.association.id) {
+                req.session.loggedIn=true;
+                req.session.role='association';
+                req.session.nom=user.association.nom;
+                req.session.id=user.id;
+            }
+            if (user.famille.id) {
+                req.session.loggedIn=true;
+                req.session.role='famille';
+                req.session.nom=user.famille.nom;
+                req.session.id=user.id;
+            }
 
         }
         return res.redirect('/')
