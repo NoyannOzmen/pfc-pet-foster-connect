@@ -10,3 +10,4 @@ staticPageRouter.get('/rgpd', res.render('rgpd'));
 staticPageRouter.get('/devenir-famille', res.render('devenirFamille'));
 
 
+export {staticPageRouter};
