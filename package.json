@@ -2,18 +2,19 @@
   "name": "front",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "nodemon index.js"
     "db:reset":"psql -U pfcadmin -d pfc -f ./src/database/create_tables.sql; psql -U pfcadmin -d pfc -f ./src/database/seeding_tables.sql "
-
-
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "## Présentation",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
@@ -23,5 +24,8 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
