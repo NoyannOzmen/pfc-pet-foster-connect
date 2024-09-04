@@ -6,6 +6,7 @@ class Media extends Model {}
 Media.init(
   {
     animal_id: DataTypes.INTEGER,
+    association_id: DataTypes.INTEGER,
     url: {
       type: DataTypes.TEXT,
       allowNull: false,

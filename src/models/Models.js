@@ -34,12 +34,24 @@ Famille.belongsTo(Utilisateur, {
 
 Animal.hasMany(Media, {
   foreignKey: 'animal_id',
-  as : 'images'
+  as : 'images_animal'
 });
 
 Media.belongsTo(Animal, {
   foreignKey: 'animal_id',
   as: 'animal'
+});
+
+/* Relation One-to-Many : Animal <-> Media */
+
+Association.hasMany(Media, {
+  foreignKey: 'association_id',
+  as : 'images_association'
+});
+
+Media.belongsTo(Association, {
+  foreignKey: 'association_id',
+  as: 'association'
 });
 
 
