@@ -32,9 +32,11 @@ VALUES
 ;
 
 INSERT INTO "media"
-  ("id", "url", "ordre", "animal_id")
+  ("id", "url", "ordre", "animal_id", "association_id")
 VALUES
-  ( 1, 'https://www.photodechatmignon.fr', 1, 1 )
+  ( 1, 'https://www.photodechatmignon.fr', 1, 1, NULL ),
+  ( 2, 'https://www.refuge-a-chats.io', 1, NULL, 1)
+;
 
 INSERT INTO "tag"
   ("id", "nom", "description")
