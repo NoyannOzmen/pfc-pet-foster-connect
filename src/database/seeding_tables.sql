@@ -26,9 +26,9 @@ VALUES
 ;
 
 INSERT INTO "animal"
-  ("id", "nom", "race", "couleur", "age", "photo", "sexe", "description", "statut", "association_id", "espece_id")
+  ("id", "nom", "race", "couleur", "age", "photo_principale", "photo_secondaire", "photo_tertiaire", "sexe", "description", "statut", "association_id", "espece_id")
 VALUES
-  ( 1, 'Chat', 'Angora', 'Noir', 4, 'https://www.photodechatmignon.fr', 'Mâle', 'Un chat', 'Accueilli', 1, 1)
+  ( 1, 'Chat', 'Angora', 'Noir', 4, 'https://www.photodechatmignon.fr', NULL, NULL, 'Mâle', 'Un chat', 'Accueilli', 1, 1)
 ;
 
 INSERT INTO "tag"
