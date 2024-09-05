@@ -2,17 +2,6 @@
 # Dans un environnement de dev il faudrait lier un volume (probablement complètement séparer notre repo de travail ?)
 
 services: 
-  nginx:
-    image: nginx:latest
-    container_name: production_nginx
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      # Récupérer là où sont stockés les certificats certbots
-      - /etc/letsencrypt/:/etc/letsencrypt/
-    ports:
-      - 80:80
-      - 443:443
-
   app:
 
     build:

@@ -3,9 +3,20 @@
 sudo apt update
 sudo apt upgrade
 
+sudo apt install nginx
+#Copier le fichier de configuration nginx
+sudo cp ./scripts/nginx.conf /etc/nginx/sites-available/pet-foster-connect
+
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/okanban /etc/nginx/sites-enabled/okanban
+sudo nginx -t
+sudo systemctl restart nginx
+
+#Installation de Certbot pour le certificat SSL
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
-sudo certbot certonly --standalone
+sudo certbot --nginx
 
 
 sudo apt install -y ca-certificates curl gnupg
