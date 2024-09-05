@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import { animalController } from "../controllers/animalController";
-import { catchErrors } from "../middlewares/catchErrors";
-import { auth } from "../middlewares/auth";
-import { isRole } from "../middlewares/isRole";
+import { animalController } from "../controllers/animalController.js";
+import { catchErrors } from "../middlewares/catchErrors.js";
+import { auth } from "../middlewares/auth.js";
+import { isRole } from "../middlewares/isRole.js";
 
 const animalRouter = Router();
 
@@ -17,4 +17,4 @@ animalRouter.get('/animaux/:id(\\d+)', catchErrors(animalController.detailAnimal
 //* Route de demande d'accueil d'un animal par un.e user
 animalRouter.post('/animaux/:id(\\d+)/demande',[auth,isRole.famille], catchErrors(animalController.hostRequest))
 
-export {animalRouter}
+export { animalRouter };

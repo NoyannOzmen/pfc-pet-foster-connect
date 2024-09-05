@@ -1,8 +1,21 @@
 import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
+import cors from 'cors';
 
 const app = express();
+
+import { router } from './src/routers/router.js';
+import { errorHandler, notFound } from './src/middlewares/errorHandlers.js';
+
+app.use(
+    cors({
+      origin: [
+        'http://localhost:3000',
+        'http://127.0.0.1:3000'
+      ],
+    })
+  );
 
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
@@ -18,13 +31,14 @@ app.use(
     })
 );
 
+app.use(router);
 
-import { router } from './src/routers/router.js';
+app.use(notFound);
+
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 
-app.use(router);
-
 app.listen(port, () => {
-    console.log(`http://localhost:${port}`);
+    console.log(`Lancement réussi à l'adresse : http://localhost:${port}`);
 })

@@ -1,6 +1,4 @@
-import { Animal } from "../models/Animal"
-import { Demande } from "../models/Demande"
-
+import { Animal, Demande } from "../models/Models.js";
 
 export const animalController = {
     
