@@ -1,38 +1,62 @@
 <%- include('partials/header') %>
 
 <main>
-  <h2>Création de votre compte</h2>
-  
-  <form action="/association/inscription" method="POST">
+<h2>Bienvenue sur votre espace personnel</h2>
+
+<div class=#>
+  <ul>
+    <li><button class=#>Mon profil</button></li>
+    <li><button class=#>Rechercher un animal</button></li>
+    <li><button class=#>Rechercher un refuge</button></li>
+  </ul>
+</div>
+
+<div class=#>
+  <h3>Rechercher un refuge</h3>
+
+  <form action="#" method="POST">
     <fieldset>
-      <legend>Votre organisme</legend>
-      <!-- Nom -->
-      <label class=# for="nom">Nom</label>
-      <input class=# type="text" id="nom" name="nom" placeholder="PetSmart" required>
-      
-      <!-- Président -->
-      <label class=# for="responsable">Président</label>
-      <input class=# type="text" id="responsable" name="responsable" placeholder="D. Recteur" required>
-      
-      <!-- Adresse -->
-      <label class=# for="rue">Rue</label>
-      <input class=# type="text" id="rue" name="rue" placeholder="45, rue de la Boustifaille" required>
-      
-      <!-- Ville -->
-      <label class=# for="commune">Ville</label>
-      <input class=# type="text" id="commune" name="commune" placeholder="Paris" required>
-      
-      <!-- Code Postal -->
-      <label class=# for="code_postal">Code Postal</label>
-      <input class=# type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" placeholder="75020" required>
-      
-      <!-- Pays -->
-      <label class=# for="pays">Pays</label>
-      <input class=# type="text" id="pays" name="pays" placeholder="France" required>
-      
-      <!-- Département -->
-      <select tabindex=0 class=#>
-        <option value="" disabled selected hidden>Département</option>
+      <legend>Animaux</legend>
+        <% especes.forEach(espece => { %>
+          <div>
+            <label class=# for="<%= espece.nom %>"><%= espece.nom %></label>
+            <input class=# type="checkbox" id="<%= espece.nom %>" name="<%= espece.nom %>" />
+          </div>
+        <% }) %>
+    </fieldset>
+
+    <!-- Nom du refuge -->
+    <label class=# for="shelter-name">Nom du refuge</label>
+    <input class=# type="text" id="shelter-name" name="shelter-name" placeholder="--Entrez un nom--">
+    
+    <!-- Région -->
+    <label class=# for="region-select">Région</label>
+    <select tabindex=0 class=# id="dpt-select">
+        <option value="" disabled selected hidden>--Choisissez une région--</option>
+        <option value="1">Auvergne-Rhône-Alpes</option> 
+        <option value="2">Bourgogne-Franche-Comté</option> 
+        <option value="3">Bretagne</option> 
+        <option value="4">Centre-Val de Loire</option> 
+        <option value="5">Corse</option> 
+        <option value="6">Grand Est</option> 
+        <option value="7">Hauts-de-France</option> 
+        <option value="8">Île-de-France</option> 
+        <option value="9">Normandie</option> 
+        <option value="10">Nouvelle-Aquitaine</option>
+        <option value="11">Occitanie</option>
+        <option value="12">Pays de la Loire</option>
+        <option value="13">Provence-Alpes-Côte d'Azur</option>
+        <option value="14">Guadeloupe</option> 
+        <option value="15">Guyane</option> 
+        <option value="16">La Réunion</option> 
+        <option value="17">Martinique</option> 
+        <option value="18">Mayotte</option> 
+    </select>
+    
+    <!-- Département -->
+    <label for="dpt-select">Département</label>
+    <select tabindex=0 class=# id="dpt-select">
+        <option value="" disabled selected hidden>--Choisissez un département--</option>
         <option value="1">1 - Ain</option> 
         <option value="2">2 - Aisne</option> 
         <option value="3">3 - Allier</option> 
@@ -134,72 +158,16 @@
         <option value="973">973 - Guyane</option> 
         <option value="974">974 - La Réunion</option> 
         <option value="976">976 - Mayotte</option> 
-      </select>
-      
-      <!-- Téléphone -->
-      <label class=# for="téléphone">N° Téléphone</label>
-      <input class=# type="tel" id="téléphone" name="téléphone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
-      
-      <!-- N° SIRET -->
-      <label class=# for="siret">N° SIRET</label>
-      <input class=# type="number" id="siret" name="siret" pattern="[0-9]{9} [0-9]{5}" placeholder="732829320 00074" required>
-      
-      <!-- Email -->
-      <label class=# for="email">Email</label>
-      <input class=# type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io"
-      required>
-      
-      <!-- Site Web -->
-      <!--       <label class=# for="url">Site Web</label>
-      <input class=# type="url" name="url" id="url" placeholder="https://exemple.com" pattern="https://.*" size="40" required /> -->
-      
-    </fieldset>
+    </select>
     
-    <fieldset>
-      <legend>Vos animaux</legend>
-      <% especes.forEach(espece => { %>
-        <div>
-          <label class=# for="<%= espece.nom %>"><%= espece.nom %></label>
-          <input class=# type="checkbox" id="<%= espece.nom %>" name="<%= espece.nom %>" />
-        </div>
-        <% }) %>
-      </fieldset>
-      
-      <!-- Cette section est en commentaire car pas utile pour le moment      
-      <fieldset>
-        <legend>Contact</legend>
-        
-        Prénom 
-        <label class=# for="firstname">Prénom</label>
-        <input class=# type="text" id="text" name="firstname" placeholder="Charlotte" required>
-        
-        Nom
-        <label class=# for="lastname">Nom</label>
-        <input class=# type="text" id="text" name="lastname" placeholder="Cripan" required>
-        
-        Email
-        <label class=# for="contact-email">Email</label>
-        <input class=# type="email" id="contact-email" name="contact-email" placeholder="chacripan@domain-expansion.io" required>
-        
-        N° Téléphone
-        <label class=# for="contact-phone">N° Téléphone</label>
-        <input class=# type="tel" id="contact-phone" name="contact-phone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
-      </fieldset>
-      -->
-      
-      <fieldset>
-        <!-- Choix MDP -->
-        <label class=# for="mot_de_passe">Mot de passe</label>
-        <input class=# type="password" id="mot_de_passe" name="mot_de_passe" placeholder="*********" required>
-        
-        <!-- Confirmation MDP -->
-        <label class=# for="confirmation">Mot de passe</label>
-        <input class=# type="password" id="confirmation" name="confirmation" placeholder="*********" required>
-      </fieldset>
-      
-      <input class=# type="submit" value="Valider mon inscription">
-      
-    </form>
-  </main>
-  
-  <%- include('partials/footer') %>
+    <!-- Agrandir aux départements limitrophes -->
+    <label class=# for="nearby-dpt">Départements limitrophes</label>
+    <input class=# type="checkbox" id="nearby-dpt" name="nearby-dpt" />
+
+    
+    <input class=# type="submit" value="Rechercher">
+  </form>
+</div>
+</main>
+
+<%- include('partials/footer') %>
