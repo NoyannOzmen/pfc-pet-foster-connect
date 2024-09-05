@@ -24,8 +24,9 @@
 - SSH sur le serveur
 - `cd project-pet-foster-connect/`
 - `git pull`
-- La première fois donner les permissions au script d'update `chmod +x ./scripts/deploy.sh`
-- `./scripts/deploy.sh`
+- `docker compose down`
+- `docker compose build`
+- `docker compose up`
 
 # Docker
 
