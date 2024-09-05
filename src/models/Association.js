@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../database.js';
+import { sequelize } from './sequelizeClient.js';
 
 class Association extends Model {}
 
@@ -55,7 +55,6 @@ export { Association };
  * @property {string} rue - Rue
  * @property {string} commune - Commune
  * @property {string} code_postal - Code Postal
- * @property {string} ville - Ville
  * @property {string} pays - Pays
  * @property {string} siret - N° SIRET
  * @property {string} telephone - N° téléphone

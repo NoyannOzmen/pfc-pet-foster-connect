@@ -59,7 +59,7 @@ Media.belongsTo(Association, {
 
 Association.hasMany(Animal, {
   foreignKey: 'association_id',
-  as : 'animaux'
+  as : 'pensionnaires'
 });
 
 Animal.belongsTo(Association, {
@@ -71,7 +71,7 @@ Animal.belongsTo(Association, {
 
 Espece.hasMany(Animal, {
   foreignKey: 'espece_id',
-  as : 'animaux'
+  as : 'representants'
 });
 
 Animal.belongsTo(Espece, {
@@ -98,7 +98,7 @@ Tag.belongsToMany(Animal, {
   foreignKey: 'tag_id',
   otherKey: 'animal_id',
   through: Animal_Tag,
-  as: "animaux"
+  as: "animaux_taggés"
 });
 
 Animal.belongsToMany(Tag, {
@@ -121,7 +121,7 @@ Famille.belongsToMany(Animal, {
   foreignKey: 'famille_id',
   otherKey: 'animal_id',
   through: Demande,
-  as: "animaux"
+  as: "potentiel_accueillant"
 });
 
 

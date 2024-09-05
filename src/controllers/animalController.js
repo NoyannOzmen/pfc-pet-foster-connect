@@ -1,6 +1,4 @@
-import { Animal } from "../models/Animal"
-import { Demande } from "../models/Demande"
-
+import { Animal, Demande } from "../models/Models.js";
 
 export const animalController = {
     
@@ -22,7 +20,6 @@ export const animalController = {
     
     async detailAnimal(req,res){
         
- feature/routesControllerAnimal
         const animalId=req.params.id
         
         const animalData = await Animal.findByPk(animalId,{
