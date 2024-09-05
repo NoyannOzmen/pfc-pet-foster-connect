@@ -9,7 +9,7 @@ sudo cp ./scripts/nginx.conf /etc/nginx/sites-available/pet-foster-connect
 
 
 sudo rm /etc/nginx/sites-enabled/default
-sudo ln -s /etc/nginx/sites-available/okanban /etc/nginx/sites-enabled/okanban
+sudo ln -s /etc/nginx/sites-available/pet-foster-connect /etc/nginx/sites-enabled/pet-foster-connect
 sudo nginx -t
 sudo systemctl restart nginx
 
@@ -18,7 +18,7 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot --nginx
 
-
+#Installation de docker
 sudo apt install -y ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg

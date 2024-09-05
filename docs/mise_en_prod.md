@@ -1,4 +1,4 @@
-# Installation du projet sur un serveur
+# INSTALLATION du projet sur un serveur
 
 - Depuis le serveur cloner le repo 
 - cd dans le repo local
