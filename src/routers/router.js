@@ -1,7 +1,11 @@
 import {Router} from 'express';
 
-const router = Router();
+import { animalRouter } from './animalRouter.js';
+import { associationRouter } from './associationRouter.js';
+import { staticPageRouter } from './staticPageRouter.js';
 
-router.get("/", (req,res) => res.render("accueil"));
+export const router = Router();
 
-export {router};
+router.use(staticPageRouter);
+router.use(animalRouter);
+router.use(associationRouter);

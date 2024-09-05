@@ -28,3 +28,5 @@ associationRouter.get('/api/associations/:id(\\d+)/animals', catchErrors(associa
 
 //Ajout un animal à l'association
 associationRouter.post('/api/associations/:id(\\d+)/animals',[auth,isRole.association], catchErrors(associationController.addAnimal));
+
+export { associationRouter };
