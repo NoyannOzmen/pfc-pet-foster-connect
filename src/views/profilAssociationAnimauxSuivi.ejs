@@ -26,51 +26,59 @@
     <% animals.forEach(animal => { %>
       <div class=#>
         <h4>Nom Animal</h4>
-        <p>Lorem</p>
+        <p><%= animal.nom %></p>
+        <button class=#>v</button>
 
-        <img src="" alt="">
+        <div>
+          <img src=# alt="Photo de <%= animal.nom %>">
 
-        <button>Details</button>
+          <a href="/animaux/<%= animal.id %>">Détails</a>
 
-        <h6>Espèce</h6>
-          <p>Lorem</p>
+          <h6>Espèce</h6>
+            <p><%= animal.espece %></p>
 
-        <h6>Sexe</h6>
-          <p>Inconnu</p>
+          <h6>Sexe</h6>
+            <p><%= animal.sexe %></p>
 
-        <h6>Race</h6>
-          <p>Ipsum</p>
+          <h6>Race</h6>
+            <p><%= animal.race %></p>
 
-        <h6>Age</h6>
-          <p>Lorem ans</p>
+          <h6>Age</h6>
+            <p><%= animal.age %>&nbsp;ans</p>
 
-        <% tags.forEach(tag => { %>
-          <button><%= tag.nom %></button>
-        <% }) %>
+          <% tags.forEach(tag => { %>
+            <button><%= tag.nom %></button>
+          <% }) %>
+        </div>
+
       </div>
       
       <div class=#>
         <h4>Famille d'accueil</h4>
-        <p>Famille Ipsum</p>
+        <p>Famille <%= animal.accueillant.nom %></p>
+        <button class=#>v</button>
 
-        <h5>Coordonnées</h5>
-        <h6>Nom</h6>
-          <p>Ipsum</p>
+        <div>
+          <h5>Coordonnées</h5>
+          <h6>Nom</h6>
+            <p><%= animal.accueillant.nom %></p>
 
-        <h6>Adresse</h6>
-          <p>47 rue de Lorem 01000 Ipsum-les-bains</p>
+          <h6>Adresse</h6>
+            <p><%= animal.accueillant.rue %>&nbsp;<%= animal.accueillant.code_postal %>&nbsp;<%= animal.accueillant.commune %></p>
 
-        <h6>Pays</h6>
-          <p>Lorem</p>
+          <h6>Pays</h6>
+            <p><%= animal.accueillant.pays %></p>
+          
+          <h6>Téléphone</h6>
+            <p><%= animal.accueillant.telephone %></p>
+          
+          <h6>e-mail</h6>
+            <p><%= animal.accueillant.email %></p>
         
-        <h6>Téléphone</h6>
-          <p>01 23 45 67 89</p>
-        
-        <h6>e-mail</h6>
-          <p>lorem.ipsum@lorem.ipsum</p>
-       
-        <h6>Hébergement</h6>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nisi accusantium deleniti. Assumenda, magni distinctio.</p>
+          <h6>Hébergement</h6>
+            <p><%= animal.accueillant.hebergement %></p>
+        </div>
+
       </div>
     <% }) %>
   </section>
