@@ -11,19 +11,10 @@
   </ul>
 </nav>
 
-<div class=#>
-  <ul>
-    <li>Nos animaux</li>
-    <li>Suivi accueils</li>
-    <li>Créer un profil</li>
-  </ul>
-</div>
-
 <section class=#>
-  <h3>Suivi des animaux accueillis</h3>
+  <h3>Demande d'accueil de <%= animal.nom %> </h3>
 
   <div class=#>
-    <% animals.forEach(animal => { %>
       <div class=#>
         <h4>Nom Animal</h4>
         <p><%= animal.nom %></p>
@@ -80,10 +71,15 @@
         </div>
 
       </div>
-    <% }) %>
-  </section>
 
-</div>
+      <div>
+        <button>Accepter la demande</button>
+        <button>Refuser la demande</button>
+      </div>
+  </div>
+</section>
+
+
 </main>
 
 <%- include('partials/footer') %>
