@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+body{
+	color: #382821;
+	font-size: large;
+}
+h1{
+		-webkit-text-fill-color: solid  #382821;
+		-webkit-text-stroke: 12px #fffbe4;
+		paint-order: stroke fill;
+		font-size: 3rem;
+		font-weight: bolder;
+		align-items: center;
+		line-height: 40px;
+		letter-spacing: 1%;
+	}
+}
