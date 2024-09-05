@@ -55,7 +55,6 @@ export { Association };
  * @property {string} rue - Rue
  * @property {string} commune - Commune
  * @property {string} code_postal - Code Postal
- * @property {string} ville - Ville
  * @property {string} pays - Pays
  * @property {string} siret - N° SIRET
  * @property {string} telephone - N° téléphone

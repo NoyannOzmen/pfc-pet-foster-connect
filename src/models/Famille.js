@@ -43,15 +43,14 @@ Famille.init(
 export { Famille };
 
 /**
- * A Association
- * @typedef  {object} Association
+ * A Famille
+ * @typedef  {object} Famille
  * @property {string} id.required - Identifiant
  * @property {string} nom.required - Nom
  * @property {string} telephone - N° téléphone
  * @property {string} rue - Rue
  * @property {string} commune - Commune
  * @property {string} code_postal - Code Postal
- * @property {string} ville - Ville
  * @property {string} pays - Pays
  * @property {string} hebergement - Type d'hébergement
  */

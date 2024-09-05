@@ -103,7 +103,7 @@ const associationController = {
             return next();
         }
 
-        await association.addAnimal(nwAnimal);
+        await association.addAnimal(newAnimal);
         /* Sequelize Lazy Loading ? (Je crois) */
     }
 };
