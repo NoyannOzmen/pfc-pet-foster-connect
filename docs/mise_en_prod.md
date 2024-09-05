@@ -8,9 +8,12 @@
   - CERTBOT : suivre les instructions 
     - Entrer le nom de domaine sur lequel le site sera hosté (attention à bien le répercuter sur nginx.config) 
   - La machine va redémarrer
-  - retourner dans le dossier du projet
+
+- Revenir en SSH sur la machine
+- retourner dans le dossier du projet
   - touch .env
   - éditer le .env avec les bonnes variables (avec nano, Vim, etc..)
+- docker compose up
 
 
 # Docker
