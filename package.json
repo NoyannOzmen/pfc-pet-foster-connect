@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "db:reset":"psql -U pfcadmin -d pfc -f ./src/database/create_tables.sql; psql -U pfcadmin -d pfc -f ./src/database/seeding_tables.sql "
   },
   "keywords": [],
