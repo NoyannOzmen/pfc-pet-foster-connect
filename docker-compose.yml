@@ -1,0 +1,26 @@
+services: 
+  app:
+
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    
+    env_file: ".env"
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    container_name: pfc-application
+  
+  db:
+    image: postgres
+    container_name: pfc-database
+    environment:
+      - POSTGRES_USER=pfcadmin
+      - POSTGRES_PASSWORD=pfc
+      - POSTGRES_DB=pfc
+    volumes: 
+      - ./src/database:/docker-entrypoint-initdb.d
+      - pg-pfc:/var/lib/postgresql/data
+volumes:
+  pg-pfc: 
