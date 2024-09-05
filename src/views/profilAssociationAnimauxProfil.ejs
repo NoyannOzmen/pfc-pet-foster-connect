@@ -1,0 +1,121 @@
+<%- include('partials/header') %>
+
+<main>
+  <h2>Bienvenue sur votre espace personnel</h2>
+
+  <nav class=#>
+    <ul>
+      <li><button class=#>Mon profil</button></li>
+      <li><button class=#>Demandes d'accueil</button></li>
+      <li><button class=#>Nos animaux</button></li>
+    </ul>
+  </nav>
+
+  <div class=#>
+    <ul>
+      <li>Nos animaux</li>
+      <li>Suivi accueils</li>
+      <li>Créer un profil</li>
+    </ul>
+  </div>
+
+  <section class=#>
+    <h3>Créer un profil</h3>
+
+    <form action=# method="POST">
+      <fieldset>
+  
+        <!-- Nom de l'animal -->
+        <label class=# for="nom">Nom</label>
+        <input class=# type="text" id="nom" name="nom" placeholder="Miaouss"> required
+
+        <!-- Sexe -->
+        <div>
+          <p>Sexe</p>
+          <div>
+            <label class=# for="Mâle">Mâle</label>
+            <input class=# type="radio" id="Mâle" name="Mâle" />
+          </div>
+          <div>
+            <label class=# for="Femelle">Femelle</label>
+            <input class=# type="radio" id="Femelle" name="Femelle" />
+          </div>
+          <div>
+            <label class=# for="Inconnu">Inconnu</label>
+            <input class=# type="radio" id="Inconnu" name="Inconnu" />
+          </div>
+        </div>
+  
+        <!-- Selection Age -->
+         <div>
+          <p>Age :</p>
+          <label class=# for="age-min">De</label>
+          <input class=# id="age-min" name="age-min" type="number" tabindex=0  placeholder="1" min="0" max="100">
+          <label class=# for="age-min">à</label>
+          <input class=# id="age-max" name="age-max" type="number" tabindex=0  placeholder="12" min="1" max="100">
+         </div>
+
+         <!-- Image Upload (honteusement dérobé)-->
+<!--          
+         <div class="profile-picture">
+          <h4 class="upload-icon">
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+          </h4>
+          <input
+            class="file-uploader"
+            type="file"
+            onchange="upload()"
+            accept="image/*"
+          />
+        </div>
+-->
+      </fieldset>
+
+      <fieldset>
+        <!-- Choix de l'espèce -->
+        <label class=# for="espece-dropdown">Espèce</label>
+        <select name="espece-dropdown" id="espece-dropdown" required>
+        <option value="" disabled selected hidden>--Choisissez une espèce--</option>
+          <% especes.forEach(espece => { %>
+            <option value="<%= espece.nom %>"><%= espece.nom %></option> 
+          <% }) %>
+        </select>
+
+        <!-- Choix de la race (si applicable) -->
+        <label class=# for="race">Race</label>
+        <input class=# type="text" id="race" name="race" placeholder="Inconnue">
+
+        <!-- Choix de la couleur -->
+        <label class=# for="couleur">Couleur</label>
+        <input class=# type="text" id="couleur" name="couleur" placeholder="Noir">
+      </fieldset>
+
+      <fieldset>
+        <div>
+          <!-- Choix des tags -->
+          <label class=# for="tag-dropdown">Besoins spécifiques</label>
+          <select name="tag-dropdown" id="tag-dropdown">
+            <option value="" disabled selected hidden>--Le cas échéant--</option>
+              <% tags.forEach(tag => { %>
+                <option value="<%= tag.nom %>"><%= tag.nom %></option> 
+              <% }) %>
+          </select>
+
+          <!-- Ajouter un tag -->
+          <input class=# type="button" value="Ajouter un tag" />
+        </div>
+
+        <!-- Ajouter une description -->
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="5" cols="33" required>
+            Pour en savoir plus sur cette petite boule de poils (ou autres)
+        </textarea>
+      </fieldset>
+
+      <input class=# type="submit" value="Valider son inscription">
+    </form>
+  </section>
+
+</main>
+
+<%- include('partials/footer') %>

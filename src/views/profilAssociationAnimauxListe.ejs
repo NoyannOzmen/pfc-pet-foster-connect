@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<main>
+<h2>Bienvenue sur votre espace personnel</h2>
+
+<nav class=#>
+  <ul>
+    <li><button class=#>Mon profil</button></li>
+    <li><button class=#>Demandes d'accueil</button></li>
+    <li><button class=#>Nos animaux</button></li>
+  </ul>
+</nav>
+
+<div class=#>
+  <ul>
+    <li>Nos animaux</li>
+    <li>Suivi accueils</li>
+    <li>Créer un profil</li>
+  </ul>
+</div>
+
+  <section class=#>
+    <h3>Nos Animaux</h3>
+
+    <div class=#>
+      <% animals.forEach(animal => { %>
+        <div class=#>
+          <img class=# src="<%= animal.photo %>" alt="Photo de <%= animal.nom %>"">
+          <div class=#>
+            <h3 class=#><%= animal.nom %></h3>
+            <h4 class=#><%= animal.espece %></h4>
+          </div>
+          <!-- <a class="btn" href="/animaux/<%= animal.id %>">Découvrir</a> -->
+        </div>
+      <% }) %>
+    </div>
+
+  </section>
+</main>
+
+<%- include('partials/footer') %>

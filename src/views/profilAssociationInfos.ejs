@@ -1,0 +1,65 @@
+<%- include('partials/header') %>
+
+<main>
+<h2>Bienvenue sur votre espace personnel</h2>
+
+<nav class=#>
+  <ul>
+    <li><button class=#>Mon profil</button></li>
+    <li><button class=#>Demandes d'accueil</button></li>
+    <li><button class=#>Nos animaux</button></li>
+  </ul>
+</nav>
+
+<div class=#>
+  <h3>Mon profil</h3>
+
+  <form action=# method="POST">
+    <fieldset>
+      <legend>Votre organisme</legend>
+      <!-- Nom -->
+      <label class=# for="nom">Nom</label>
+      <input class=# type="text" id="nom" name="nom" value="<%= association.nom %>" disabled>
+      
+      <!-- Président -->
+      <label class=# for="president">Président</label>
+      <input class=# type="text" id="president" name="president" value="<%= association.president %>" disabled>
+      
+      <!-- Rue -->
+      <label class=# for="rue">Rue</label>
+      <input class=# type="text" id="rue" name="rue" value="<%= association.rue %>" disabled>
+      
+      <!-- Commune -->
+      <label class=# for="commune">Commune</label>
+      <input class=# type="text" id="commune" name="commune" value="<%= association.commune %>" disabled>
+      
+      <!-- Code Postal -->
+      <label class=# for="code_postal">Code Postal</label>
+      <input class=# type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" value="<%= association.code_postal %>" disabled>
+      
+      <!-- Département -->
+      <label class=# for="departement">Département</label>
+      <input class=# type="number" id="departement" name="departement" pattern="[01-97]{1} [0-9]{3}" value="<%= association.departement %>" disabled>
+
+      <!-- Département -->
+      <label class=# for="pays">Pays</label>
+      <input class=# type="number" id="pays" name="pays" pattern="[01-97]{1} [0-9]{3}" value="<%= association.pays %>" disabled>
+      
+      <!-- Téléphone -->
+      <label class=# for="telephone">N° Téléphone</label>
+      <input class=# type="tel" id="telephone" name="telephone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" value="<%= association.telephone %>" disabled>
+      
+      <!-- N° SIRET -->
+      <label class=# for="siret">N° SIRET</label>
+      <input class=# type="number" id="siret" name="siret" pattern="[0-9]{9} [0-9]{5}" value="<%= association.siret %>" disabled>
+      
+      <!-- Site Web -->
+      <label class=# for="url">Site Web</label>
+      <input class=# type="url" name="url" id="url" value="<%= association.url %>"  pattern="https://.*" size="40" disabled />
+      
+    </fieldset>
+  </form>
+</div>
+</main>
+
+<%- include('partials/footer') %>
