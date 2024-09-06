@@ -94,12 +94,71 @@ export const sessionController = {
         res.render("inscriptionFamille")
     },
     
-    async FosterSignIn(req,res) {
-        const newFoster = await Famille.create({
+    async FosterSignIn(req,res) {    
+        const { 
+            nom, 
+            email,
+            telephone,
+            hebergement,
+            rue,
+            commune,
+            code_postal,
+            pays, 
+            mot_de_passe, 
+            confirmation 
+        } = req.body;
+        
+        const found = await Utilisateur.findOne( { where: {email: email} });
+        
+        console.log(found);
+        
+        if(found === null) {
+            if (!emailValidator.validate(email)) {
+                return res.render('/famille/inscription', {
+                    error: "Cet email n'est pas valide.",
+                });
+            }
+            // verifier si password correspond à password confirm
+            if (mot_de_passe !== confirmation) {
+                return res.render('/famille/inscription', {
+                    errorMessage:
+                    'La confirmation du mot de passe ne correspond pas au mot de passe renseigné.',
+                });
+            }
             
-        })
+            const encryptedPassword = await bcrypt.hash(mot_de_passe, 8);
+            console.log('HASH', encryptedPassword);
+            
+            const newUser = await Utilisateur.create({
+                email: email,
+                mot_de_passe : encryptedPassword,
+            })
+            console.log(newUser);
+            await newUser.save();
+            
+            const newFoster = await Famille.create({
+                nom : nom,
+                telephone: telephone,
+                hebergement: hebergement,
+                rue: rue,
+                commune : commune,
+                code_postal: code_postal,
+                pays: pays,
+                utilisateur_id: newUser.id,
+            });
+            console.log(newFoster);
+            /* req.flash('success', `Merci pour votre inscription !`); */
+            console.log(`C'est good`)
+            await newFoster.save();
+        } else {
+            /* req.flash('success', 'Cet utilisateur existe déjà !'); */
+            console.log('Non')
+        }
+        console.log(found)
+        console.log("Déjà inscrit")
+        res.redirect('/')
     },
-    
+
     async displayShelterSignIn(req,res) {
         const especes = await Espece.findAll();
         res.render("inscriptionAssociation", { especes })
@@ -149,7 +208,7 @@ export const sessionController = {
             console.log(newUser);
             await newUser.save();
             
-            const newShelter = await Association.create({
+            const newFoster = await Association.create({
                 nom : nom,
                 responsable : responsable,
                 rue : rue,
@@ -160,10 +219,10 @@ export const sessionController = {
                 telephone : telephone,
                 utilisateur_id: newUser.id,
             });
-            console.log(newShelter);
+            console.log(newFoster);
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
-            await newShelter.save();
+            await newFoster.save();
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log('Non')
