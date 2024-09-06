@@ -4,6 +4,10 @@ import { Famille, Utilisateur,Association } from '../models/Models.js';
 
 export const sessionController = {
     
+    async displayLogin(req, res) {
+        res.status(200).render("connexion");
+    },
+
     async login(req,res) {
         
         // On récupère l'email et le mot de passe
@@ -41,7 +45,7 @@ export const sessionController = {
 
         if(!hasMatchingPassword) {
 
-            return res.render('login', {error : "utilisateur ou mot de passe incorrect"})
+            return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
 
         } else {
 
@@ -75,4 +79,4 @@ export const sessionController = {
         req.session.destroy();
         res.redirect('/')
     }
-}
+};
