@@ -41,7 +41,7 @@ module.exports = {
           'body': ['"Noto Sans"', 'sans-serif']
         },
         backgroundImage: {
-          'Unaï': "url('src/assets/images/unai.png')",
+          'unai': "url('../images/unai.png')",
         },
       }
     },
