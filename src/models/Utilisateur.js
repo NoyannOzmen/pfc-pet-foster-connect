@@ -16,6 +16,7 @@ Utilisateur.init(
   },
   {
     sequelize: sequelize,
+    timestamps: false,
     tableName: 'utilisateur'
   }
 );

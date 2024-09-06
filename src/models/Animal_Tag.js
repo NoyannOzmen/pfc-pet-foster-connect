@@ -10,6 +10,7 @@ Animal_Tag.init(
     },
     {
         sequelize: sequelize,
+        timestamps: false,
         tableName: 'animal_tag',
     }
 );

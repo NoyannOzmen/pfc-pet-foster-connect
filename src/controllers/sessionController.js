@@ -1,8 +1,21 @@
 import bcrypt from 'bcrypt';
 
-import { Famille, Utilisateur,Association } from '../models/Models.js';
+import { Famille, Utilisateur, Association, Espece } from '../models/Models.js';
 
 export const sessionController = {
+    
+    async displayLogin(req,res) {
+        res.render("connexion");
+    },
+
+    async displayFosterSignIn(req,res) {
+        res.render("inscriptionFamille")
+    },
+
+    async displayShelterSignIn(req,res) {
+        const especes = await Espece.findAll();
+        res.render("inscriptionAssociation", { especes })
+    },
     
     async login(req,res) {
         
@@ -41,7 +54,7 @@ export const sessionController = {
 
         if(!hasMatchingPassword) {
 
-            return res.render('login', {error : "utilisateur ou mot de passe incorrect"})
+            return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
 
         } else {
 

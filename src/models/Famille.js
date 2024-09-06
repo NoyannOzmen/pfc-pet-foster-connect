@@ -36,6 +36,7 @@ Famille.init(
   },
   {
     sequelize: sequelize,
+    timestamps: false,
     tableName: 'famille'
   }
 );

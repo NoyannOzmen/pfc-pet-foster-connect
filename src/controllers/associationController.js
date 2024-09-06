@@ -12,7 +12,7 @@ const associationController = {
         // Récupérer toutes les associations en BDD
         const associations = await Association.findAll();
         // Envoyer une réponse
-        res.render("listeAssociations",{ associations });
+        res.render("listeAssociations", { associations });
     },
     
     /* Détails d'une Association */
@@ -26,7 +26,7 @@ const associationController = {
             return next();
         }
         // Envoyer une réponse
-        res.render("detailAssociation",{ association });
+        res.render("detailAssociation", { association });
     },
 
     /* Création d'une association (à mettre dans le login/signup) */
@@ -42,7 +42,7 @@ const associationController = {
             return next();
         }
     // Element à Update
-        const { nom, responsable, rue, commune, code_postal, pays, SIRET, telephone } = req.body;
+        const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
         const updatedAssociation = await association.update({
             nom : nom || association.nom,
             responsable : responsable || association.responsable,
@@ -50,7 +50,7 @@ const associationController = {
             commune : commune || association.commune,
             code_postal : code_postal || association.code_postal,
             pays : pays || association.pays,
-            SIRET : SIRET || association.SIRET,
+            siret : siret || association.siret,
             telephone : telephone || association.telephone,
         });
 

@@ -22,7 +22,11 @@ VALUES
 INSERT INTO "espece"
   ("id", "nom" )
 VALUES
-  ( 1, 'Chat' )
+  ( 1, 'Chat' ),
+  ( 2, 'Chien' ),
+  ( 3, 'Lapin' ),
+  ( 4, 'Oiseau'),
+  ( 5, 'Reptile')
 ;
 
 INSERT INTO "animal"

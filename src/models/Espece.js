@@ -12,6 +12,7 @@ Espece.init(
   },
   {
     sequelize: sequelize,
+    timestamps: false,
     tableName: 'espece'
   }
 );

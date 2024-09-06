@@ -29,7 +29,7 @@ Association.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    SIRET: {
+    siret: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
@@ -40,6 +40,7 @@ Association.init(
   },
   {
     sequelize: sequelize,
+    timestamps: false,
     tableName: 'association'
   }
 );
