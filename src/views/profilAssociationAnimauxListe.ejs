@@ -1,41 +1,52 @@
 <%- include('partials/header') %>
 
 <main>
-<h2>Bienvenue sur votre espace personnel</h2>
+  
+  <h1 class="my-6 ml-4 mb-6">Bienvenue sur votre espace personnel</h1>
+  
+  <!-- Conteneur général qui contient tout le dashboard -->
+  <div class="flex flex-col mx-4">
+    
+    <nav class=#>
+      <ul class="flex gap-x-2 justify-center font-semibold">
+        <li><button class="dashbtn dashbtn-selected">Mon profil</button></li>
+        <li><button class="dashbtn">Demandes</button></li>
+        <li><button class="dashbtn">Nos animaux</button></li>
+      </ul>
+    </nav>
+    
+    <!-- Conteneur du sous menu et de la section -->
+    <div class="flex flex-col bg-accents2 rounded-lg">
 
-<nav class=#>
-  <ul>
-    <li><button class=#>Mon profil</button></li>
-    <li><button class=#>Demandes d'accueil</button></li>
-    <li><button class=#>Nos animaux</button></li>
-  </ul>
-</nav>
-
-<div class=#>
-  <ul>
-    <li>Nos animaux</li>
-    <li>Suivi accueils</li>
-    <li>Créer un profil</li>
-  </ul>
-</div>
-
-  <section class=#>
-    <h3>Nos Animaux</h3>
-
-    <div class=#>
-      <% animals.forEach(animal => { %>
+      <nav class=#>
+        <ul class>
+          <li>Nos animaux</li>
+          <li>Suivi accueils</li>
+          <li>Créer un profil</li>
+        </ul>
+      </nav>
+      
+      <section class=#>
+        <h3>Nos Animaux</h3>
+        
         <div class=#>
-          <img class=# src="<%= animal.images_animal[0] %>" alt="Photo de <%= animal.nom %>">
-          <div class=#>
-            <h3 class=#> nom : <%= animal.nom %></h3>
-            <h4 class=#>espece: <%= animal.espece.nom %></h4>
+          <% animals.forEach(animal => { %>
+            <div class=#>
+              <img class=# src="<%= animal.images_animal[0] %>" alt="Photo de <%= animal.nom %>">
+              <div class=#>
+                <h3 class=#> nom : <%= animal.nom %></h3>
+                <h4 class=#>espece: <%= animal.espece.nom %></h4>
+              </div>
+              <a class="btn" href="/animaux/<%= animal.id %>">Découvrir</a> 
+            </div>
+            <% }) %>
           </div>
-         <a class="btn" href="/animaux/<%= animal.id %>">Découvrir</a> 
-        </div>
-      <% }) %>
+        </section>
+
+      </div>
+      
+      
     </div>
-
-  </section>
-</main>
-
-<%- include('partials/footer') %>
+  </main>
+  
+  <%- include('partials/footer') %>
