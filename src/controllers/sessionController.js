@@ -8,29 +8,32 @@ export const sessionController = {
     async displayLogin(req,res) {
         res.render("connexion");
     },
-
+    
     async logIn(req,res) {
         
-/*         // On récupère l'email et le mot de passe
+        /*         // On récupère l'email et le mot de passe
         const credentials = req.body;
         //TODO VERIFICATION DES CREDENTIALS AVEC JOI */
-
+        
         const {
             email, 
             mot_de_passe
         } = req.body
         
+        
         const user = await Utilisateur.findOne({
-        //! ATTENTION : Peut être que les associations ont un problème au niveau lien association/user famille/user
-        //! A TESTER
-
+            //! ATTENTION : Peut être que les associations ont un problème au niveau lien association/user famille/user
+            //! A TESTER
+            
             where : {
                 email: email
             },
             include : ['refuge','accueillant']
         })
-
-/*         console.log('User is', user); */
+        
+        
+        
+        /*         console.log('User is', user); */
         
         if (!user) {
             return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
@@ -38,65 +41,72 @@ export const sessionController = {
         
         //* Bcrypt compare le hash du mot de passe récupéré depuis la requète avec celui en BDD
         const hasMatchingPassword = await bcrypt.compare(mot_de_passe, user.mot_de_passe);
-
+        
+        
         if(!hasMatchingPassword) {
             return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
-
+            
         } else {
+            
+            //* Check si user est association OU famille en vérifiant si les sous-champs id existent.
+            //* Normalement l'include ne devrait renvoyer que l'un OU l'autre.
+            //* On ajoute ensuite en session :
+            //*     - loggedIn : true pour vérifier facilement si la session est celle d'un.e user logged in
+            //*     - role : Pour vérifier le rôle du user et personnaliser l'affichage dans les vues accès restreint
+            //*     - nom : pour afficher sur toutes les vues le nom du user
+            //*     - id : Pour faciliter les futurs appels BDD pour afficher les infos des profils etc...
+            let refugeId=null;
+            let familleId=null;
 
-        //* Check si user est association OU famille en vérifiant si les sous-champs id existent.
-        //* Normalement l'include ne devrait renvoyer que l'un OU l'autre.
-        //* On ajoute ensuite en session :
-        //*     - loggedIn : true pour vérifier facilement si la session est celle d'un.e user logged in
-        //*     - role : Pour vérifier le rôle du user et personnaliser l'affichage dans les vues accès restreint
-        //*     - nom : pour afficher sur toutes les vues le nom du user
-        //*     - id : Pour faciliter les futurs appels BDD pour afficher les infos des profils etc...
-
-        let refugeId = user.refuge.utilisateur_id;
-        let familleId = user.accueillant.utilisateur_id;
-
-        console.log('Refuge is', refugeId, 'Famille is', familleId);
-
+            if (user.refuge) {
+                refugeId = user.refuge.id;
+                
+            }
+            if (user.accueillant) {
+                familleId = user.accueillant.id;
+            }
+            
+            
             if (refugeId != null) {
                 req.session.loggedIn=true;
                 req.session.role='association';
                 req.session.nom=user.refuge.nom;
-                req.session.id=refugeId;
+                req.session.userId=refugeId;
             }
             if (familleId != null ) {
                 req.session.loggedIn=true;
                 req.session.role='famille';
                 req.session.nom=user.accueillant.nom;
-                req.session.id=familleId;
+                req.session.userId=familleId;
             }
             console.log(req.session)
         }
         return res.redirect('/')
     },
-
+    
     async logOut(req,res) {
-
+        
         req.session.destroy();
         res.redirect('/')
     },
-
+    
     async displayFosterSignIn(req,res) {
         res.render("inscriptionFamille")
     },
-
+    
     async FosterSignIn(req,res) {
         const newFoster = await Famille.create({
-
+            
         })
     },
-
+    
     async displayShelterSignIn(req,res) {
         const especes = await Espece.findAll();
         res.render("inscriptionAssociation", { especes })
     },
     
     async ShelterSignIn(req,res) {
-
+        
         const { 
             nom, 
             responsable, 
@@ -110,11 +120,11 @@ export const sessionController = {
             mot_de_passe, 
             confirmation 
         } = req.body;
-
+        
         const found = await Utilisateur.findOne( { where: {email: email} });
-
+        
         console.log(found);
-
+        
         if(found === null) {
             if (!emailValidator.validate(email)) {
                 return res.render('/association/inscription', {
@@ -128,10 +138,10 @@ export const sessionController = {
                     'La confirmation du mot de passe ne correspond pas au mot de passe renseigné.',
                 });
             }
-
+            
             const encryptedPassword = await bcrypt.hash(mot_de_passe, 8);
             console.log('HASH', encryptedPassword);
-
+            
             const newUser = await Utilisateur.create({
                 email: email,
                 mot_de_passe : encryptedPassword,
