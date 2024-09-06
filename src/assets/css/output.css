@@ -593,6 +593,8 @@ body{
   font-size: large;
 }
 
+/*Title with light outline*/
+
 h1{
   -webkit-text-fill-color: solid  #382821;
   -webkit-text-stroke: 12px #fffbe4;
@@ -603,6 +605,41 @@ h1{
   line-height: 40px;
   letter-spacing: 1%;
 }
+
+/* 	Burger Menu
+	
+	.hamburger {
+		display: none;
+	}
+	
+	.bar {
+		display: block;
+		width: 25px;
+		height: 3px;
+		margin: 5px auto;
+		-webkit-transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
+		background-color: #101010;
+	}
+	
+	Partie Mobile
+
+	.hamburger {
+		display: block;
+		cursor: pointer;
+	}
+	
+	.hamburger.active .bar:nth-child(2) {
+		opacity: 0;
+	}
+	
+	.hamburger.active .bar:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
+	
+	.hamburger.active .bar:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	} */
 
 .absolute {
   position: absolute;
@@ -647,6 +684,10 @@ h1{
 
 .w-screen {
   width: 100vw;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
 }
 
 .flex-auto {
@@ -765,6 +806,10 @@ h1{
      object-position: top;
 }
 
+.p-12 {
+  padding: 3rem;
+}
+
 .p-3 {
   padding: 0.75rem;
 }
@@ -777,6 +822,11 @@ h1{
   padding: 1.5rem;
 }
 
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -787,24 +837,14 @@ h1{
   padding-right: 1rem;
 }
 
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pt-2 {
