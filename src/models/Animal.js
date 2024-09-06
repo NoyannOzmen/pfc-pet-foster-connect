@@ -38,7 +38,7 @@ Animal.init(
   },
   {
     sequelize: sequelize,
-    tableName: 'animal'
+    tableName: 'animal',
   }
 );
 

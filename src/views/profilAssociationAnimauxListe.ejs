@@ -25,12 +25,12 @@
     <div class=#>
       <% animals.forEach(animal => { %>
         <div class=#>
-          <img class=# src="<%= animal.photo %>" alt="Photo de <%= animal.nom %>"">
+          <img class=# src="<%= animal.images_animal[0] %>" alt="Photo de <%= animal.nom %>">
           <div class=#>
-            <h3 class=#><%= animal.nom %></h3>
-            <h4 class=#><%= animal.espece %></h4>
+            <h3 class=#> nom : <%= animal.nom %></h3>
+            <h4 class=#>espece: <%= animal.espece.nom %></h4>
           </div>
-          <!-- <a class="btn" href="/animaux/<%= animal.id %>">Découvrir</a> -->
+         <a class="btn" href="/animaux/<%= animal.id %>">Découvrir</a> 
         </div>
       <% }) %>
     </div>
