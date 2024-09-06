@@ -6,67 +6,67 @@
   <meta name="description" conctent="Pet Foster Connect, mise en relations entre refuges de protection animale et familles d'accueil">
   <title>Pet Foster Connect</title>
   <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
-  
-  <!-- Link to Tailwind file -->
-  <link rel="stylesheet" href="./output.css">
-  <!-- Adding the font Noto Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-  rel="stylesheet">
-  <!-- Adding the font Grandstander -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap"
-  rel="stylesheet">
+  <link rel="stylesheet" href="/css/output.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
   
 </head>
 
-<body>
-  <header id="top">
-    <a href="/"><img src=# alt="Logo de Pet Foster Connect"></a>
-    <h1>Pet Foster Connect</h1>
-    
-    <!-- Login Navigation -->
-    <nav class=#>
-      <ul class=#>
-        <li class=#>
-          <a href="/connexion">Se Connecter</a>
-        </li>
-        <li class=#>
-          <a href="/deconnexion">Se Déconnecter</a>
-        </li>
-        <li class=#>
-          <a href="/famille/inscription">Famille</a>
-        </li>
-        <li class=#>
-          <a href="/association/inscription">Association</a>
-        </li>
-      </ul>
-    </nav>
-    
-    <!-- Social Media Navigation -->
-    <nav class=#>
-      <a href=# class=#>FB</a>
-      <a href=# class=#>Insta</a>
-    </nav>
-    
+<body class="w-screen font-body flex flex-col flex-wrap bg-fond">
+  <header id="top" class="flex-auto w-screen flex flex-row flex-nowrap basis-0 object-top bg-zoning">
+    <a href="/"><img src="/images/logo.svg" alt="Logo de Pet Foster Connect" class="grow flex-auto size-32 p-4"></a>
+    <div class="grow flex-auto py-4 px-2">
+      <h1 class="font-grands pt-2">Pet&nbsp;Foster<br>Connect</br></h1>
+      <p>Slogan</p>
+    </div>
+    <div class="grow-1 flex flex-auto flex-row-reverse absolute top-0 right-0">
+      <!-- Login Navigation -->
+      <nav class="rounded-b-lg flex-auto  bg-accents2-dark text-fond p-3">
+        <ul class="flex flex-row flex-wrap gap-2 ">
+          <li class=#>
+            <a href="/inscription" class="hover:text-accents1-light">S'Inscrire</a>
+          </li>
+          <li class="border-2 border-accents2-dark border-r-fond px-4">
+            <a href="/connexion" class="hover:text-accents1-light">Se Connecter</a>
+          </li>
+          <li class=#>
+            <a href="/deconnexion" class="hidden hover:text-accents1-light">Se Déconnecter</a>
+          </li>
+          <li class=#>
+            <a href="/famille/inscription" class="hover:text-accents1-light">Famille</a>
+          </li>
+          <li class=#>
+            <a href="/association/inscription" class="hover:text-accents1-light">Association</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <!-- Social Media Navigation -->
+      <nav class="flex-auto space-x-2 p-3">
+        <a href=# class=#>FB</a>
+        <a href=# class=#>Insta</a>
+      </nav>
+    </div>
     <!-- Menu Navigation -->
-    <nav class=#>
-      <ul class=#>
-        <li class=#>
+    <nav class="flex-auto grow-1 content-center justify-end">
+      <ul class="flex flex-wrap flex-row gap-8 p-4 text-end text-sm absolute top-16 right-0">
+        <li class="hover:text-accents1-light">
           <a  tabindex=0 class=# href="/animaux">Nos Animaux</a>
         </li>
-        <li class=#>
+        <li class="hover:text-accents1-light">
           <a tabindex=0 class=# href="/associations">Nos Partenaires</a>
         </li>
-        <li class=#>
+        <li class="hover:text-accents1-light">
           <a tabindex=0 class=# href="/a-propos">Qui sommes-nous ?</a>
         </li>
-        <li class=#>
+        <li class="hover:text-accents1-light">
           <a tabindex=0 class=# href="/faq">Foire aux Questions</a>
         </li>
-        <li class=#>
+        <li class="hover:text-accents1-light">
           <a tabindex=0 class=# href="/devenir-famille-d-accueil">Devenez Famille d'accueil</a>
         </li>
       </ul>
