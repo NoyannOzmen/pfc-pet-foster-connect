@@ -15,6 +15,7 @@ associationRouter.get('/associations', catchErrors(associationController.getAll)
 associationRouter.get('/associations/:id(\\d+)', catchErrors(associationController.getOne));
 
 //Soumission du formulaire d'inscription d'association
+
 associationRouter.post('/inscription/association', catchErrors(associationController.store));
 
 //Mise à jour des informations d'une association
@@ -30,5 +31,6 @@ associationRouter.get('/associations/:id(\\d+)/animals', catchErrors(association
 associationRouter.post('/associations/:id(\\d+)/animals',[auth,isRole.association], catchErrors(associationController.addAnimal));
 
 associationRouter.get('/associations/profil', associationController.dashboard)
+
 
 export { associationRouter };

@@ -38,7 +38,8 @@ Animal.init(
   },
   {
     sequelize: sequelize,
-    tableName: 'animal',
+    timestamps: false,
+    tableName: 'animal'
   }
 );
 

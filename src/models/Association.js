@@ -40,6 +40,7 @@ Association.init(
   },
   {
     sequelize: sequelize,
+    timestamps: false,
     tableName: 'association'
   }
 );
