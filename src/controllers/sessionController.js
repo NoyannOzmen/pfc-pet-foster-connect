@@ -5,11 +5,13 @@ import { Famille, Utilisateur, Association, Espece } from '../models/Models.js';
 
 export const sessionController = {
     
-    async displayLogin(req,res) {
-        res.render("connexion");
+
+    async displayLogin(req, res) {
+        res.status(200).render("connexion");
     },
-    
-    async logIn(req,res) {
+
+    async login(req,res) {
+
         
         /*         // On récupère l'email et le mot de passe
         const credentials = req.body;
@@ -44,8 +46,9 @@ export const sessionController = {
         
         
         if(!hasMatchingPassword) {
+
             return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
-            
+
         } else {
             
             //* Check si user est association OU famille en vérifiant si les sous-champs id existent.
@@ -231,4 +234,4 @@ export const sessionController = {
         console.log("Déjà inscrit")
         res.redirect('/')
     },
-}
+};

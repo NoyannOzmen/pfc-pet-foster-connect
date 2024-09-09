@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 @layer components{
-body{
-	color: #382821;
-	font-size: large;
-}
-h1{
+	body{
+		color: #382821;
+		font-size: large;
+	}
+
+	/*Title with light outline*/
+	h1{
 		-webkit-text-fill-color: solid  #382821;
 		-webkit-text-stroke: 12px #fffbe4;
 		paint-order: stroke fill;
@@ -17,4 +19,44 @@ h1{
 		line-height: 40px;
 		letter-spacing: 1%;
 	}
+
+
+.dashbtn{
+	height: 100%;
+	font-size:0.875rem;
+	padding-left: 1rem;
+	padding-right: 0.5rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.25rem;
+	border: 2px solid #DD4302;
+	border-bottom: none;
+	border-top-left-radius: 15px;
+
 }
+
+@media only screen and (min-width :768px) {
+	.dashbtn {
+		padding-right: 2rem;
+	}
+	
+}
+
+.dashbtn:hover{
+	text-decoration: underline;
+}
+
+/* CLASSE A APPLIQUER AU BOUTON ACTIF DU MENU PRINCIPAL*/
+.dashbtn-active{
+	border-color: #B83700;
+	background-color: #DD4302;
+	color: #fffbe4;
+}
+
+/* CLASSE A APPLIQUER AU BOUTON ACTIF DU SOUS MENU */
+.dashsubbtn-active{
+	background-color: #536140;
+}
+
+}
+
+
