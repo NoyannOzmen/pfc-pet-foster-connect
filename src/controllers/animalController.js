@@ -1,4 +1,4 @@
-import { Animal, Demande, Espece } from "../models/Models.js";
+import { Animal, Demande, Espece, Tag } from "../models/Models.js";
 
 export const animalController = {
     
@@ -9,14 +9,16 @@ export const animalController = {
 /*             where: {
                 statut:'En refuge'
             }, */
-            include : ['tags','refuge','espece']
+            include : ['tags','refuge','espece', 'images_animal']
         })
 
         const especes = await Espece.findAll();
+        const tags = await Tag.findAll();
 
-        res.render('listeAnimaux', {
+        res.render('listeAnimauxCard', {
             animals,
-            especes
+            especes,
+            tags
         })
         
         
