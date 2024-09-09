@@ -29,7 +29,7 @@ Association.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    SIRET: {
+    siret: {
       type: DataTypes.TEXT,
       allowNull: false,
     },

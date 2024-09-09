@@ -19,39 +19,44 @@
 		line-height: 40px;
 		letter-spacing: 1%;
 	}
-	
-/* 	Burger Menu
-	
-	.hamburger {
-		display: none;
-	}
-	
-	.bar {
-		display: block;
-		width: 25px;
-		height: 3px;
-		margin: 5px auto;
-		-webkit-transition: all 0.3s ease-in-out;
-		transition: all 0.3s ease-in-out;
-		background-color: #101010;
-	}
-	
-	Partie Mobile
 
-	.hamburger {
-		display: block;
-		cursor: pointer;
-	}
-	
-	.hamburger.active .bar:nth-child(2) {
-		opacity: 0;
-	}
-	
-	.hamburger.active .bar:nth-child(1) {
-		transform: translateY(8px) rotate(45deg);
-	}
-	
-	.hamburger.active .bar:nth-child(3) {
-		transform: translateY(-8px) rotate(-45deg);
-	} */
+
+.dashbtn{
+	height: 100%;
+	font-size:0.875rem;
+	padding-left: 1rem;
+	padding-right: 0.5rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.25rem;
+	border: 2px solid #DD4302;
+	border-bottom: none;
+	border-top-left-radius: 15px;
+
 }
+
+@media only screen and (min-width :768px) {
+	.dashbtn {
+		padding-right: 2rem;
+	}
+	
+}
+
+.dashbtn:hover{
+	text-decoration: underline;
+}
+
+/* CLASSE A APPLIQUER AU BOUTON ACTIF DU MENU PRINCIPAL*/
+.dashbtn-active{
+	border-color: #B83700;
+	background-color: #DD4302;
+	color: #fffbe4;
+}
+
+/* CLASSE A APPLIQUER AU BOUTON ACTIF DU SOUS MENU */
+.dashsubbtn-active{
+	background-color: #536140;
+}
+
+}
+
+
