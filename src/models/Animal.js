@@ -32,7 +32,7 @@ Animal.init(
     },
     statut: {
       type: DataTypes.ENUM,
-      values: ['Au refuge', 'Accueilli', 'Adopté'],
+      values: ['En refuge', 'Accueilli', 'Adopté'],
       allowNull: false,
     }
   },

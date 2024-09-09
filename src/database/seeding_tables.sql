@@ -58,7 +58,7 @@ VALUES
 INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id","famille_id")
   VALUES
-  ( 1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1,1);
+  (1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1);
 
 
   INSERT INTO "demande"
@@ -194,6 +194,17 @@ SELECT
                 MAX(id)
             from
                 "tag"
+        )
+    );
+
+SELECT
+    setval(
+        'animal_tag_id_seq',
+        (
+            SELECT
+                MAX(id)
+            from
+                "animal_tag"
         )
     );
 

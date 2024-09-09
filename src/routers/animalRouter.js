@@ -10,6 +10,9 @@ const animalRouter = Router();
 //* Rendu de la page avec tout les animaux disponibles
 animalRouter.get('/animaux', catchErrors(animalController.availableAnimalsList));
 
+//* Rendu de la page avec les animaux correspondant à la recherche
+animalRouter.post('/animaux', catchErrors(animalController.getSearched));
+
 //* Rendu de la page de détail d'un animal
 animalRouter.get('/animaux/:id(\\d+)', catchErrors(animalController.detailAnimal));
 
