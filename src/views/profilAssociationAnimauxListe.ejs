@@ -5,13 +5,13 @@
   <h1 class="my-6 ml-4 mb-6 text-xl">Mon espace association</h1>
   
   <!-- Conteneur général qui contient tout le dashboard -->
-  <div class="flex flex-col mx-4 mb-4">
+  <div class="flex flex-col content-center justify-center mx-4 mb-4 md:px-40">
     
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button class="dashbtn dashbtn-active">Mon profil</button></li>
-        <li><button class="dashbtn">Demandes</button></li>
-        <li><button class="dashbtn">Nos animaux</button></li>
+        <li><button id="dashbtn-1" class="dashbtn dashbtn-active">Mon profil</button></li>
+        <li><button id="dashbtn-2" class="dashbtn">Demandes</button></li>
+        <li><button id="dashbtn-3" class="dashbtn">Nos animaux</button></li>
       </ul>
     </nav>
     
@@ -26,36 +26,38 @@
         </ul>
       </nav>
       
-      <section class=# id="dashboard-container">
+      <section class="flex flex-col justify-center content-center" id="dashboard-container">
         
         <!-- Titre caché pour le mobile -->
         
         <h3 class="hidden">Nos Animaux</h3>
         
+        <!-- TRI DES ANIMAUX -->
         
-        <div class="flex flex-wrap p-4 justify-center gap-3.5">
-          
-          <!-- INSERER ICI LA FONCTION RECHERCHE -->
-          <form class="mb-4 w-full flex md:justify-end" action="">
-            <label class="hidden">Recherche</label>
-            <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
-          </form>
+        <!-- INSERER ICI LA FONCTION RECHERCHE et TRI -->
+        <form class="my-4 px-4 w-full flex justify-end" action="">
+
+          <label class="hidden">Recherche</label>
+          <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
+        </form>
+        
+        <div class=" self-center flex flex-wrap p-4 justify-center gap-3.5 md:w-3/4">
           
           <% animals.forEach(animal => { %>
             
             <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
             
-            <a class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0" href="">
+            <a class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="">
               
               <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
               <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
               
-              <p class="text-sm text-center "><%= animal.nom %></p>
+              <p class="text-sm text-center font-semibold md:text-base"><%= animal.nom %></p>
               <div class="flex flex-wrap justify-between px-2 pt-0.5">
 
                 <div class="w-full flex justify-around content-center">
-                  <p class="text-xs italic"> <%= animal.espece.nom %></p>
-                  <p class="text-xs italic"> <%= animal.statut %></p>
+                  <p class="text-xs italic md:text-base"> <%= animal.espece.nom %></p>
+                  <p class="text-xs italic md:text-base"> <%= animal.statut %></p>
                 </div>
               </div>
               
@@ -71,5 +73,7 @@
       
     </div>
   </main>
+
+
   
   <%- include('partials/footer') %>

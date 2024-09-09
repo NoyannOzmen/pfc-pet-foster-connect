@@ -44,10 +44,10 @@ const associationController = {
         if (!association) {
             return next();
         }
-      
-    // Element à Update
+        
+        // Element à Update
         const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
-
+        
         const updatedAssociation = await association.update({
             nom : nom || association.nom,
             responsable : responsable || association.responsable,
@@ -125,6 +125,7 @@ const associationController = {
     
     async dashboard(req,res,next){
         
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
         const associationId = 1;
         
         const animals = await Animal.findAll({
@@ -138,18 +139,16 @@ const associationController = {
                         id : associationId,
                     },
                 },
-                'accueillant',
-                'tags',
-                'demandes',
                 
             ]
         });
-
-/*
-animaux : tableau d'animaux contenant notamment un objet espece,
-un tableau images_animal, un objet refuge, un object accueillant,
-un tableau tags et un tableau demande
-*/
+        
+        /*
+        animaux : tableau d'animaux contenant notamment un objet espece,
+        un tableau images_animal, un objet refuge, un object accueillant,
+        un tableau tags et un tableau demande
+        */
+        
         res.render('profilAssociationAnimauxListe',{ animals });
     }
 };
