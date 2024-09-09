@@ -91,6 +91,8 @@ VALUES
   ( 13, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 9, NULL ),
   ( 14, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 10, NULL ),
   ( 15, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 11, NULL ),
+  ( 16, 'https://cdn.pixabay.com/photo/2019/11/18/00/38/dog-4633734_960_720.jpg', 1, 6, NULL ),
+
 
 
   ( 2, 'https://www.refuge-a-chats.io', 1, NULL, 1)
