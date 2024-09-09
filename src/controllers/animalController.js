@@ -1,6 +1,7 @@
 import { Animal, Association, Demande, Espece, Animal_Tag, Tag } from "../models/Models.js";
 import { Op } from "sequelize";
 
+
 export const animalController = {
     
     async availableAnimalsList(req,res) {
@@ -65,7 +66,6 @@ export const animalController = {
         const animalData = await Animal.findByPk(animalId,{
             include : ['tags','refuge','espece']
         });
-        
         if (!animalData) {
             res.status(404).render('404');
         }

@@ -3,7 +3,6 @@ import Joi from 'joi';
 import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
-import { Famille } from "../models/Famille.js";
 import { Famille } from "../models/Models.js";
 
 const familleController = {

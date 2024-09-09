@@ -5,21 +5,49 @@
   
   <form action="/famille/inscription" method="POST">
     
-    <!--   <label class=# for="firstname">Prénom</label>
-    <input class=# type="text" id="text" name="firstname" placeholder="Charlotte" required> -->
-    
-    <label class=# for="nom">Nom</label>
-    <input class=# type="text" id="nom" name="nom" placeholder="Cripan" required>
-    
-    <label class=# for="email">Email</label>
-    <input class=# type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io" required>
-    
-    <label class=# for="mot_de_passe">Mot de passe</label>
-    <input class=# type="password" id="mot_de_passe" name="mot_de_passe" placeholder="*********" required>
-    
-    <label class=# for="confirmation">Mot de passe</label>
-    <input class=# type="password" id="confirmation" name="confirmation" placeholder="*********" required>
-    
+    <fieldset>
+      <label class=# for="firstname">Prénom</label>
+      <input class=# type="text" id="text" name="firstname" placeholder="Charlotte" required>
+      
+      <label class=# for="nom">Nom</label>
+      <input class=# type="text" id="nom" name="nom" placeholder="Cripan" required>
+      
+      <label class=# for="email">Email</label>
+      <input class=# type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io" required>
+      
+      <!-- telephone -->
+      <label class=# for="telephone">N° telephone</label>
+      <input class=# type="tel" id="telephone" name="telephone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
+  </fieldset>
+
+  <fieldset>
+
+      <!-- Hébergement -->
+      <label class=# for="hebergement">Rue</label>
+      <input class=# type="text" id="hebergement" name="hebergement" placeholder="Maison" required>
+      <!-- Adresse -->
+      <label class=# for="rue">Rue</label>
+      <input class=# type="text" id="rue" name="rue" placeholder="45, rue de la Boustifaille" required>
+      
+      <!-- Ville -->
+      <label class=# for="commune">Ville</label>
+      <input class=# type="text" id="commune" name="commune" placeholder="Paris" required>
+      
+      <!-- Code Postal -->
+      <label class=# for="code_postal">Code Postal</label>
+      <input class=# type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" placeholder="75020" required>
+      
+      <!-- Pays -->
+      <label class=# for="pays">Pays</label>
+      <input class=# type="text" id="pays" name="pays" placeholder="France" required>
+    </fieldset>
+    <fieldset>
+      <label class=# for="mot_de_passe">Mot de passe</label>
+      <input class=# type="password" id="mot_de_passe" name="mot_de_passe" placeholder="*********" required>
+      
+      <label class=# for="confirmation">Mot de passe</label>
+      <input class=# type="password" id="confirmation" name="confirmation" placeholder="*********" required>
+    </fieldset>
     <input class=# type="submit" value="Valider mon inscription">
     
   </form>
