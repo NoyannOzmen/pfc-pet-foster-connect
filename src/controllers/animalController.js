@@ -1,4 +1,4 @@
-import { Animal, Demande } from "../models/Models.js";
+import { Animal, Demande, Espece } from "../models/Models.js";
 
 export const animalController = {
     
@@ -7,12 +7,15 @@ export const animalController = {
         //* On veut récupérer tout les animaux qui sont dans les refuges, en incluant les tags et les associations qui les gèrent
         const animals = await Animal.findAll({
             where: {
-                statut:'Au refuge'
+                statut:'En refuge'
             },
-            include : ['especes']
+            include : ['espece']
         })
+
+        const especes = await Espece.findAll();
+
         res.render('listeAnimaux', {
-            animals,
+            animals, especes
         })
         
         
@@ -23,7 +26,7 @@ export const animalController = {
         const animalId=req.params.id
         
         const animalData = await Animal.findByPk(animalId,{
-            include : ['tags','associations','especes']
+            include : ['tags','refuge','espece']
         });
         
         if (!animalData) {

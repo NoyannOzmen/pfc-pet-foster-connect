@@ -23,6 +23,7 @@ Demande.init(
     },
     {
         sequelize: sequelize,
+        timestamps: false,
         tableName: 'demande',
     }
 );

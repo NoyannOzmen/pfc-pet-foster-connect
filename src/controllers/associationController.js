@@ -3,7 +3,8 @@ import Joi from 'joi';
 import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
-import { Association } from "../models/Models.js";
+import { Association, Espece, Animal } from "../models/Models.js";
+import { Op } from "sequelize";
 
 const associationController = {
     
@@ -11,8 +12,35 @@ const associationController = {
     async getAll(req, res) {
         // Récupérer toutes les associations en BDD
         const associations = await Association.findAll();
+
+        const especes = await Espece.findAll();
+
         // Envoyer une réponse
-        res.render("listeAssociations",{ associations });
+        res.render("listeAssociations",{ associations, especes });
+    },
+
+    /* Liste des associations RECHERCHEES */
+
+    async getSearched(req,res) {
+        const species = req.body.espece;
+        const departement = req.body.dptSelect;
+        const shelter_nom = req.body.shelterNom;
+
+        const especes = await Espece.findAll();
+
+        const associations = await Association.findAll({
+            include : [ { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }],
+            where : {
+                [Op.or] : [
+                    { nom : shelter_nom},               
+                    { code_postal : { [Op.startsWith] : departement }},
+                    { '$pensionnaires.espece.nom$' : species || { [Op.in] : species } },
+                ]
+            }
+        });
+
+        console.log(associations)
+        return res.render("listeAssociations", { associations, especes });
     },
     
     /* Détails d'une Association */
@@ -42,7 +70,7 @@ const associationController = {
             return next();
         }
     // Element à Update
-        const { nom, responsable, rue, commune, code_postal, pays, SIRET, telephone } = req.body;
+        const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
         const updatedAssociation = await association.update({
             nom : nom || association.nom,
             responsable : responsable || association.responsable,
@@ -50,7 +78,7 @@ const associationController = {
             commune : commune || association.commune,
             code_postal : code_postal || association.code_postal,
             pays : pays || association.pays,
-            SIRET : SIRET || association.SIRET,
+            siret : siret || association.siret,
             telephone : telephone || association.telephone,
         });
 

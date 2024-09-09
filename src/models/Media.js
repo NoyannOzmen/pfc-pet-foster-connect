@@ -18,6 +18,7 @@ Media.init(
   },
   {
     sequelize: sequelize,
+    timestamps: false,
     tableName: 'media'
   }
 );
