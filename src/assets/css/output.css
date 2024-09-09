@@ -864,6 +864,10 @@ h1 {
   place-content: space-evenly;
 }
 
+.place-items-start {
+  place-items: start;
+}
+
 .content-center {
   align-content: center;
 }
@@ -961,6 +965,11 @@ h1 {
 .border-r-zoning {
   --tw-border-opacity: 1;
   border-right-color: rgb(213 237 183 / var(--tw-border-opacity));
+}
+
+.border-b-fond {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(255 251 228 / var(--tw-border-opacity));
 }
 
 .bg-accents1 {
@@ -1072,6 +1081,10 @@ h1 {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .text-left {
@@ -1202,6 +1215,21 @@ h1 {
   text-decoration-line: underline;
 }
 
+@media (max-width: 1023px) {
+  .max-\[1023px\]\:border-b-fond {
+    --tw-border-opacity: 1;
+    border-bottom-color: rgb(255 251 228 / var(--tw-border-opacity));
+  }
+
+  .max-\[1023px\]\:pb-4 {
+    padding-bottom: 1rem;
+  }
+
+  .max-\[1023px\]\:pb-2 {
+    padding-bottom: 0.5rem;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:ml-10 {
     margin-left: 2.5rem;
@@ -1282,6 +1310,21 @@ h1 {
 
   .lg\:place-self-end {
     place-self: end;
+  }
+
+  .lg\:rounded-b-lg {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .lg\:border-r-fond {
+    --tw-border-opacity: 1;
+    border-right-color: rgb(255 251 228 / var(--tw-border-opacity));
+  }
+
+  .lg\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .lg\:text-lg {
