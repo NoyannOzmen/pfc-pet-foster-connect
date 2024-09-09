@@ -1,4 +1,5 @@
-import { Animal, Demande, Espece } from "../models/Models.js";
+import { Animal, Association, Demande, Espece, Animal_Tag, Tag } from "../models/Models.js";
+import { Op } from "sequelize";
 
 export const animalController = {
     
@@ -6,19 +7,55 @@ export const animalController = {
         
         //* On veut récupérer tout les animaux qui sont dans les refuges, en incluant les tags et les associations qui les gèrent
         const animals = await Animal.findAll({
-            where: {
+/*             where: {
                 statut:'En refuge'
-            },
+            }, */
             include : ['espece']
         })
 
         const especes = await Espece.findAll();
+        const tags = await Tag.findAll();
 
         res.render('listeAnimaux', {
-            animals, especes
-        })
-        
-        
+            animals, especes, tags
+        })    
+    },
+
+    /* Liste des animaux recherchés */
+
+    async getSearched(req,res) {
+
+        const {
+            especeDropdown,
+            dptSelect,
+            sexe,
+            minAge,
+            maxAge,
+            tag
+        } = req.body;
+
+        const especes = await Espece.findAll();
+        const tags = await Tag.findAll();
+
+        const animals = await Animal.findAll({
+            include : [ 
+                { model : Association, as : "refuge"},
+                { model : Espece, as : "espece" },
+                { model : Tag, as : "tags" }
+            ],
+            where : {
+                [Op.and] : [
+                    { '$espece.nom$' : especeDropdown },
+                    { sexe : sexe },             
+                    { '$refuge.code_postal$' : { [Op.startsWith] : dptSelect }},
+                    { age : { [Op.between]:  [minAge, maxAge] }},
+                    { '$tags.nom$' : { [Op.not] : tag } || { [Op.notIn] : tag } },
+                ]
+            }
+        });
+
+        console.log(animals)
+        return res.render("listeAnimaux", { animals, especes, tags });
     },
     
     async detailAnimal(req,res){

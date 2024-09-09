@@ -44,6 +44,12 @@ VALUES
   ( 1,'Besoin spécifiques', 'Nécessite des ajustements particuliers')
 ;
 
+INSERT INTO "animal_tag"
+  ("id", "animal_id", "tag_id")
+VALUES
+  (1,1,1)
+;
+
 SELECT
     setval(
         'utilisateur_id_seq',
@@ -119,6 +125,17 @@ SELECT
                 MAX(id)
             from
                 "tag"
+        )
+    );
+
+SELECT
+    setval(
+        'animal_tag_id_seq',
+        (
+            SELECT
+                MAX(id)
+            from
+                "animal_tag"
         )
     );
 
