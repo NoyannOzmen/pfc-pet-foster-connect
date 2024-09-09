@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 @layer components{
-body{
-	color: #382821;
-	font-size: large;
-}
-h1{
+	body{
+		color: #382821;
+		font-size: large;
+	}
+
+	/*Title with light outline*/
+	h1{
 		-webkit-text-fill-color: solid  #382821;
 		-webkit-text-stroke: 12px #fffbe4;
 		paint-order: stroke fill;
