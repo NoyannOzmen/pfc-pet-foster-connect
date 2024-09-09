@@ -8,7 +8,7 @@
   <div class="flex flex-col mx-4 mb-4">
     
     <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-2">
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
         <li><button class="dashbtn dashbtn-active">Mon profil</button></li>
         <li><button class="dashbtn">Demandes</button></li>
         <li><button class="dashbtn">Nos animaux</button></li>
@@ -19,8 +19,8 @@
     <div class="flex flex-col bg-zoning rounded-lg">
       
       <nav class="rounded-lg">
-        <ul class="rounded-t-lg flex bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start">
-          <li class="dashsubbtn-active rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4"><a href="">Nos animaux</a></li>
+        <ul class="rounded-t-lg flex bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start md:pl-8">
+          <li class="dashsubbtn-active rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="">Nos animaux</a></li>
           <li class="block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 "><a href="">Suivi accueils</a></li>
           <li class="block grow text-right pr-2 py-2 rounded-tr-lg hover:underline md:grow-0 md:px-4 md:rounded-none md:border-r-solid md:border-r-2 md:border-r-zoning"><a href="">Créer un profil</a></li>
         </ul>
@@ -36,7 +36,7 @@
         <div class="flex flex-wrap p-4 justify-center gap-3.5">
           
           <!-- INSERER ICI LA FONCTION RECHERCHE -->
-          <form class="mb-4 md:w-full" action="">
+          <form class="mb-4 w-full flex md:justify-end" action="">
             <label class="hidden">Recherche</label>
             <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
           </form>
@@ -45,15 +45,18 @@
             
             <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
             
-            <a class="relative bg-fond rounded-xl w-36 h-36 shrink-0" href="">
+            <a class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0" href="">
               
               <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
               <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
               
+              <p class="text-sm text-center "><%= animal.nom %></p>
               <div class="flex flex-wrap justify-between px-2 pt-0.5">
-                <p class="text-sm w-full"><%= animal.nom %></p>
-                <p class="text-xs italic"> <%= animal.espece.nom %></p>
-                <p class="text-xs italic"> <%= animal.statut %></p>
+
+                <div class="w-full flex justify-around content-center">
+                  <p class="text-xs italic"> <%= animal.espece.nom %></p>
+                  <p class="text-xs italic"> <%= animal.statut %></p>
+                </div>
               </div>
               
             </a>

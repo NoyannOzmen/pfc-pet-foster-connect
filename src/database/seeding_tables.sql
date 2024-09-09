@@ -31,7 +31,8 @@ VALUES
   ( 1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1),
   (2, 'Animal2', 'Angora', 'Rouge',20,'Mâle','un autre chat','En refuge',1,1),
   (3, 'Animal3', 'Angora', 'bleu',20,'Mâle','un autre chat','En refuge',1,1),
-  (4, 'Animal4', 'Angora', 'à pois verts',20,'Mâle','un autre chat','En refuge',1,1)
+  (4, 'Animal4', 'Angora', 'à pois verts',20,'Mâle','un autre chat','En refuge',1,1),
+  
 
 ;
 
