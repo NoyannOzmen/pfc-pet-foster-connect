@@ -27,7 +27,7 @@
 	padding-left: 1rem;
 	padding-right: 0.5rem;
 	padding-top: 0.2rem;
-	padding-bottom: 0.50rem;
+	padding-bottom: 0.25rem;
 	border: 2px solid #DD4302;
 	border-bottom: none;
 	border-top-left-radius: 15px;
@@ -38,10 +38,16 @@
 	text-decoration: underline;
 }
 
-.dashbtn-selected{
+/* CLASSE A APPLIQUER AU BOUTON ACTIF DU MENU PRINCIPAL*/
+.dashbtn-active{
 	border-color: #B83700;
 	background-color: #DD4302;
 	color: #fffbe4;
+}
+
+/* CLASSE A APPLIQUER AU BOUTON ACTIF DU SOUS MENU */
+.dashsubbtn-active{
+	background-color: #536140;
 }
 
 }

@@ -2,14 +2,14 @@
 
 <main>
   
-  <h1 class="my-6 ml-4 mb-6">Bienvenue sur votre espace personnel</h1>
+  <h1 class="my-6 ml-4 mb-6 text-">Mon espace association</h1>
   
   <!-- Conteneur général qui contient tout le dashboard -->
-  <div class="flex flex-col mx-4">
+  <div class="flex flex-col mx-4 mb-4">
     
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold">
-        <li><button class="dashbtn dashbtn-selected">Mon profil</button></li>
+        <li><button class="dashbtn dashbtn-active">Mon profil</button></li>
         <li><button class="dashbtn">Demandes</button></li>
         <li><button class="dashbtn">Nos animaux</button></li>
       </ul>
@@ -17,32 +17,52 @@
     
     <!-- Conteneur du sous menu et de la section -->
     <div class="flex flex-col bg-zoning rounded-lg">
-
+      
       <nav class="rounded-lg">
-        <ul class="py-2 rounded-t-lg flex bg-accents2 justify-stretch font-semibold text-fond text-base">
-          <li class="block grow text-left pl-2 border-3 border-r-accents1">Nos animaux</li>
-          <li class="block grow text-center">Suivi accueils</li>
-          <li class="block grow text-right pr-2">Créer un profil</li>
+        <ul class="rounded-t-lg flex bg-accents2 justify-stretch font-semibold text-fond text-sm">
+          <li class="dashsubbtn-active rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline"><a href="">Nos animaux</a></li>
+          <li class="block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline "><a href="">Suivi accueils</a></li>
+          <li class="block grow text-right pr-2 py-2 rounded-tr-lg hover:underline"><a href="">Créer un profil</a></li>
         </ul>
       </nav>
       
-      <section class=#>
-        <h3>Nos Animaux</h3>
+      <section class=# id="dashboard-container">
         
-        <div class=#>
+        <!-- Titre caché pour le mobile -->
+        
+        <h3 class="hidden">Nos Animaux</h3>
+        
+        
+        <div class="flex flex-wrap p-4 justify-center gap-3.5">
+          
+          <!-- INSERER ICI LA FONCTION RECHERCHE -->
+          <form class="mb-4" action="">
+            <label class="hidden">Recherche</label>
+            <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
+          </form>
+          
           <% animals.forEach(animal => { %>
-            <div class=#>
-              <img class=# src="<%= animal.images_animal[0] %>" alt="Photo de <%= animal.nom %>">
-              <div class=#>
-                <h3 class=#> nom : <%= animal.nom %></h3>
-                <h4 class=#>espece: <%= animal.espece.nom %></h4>
+            
+            <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
+            
+            <a class="relative bg-fond rounded-xl w-36 h-36 shrink-0" href="">
+              
+              <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
+              <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+              
+              <div class="flex flex-wrap justify-between px-2 pt-0.5">
+                <p class="text-sm w-full"><%= animal.nom %></p>
+                <p class="text-xs italic"> <%= animal.espece.nom %></p>
+                <p class="text-xs italic"> <%= animal.statut %></p>
               </div>
-              <a class="btn" href="/animaux/<%= animal.id %>">Découvrir</a> 
-            </div>
+              
+            </a>
+            
             <% }) %>
+            
           </div>
         </section>
-
+        
       </div>
       
       
