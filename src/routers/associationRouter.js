@@ -9,24 +9,28 @@ import { isRole } from "../middlewares/isRole.js";
 const associationRouter = Router();
 
 //Affichage de la liste complète des associations
-associationRouter.get('/api/associations', catchErrors(associationController.getAll));
+associationRouter.get('/associations', catchErrors(associationController.getAll));
 
 //Affichage des détails d'une association
-associationRouter.get('/api/associations/:id(\\d+)', catchErrors(associationController.getOne));
+associationRouter.get('/associations/:id(\\d+)', catchErrors(associationController.getOne));
 
 //Soumission du formulaire d'inscription d'association
-associationRouter.post('api/associations', catchErrors(associationController.store));
+
+associationRouter.post('/inscription/association', catchErrors(associationController.store));
 
 //Mise à jour des informations d'une association
-associationRouter.patch('/api/associations/:id(\\d+)',[auth,isRole.association], catchErrors(associationController.update));
+associationRouter.patch('/associations/:id(\\d+)',[auth,isRole.association], catchErrors(associationController.update));
 
 //Suppression d'un compte association
-associationRouter.delete('/api/associations/:id(\\d+)',[auth,isRole.association], catchErrors(associationController.destroy));
+associationRouter.delete('/associations/:id(\\d+)',[auth,isRole.association], catchErrors(associationController.destroy));
 
 //Affichage des animaux proposés par une association
-associationRouter.get('/api/associations/:id(\\d+)/animals', catchErrors(associationController.getAllAnimals));
+associationRouter.get('/associations/:id(\\d+)/animals', catchErrors(associationController.getAllAnimals));
 
 //Ajout un animal à l'association
-associationRouter.post('/api/associations/:id(\\d+)/animals',[auth,isRole.association], catchErrors(associationController.addAnimal));
+associationRouter.post('/associations/:id(\\d+)/animals',[auth,isRole.association], catchErrors(associationController.addAnimal));
+
+associationRouter.get('/associations/profil', associationController.dashboard)
+
 
 export { associationRouter };
