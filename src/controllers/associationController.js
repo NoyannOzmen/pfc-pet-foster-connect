@@ -123,7 +123,7 @@ const associationController = {
         /* Sequelize Lazy Loading ? (Je crois) */
     },
     
-    async dashboard(req,res,next){
+    async dashboardAnimaux(req,res,next){
         
         //! A REMPLACER PAR REQ.SESSION.USERID !!
         const associationId = 1;
@@ -150,6 +150,30 @@ const associationController = {
         */
         
         res.render('profilAssociationAnimauxListe',{ animals });
+    },
+    async dashboardAnimauxSuivi (req, res ,next) {
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        
+        const animals = await Animal.findAll({
+            where : {statut:'Accueilli'},
+            include : [
+                'espece',
+                'images_animal',
+                {
+                    model : Association,
+                    as : 'refuge',
+                    where: {
+                        id : associationId,
+                    },  
+                },
+                'tags',
+                'accueillant',
+
+            ]
+        })
+
+        res.send(animals);
     }
 };
 
