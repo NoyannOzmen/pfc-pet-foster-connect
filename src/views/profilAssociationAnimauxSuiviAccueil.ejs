@@ -29,8 +29,6 @@
         
         <h3 class="text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Suivi des animaux accueillis</h3>
         
-        
-        
         <table class=" m-4 text-left ">
           
           <tr class="border-none bg-zoning text-sm font-grands">
@@ -45,36 +43,46 @@
               <td><%= animal.accueillant.nom %></td>
             </tr>
             
-            <tr class="fold flex flex-wrap md:flex-none mb-3 bg-fond rounded-b-lg w-full">
+            <tr class="fold mb-3 bg-fond rounded-b-lg ">
               
-              <td class="flex w-full" colspan="2">
-                <!-- Partie Animal -->
-                <div >
-                  <h3 class="w-full flex-shrink-0 ">Animal</h3>
-                  
-                  <div class="flex ">
-                    <div class="flex flex-col">
-                      <img class="size-10 rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
-                      <a class="rounded-full bg-accents1 text-fond" href="/associations/profil/animaux/<%= animal.id %>">Détails</a>
-                    </div>
-                    <div>
-                      <p class="text-sm italic">Nom</p>
-                      <p><%= animal.nom %></p>
-                    </div>
-                    
-                  </div>
-                </div>
-
-                <!-- Partie Famille -->
-
-                <div>
-
-                </div>
+              <td class="w-full" colspan="2">
                 
+                <!-- CONTENEUR POUR LES INFORMATIONS -->
+                <div class="flex flex-wrap p-2" >
+                  
+                  <!-- Partie Animal -->
+                  <div class="w-full md:w-1/2">
+
+                    <h3 class="font-body font-bold">Animal</h3>
+                    
+                    <div class="flex p-6">
+
+                      <div class="flex flex-col gap-2">
+                        <img class="size-28 rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                        <a class="rounded-full bg-accents1 text-fond w-20 text-center" href="/associations/profil/animaux/<%= animal.id %>">Détails</a>
+                      </div>
+
+                      <div>
+                        <p class="text-sm italic">Nom</p>
+                        <p><%= animal.nom %></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  
+                  <!-- PARTIE FAMILLE -->
+                  <div class="w-full md:w-1/2">
+  
+                    <h3 class="">Famille</h3>
+                  </div>
+                  
+                  
+                </div>
               </td>
               
               
             </tr>
+            
             
             <% }) %>
             
