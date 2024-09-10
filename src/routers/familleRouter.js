@@ -5,6 +5,7 @@ import { catchErrors } from "../middlewares/catchErrors.js";
 const familleRouter = Router();
 
 //Affichage des détails d'une famille - ok
+
 familleRouter.get('/famille/:id(\\d+)', catchErrors(familleController.getOne));
 
 //Soumission du formulaire d'inscription d'une famille - ok
