@@ -1,6 +1,6 @@
 <%- include('partials/header') %>
 
-<main>
+<main class="justify-self-stretch flex-shrink-0 flex-grow">
   <h1 class="my-6 ml-4 mb-6 text-xl">Mon espace association</h1>
   
   <!-- Conteneur général qui contient tout le dashboard -->
@@ -161,80 +161,12 @@
                 
               </table>
               
-              
-              
-              <div class="hidden">
-                <% animals.forEach(animal => { %>
-                  <div class=#>
-                    <h4>Nom Animal</h4>
-                    <p><%= animal.nom %></p>
-                    <button class=#>v</button>
-                    
-                    <div>
-                      <img src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
-                      
-                      <a href="/animaux/<%= animal.id %>">Détails</a>
-                      
-                      <h6>Espèce</h6>
-                      <p><%= animal.espece.nom %></p>
-                      
-                      <h6>Sexe</h6>
-                      <p><%= animal.sexe %></p>
-                      
-                      <h6>Race</h6>
-                      <p><%= animal.race %></p>
-                      
-                      <h6>Age</h6>
-                      <p><%= animal.age %>&nbsp;ans</p>
-                      
-                      <% if (animal.tags) { %>
-                        
-                        <% animal.tags.forEach(tag => { %>
-                          <button><%= tag.nom %></button>
-                          <% }) %>
-                          <% } %>
-                        </div>
-                        
-                      </div>
-                      
-                      <div class=#>
-                        <h4>Famille d'accueil</h4>
-                        <p>Famille <%= animal.accueillant.nom %></p>
-                        <button class=#>v</button>
-                        
-                        <div>
-                          <h5>Coordonnées</h5>
-                          <h6>Nom</h6>
-                          <p><%= animal.accueillant.nom %></p>
-                          
-                          <h6>Adresse</h6>
-                          <p><%= animal.accueillant.rue %>&nbsp;<%= animal.accueillant.code_postal %>&nbsp;<%= animal.accueillant.commune %></p>
-                          
-                          <h6>Pays</h6>
-                          <p><%= animal.accueillant.pays %></p>
-                          
-                          <h6>Téléphone</h6>
-                          <p><%= animal.accueillant.telephone %></p>
-                          
-                          <h6>e-mail</h6>
-                          <p><%= animal.accueillant.email %></p>
-                          
-                          <h6>Hébergement</h6>
-                          <p><%= animal.accueillant.hebergement %></p>
-                        </div>
-                        
-                      </div>
-                      <% }) %>
-                    </div>
-                    
-                    
-                    
                     
                   </section>
                   
                   
                 </main>
                 
-                <script src="/utils/dashboardAsso.js"></script>
+                <script src="/utils/dashboardAssoSuiviAccueil.js"></script>
                 
                 <%- include('partials/footer') %>

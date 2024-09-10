@@ -215,6 +215,13 @@ const associationController = {
         
     },
     
+    async dashboardAnimauxAjouter (req, res, next) {
+
+        res.render('profilAssociationAnimauxAjouter');
+
+
+    }
+    
 };
 
 export { associationController };
