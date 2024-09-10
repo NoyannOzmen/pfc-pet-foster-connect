@@ -640,8 +640,8 @@ h1 {
   .bar {
     display: block;
     width: 40px;
-    height: 6px;
-    margin: 7px auto;
+    height: 5px;
+    margin: 8px auto;
     transition: all 0.3s ease-in-out;
     background-color: #382821;
   }
@@ -676,11 +676,11 @@ h1 {
 }
 
 .hamburger.active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(12.5px) rotate(45deg);
 }
 
 .hamburger.active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-12.5px) rotate(-45deg);
 }
 
 .nav-links {
@@ -742,16 +742,12 @@ h1 {
   position: relative;
 }
 
-.right-8 {
-  right: 2rem;
+.right-4 {
+  right: 1rem;
 }
 
 .top-0 {
   top: 0px;
-}
-
-.right-4 {
-  right: 1rem;
 }
 
 .mx-4 {
@@ -1022,10 +1018,6 @@ h1 {
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-8 {
-  padding: 2rem;
 }
 
 .px-12 {
