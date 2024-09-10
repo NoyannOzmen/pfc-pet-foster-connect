@@ -58,7 +58,11 @@ VALUES
 INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id","famille_id")
   VALUES
-  (1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1);
+  (1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1),
+  (12, 'Chacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 2),
+  (13, 'Chachacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1)
+;
+
 
 
   INSERT INTO "demande"
@@ -92,6 +96,9 @@ VALUES
   ( 14, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 10, NULL ),
   ( 15, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 11, NULL ),
   ( 16, 'https://cdn.pixabay.com/photo/2019/11/18/00/38/dog-4633734_960_720.jpg', 1, 6, NULL ),
+  ( 17, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 12, NULL ),
+  ( 18, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 13, NULL ),
+
 
 
 

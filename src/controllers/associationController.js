@@ -199,8 +199,11 @@ const associationController = {
             ]
         })
 
-        res.send(animals);
-    }
+        //res.send(animals);
+        res.render('profilAssociationAnimauxSuiviAccueil',{ animals });
+
+    },
+
 };
 
 export { associationController };
