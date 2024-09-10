@@ -4,8 +4,11 @@ import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
 
+import { Famille } from "../models/Famille.js";
 import { Association, Espece, Animal } from "../models/Models.js";
 import { Op } from "sequelize";
+import { Utilisateur } from "../models/Utilisateur.js";
+
 
 const associationController = {
     
@@ -13,22 +16,22 @@ const associationController = {
     async getAll(req, res) {
         // Récupérer toutes les associations en BDD
         const associations = await Association.findAll();
-
+        
         const especes = await Espece.findAll();
-
+        
         // Envoyer une réponse
         res.render("listeAssociations",{ associations, especes });
     },
-
+    
     /* Liste des associations RECHERCHEES */
-
+    
     async getSearched(req,res) {
         const species = req.body.espece;
         const departement = req.body.dptSelect;
         const shelter_nom = req.body.shelterNom;
-
+        
         const especes = await Espece.findAll();
-
+        
         const associations = await Association.findAll({
             include : [ { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }],
             where : {
@@ -39,7 +42,7 @@ const associationController = {
                 ]
             }
         });
-
+        
         console.log(associations)
         return res.render("listeAssociations", { associations, especes });
     },
@@ -194,16 +197,24 @@ const associationController = {
                     },  
                 },
                 'tags',
-                'accueillant',
-
+                {
+                    model : Famille,
+                    as :'accueillant',
+                    include : {
+                        model: Utilisateur,
+                        as :'identifiant_famille',
+                        attributes : ['id','email']
+                    }
+                }
+                
             ]
         })
-
+        
         //res.send(animals);
         res.render('profilAssociationAnimauxSuiviAccueil',{ animals });
-
+        
     },
-
+    
 };
 
 export { associationController };
