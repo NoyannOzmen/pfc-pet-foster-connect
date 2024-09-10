@@ -20,20 +20,32 @@
 		line-height: 2.5vh;
 		letter-spacing: 1%;
 	}
-
-		/*Button to Top*/
 	
-		.to-top {
-			position: fixed;
-			bottom: 1vh;
-			right: 1vh;
-			z-index: 1;
-		}
+	/*Button to Top*/
+	
+	.to-top {
+		position: fixed;
+		bottom: 1vh;
+		right: 1vh;
+		z-index: 1;
+	}
+	
+	/*To top button text*/
+	.to-top-text {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s, opacity 0.5s;
+	}
 
-
+	.to-top:hover .to-top-text {
+		opacity: 1;
+		visibility: visible;
+	}
+	
+	
 	
 	/*Burger Menu*/
-	/*Partie Desktop*/
+	/*Desktop*/
 	@media (max-width: 1023px) {
 		.hamburger {
 			display: none;
@@ -41,9 +53,9 @@
 		
 		.bar {
 			display: block;
-			width: 25px;
-			height: 3px;
-			margin: 5px auto;
+			width: 40px;
+			height: 6px;
+			margin: 7px auto;
 			-webkit-transition: all 0.3s ease-in-out;
 			transition: all 0.3s ease-in-out;
 			background-color: #382821;
@@ -66,7 +78,7 @@
 		}
 	}
 	
-	/*Partie Mobile*/
+	/*Mobile*/
 	
 	.hamburger {
 		display: block;
@@ -103,43 +115,44 @@
 	.nav-items {
 		margin: 2.5rem 0;
 	}
-
-.dashbtn{
-	height: 100%;
-	font-size:0.875rem;
-	padding-left: 1rem;
-	padding-right: 0.5rem;
-	padding-top: 0.2rem;
-	padding-bottom: 0.25rem;
-	border: 2px solid #DD4302;
-	border-bottom: none;
-	border-top-left-radius: 15px;
-
-}
-
-@media only screen and (min-width :768px) {
-	.dashbtn {
-		padding-right: 2rem;
+	
+	.dashbtn{
+		height: 100%;
+		font-size:0.875rem;
+		padding-left: 1rem;
+		padding-right: 0.5rem;
+		padding-top: 0.2rem;
+		padding-bottom: 0.25rem;
+		border: 2px solid #DD4302;
+		border-bottom: none;
+		border-top-left-radius: 15px;
+		
 	}
 	
-}
-
-.dashbtn:hover{
-	text-decoration: underline;
-}
-
-/* CLASSE A APPLIQUER AU BOUTON ACTIF DU MENU PRINCIPAL*/
-.dashbtn-active{
-	border-color: #B83700;
-	background-color: #DD4302;
-	color: #fffbe4;
-}
-
-/* CLASSE A APPLIQUER AU BOUTON ACTIF DU SOUS MENU */
-.dashsubbtn-active{
-	background-color: #536140;
-}
-
+	@media only screen and (min-width :768px) {
+		.dashbtn {
+			padding-right: 2rem;
+		}
+		
+	}
+	
+	.dashbtn:hover{
+		text-decoration: underline;
+	}
+	
+	/* CLASSE A APPLIQUER AU BOUTON ACTIF DU MENU PRINCIPAL*/
+	.dashbtn-active{
+		border-color: #B83700;
+		background-color: #DD4302;
+		color: #fffbe4;
+	}
+	
+	/* CLASSE A APPLIQUER AU BOUTON ACTIF DU SOUS MENU */
+	.dashsubbtn-active{
+		background-color: #536140;
+	}
+	
+	
 }
 
 
