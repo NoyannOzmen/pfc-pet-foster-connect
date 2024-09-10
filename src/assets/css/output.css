@@ -932,6 +932,10 @@ h1{
   width: 66%;
 }
 
+.w-\[33\%\] {
+  width: 33%;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
