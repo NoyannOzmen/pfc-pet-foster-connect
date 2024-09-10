@@ -15,7 +15,7 @@ export const animalController = {
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
 
-        res.render('listeAnimauxCard', {
+        res.render('listeAnimaux', {
             animals,
             especes,
             tags
