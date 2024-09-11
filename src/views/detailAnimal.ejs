@@ -1,107 +1,85 @@
 <%- include('partials/header') %>
 
-<main>
-	<Section>
-		<h2>Pupuce</h2>
-		<div>
-			<div class="carrousel">
-				<button type="button">Haut</button>
-				<img src=# alt="Photo de Pupuce">
-				<img src=# alt="Photo de Pupuce">
-				<img src=# alt="Photo de Pupuce">
-				<button type="button">Bas</button>
-			</div>
-			<img src=# alt="Photo de Pupuce">
+<main class="justify-self-stretch flex-1">
+  <section class="flex flex-col p-12 mx-auto">
+		<h2 class="font-grands text-center my-6 pb-4"><%= animal.nom %></h2>
+
+<!-- 		<div>
+			<% for( let i = 0; i < animal.images_animal.length; i++ ) { %>
+			<img src="<%= animal.images_animal[i].url %>" alt="Photo n° <%= i %> de <%= animal.nom %>">
+			<% } %>
+		</div> -->
+		<div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
+			<img src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
 		</div>
-		<div>
-			<article>
-				<h4>Information</h4>
-				<div>
-					<p>Nom :</p>
-					<p>Âge :</p>
-					<p>Sexe :</p>
-					<p>Espèce :</p>
-					<p>Race :</p>
-					<p>Couleur :</p>
-					<p>Statut :</p>
+
+
+		<article class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
+				<div class="text-center w-full py-2">
+					<h3 class="font-grands text-3xl text-center my-2 w-full">A propos de <%= animal.nom %></h3>
 				</div>
-				<div>
-					<button>Tag 1</button>
-					<button>Tag 2</button>
-					<button>Tag 3</button>
+
+				<% if (animal.tags.length > 0 ) { %>
+					<div class="text-center w-full py-2">
+						<% animal.tags.forEach(tag => { %>
+						<button class="p-1 rounded-lg bg-accents1-dark text-fond text-center"><%= tag.nom %></button>
+						<% }) %>
+					</div>
+				<% } %>
+				
+				<div class="text-center w-full py-2">
+					<p class="font-body text-texte">Nom : <%= animal.nom %></p>
+					<p class="font-body text-texte">Age : <%= animal.age %>&nbsp;ans</p>
+					<p class="font-body text-texte">Sexe : <%= animal.sexe %></p>
+				</div>
+				<div class="text-center w-full py-2">
+					<p class="font-body text-texte">Espèce : <%= animal.espece.nom %></p>
+					<% if (animal.race) { %>
+					<p class="font-body text-texte">Race : <%= animal.race %></p>
+					<% } %>
+					<p class="font-body text-texte">Couleur : <%= animal.couleur %></p>
+				</div>
+				<div class="text-center w-full py-2">
+					<p class="font-body text-texte">Statut : <%= animal.statut %></p>
+				</div>
+
+				<div class="text-center w-full py-2">
+					<p class="font-body text-texte"><%= animal.description %></p>
+				</div>
+
+				<div class="text-center w-full py-2">
+					<button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="button">Accueillir</button>
 				</div>
 			</article>
-			<article>
-				<p>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis, quas nam facilis aperiam sint quaerat itaque
-					expedita. Consequuntur eligendi consequatur, quaerat tenetur sequi quae veniam dolore, ex officiis cum commodi?
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, qui dolor quos sed accusantium dolorem, autem
-					veritatis earum distinctio aliquid officia ab debitis, ratione rerum magnam a magni eos quidem.
-				</p>
-				<button type="button">Accueillir</button>
-			</article>
-		</div>
-	</Section>
+
+	</section>
 	
 	<!-- Mini association profile -->
-	<Section>
-		<img src=# alt="Logo de l'association">
-		<h3>Nom de l'association</h3>
-		<address>
-			<p>Adresse postale</p>
-			<a href="tel:+33XXXXXXXXX">+33XXXXXXXXX</a>
-			<a href="mailto:association@mail.com">association@mail.com</a>
-		</address>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus magni rerum, unde sunt beatae ipsam rem est sequi minus eligendi doloremque aliquid laudantium eos perspiciatis obcaecati ea voluptas harum et?</p>
-		<button type="button">En savoir plus</button>
-	</Section>
+	<section class="flex flex-col p-12 mx-auto">
+		<article class="p-4 font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800">
+			<h3 class="font-grands text-3xl text-center my-2 pt-5 w-full"><%= animal.refuge.nom %></h3>
+
+			<div class="font-body mx-auto w-[80%] rounded-lg my-4">
+				<img src="<%= animal.refuge.images_association[1].url %>" alt="Logo de <%= animal.refuge.nom %>">
+			</div>
+
+			<div class="text-center w-full py-2">
+				<p class="font-body text-texte">Adresse : <%= animal.refuge.rue %>,&nbsp;<%= animal.refuge.code_postal %>,&nbsp;<%= animal.refuge.commune%>,&nbsp;<%= animal.refuge.pays %></p>
+				<p class="font-body text-texte">Téléphone : <%= animal.refuge.telephone %></p>
+				<p class="font-body text-texte">E-mail : <%= animal.refuge.identifiant_association.email %></p>	
+			</div>
+
+			<!-- Description ?
+		 	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus magni rerum, unde sunt beatae ipsam rem est sequi minus eligendi doloremque aliquid laudantium eos perspiciatis obcaecati ea voluptas harum et?</p>
+			-->
+				
+				<div class="text-center w-full py-2">
+					<a class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" href="/associations/<%= animal.refuge.id %>">En savoir plus</a>
+				</div>
+		</article>
+	</section>
 	
-	<Section>
-		<h3>Ils vous attendent également ...</h3>
-		<div class="slider">
-		
-			<button class="btn slider_btn" type="button" aria-label="Précédent">&lt;</button>
-		
-			<article class="slider_card">
-				<img src="#" alt="">
-				<h4>Nom de l'animal</h4>
-				<ul>
-					<li>Espèce</li>
-					<li>Âge</li>
-					<li>Département</li>
-				</ul>
-				<button type="button">Découvrir</button>
-			</article>
-		
-			<article class="slider_card">
-				<img src="#" alt="">
-				<h4>Nom de l'animal</h4>
-				<ul>
-					<li>Espèce</li>
-					<li>Âge</li>
-					<li>Département</li>
-				</ul>
-				<button type="button">Découvrir</button>
-			</article>
-		
-			<article class="slider_card">
-				<img src="#" alt="">
-				<h4>Nom de l'animal</h4>
-		
-				<ul>
-					<li>Espèce</li>
-					<li>Âge</li>
-					<li>Département</li>
-				</ul>
-		
-				<button type="button">Découvrir</button>
-		
-			</article>
-		
-			<button class="btn slider_btn" type="button" aria-label="Suivant">&gt;</button>
-		
-		</div>
-	</Section>
+<!-- Insert Carousel here -->>
 	
 </main>
 
