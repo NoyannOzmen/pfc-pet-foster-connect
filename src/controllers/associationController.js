@@ -8,6 +8,7 @@ import { Famille } from "../models/Famille.js";
 import { Association, Espece, Animal } from "../models/Models.js";
 import { Op } from "sequelize";
 import { Utilisateur } from "../models/Utilisateur.js";
+import { Tag } from "../models/Tag.js";
 
 
 const associationController = {
@@ -217,7 +218,12 @@ const associationController = {
     
     async dashboardAnimauxAjouter (req, res, next) {
 
-        res.render('profilAssociationAnimauxAjouter');
+        const especes = await Espece.findAll();
+        const tags = await Tag.findAll();
+
+
+
+        res.render('profilAssociationAnimauxAjouter', {especes,tags});
 
 
     }
