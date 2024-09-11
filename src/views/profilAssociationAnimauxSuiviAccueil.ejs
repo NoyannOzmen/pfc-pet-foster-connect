@@ -69,10 +69,6 @@
                       </div>
                       
                       <div class="grid grid-cols-2 px-6 gap-y-2">
-                        <div class="">
-                          <p class="text-sm italic leading-3">Nom</p>
-                          <p class="text-base font-semibold"><%= animal.nom %></p>
-                        </div>
                         
                         <div>
                           <p class="text-sm italic leading-3">Age</p>
@@ -84,6 +80,11 @@
                           <p class="text-base font-semibold"><%= animal.sexe %></p>
                         </div>
                         
+                        <div class="">
+                          <p class="text-sm italic leading-3">Espèce</p>
+                          <p class="text-base font-semibold"><%= animal.espece.nom %></p>
+                        </div>
+
                         <% if (animal.race) { %>
                           <div>
                             <p class="text-sm italic leading-3">Race</p>
@@ -99,7 +100,7 @@
                               
                               <p class="group rounded-full block bg-accents1 text-fond text-center text-xs font-semibold py-1 px-2">
                                 <%= tag.nom %>
-                                <span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute w-40 px-2 py-2 rounded-b-xl rounded-tr-xl">
+                                <span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute px-2 py-2 text-xs rounded-b-xl rounded-tr-xl">
                                   <%= tag.description  %>
                                 </span>
                               </p>

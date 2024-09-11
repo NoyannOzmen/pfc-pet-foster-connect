@@ -129,21 +129,30 @@
         
       </main>
       
-      <div id="create-tags-form" class="flex justify-center content-center fixed bg-texte/20 inset-0">
+      <div id="create-tags-modal" class="hidden flex justify-center content-center fixed bg-texte/20 inset-0">
         
         <div class="self-center bg-zoning p-6 rounded-lg">
-
-          <h3 class="text-center font-grands text-lg font-extrabold mb-4">Ajouter un tag</h3>
-          <form class="opac" action="">
+          <div class="flex justify-between">
+            <h3 class="font-grands text-lg font-extrabold mb-4">Ajouter un tag</h3>
+            <span class="cancel material-symbols-outlined text-texte cursor-pointer">
+              close
+              </span>
+          </div>
+          <form id="create-tags-form" class="" method="post" action="/tags/create">
             
             <div class="mb-2">
-              <label for="race-animal" class="block text-texte font-grands font-bold text-base ">Nom du Tag</label>
-              <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="race-animal" id="race-animal" required>
+              <label for="tag-name" class="block text-texte font-grands font-bold text-base ">Nom du Tag</label>
+              <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="tag_name" id="tag-name" required>
             </div>
             
-            <div class="mb-2 ">
-              <label for="description-animal" class="block text-texte font-grands font-bold text-base ">Description</label>
-              <textarea class="w-56 rounded-md px-2 py-1 text-texte bg-fond " name="description-animal" id="description-animal" rows="3" required></textarea>
+            <div class="mb-4 ">
+              <label for="tag-description" class="block text-texte font-grands font-bold text-base ">Description</label>
+              <textarea class="w-56 rounded-md px-2 py-1 text-texte bg-fond " name="tag_description" id="tag-description" rows="3" required></textarea>
+            </div>
+            
+            <div>
+              <input class="cursor-pointer hover:bg-accents1-dark rounded-full hover:underline bg-accents1 text-center font-grands text-fond font-semibold text-base py-1 px-4" type="submit" value="Valider">
+              <button class="hover:bg-accents2-dark rounded-full hover:underline bg-accents2-dark text-center font-grands text-fond font-semibold text-base py-1 px-4 cancel">Annuler</button>
             </div>
           </form>
         </div>
