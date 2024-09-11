@@ -198,6 +198,13 @@
   </div>
     
     <div class="flex flex-wrap content-center justify-around">
+    
+      <section>
+        <% if (animals.length < 1) { %>
+          <h3>Aucun animal ne correspond à votre recherche</h3>
+        <% } %>
+      </section>
+  
       <% animals.forEach(animal => { %>
 
         <div class="flex bg-zoning rounded-lg shadow dark:bg-gray-800 flex-row md:flex-col mx-auto my-2 w-[75%]">

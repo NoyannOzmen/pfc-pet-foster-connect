@@ -7,6 +7,7 @@
     <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/associations" method="POST">
       <h3 class="mx-auto font-grands text-3xl my-2">Rechercher un animal</h3>
       <fieldset class="mx-auto p-2 my-2">
+
         <legend>Animaux</legend>
           <% especes.forEach(function(espece, key) { %>
             <div>
@@ -15,7 +16,7 @@
             </div>
           <% }) %>
       </fieldset>
-  
+
       <fieldset class="mx-auto p-2 my-2">
         <!-- Nom du refuge -->
         <label class=# for="shelter-nom">Nom du refuge</label>
@@ -172,6 +173,13 @@
   </section>
 
 <div class="flex flex-wrap content-center justify-around my-2">
+
+  <section>
+    <% if (associations.length < 1) { %>
+<h3>Aucun refuge ne correspond à votre recherche</h3>
+   <% } %>
+  </section>
+
     <% associations.forEach(association => { %>
       <div class="flex bg-zoning rounded-lg shadow dark:bg-gray-800 flex-row md:flex-col mx-auto my-3 w-[75%]">
       <div class="relative w-full md:w-full flex justify-center items-center">

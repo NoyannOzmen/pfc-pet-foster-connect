@@ -1,4 +1,6 @@
-import { Animal, Demande, Espece, Tag } from "../models/Models.js";
+import { Animal, Association, Demande, Espece, Animal_Tag, Tag } from "../models/Models.js";
+import { Op } from "sequelize";
+
 
 export const animalController = {
     
@@ -20,8 +22,43 @@ export const animalController = {
             especes,
             tags
         })
-        
-        
+    },
+
+    /* Liste des animaux recherchés */
+
+    async getSearched(req,res) {
+
+        const {
+            especeDropdown,
+            dptSelect,
+            sexe,
+            minAge,
+            maxAge,
+            tag
+        } = req.body;
+
+        const especes = await Espece.findAll();
+        const tags = await Tag.findAll();
+
+        const animals = await Animal.findAll({
+            include : [ 
+                { model : Association, as : "refuge"},
+                { model : Espece, as : "espece" },
+                { model : Tag, as : "tags" }
+            ],
+            where : {
+                [Op.and] : [
+                    { '$espece.nom$' : especeDropdown },
+                    { sexe : sexe },             
+                    { '$refuge.code_postal$' : { [Op.startsWith] : dptSelect }},
+                    { age : { [Op.between]:  [minAge, maxAge] }},
+                    { '$tags.nom$' : { [Op.not] : tag } || { [Op.notIn] : tag } },
+                ]
+            }
+        });
+
+        console.log(animals)
+        return res.render("listeAnimaux", { animals, especes, tags });
     },
     
     async detailAnimal(req,res){
@@ -31,7 +68,6 @@ export const animalController = {
         const animalData = await Animal.findByPk(animalId,{
             include : ['tags','refuge','espece']
         });
-        
         if (!animalData) {
             res.status(404).render('404');
         }
