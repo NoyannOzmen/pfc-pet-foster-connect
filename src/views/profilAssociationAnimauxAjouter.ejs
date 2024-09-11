@@ -9,9 +9,9 @@
     
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button id="dashbtn-1" class="dashbtn ">Mon profil</button></li>
-        <li><button id="dashbtn-2" class="dashbtn">Demandes</button></li>
-        <li><button id="dashbtn-3" class="dashbtn dashbtn-active">Nos animaux</button></li>
+        <li><button id="dashbtn-1" class="dashbtn"><a href="/associations/profil">Mon profil</a></button></li>
+        <li><button id="dashbtn-2" class="dashbtn"><a href="/associations/profil/demandes">Demandes</a></button></li>
+        <li><button id="dashbtn-3" class="dashbtn dashbtn-active"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
       </ul>
     </nav>
     
@@ -20,7 +20,7 @@
       
       <nav class="rounded-lg">
         <ul class="rounded-t-lg flex bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start md:pl-8">
-          <li class=" rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/animaux">Nos animaux</a></li>
+          <li class="rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/animaux">Nos animaux</a></li>
           <li class="block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 "><a href="/associations/profil/animaux/suivi">Suivi accueils</a></li>
           <li class="dashsubbtn-active block grow text-right pr-2 py-2 rounded-tr-lg hover:underline md:grow-0 md:px-4 md:rounded-none md:border-r-solid md:border-r-2 md:border-r-zoning"><a href="/associations/profil/animaux/nouveau-profil">Créer un profil</a></li>
         </ul>
@@ -61,9 +61,9 @@
             <div class="mb-2">
               <label for="espece-animal" class="block font-grands font-bold text-base ">Espèce</label>
               <select name="espece-animal" id="espece-animal" class="custom-select w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond ">
-                <option value="">Choisissez</option
+                <option value="">Choisissez</option>
                   <% especes.forEach(espece => { %>
-                    <option value="<%= espece.id %>"><%= espece.nom %></option>
+                    <option value="<%= espece.id %>"> <%= espece.nom %></option>
                     <% }) %>
                   </select>
                 </div>

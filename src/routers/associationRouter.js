@@ -38,4 +38,6 @@ associationRouter.get('/associations/profil/animaux/suivi', associationControlle
 
 associationRouter.get('/associations/profil/animaux/nouveau-profil', associationController.dashboardAnimauxAjouter);
 
+associationRouter.get('/associations/profil', associationController.displayDashboard);
+
 export { associationRouter };

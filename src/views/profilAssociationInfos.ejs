@@ -1,65 +1,83 @@
 <%- include('partials/header') %>
 
-<main>
-<h2>Bienvenue sur votre espace personnel</h2>
+<main class="justify-self-stretch flex-1">
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
 
-<nav class=#>
-  <ul>
-    <li><button class=#>Mon profil</button></li>
-    <li><button class=#>Demandes d'accueil</button></li>
-    <li><button class=#>Nos animaux</button></li>
-  </ul>
-</nav>
+  <nav class=#>
+    <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
+      <li><button id="dashbtn-1" class="dashbtn dashbtn-active"><a href="/associations/profil">Mon profil</a></button></li>
+      <li><button id="dashbtn-2" class="dashbtn"><a href="/associations/profil/demandes">Demandes</a></button></li>
+      <li><button id="dashbtn-3" class="dashbtn"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
+    </ul>
+  </nav>
 
-<div class=#>
-  <h3>Mon profil</h3>
+<div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
+  <h3 class="font-grands text-3xl text-center my-2 pt-5">Mon profil</h3>
 
-  <form action=# method="POST">
-    <fieldset>
-      <legend>Votre organisme</legend>
+  <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/associations/profil/<%= association.id %>" method="POST">
+      
+    <fieldset class="w-[60%] font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+      <legend class="text-center">Votre organisme&nbsp;<span class="material-symbols-outlined">edit</span></legend>
+
+    <div class="mx-auto p-2">
       <!-- Nom -->
       <label class=# for="nom">Nom</label>
       <input class=# type="text" id="nom" name="nom" value="<%= association.nom %>" disabled>
-      
+    </div>
+    <div class="mx-auto p-2">
       <!-- Président -->
       <label class=# for="president">Président</label>
       <input class=# type="text" id="president" name="president" value="<%= association.president %>" disabled>
-      
+    </div>
+    <div class="mx-auto p-2">  
       <!-- Rue -->
       <label class=# for="rue">Rue</label>
       <input class=# type="text" id="rue" name="rue" value="<%= association.rue %>" disabled>
-      
+    </div>
+    <div class="mx-auto p-2">  
       <!-- Commune -->
       <label class=# for="commune">Commune</label>
       <input class=# type="text" id="commune" name="commune" value="<%= association.commune %>" disabled>
-      
+    </div>
+    <div class="mx-auto p-2">  
       <!-- Code Postal -->
       <label class=# for="code_postal">Code Postal</label>
       <input class=# type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" value="<%= association.code_postal %>" disabled>
-      
+    </div>
+    <div class="mx-auto p-2">  
       <!-- Département -->
       <label class=# for="departement">Département</label>
       <input class=# type="number" id="departement" name="departement" pattern="[01-97]{1} [0-9]{3}" value="<%= association.departement %>" disabled>
-
+    </div>
+    <div class="mx-auto p-2">
       <!-- Département -->
       <label class=# for="pays">Pays</label>
       <input class=# type="number" id="pays" name="pays" pattern="[01-97]{1} [0-9]{3}" value="<%= association.pays %>" disabled>
-      
+    </div>
+    <div class="mx-auto p-2">  
       <!-- Téléphone -->
       <label class=# for="telephone">N° Téléphone</label>
       <input class=# type="tel" id="telephone" name="telephone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" value="<%= association.telephone %>" disabled>
-      
+    </div>
+    <div class="mx-auto p-2">  
       <!-- N° SIRET -->
       <label class=# for="siret">N° SIRET</label>
       <input class=# type="number" id="siret" name="siret" pattern="[0-9]{9} [0-9]{5}" value="<%= association.siret %>" disabled>
-      
+    </div>
       <!-- Site Web -->
+
+<!--  <div class="mx-auto p-2">  
       <label class=# for="url">Site Web</label>
       <input class=# type="url" name="url" id="url" value="<%= association.url %>"  pattern="https://.*" size="40" disabled />
-      
+    </div> -->
     </fieldset>
+
+    <button id="validateBtn" class="hidden w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider les modifications</button>
+    
   </form>
 </div>
 </main>
+
+<script src='/utils/editShelterInputs.js' async></script>
 
 <%- include('partials/footer') %>

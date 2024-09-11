@@ -4,11 +4,8 @@ import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
 
-import { Famille } from "../models/Famille.js";
-import { Association, Espece, Animal } from "../models/Models.js";
+import { Association, Animal, Espece, Famille, Tag, Utilisateur } from "../models/Models.js";
 import { Op } from "sequelize";
-import { Utilisateur } from "../models/Utilisateur.js";
-import { Tag } from "../models/Tag.js";
 
 
 const associationController = {
@@ -151,6 +148,16 @@ const associationController = {
         
         await association.addAnimal(newAnimal);
         /* Sequelize Lazy Loading ? (Je crois) */
+    },
+
+    async displayDashboard(req,res,next){
+        
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        
+        const association = await Association.findByPk(associationId);
+        
+        res.render('profilAssociationInfos', { association });
     },
     
     async dashboardAnimaux(req,res,next){
