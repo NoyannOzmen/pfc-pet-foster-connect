@@ -29,15 +29,17 @@ export const animalController = {
 /*             where: {
                 statut:'En refuge'
             }, */
-            include : ['espece']
+            include : ['tags','refuge','espece', 'images_animal']
         })
 
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
 
         res.render('listeAnimaux', {
-            animals, especes, tags
-        })    
+            animals,
+            especes,
+            tags
+        })
     },
 
     /* Liste des animaux recherchés */
