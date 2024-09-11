@@ -938,6 +938,10 @@ h1 {
   flex-wrap: wrap;
 }
 
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
 .place-content-center {
   place-content: center;
 }
@@ -948,10 +952,6 @@ h1 {
 
 .content-center {
   align-content: center;
-}
-
-.content-stretch {
-  align-content: stretch;
 }
 
 .items-center {
@@ -1184,16 +1184,12 @@ h1 {
   padding-top: 0.5rem;
 }
 
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
 .pt-5 {
   padding-top: 1.25rem;
 }
 
-.pb-3 {
-  padding-bottom: 0.75rem;
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .text-left {
@@ -1218,6 +1214,11 @@ h1 {
 
 .font-grands {
   font-family: Grandstander, cursive;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -1248,11 +1249,6 @@ h1 {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-bold {
