@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Tames Tailwind errors for each PR
+/src/assets/css/output.css
