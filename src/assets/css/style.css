@@ -10,7 +10,7 @@
 	
 	/*Title with light outline*/
 	
-	h1 {
+	.stroke-title {
 		-webkit-text-fill-color: solid #382821;
 		-webkit-text-stroke: 1vh #fffbe4;
 		paint-order: stroke fill;
@@ -46,7 +46,7 @@
 	
 	/*Burger Menu*/
 	/*Desktop*/
-	@media (max-width: 1023px) {
+	@media (max-width: 767px) {
 		.hamburger {
 			display: none;
 		}

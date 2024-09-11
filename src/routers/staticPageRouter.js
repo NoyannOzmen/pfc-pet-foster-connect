@@ -5,7 +5,7 @@ import { catchErrors } from "../middlewares/catchErrors.js";
 const staticPageRouter = Router();
 
 //* Rendu de la page d'accueil avec le carrousel
-staticPageRouter.get('/', (req,res) => res.render("accueil"), catchErrors(animalController.availableAnimalsList) )
+staticPageRouter.get('/', catchErrors(animalController.homePage) )
 
 staticPageRouter.get("/a-propos", (req,res) => res.render("aPropos"));
 staticPageRouter.get("/contact", (req,res) => res.render("contact"));

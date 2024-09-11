@@ -3,6 +3,24 @@ import { Op } from "sequelize";
 
 
 export const animalController = {
+
+    async homePage(req,res) {
+        
+        //* On veut récupérer tout les animaux qui sont dans les refuges, en incluant leurs frimousses, leurs tags et la localisation des associations qui les gèrent
+        const animals = await Animal.findAll({
+            where: {
+                statut:'En refuge'
+            },
+            include : ['espece', 'refuge', 'tags', 'images_animal']
+        })
+
+        const especes = await Espece.findAll();
+        const tags = await Tag.findAll();
+
+        res.render('accueil', {
+            animals, especes, tags
+        })    
+    },
     
     async availableAnimalsList(req,res) {
         
