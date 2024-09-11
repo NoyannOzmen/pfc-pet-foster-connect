@@ -50,13 +50,26 @@ function handleAddTag() {
             );
             
             
-        const data= await response.json();
-
-        const selectTagForm = document.getElementById('tags-animal');
-
-        selectTagForm.innerHTML='';
+            const data= await response.json();
             
+            //* VIDE LES OPTIONS PRESENTES DANS LE SELECT
+            const selectTagForm = document.getElementById('tags-animal');
             
+            selectTagForm.innerHTML='';
+            
+            //* REMPLIT LE SELECT AVEC LA LISTE DE TAG UPDATED
+            data.forEach(tag => {
+                const tagOption = document.createElement('input');
+                //TODO CHANGER POUR UN FIELD DE CHECKBOX A LA PLCE DES OPTIONS
+                tagOption.value= `${tag.id}`
+                tagOption.innerText=`${tag.nom}`
+
+                selectTagForm.appendChild(tagOption);
+            });
+            addTagModal.classList.toggle('hidden');
+
+
+
         })
     }
     
