@@ -750,14 +750,48 @@ h1 {
   top: 0px;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mb-4 {
@@ -818,6 +852,10 @@ h1 {
   width: 9rem;
 }
 
+.w-\[60\%\] {
+  width: 60%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -826,12 +864,32 @@ h1 {
   width: 100vw;
 }
 
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.w-\[94\%\] {
+  width: 94%;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .flex-auto {
   flex: 1 1 auto;
+}
+
+.flex-none {
+  flex: none;
 }
 
 .shrink-0 {
@@ -846,12 +904,12 @@ h1 {
   flex-grow: 0;
 }
 
-.basis-0 {
-  flex-basis: 0px;
-}
-
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .flex-row {
@@ -878,6 +936,10 @@ h1 {
   align-content: center;
 }
 
+.items-center {
+  align-items: center;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -902,6 +964,10 @@ h1 {
   gap: 0.875rem;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .gap-x-2 {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
@@ -913,6 +979,10 @@ h1 {
 
 .place-self-center {
   place-self: center;
+}
+
+.justify-self-stretch {
+  justify-self: stretch;
 }
 
 .rounded-full {
@@ -1020,6 +1090,14 @@ h1 {
   padding: 1.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
@@ -1045,8 +1123,16 @@ h1 {
   padding-bottom: 1rem;
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 
 .pl-2 {
@@ -1073,6 +1159,10 @@ h1 {
   padding-top: 0.5rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1095,6 +1185,11 @@ h1 {
 
 .font-grands {
   font-family: Grandstander, cursive;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-base {
@@ -1142,6 +1237,16 @@ h1 {
   --tw-text-opacity: 1;
   color: rgb(255 251 228 / var(--tw-text-opacity));
 }
+
+.text-texte {
+  --tw-text-opacity: 1;
+  color: rgb(56 40 33 / var(--tw-text-opacity));
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
 .opacity-75 {
   opacity: 0.75;
