@@ -9,16 +9,17 @@
 	}
 	
 	/*Title with light outline*/
-	
 	h1 {
-		-webkit-text-fill-color: solid #382821;
-		-webkit-text-stroke: 1vh #fffbe4;
-		paint-order: stroke fill;
-		font-size: 3vh;
-		font-weight: bolder;
 		align-items: center;
 		line-height: 2.5vh;
 		letter-spacing: 1%;
+		font-size: 3vh;
+	}
+	.stroke-title {
+		-webkit-text-fill-color: solid #382821;
+		-webkit-text-stroke: 1vh #fffbe4;
+		paint-order: stroke fill;
+		font-weight: bolder;
 	}
 	
 	/*Button to Top*/
@@ -36,7 +37,7 @@
 		opacity: 0;
 		transition: visibility 0s, opacity 0.5s;
 	}
-
+	
 	.to-top:hover .to-top-text {
 		opacity: 1;
 		visibility: visible;
@@ -44,7 +45,7 @@
 	
 	/*Burger Menu*/
 	/*Desktop*/
-	@media (max-width: 1023px) {
+	@media (max-width: 767px) {
 		.hamburger {
 			display: none;
 		}
