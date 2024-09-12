@@ -5,6 +5,11 @@ class Demande extends Model {}
 
 Demande.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+          },
         famille_id: DataTypes.INTEGER,
         animal_id: DataTypes.INTEGER,
         statut_demande: {

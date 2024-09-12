@@ -50,5 +50,11 @@ associationRouter.get('/associations/profil/demandes', associationController.das
 //Affichage du détail d'une demande d'accueil
 associationRouter.get('/associations/profil/demandes/:id(\\d+)', associationController.dashboardRequestsDisplayOne)
 
+//Valider une demande d'accueil
+associationRouter.post('/associations/profil/demandes/:id(\\d+)/accept', associationController.approveRequest);
+
+//Refuser une demande d'accueil
+associationRouter.post('/associations/profil/demandes/:id(\\d+)/deny', associationController.denyRequest);
+
 
 export { associationRouter };

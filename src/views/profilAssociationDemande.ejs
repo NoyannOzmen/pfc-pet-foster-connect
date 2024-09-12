@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-shrink-0 flex-grow">
-	<h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
+  <h2 class="my-6 ml-4 mb-6 text-xl">Mon espace association</h2>
   <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40"> 
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
@@ -54,7 +54,7 @@
                       <tr class="fold text-sm font-body hidden">
                         <td colspan="2"><%= demande.nom %></td>
                         <td colspan="2"><%= demande.Demande.date_debut %></td>
-                        <td colspan="2"><a href='/associations/profil/demandes/<%= demande.id %>'><%= demande.Demande.statut_demande %></a></td>
+                        <td colspan="2"><a href='/associations/profil/demandes/<%= demande.Demande.id %>'><%= demande.Demande.statut_demande %></a></td>
                       </tr>
                       <% }) %>
                   </tr>

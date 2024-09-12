@@ -197,7 +197,8 @@ const associationController = {
 
         const requestId = req.params.id;
 
-        const request = await Demande.findByPk(requestId);
+        const request = await Demande.findOne({
+            where : { id :requestId } });
 
         const famille = await Famille.findOne({
             where: { id : request.famille_id},
@@ -208,12 +209,42 @@ const associationController = {
             where : { id : request.animal_id},
             include : ['espece', 'tags', 'images_animal']
         })
-/* 
-        console.log("Request " + request);
+        /* 
+        console.log('Demande' + request )
         console.log('Famille' + famille);
         console.log("Animal : " + animal ); */
 
         res.render('profilAssociationDemandeSuivi', { association, request, famille, animal })
+    },
+
+    async denyRequest(req,res) {
+        const requestId = req.params.id;
+
+        const request = await Demande.findByPk(requestId);
+
+        const updatedRequest = await request.update({
+            statut_demande : 'Refusée'
+        });
+
+        console.log(updatedRequest);
+        await updatedRequest.save();
+
+        res.redirect('/associations/profil/demandes/' + requestId)
+    },
+
+    async approveRequest(req,res) {
+        const requestId = req.params.id;
+
+        const request = await Demande.findByPk(requestId);
+
+        const updatedRequest = await request.update({
+            statut_demande : 'Validée'
+        });
+
+        console.log(updatedRequest);
+        await updatedRequest.save();
+
+        res.redirect('/associations/profil/demandes/' + requestId)
     },
     
     async dashboardAnimaux(req,res,next){
