@@ -4,11 +4,8 @@ import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
 
-import { Famille } from "../models/Famille.js";
-import { Association, Espece, Animal } from "../models/Models.js";
+import { Association, Animal, Demande, Espece, Famille, Tag, Utilisateur } from "../models/Models.js";
 import { Op } from "sequelize";
-import { Utilisateur } from "../models/Utilisateur.js";
-import { Tag } from "../models/Tag.js";
 
 
 const associationController = {
@@ -70,35 +67,6 @@ const associationController = {
     async store(req,res) {
     },
     
-    /* MàJ Asso */
-    async update(req,res) {
-        const associationId = req.params.id;
-        const association = await Association.findByPk(associationId);
-        
-        if (!association) {
-            return next();
-        }
-        
-        // Element à Update
-        const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
-        
-        const updatedAssociation = await association.update({
-            nom : nom || association.nom,
-            responsable : responsable || association.responsable,
-            rue : rue || association.rue,
-            commune : commune || association.commune,
-            code_postal : code_postal || association.code_postal,
-            pays : pays || association.pays,
-            siret : siret || association.siret,
-            telephone : telephone || association.telephone,
-        });
-        
-        res.render("A Voir");
-        
-    }, 
-    
-    
-    
     /* Supprimer une association */
     async destroy(req, res, next) {
         
@@ -155,6 +123,132 @@ const associationController = {
         
         await association.addAnimal(newAnimal);
         /* Sequelize Lazy Loading ? (Je crois) */
+    },
+
+    /* Afficher le profil (dashboard) d'une association */
+    async displayDashboard(req,res,next){
+        
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        
+        const association = await Association.findByPk(associationId);
+        
+        res.render('profilAssociationInfos', { association });
+    },
+
+    /* MàJ Asso */
+    async update(req,res) {
+           /*  const associationId = req.params.id; */
+                    //! A REMPLACER PAR REQ.SESSION.USERID !!
+            const associationId = 1;
+            const association = await Association.findByPk(associationId);
+            
+            if (!association) {
+                return next();
+            }
+            
+            // Element à Update
+            const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
+            
+            const updatedAssociation = await association.update({
+                nom : nom || association.nom,
+                responsable : responsable || association.responsable,
+                rue : rue || association.rue,
+                commune : commune || association.commune,
+                code_postal : code_postal || association.code_postal,
+                pays : pays || association.pays,
+                siret : siret || association.siret,
+                telephone : telephone || association.telephone,
+            });
+            
+            console.log('success')
+            console.log(updatedAssociation);
+            //! A REMPLACER PAR REQ.SESSION.USERID !!
+            res.redirect("/associations/profil")
+            
+    },
+
+    /* Afficher les demandes en cours */
+    async dashboardRequests(req,res) {
+        /*  const associationId = req.params.id; */
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        const association = await Association.findByPk(associationId);
+                    
+        if (!association) {
+            return next();
+        }
+
+        const requestedAnimals = await Animal.findAll({
+            where : [
+                { '$refuge.id$' : associationId },
+                { '$demandes.id$':  { [Op.not] : null }}
+            ],
+            include: [ "demandes", "refuge" ],
+        })
+
+        res.render('profilAssociationDemande', { association, requestedAnimals });
+    },
+
+    /* Afficher les détails d'une demande en cours */
+    async dashboardRequestsDisplayOne(req,res) {
+        const associationId = 1;
+        const association = await Association.findByPk(associationId);
+                    
+        if (!association) {
+            return next();
+        }
+
+        const requestId = req.params.id;
+
+        const request = await Demande.findOne({
+            where : { id :requestId } });
+
+        const famille = await Famille.findOne({
+            where: { id : request.famille_id},
+            include : ['identifiant_famille']
+        })
+
+        const animal = await Animal.findOne({
+            where : { id : request.animal_id},
+            include : ['espece', 'tags', 'images_animal']
+        })
+        /* 
+        console.log('Demande' + request )
+        console.log('Famille' + famille);
+        console.log("Animal : " + animal ); */
+
+        res.render('profilAssociationDemandeSuivi', { association, request, famille, animal })
+    },
+
+    async denyRequest(req,res) {
+        const requestId = req.params.id;
+
+        const request = await Demande.findByPk(requestId);
+
+        const updatedRequest = await request.update({
+            statut_demande : 'Refusée'
+        });
+
+        console.log(updatedRequest);
+        await updatedRequest.save();
+
+        res.redirect('/associations/profil/demandes/' + requestId)
+    },
+
+    async approveRequest(req,res) {
+        const requestId = req.params.id;
+
+        const request = await Demande.findByPk(requestId);
+
+        const updatedRequest = await request.update({
+            statut_demande : 'Validée'
+        });
+
+        console.log(updatedRequest);
+        await updatedRequest.save();
+
+        res.redirect('/associations/profil/demandes/' + requestId)
     },
     
     async dashboardAnimaux(req,res,next){
