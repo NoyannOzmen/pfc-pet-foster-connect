@@ -80,18 +80,24 @@ export const animalController = {
     },
     
     async detailAnimal(req,res){
+        const animalId = req.params.id
         
-        const animalId=req.params.id
-        
-        const animalData = await Animal.findByPk(animalId,{
-            include : ['tags','refuge','espece']
+        const animal = await Animal.findByPk(animalId, {
+            include : [
+                'tags',
+                'espece',
+                'images_animal',
+                { model : Association, as : "refuge",
+                include: ['images_association', 'identifiant_association'] }
+            ]
         });
-        if (!animalData) {
+
+        if (!animal) {
             res.status(404).render('404');
         }
         
         res.render('detailAnimal',{
-            animalData
+            animal
         })
         
     },

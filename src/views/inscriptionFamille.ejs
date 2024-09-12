@@ -1,56 +1,77 @@
 <%- include('partials/header') %>
 
-<main>
-  <h2>Création de votre compte</h2>
+<main class="justify-self-stretch flex-1">
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Création de votre compte</h2>
   
-  <form action="/famille/inscription" method="POST">
+  <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
+    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/inscription" method="POST">
     
-    <fieldset>
-      <label class=# for="firstname">Prénom</label>
-      <input class=# type="text" id="text" name="firstname" placeholder="Charlotte" required>
-      
-      <label class=# for="nom">Nom</label>
-      <input class=# type="text" id="nom" name="nom" placeholder="Cripan" required>
-      
-      <label class=# for="email">Email</label>
-      <input class=# type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io" required>
-      
-      <!-- telephone -->
-      <label class=# for="telephone">N° telephone</label>
-      <input class=# type="tel" id="telephone" name="telephone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
-  </fieldset>
+      <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+        <legend class="text-center">Vos informations</legend>
+        <div class="mx-auto p-2">        
+          <label class="text-center w-full" for="firstname">Prénom</label>
+          <input class="block bg-fond w-full" type="text" id="text" name="firstname" placeholder="Charlotte" required>
+        </div>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="nom">Nom</label>
+          <input class="block bg-fond w-full" type="text" id="nom" name="nom" placeholder="Cripan" required>
+        </div>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="email">Email</label>
+          <input class="block bg-fond w-full" type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io" required>
+        </div>
+        <div class="mx-auto p-2">
+          <!-- telephone -->
+          <label class="text-center w-full" for="telephone">N° telephone</label>
+          <input class="block bg-fond w-full" type="tel" id="telephone" name="telephone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
+        </div>
+      </fieldset>
+  
+    <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+      <legend class="text-center">Votre capacité d'hébergement</legend>
+        <div class="mx-auto p-2">
+          <!-- Hébergement -->
+          <label class="text-center w-full" for="hebergement">Type d'hébergement</label>
+          <input class="block bg-fond w-full" type="text" id="hebergement" name="hebergement" placeholder="Maison" required>
+        </div>
+        <div class="mx-auto p-2">
+          <!-- Adresse -->
+          <label class="text-center w-full" for="rue">Rue</label>
+          <input class="block bg-fond w-full" type="text" id="rue" name="rue" placeholder="45, rue de la Boustifaille" required>
+        </div>
+        <div class="mx-auto p-2">
+          <!-- Ville -->
+          <label class="text-center w-full" for="commune">Ville</label>
+          <input class="block bg-fond w-full" type="text" id="commune" name="commune" placeholder="Paris" required>
+        </div> 
+        <div class="mx-auto p-2">
+          <!-- Code Postal -->
+          <label class="text-center w-full" for="code_postal">Code Postal</label>
+          <input class="block bg-fond w-full" type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" placeholder="75020" required>
+        </div>  
+        <div class="mx-auto p-2">
+          <!-- Pays -->
+          <label class="text-center w-full" for="pays">Pays</label>
+          <input class="block bg-fond w-full" type="text" id="pays" name="pays" placeholder="France" required>
+        </div>
+      </fieldset>
 
-  <fieldset>
+      <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+        <legend class="text-center">Mot de passe</legend>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="mot_de_passe">Créez votre mot de passe</label>
+          <input class="block bg-fond w-full" type="password" id="mot_de_passe" name="mot_de_passe" placeholder="*********" required>
+        </div>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="confirmation">Confirmez votre mot de passe</label>
+          <input class="block bg-fond w-full" type="password" id="confirmation" name="confirmation" placeholder="*********" required>
+        </div>
+      </fieldset>
+      <button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider votre inscription</button>
+      
+    </form>
+  </div>
 
-      <!-- Hébergement -->
-      <label class=# for="hebergement">Rue</label>
-      <input class=# type="text" id="hebergement" name="hebergement" placeholder="Maison" required>
-      <!-- Adresse -->
-      <label class=# for="rue">Rue</label>
-      <input class=# type="text" id="rue" name="rue" placeholder="45, rue de la Boustifaille" required>
-      
-      <!-- Ville -->
-      <label class=# for="commune">Ville</label>
-      <input class=# type="text" id="commune" name="commune" placeholder="Paris" required>
-      
-      <!-- Code Postal -->
-      <label class=# for="code_postal">Code Postal</label>
-      <input class=# type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" placeholder="75020" required>
-      
-      <!-- Pays -->
-      <label class=# for="pays">Pays</label>
-      <input class=# type="text" id="pays" name="pays" placeholder="France" required>
-    </fieldset>
-    <fieldset>
-      <label class=# for="mot_de_passe">Mot de passe</label>
-      <input class=# type="password" id="mot_de_passe" name="mot_de_passe" placeholder="*********" required>
-      
-      <label class=# for="confirmation">Mot de passe</label>
-      <input class=# type="password" id="confirmation" name="confirmation" placeholder="*********" required>
-    </fieldset>
-    <input class=# type="submit" value="Valider mon inscription">
-    
-  </form>
 </main>
 
 <%- include('partials/footer') %>

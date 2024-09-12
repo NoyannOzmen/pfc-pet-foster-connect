@@ -12,7 +12,7 @@ familleRouter.get('/famille/:id(\\d+)', catchErrors(familleController.getOne));
 familleRouter.post('/famille', catchErrors(familleController.store));
 
 //Mise à jour des informations d'une famille - ok
-familleRouter.patch('/famille/:id(\\d+)', catchErrors(familleController.update));
+familleRouter.post('/famille/:id(\\d+)', catchErrors(familleController.update));
 
 //Suppression d'un compte famille - ok
 familleRouter.delete('/famille/:id(\\d+)', catchErrors(familleController.destroy));
@@ -25,3 +25,5 @@ familleRouter.post('/famille/:id(\\d+)/animals', catchErrors(familleController.a
 
 //Affichage des demandes réalisé par une famille - ok
 familleRouter.get('/famille/:id(\\d+)/requests', catchErrors(familleController.getAllRequests));
+
+export { familleRouter };
