@@ -13,8 +13,10 @@ const associationController = {
     /* Liste des associations */
     async getAll(req, res) {
         // Récupérer toutes les associations en BDD
-        const associations = await Association.findAll();
-        
+        const associations = await Association.findAll({
+            include :  [ 'images_association' ]
+        });
+
         const especes = await Espece.findAll();
         
         // Envoyer une réponse
@@ -31,7 +33,9 @@ const associationController = {
         const especes = await Espece.findAll();
         
         const associations = await Association.findAll({
-            include : [ { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }],
+            include : [ 
+                'images_association',
+                { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }],
             where : {
                 [Op.or] : [
                     { nom : shelter_nom},               

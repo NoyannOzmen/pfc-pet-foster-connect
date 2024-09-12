@@ -2,6 +2,18 @@
 module.exports = {
   content: ["./src/views/**/*.{html,js,ejs,jsx}", "./src/assets/integration/**/*.{html,js,ejs,jsx}", "./src/views/partials/**/*.ejs"],
   theme:{
+        backgroundPosition: {
+      bottom: 'bottom',
+      center: 'center',
+      left: 'left',
+      'left-bottom': 'left bottom',
+      'left-top': 'left top',
+      'left-4':'center left -40vw',
+      right: 'right',
+      'right-bottom': 'right bottom',
+      'right-top': 'right top',
+      top: 'top',
+    },
     colors: {
       'fond': '#fffbe4',
       'zoning': '#d5edb7',

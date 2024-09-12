@@ -3,7 +3,7 @@ import Joi from 'joi';
 import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
-import { Famille } from "../models/Models.js";
+import { Espece, Famille } from "../models/Models.js";
 
 const familleController = {
     
@@ -11,14 +11,16 @@ const familleController = {
     async getOne(req, res, next) {
         // * Est-ce suffisant pour garantir une sécurité ?
         const familleId = req.params.id;
+        console.log(familleId)
         // Récupérer la famille en BDD (avec potentiellement ses tags)
-        const famille = await Famille.findByPk(familleId);
+        const famille = await Famille.findByPk(familleId, { include : ['identifiant_famille'] });
+        const especes = await Espece.findAll();
         // Si la famille n'existe pas (ID=90000 => null) ==> 404
         if (!famille) {
             return next();
         }
         // Envoyer une réponse
-        res.render("detailFamille",{ famille });
+        res.render("profilFamilleInfos",{ famille, especes });
     },
     
     /* Création d'une famille (à mettre dans le login/signup) */
@@ -34,7 +36,7 @@ const familleController = {
             return next();
         }
         // Element à Update
-        const { nom, telephone, rue, commune, code_postal, pays, type_hebergement } = req.body;
+        const { nom, telephone, rue, commune, code_postal, pays, hebergement } = req.body;
         const updatedFamille = await famille.update({
             nom : nom || famille.nom,
             telephone : telephone || famille.telephone,
@@ -42,11 +44,13 @@ const familleController = {
             commune : commune || famille.commune,
             code_postal : code_postal || famille.code_postal,
             pays : pays || famille.pays,
-            type_hebergement : type_hebergement || type_hebergement.type_hebergement,
+            hebergement : hebergement || hebergement.hebergement,
             
         });
-        
-        res.render("A Voir");
+        console.log('success')
+        console.log(updatedFamille);
+
+        res.redirect("/famille/" + familleId)
         
     }, 
     

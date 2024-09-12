@@ -1,68 +1,86 @@
 <%- include('partials/header') %>
 
-<main>
-<h2>Bienvenue sur votre espace personnel</h2>
+<main class="justify-self-stretch flex-1">
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
 
-<div class=#>
-  <ul>
-    <li><button class=#>Mon profil</button></li>
-    <li><button class=#>Rechercher un animal</button></li>
-    <li><button class=#>Rechercher un refuge</button></li>
-  </ul>
-</div>
+  <!-- <div class=#>
+    <ul>
+      <li><a class=#>Mon profil</a></li>
+      <li><a class=#>Rechercher un animal</a></li>
+      <li><a class=#>Rechercher un refuge</a></li>
+    </ul>
+  </div> -->
 
-<div class=#>
-  <h3>Mon profil</h3>
+  <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
+    <h3 class="font-grands text-3xl text-center my-2 pt-5">Mon profil</h3>
 
-  <form action="#" method="POST">
-    <fieldset>
-      <legend>Mes informations</legend>
-      <label class=# for="prenom">Prénom</label>
-      <input class=# type="text" id="prenom" name="prenom" value="<%= famille.prenom %>" disabled>
-    
-      <label class=# for="nom">Nom</label>
-      <input class=# type="text" id="nom" name="nom" value="<%= famille.nom %>" disabled>
-    
-      <label class=# for="email">Email</label>
-      <input class=# type="email" id="email" name="email" value="<%= famille.email %>" disabled>
-    <!-- TO DO : Ajout Icone Crayon + UpdateFeature -->
-    </fieldset>
-
-    <fieldset>
-      <legend>Mon accueil</legend>
-
-      <label class=# for="hebergement">Type</label>
-      <input class=# type="text" id="hebergement" name="hebergement" value="<%= famille.hebergement %>" disabled>
-
-      <label class=# for="terrain">Terrain</label>
-      <input class=# type="text" id="terrain" name="terrain" value="<%= famille.terrain %>" disabled>
-
-      <label class=# for="rue">Rue</label>
-      <input class=# type="text" id="rue" name="rue" value="<%= famille.rue %>" disabled>
-            
-      <label class=# for="commune">Commune</label>
-      <input class=# type="text" id="commune" name="commune" value="<%= famille.commune %>" disabled>
-
-      <label class=# for="code_postal">Code Postal</label>
-      <input class=# type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" value="<%= famille.code_postal %>" disabled>
+    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/<%= famille.id %>" method="POST">
       
-      <label for="departement">Département</label>
-      <input class=# type="number" id="departement" name="departement" value="<%= famille.departement %>" disabled>
+      <fieldset class="w-[60%] font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+        <legend class="text-center">Mes informations&nbsp;<span class="material-symbols-outlined">edit</span></legend>
 
-    </fieldset>
-
-    <fieldset>
-      <legend>Je peux accueillir</legend>
-        <% especes.forEach(espece => { %>
-          <div>
-            <label class=# for="<%= espece.nom %>"><%= espece.nom %></label>
-            <input class=# type="checkbox" id="<%= espece.nom %>" name="<%= espece.nom %>" />
-          </div>
-        <% }) %>
-    </fieldset>
+        <!-- <div class="mx-auto p-2"> 
+          <label class="text-center w-full" for="prenom">Prénom</label>
+          <input class="block w-full" type="text" id="prenom" name="prenom" value="<%= famille.prenom %>" disabled>
+        </div> -->
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="nom">Nom</label>
+          <input class="block w-full" type="text" id="nom" name="nom" value="<%= famille.nom %>" disabled>
+        </div>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="email">Email</label>
+          <input class="block w-full" type="email" id="email" name="email" value="<%= famille.identifiant_famille.email %>" disabled>
+        </div>
+      </fieldset>
       
-  </form>
-</div>
+      <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+        <legend class="text-center">Mon accueil&nbsp;<span class="material-symbols-outlined">edit</span></legend>
+
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="hebergement">Type</label>
+          <input class="block w-full" type="text" id="hebergement" name="hebergement" value="<%= famille.hebergement %>" disabled>
+        </div>
+
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="terrain">Terrain</label>
+          <input class="block w-full" type="text" id="terrain" name="terrain" value="<%= famille.terrain %>" disabled>
+        </div>
+
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="rue">Rue</label>
+          <input class="block w-full" type="text" id="rue" name="rue" value="<%= famille.rue %>" disabled>
+        </div>
+
+        <div class="mx-auto p-2">       
+          <label class="text-center w-full" for="commune">Commune</label>
+          <input class="block w-full" type="text" id="commune" name="commune" value="<%= famille.commune %>" disabled>
+        </div>
+
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="code_postal">Code Postal</label>
+          <input class="block w-full" type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" value="<%= famille.code_postal %>" disabled>
+        </div>
+
+        <!-- <label for="departement">Département</label>
+        <input class="block w-full" type="number" id="departement" name="departement" value="<%= famille.departement %>" disabled> -->
+      </fieldset>
+
+      <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+        <legend class="text-center">Je peux accueillir</legend>
+          <% especes.forEach(espece => { %>
+            <div>
+              <label class="text-center w-full" for="<%= espece.nom %>"><%= espece.nom %></label>
+              <input class=# type="checkbox" id="<%= espece.nom %>" name="<%= espece.nom %>" />
+            </div>
+          <% }) %>
+      </fieldset>
+
+      <button class="hidden w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider les modifications</button>
+        
+    </form>
+  </div>
 </main>
+
+<script src='/utils/editInputs.js' async></script>
 
 <%- include('partials/footer') %>
