@@ -10,7 +10,7 @@ const familleController = {
     /* Détails d'une famille */
     async getOne(req, res, next) {
         // * Est-ce suffisant pour garantir une sécurité ?
-        const familleId = req.params.id;
+        const familleId = 1;
         console.log(familleId)
         // Récupérer la famille en BDD (avec potentiellement ses tags)
         const famille = await Famille.findByPk(familleId, { include : ['identifiant_famille'] });

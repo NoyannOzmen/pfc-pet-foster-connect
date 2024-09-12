@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { familleController } from "../controllers/familleController.js";
 import { catchErrors } from "../middlewares/catchErrors.js";
+import { auth } from "../middlewares/auth.js";
+import { isRole } from "../middlewares/isRole.js";
 
 const familleRouter = Router();
 
@@ -25,5 +27,7 @@ familleRouter.post('/famille/:id(\\d+)/animals', catchErrors(familleController.a
 
 //Affichage des demandes réalisé par une famille - ok
 familleRouter.get('/famille/:id(\\d+)/requests', catchErrors(familleController.getAllRequests));
+
+familleRouter.get('/famille/profil', familleController.getOne);
 
 export { familleRouter };
