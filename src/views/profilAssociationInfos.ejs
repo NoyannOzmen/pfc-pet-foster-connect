@@ -14,7 +14,7 @@
 <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
   <h3 class="font-grands text-3xl text-center my-2 pt-5">Mon profil</h3>
 
-  <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/associations/profil/<%= association.id %>" method="POST">
+  <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/associations/profil" method="POST">
       
     <fieldset class="w-[60%] font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
       <legend class="text-center">Votre organisme&nbsp;<span class="material-symbols-outlined">edit</span></legend>
@@ -27,7 +27,7 @@
     <div class="mx-auto p-2">
       <!-- Président -->
       <label class=# for="president">Président</label>
-      <input class=# type="text" id="president" name="president" value="<%= association.president %>" disabled>
+      <input class=# type="text" id="president" name="president" value="<%= association.responsable %>" disabled>
     </div>
     <div class="mx-auto p-2">  
       <!-- Rue -->
@@ -45,14 +45,9 @@
       <input class=# type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" value="<%= association.code_postal %>" disabled>
     </div>
     <div class="mx-auto p-2">  
-      <!-- Département -->
-      <label class=# for="departement">Département</label>
-      <input class=# type="number" id="departement" name="departement" pattern="[01-97]{1} [0-9]{3}" value="<%= association.departement %>" disabled>
-    </div>
-    <div class="mx-auto p-2">
-      <!-- Département -->
+      <!-- Pays -->
       <label class=# for="pays">Pays</label>
-      <input class=# type="number" id="pays" name="pays" pattern="[01-97]{1} [0-9]{3}" value="<%= association.pays %>" disabled>
+      <input class=# type="text" id="pays" name="pays" value="<%= association.pays %>" disabled>
     </div>
     <div class="mx-auto p-2">  
       <!-- Téléphone -->
@@ -62,7 +57,7 @@
     <div class="mx-auto p-2">  
       <!-- N° SIRET -->
       <label class=# for="siret">N° SIRET</label>
-      <input class=# type="number" id="siret" name="siret" pattern="[0-9]{9} [0-9]{5}" value="<%= association.siret %>" disabled>
+      <input class=# type="text" id="siret" name="siret" pattern="^([0-9]+( [0-9]+)+)$" value="<%= association.siret %>" disabled>
     </div>
       <!-- Site Web -->
 

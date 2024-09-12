@@ -63,35 +63,6 @@ const associationController = {
     async store(req,res) {
     },
     
-    /* MàJ Asso */
-    async update(req,res) {
-        const associationId = req.params.id;
-        const association = await Association.findByPk(associationId);
-        
-        if (!association) {
-            return next();
-        }
-        
-        // Element à Update
-        const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
-        
-        const updatedAssociation = await association.update({
-            nom : nom || association.nom,
-            responsable : responsable || association.responsable,
-            rue : rue || association.rue,
-            commune : commune || association.commune,
-            code_postal : code_postal || association.code_postal,
-            pays : pays || association.pays,
-            siret : siret || association.siret,
-            telephone : telephone || association.telephone,
-        });
-        
-        res.render("A Voir");
-        
-    }, 
-    
-    
-    
     /* Supprimer une association */
     async destroy(req, res, next) {
         
@@ -159,6 +130,38 @@ const associationController = {
         
         res.render('profilAssociationInfos', { association });
     },
+
+        /* MàJ Asso */
+        async update(req,res) {
+           /*  const associationId = req.params.id; */
+                    //! A REMPLACER PAR REQ.SESSION.USERID !!
+            const associationId = 1;
+            const association = await Association.findByPk(associationId);
+            
+            if (!association) {
+                return next();
+            }
+            
+            // Element à Update
+            const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
+            
+            const updatedAssociation = await association.update({
+                nom : nom || association.nom,
+                responsable : responsable || association.responsable,
+                rue : rue || association.rue,
+                commune : commune || association.commune,
+                code_postal : code_postal || association.code_postal,
+                pays : pays || association.pays,
+                siret : siret || association.siret,
+                telephone : telephone || association.telephone,
+            });
+            
+            console.log('success')
+            console.log(updatedAssociation);
+            //! A REMPLACER PAR REQ.SESSION.USERID !!
+            res.redirect("/associations/profil")
+            
+        },
     
     async dashboardAnimaux(req,res,next){
         
