@@ -1,116 +1,61 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-		<Section>
-			<address>
-				<p>Adresse postale</p>
-				<a href="tel:+33XXXXXXXXX">+33XXXXXXXXX</a>
-				<a href="mailto:association@mail.com">association@mail.com</a>
-			</address>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus magni rerum, unde sunt beatae ipsam rem
-				est sequi minus eligendi doloremque aliquid laudantium eos perspiciatis obcaecati ea voluptas harum et?Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aliquam perferendis ipsam aperiam earum numquam rerum, eum quasi unde dolores temporibus laboriosam eaque, vel hic sapiente cum explicabo debitis! Quo!</p>
-				<button type="button">Voir tous nos pensionnaires</button>
-		</Section>
-		
-		<section>
-			<h2>Nom de l'assiociation</h2>
-			<img src="#" alt="Logo de l'association">
+
+	<section class = "flex flex-col">
+			<h2 class ="flex justify-center font-grands text-4xl mt-5 mb-5"><%= association.nom %></h2>
+
+<!-- Code modifier pour contourner l'erreur du manque d'image de l'association en BDD-->
+
+			<% if (association && association.images_association && association.images_association.url) { %>
+				<img class="flex m-auto mb-5" src="<%= association.images_association.url %>" alt="Photo de <%= association.nom %>">
+			<% } else { %>
+				<img class="flex m-auto mb-5" src="default.jpg" alt="Photo par défaut">
+			<% } %>
 		</section>
 		
-		
 		<Section>
-			<h3>Nos derniers arrivants</h3>
-			<div class="slider">
 			
-				<button class="btn slider_btn" type="button" aria-label="Précédent">&lt;</button>
+			<address class = "flex ml-6 flex-col">
+				<div class = "flex">
+				<img src="/src/assets/images/mapicon.svg" class = "mr-3" alt="mapicon">
+				<console class="log"></console>
+				<p class="">Adresses : <%= association.rue %>,&nbsp;<%= association.code_postal %>,&nbsp;<%= association.commune%>,&nbsp;<%= association.pays %></p>
+				</div>
+				<div class = "flex">
+				<img src="/src/assets/images/mapicon.svg" class = "mr-3" alt="mapicon">
+				<p class="#">Telephone : <%= association.telephone %></p>
+				</div>
+				<div class = "flex">
+
+<!-- Code modifier pour contourner l'erreur du manque d'email de l'association en BDD-->
+
+				<img src="/src/assets/images/mapicon.svg"  class = "mr-3" alt="mapicon">
+				<p class="#">E-mail : <%= association?.identifiant_association?.email || 'Non renseigné' %></p>
+				</div>
+			</address>
+
+			<p><%= association.description %></p>
 			
-				<article class="slider_card">
-					<img src="#" alt="">
-					<h4>Nom de l'animal</h4>
-					<ul>
-						<li>Espèce</li>
-						<li>Âge</li>
-						<li>Département</li>
-					</ul>
-					<button type="button">Découvrir</button>
-				</article>
-			
-				<article class="slider_card">
-					<img src="#" alt="">
-					<h4>Nom de l'animal</h4>
-					<ul>
-						<li>Espèce</li>
-						<li>Âge</li>
-						<li>Département</li>
-					</ul>
-					<button type="button">Découvrir</button>
-				</article>
-			
-				<article class="slider_card">
-					<img src="#" alt="">
-					<h4>Nom de l'animal</h4>
-			
-					<ul>
-						<li>Espèce</li>
-						<li>Âge</li>
-						<li>Département</li>
-					</ul>
-			
-					<button type="button">Découvrir</button>
-			
-				</article>
-			
-				<button class="btn slider_btn" type="button" aria-label="Suivant">&gt;</button>
-			
-			</div>
+				<button type="button" class = "bg-accents1-light flex rounded-md m-auto px-5 text-fond">Voir tous nos pensionnaires</button>
 		</Section>
 		
-		<Section>
-			<h3>Coup de coeur près de chez vous</h3>
-			<div class="slider">
-			
-				<button class="btn slider_btn" type="button" aria-label="Précédent">&lt;</button>
-			
+		
+		<!-- insérer carrousel ici -->
+
+
+<!-- Code modifier pour contourner l'erreur du manque d'image de l'association en BDD-->
+ 
+		<% if (association && Array.isArray(association.pensionnaires)) { %>
+			<% association.pensionnaires.forEach(animal => { %>
 				<article class="slider_card">
-					<img src="#" alt="">
-					<h4>Nom de l'animal</h4>
-					<ul>
-						<li>Espèce</li>
-						<li>Âge</li>
-						<li>Département</li>
-					</ul>
-					<button type="button">Découvrir</button>
+					<img class=# src=# alt="Photo de <%= animal.nom %>">
 				</article>
-			
-				<article class="slider_card">
-					<img src="#" alt="">
-					<h4>Nom de l'animal</h4>
-					<ul>
-						<li>Espèce</li>
-						<li>Âge</li>
-						<li>Département</li>
-					</ul>
-					<button type="button">Découvrir</button>
-				</article>
-			
-				<article class="slider_card">
-					<img src="#" alt="">
-					<h4>Nom de l'animal</h4>
-			
-					<ul>
-						<li>Espèce</li>
-						<li>Âge</li>
-						<li>Département</li>
-					</ul>
-			
-					<button type="button">Découvrir</button>
-			
-				</article>
-			
-				<button class="btn slider_btn" type="button" aria-label="Suivant">&gt;</button>
-			
-			</div>
-		</Section>
+			<% }) %>
+		<% } else { %>
+			<p>Aucun animal à afficher.</p>
+		<% } %>
+
 		
 </main>
 	
