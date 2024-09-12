@@ -4,7 +4,7 @@
 	<h2 class="font-grands text-3xl text-center my-2 pt-5">Création de votre compte</h2>
   
   <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
-    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/association/inscription" method="POST">
+    <form id="ShelterForm" class="flex flex-col flex-wrap content-center justify-around text-texte" action="/association/inscription" method="POST" enctype="multipart/form-data">
     
       <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
       <legend class="text-center">Votre organisme</legend>
@@ -161,12 +161,13 @@
         <input class="block bg-fond w-full" type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io"
         required>
       </div>
+
         <!-- Site Web -->
         <!--       <label class="text-center w-full" for="url">Site Web</label>
         <input class="block bg-fond w-full" type="url" name="url" id="url" placeholder="https://exemple.com" pattern="https://.*" size="40" required /> -->
-    </fieldset>
+      </fieldset>
     
-    <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+      <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
       <legend class="text-center">Vos animaux</legend>
       <% especes.forEach(espece => { %>
         <div>
@@ -209,10 +210,20 @@
           <input class="block bg-fond w-full" type="password" id="confirmation" name="confirmation" placeholder="*********" required>
         </div>
       </fieldset>
-      <button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider votre inscription</button>
-      
-      
     </form>
+    <div class="mx-auto p-2">
+      <form id="uploadForm" method="POST" action="/upload/logo" enctype="multipart/form-data">
+        <div class="flex flex-col">
+            <label>Logo ou Photo</label>
+            <input type="file" name="file" required/>
+        </div>
+        <div class="w-full">
+          <input form="uploadForm" type="submit" value="Uploader" class="my-3 py-2 px-4 mx-auto bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"/>
+        </div>
+      </form>
+    </div>
+    <button form="ShelterForm" class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider votre inscription</button> 
+
   </div>
 </main>
   
