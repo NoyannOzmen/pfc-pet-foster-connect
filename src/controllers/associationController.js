@@ -208,10 +208,10 @@ const associationController = {
             where : { id : request.animal_id},
             include : ['espece', 'tags', 'images_animal']
         })
-
+/* 
         console.log("Request " + request);
         console.log('Famille' + famille);
-        console.log("Animal : " + animal );
+        console.log("Animal : " + animal ); */
 
         res.render('profilAssociationDemandeSuivi', { association, request, famille, animal })
     },
