@@ -32,25 +32,43 @@
         
         <h3 class="text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Créer un profil animal</h3>
         
-        <form class="flex flex-wrap my-6 mx-6 justify-center" action="/associations/profil/animaux/nouveau-profil" method="post">
+        <form class="flex flex-wrap my-6 mx-6 justify-center" action="/animaux/nouveau-profil" method="post">
           
           <fieldset class="flex flex-wrap justify-center">
             
             <div class="mb-2">
-              <label for="nom-animal" class="block font-grands font-bold text-base ">Nom</label>
-              <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="nom-animal" id="nom-animal" required>
+              <label for="nom_animal" class="block font-grands font-bold text-base ">Nom</label>
+              <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="nom_animal" id="nom_animal" required>
             </div>
             
             <div class="mb-2">
-              <label for="sexe-animal" class="block font-grands font-bold text-base ">Sexe</label>
-              <select name="nom_animal" id="sexe-animal" class="custom-select w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond ">
+              <label for="sexe_animal" class="block font-grands font-bold text-base ">Sexe</label>
+              <select name="sexe_animal" id="sexe_animal" class="custom-select w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond ">
                 <option value="Inconnu">Inconnu</option>
                 <option value="Mâle">Mâle</option>
                 <option value="Femelle">Femelle</option>
               </select>
             </div>
+
+            <div class="mb-2">
+              <label for="age_animal" class="block font-grands font-bold text-base ">Age</label>
+              <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="number" name="age_animal" id="age_animal" required>
+            </div>
             
             <!-- ICI LA PARTIE POUR IMPORTER UNE IMAGE -->
+            <!-- TODO SCRIPTS POUR IMPORTER LES IMAGES -->
+            
+            <div class="my-2">
+              <label for="image_animal" class="block font-grands font-bold text-base ">Importez une image</label>
+              <div class="w-56">
+                <button id="image_animal" class="hover:bg-accents1-dark rounded-full hover:underline bg-accents1 text-center font-grands text-fond font-semibold text-xs py-0.5 px-4">Importer</button>
+              </div>
+            </div>
+            <!--! PLACE HOLDER POUR TESTER L'AJOUT EN BDD A SUPPRIMER !!!!!! -->
+            <div class="mb-2">
+              <label for="test_animal" class="block font-grands font-bold text-base ">test</label>
+              <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="test_animal" id="test_animal" required>
+            </div>
             
           </fieldset>
           
@@ -59,8 +77,8 @@
           <fieldset class="flex flex-wrap justify-center">
             
             <div class="mb-2">
-              <label for="espece-animal" class="block font-grands font-bold text-base ">Espèce</label>
-              <select name="espece-animal" id="espece-animal" class="custom-select w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond ">
+              <label for="espece_animal" class="block font-grands font-bold text-base ">Espèce</label>
+              <select name="espece_animal" id="espece_animal" class="custom-select w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond ">
                 <option value="">Choisissez</option
                   <% especes.forEach(espece => { %>
                     <option value="<%= espece.id %>"><%= espece.nom %></option>
@@ -69,12 +87,12 @@
                 </div>
                 
                 <div class="mb-2">
-                  <label for="race-animal" class="block font-grands font-bold text-base ">Race</label>
-                  <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="race-animal" id="race-animal" required>
+                  <label for="race_animal" class="block font-grands font-bold text-base ">Race</label>
+                  <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="race_animal" id="race_animal" required>
                 </div>
                 <div class="mb-2">
-                  <label for="couleur-animal" class="block font-grands font-bold text-base ">Couleur</label>
-                  <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="couleur-animal" id="couleur-animal" required>
+                  <label for="couleur_animal" class="block font-grands font-bold text-base ">Couleur</label>
+                  <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="couleur_animal" id="couleur_animal" required>
                 </div>
                 
                 
@@ -85,22 +103,21 @@
               
               <fieldset class="flex flex-wrap justify-center">
                 
-                <!-- TODO Script de selection des tags -->
                 
                 <div class="mb-2 flex flex-wrap justify-center">
                   <p for="couleur-animal" class="block font-grands font-bold text-base w-56 mb-4 ">Tags</p>
                   
                   <fieldset name="tags-animal" id="tags-animal" class="grid grid-cols-2 gap-2 w-56">
-
+                    
                     <% tags.forEach(tag => { %>
                       <div class="flex gap-x-1.5"> 
                         <input type="checkbox" id="tag_<%= tag.id %>" name="tag_<%= tag.id %>" value="<%= tag.id %>"  class="leading-3"/>
                         <label for="tag_<%= tag.id %>" class="block font-grands font-semibold text-xs leading-3 "> <%= tag.nom %></label>
                       </div>
-                        <% }) %>
+                      <% }) %>
                       
                     </fieldset>
-
+                    
                     <div class="w-56">
                       <button id="create-tag" class="hover:bg-accents1-dark rounded-full hover:underline bg-accents1 text-center font-grands text-fond font-semibold text-xs py-0.5 px-4">Créer un tag</button>
                     </div>
@@ -117,8 +134,8 @@
                 <fieldset class="flex flex-wrap justify-center">
                   
                   <div class="mb-2 ">
-                    <label for="description-animal" class="block font-grands font-bold text-base ">Description</label>
-                    <textarea class="w-56 rounded-md px-2 py-1 text-texte bg-fond " name="description-animal" id="description-animal" rows="3" required></textarea>
+                    <label for="description_animal" class="block font-grands font-bold text-base ">Description</label>
+                    <textarea class="w-56 rounded-md px-2 py-1 text-texte bg-fond " name="description_animal" id="description_animal" rows="3" required></textarea>
                   </div>
                   
                   <div class="w-56">
@@ -136,6 +153,7 @@
         
       </main>
       
+      <!-- ICI MODALE DE CREATION DE TAGS -->
       <div id="create-tags-modal" class="hidden flex justify-center content-center fixed bg-texte/20 inset-0">
         
         <div class="self-center bg-zoning p-6 rounded-lg">
@@ -164,7 +182,7 @@
           </form>
         </div>
       </div>
-      
+      <!-- FIN MODALE DE CREATION DE TAGS -->
       
       
       <script src="/utils/dashboardAssoCreateAnimal.js"></script>
