@@ -3,7 +3,7 @@ import { Op } from "sequelize";
 
 
 export const animalController = {
-
+    
     async homePage(req,res) {
         
         //* On veut récupérer tout les animaux qui sont dans les refuges, en incluant leurs frimousses, leurs tags et la localisation des associations qui les gèrent
@@ -13,10 +13,10 @@ export const animalController = {
             },
             include : ['espece', 'refuge', 'tags', 'images_animal']
         })
-
+        
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
-
+        
         res.render('accueil', {
             animals, especes, tags
         })    
@@ -26,26 +26,26 @@ export const animalController = {
         
         //* On veut récupérer tout les animaux qui sont dans les refuges, en incluant les tags et les associations qui les gèrent
         const animals = await Animal.findAll({
-/*             where: {
+            /*             where: {
                 statut:'En refuge'
             }, */
             include : ['tags','refuge','espece', 'images_animal']
         })
-
+        
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
-
+        
         res.render('listeAnimaux', {
             animals,
             especes,
             tags
         })
     },
-
+    
     /* Liste des animaux recherchés */
-
+    
     async getSearched(req,res) {
-
+        
         const {
             especeDropdown,
             dptSelect,
@@ -54,10 +54,10 @@ export const animalController = {
             maxAge,
             tag
         } = req.body;
-
+        
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
-
+        
         const animals = await Animal.findAll({
             include : [ 
                 { model : Association, as : "refuge"},
@@ -74,7 +74,7 @@ export const animalController = {
                 ]
             }
         });
-
+        
         console.log(animals)
         return res.render("listeAnimaux", { animals, especes, tags });
     },
@@ -91,7 +91,7 @@ export const animalController = {
                 include: ['images_association', 'identifiant_association'] }
             ]
         });
-
+        
         if (!animal) {
             res.status(404).render('404');
         }
@@ -119,12 +119,12 @@ export const animalController = {
             famille_id:familyId,
             animal_id:animalId,
             statut_demande:'En attente',
-
+            
             //!à récupérer depuis le formulaire
             date_debut:'01/01/2000',
             date_fin:'01/02/2000'
         }
-
+        
         //* S'il y a déjà une demande de la famille pour l'animal on sort du middleware
         if (Demande.findOne({where :{ famille_id:familyId, animal_id:animalId } })) {
             next();
@@ -132,7 +132,7 @@ export const animalController = {
         
         //* On crée et sauvegarde l'instance de la demande
         const hostRequest = await Demande.create(demandeData);
-
+        
         if (hostRequest) {
             res.redirect(`/animals/${animalId}`);
         } else {
@@ -140,9 +140,87 @@ export const animalController = {
             next();
         }
         
-        
-        
-        
     },
     
-}
+    async addAnimal (req,res,next) {
+        
+        //! ATTENTION A BIEN CHANGER POUR RECUPERER L'ID DE L'ASSOCIATION DEPUIS req.session !!!!!!
+        const associationId = 1;
+        
+        //* On récupère le nombre de tag en BDD
+        const tagNumber = await Tag.count();
+        const tagIdArray = [];
+        //* Pour récupérer les id des tag sélectionnés par l'utilisateur on boucle autant de fois que de tag en BDD
+        //* On vérifie si la propriété de req.body.tag_number existe
+        //* Si elle existe on ajoute la valeur de l'id du tag dans le tableau
+        for (let i = 0; i < tagNumber; i++) {
+            
+            const hasProperty = Object.hasOwn(req.body, `tag_${i+1}`);
+            if (hasProperty){
+                tagIdArray.push(parseInt(req.body[`tag_${i+1}`]));
+            }
+            
+        }
+        
+        const {
+            nom_animal,
+            age_animal,
+            sexe_animal,
+            test_animal,
+            espece_animal,
+            race_animal,
+            couleur_animal,
+            description_animal
+        } = req.body
+        
+        
+        const refuge = await Association.findByPk(associationId);
+        if (!refuge){
+            next();
+        }
+        
+        //* On crée un nouveau profil animal ET un nouveau média (d'où le include)
+        const newAnimal = await Animal.create(
+            {
+                nom : nom_animal,
+                couleur: couleur_animal,
+                age:age_animal,
+                sexe:sexe_animal,
+                race:race_animal,
+                description:description_animal,
+                statut:'En refuge',
+                association_id:associationId,
+                espece_id:espece_animal,
+                images_animal : {
+                    url:test_animal,
+                    ordre:1
+                }
+                
+            },
+            {
+                include : [
+                    'images_animal',
+                ]
+            }
+            );
+            
+            if (tagIdArray) {
+                
+                for (const tagId of tagIdArray) {
+
+                    const tag = await Tag.findByPk(tagId);
+                    await newAnimal.addTag(tag)
+
+                }
+                
+            }
+            
+            
+            
+            res.send('ok')
+            
+            
+        }
+        
+    }
+    
