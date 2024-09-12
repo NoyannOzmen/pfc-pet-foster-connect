@@ -4,8 +4,12 @@ import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
 
+import { Famille } from "../models/Famille.js";
 import { Association, Espece, Animal } from "../models/Models.js";
 import { Op } from "sequelize";
+import { Utilisateur } from "../models/Utilisateur.js";
+import { Tag } from "../models/Tag.js";
+
 
 const associationController = {
     
@@ -17,20 +21,20 @@ const associationController = {
         });
 
         const especes = await Espece.findAll();
-
+        
         // Envoyer une réponse
         res.render("listeAssociations",{ associations, especes });
     },
-
+    
     /* Liste des associations RECHERCHEES */
-
+    
     async getSearched(req,res) {
         const species = req.body.espece;
         const departement = req.body.dptSelect;
         const shelter_nom = req.body.shelterNom;
-
+        
         const especes = await Espece.findAll();
-
+        
         const associations = await Association.findAll({
             include : [ 
                 'images_association',
@@ -43,7 +47,7 @@ const associationController = {
                 ]
             }
         });
-
+        
         console.log(associations)
         return res.render("listeAssociations", { associations, especes });
     },
@@ -74,10 +78,10 @@ const associationController = {
         if (!association) {
             return next();
         }
-      
-    // Element à Update
+        
+        // Element à Update
         const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
-
+        
         const updatedAssociation = await association.update({
             nom : nom || association.nom,
             responsable : responsable || association.responsable,
@@ -153,8 +157,9 @@ const associationController = {
         /* Sequelize Lazy Loading ? (Je crois) */
     },
     
-    async dashboard(req,res,next){
+    async dashboardAnimaux(req,res,next){
         
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
         const associationId = 1;
         
         const animals = await Animal.findAll({
@@ -168,20 +173,65 @@ const associationController = {
                         id : associationId,
                     },
                 },
-                'accueillant',
-                'tags',
-                'demandes',
                 
             ]
         });
-
-/*
-animaux : tableau d'animaux contenant notamment un objet espece,
-un tableau images_animal, un objet refuge, un object accueillant,
-un tableau tags et un tableau demande
-*/
+        
+        /*
+        animaux : tableau d'animaux contenant notamment un objet espece,
+        un tableau images_animal, un objet refuge, un object accueillant,
+        un tableau tags et un tableau demande
+        */
+        
         res.render('profilAssociationAnimauxListe',{ animals });
+    },
+    async dashboardAnimauxSuivi (req, res ,next) {
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        
+        const animals = await Animal.findAll({
+            where : {statut:'Accueilli'},
+            include : [
+                'espece',
+                'images_animal',
+                {
+                    model : Association,
+                    as : 'refuge',
+                    where: {
+                        id : associationId,
+                    },  
+                },
+                'tags',
+                {
+                    model : Famille,
+                    as :'accueillant',
+                    include : {
+                        model: Utilisateur,
+                        as :'identifiant_famille',
+                        attributes : ['id','email']
+                    }
+                }
+                
+            ]
+        })
+        
+        //res.send(animals);
+        res.render('profilAssociationAnimauxSuiviAccueil',{ animals });
+        
+    },
+    
+    async dashboardAnimauxAjouter (req, res, next) {
+
+        const especes = await Espece.findAll();
+        const tags = await Tag.findAll();
+
+
+
+        res.render('profilAssociationAnimauxAjouter', {especes,tags});
+
+
     }
+    
 };
 
 export { associationController };

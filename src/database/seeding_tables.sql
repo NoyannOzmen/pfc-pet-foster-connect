@@ -58,7 +58,11 @@ VALUES
 INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id","famille_id")
   VALUES
-  (1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1);
+  (1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1),
+  (12, 'Chacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 2),
+  (13, 'Chachacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1)
+;
+
 
 
   INSERT INTO "demande"
@@ -84,14 +88,20 @@ VALUES
   ( 6, 'https://cdn.pixabay.com/photo/2024/03/07/10/38/simba-8618301_960_720.jpg', 1, 4, NULL ),
   ( 7, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 1, NULL ),
   ( 8, 'https://cdn.pixabay.com/photo/2023/12/15/21/47/cat-8451431_960_720.jpg', 3, 1, NULL ),
-  ( 9, 'https://cdn.pixabay.com/photo/2019/11/18/00/38/dog-4633734_960_720.jpg', 1, 5, NULL ),
-  ( 10, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, 4, NULL ),
+  ( 9, 'https://cdn.pixabay.com/photo/2019/11/18/00/38/dog-4633734_960_720.jpg', 1, 4, NULL ),
+  ( 10, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, 5, NULL ),
   ( 11, 'https://cdn.pixabay.com/photo/2022/07/09/11/27/capybara-7310694_960_720.jpg', 1, 7, NULL ),
   ( 12, 'https://cdn.pixabay.com/photo/2017/11/23/21/06/coulemelle-2973661_960_720.jpg', 1, 8, NULL ),
   ( 13, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 9, NULL ),
   ( 14, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 10, NULL ),
   ( 15, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 11, NULL ),
   ( 16, 'https://cdn.pixabay.com/photo/2019/11/18/00/38/dog-4633734_960_720.jpg', 1, 6, NULL ),
+  ( 17, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 12, NULL ),
+  ( 18, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 13, NULL ),
+  ( 19, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 2 ),
+  ( 20, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 3 ),
+
+
 
 
 
