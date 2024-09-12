@@ -4,7 +4,7 @@ import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
 
-import { Association, Animal, Espece, Famille, Tag, Utilisateur } from "../models/Models.js";
+import { Association, Animal, Demande, Espece, Famille, Tag, Utilisateur } from "../models/Models.js";
 import { Op } from "sequelize";
 
 
@@ -131,8 +131,8 @@ const associationController = {
         res.render('profilAssociationInfos', { association });
     },
 
-        /* MàJ Asso */
-        async update(req,res) {
+    /* MàJ Asso */
+    async update(req,res) {
            /*  const associationId = req.params.id; */
                     //! A REMPLACER PAR REQ.SESSION.USERID !!
             const associationId = 1;
@@ -161,7 +161,29 @@ const associationController = {
             //! A REMPLACER PAR REQ.SESSION.USERID !!
             res.redirect("/associations/profil")
             
-        },
+    },
+
+    /* Afficher les demandes en cours */
+    async dashboardRequests(req,res) {
+        /*  const associationId = req.params.id; */
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        const association = await Association.findByPk(associationId);
+                    
+        if (!association) {
+            return next();
+        }
+
+        const requestedAnimals = await Animal.findAll({
+            where : [
+                { '$refuge.id$' : associationId },
+                { '$demandes.id$':  { [Op.not] : null }}
+            ],
+            include: [ "demandes", "refuge" ],
+        })
+
+        res.render('profilAssociationDemande', { association, requestedAnimals });
+    },
     
     async dashboardAnimaux(req,res,next){
         

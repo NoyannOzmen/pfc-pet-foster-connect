@@ -44,4 +44,8 @@ associationRouter.get('/associations/profil', associationController.displayDashb
 //Mise à jour des informations depuis le compte association
 associationRouter.post('/associations/profil', catchErrors(associationController.update));
 
+//Affichage du tableau de récapitulatif des demandes
+associationRouter.get('/associations/profil/demandes', associationController.dashboardRequests);
+
+
 export { associationRouter };

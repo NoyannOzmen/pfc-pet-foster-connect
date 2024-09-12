@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-shrink-0 flex-grow">
-  <h1 class="my-6 ml-4 mb-6 text-xl">Mon espace association</h1>
+  <h2 class="my-6 ml-4 mb-6 text-xl">Mon espace association</h2>
   
   <!-- Conteneur général qui contient tout le dashboard -->
   <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40">
@@ -109,66 +109,55 @@
                             </div>
                             <% } %>
                             
-                          </div>
+                    </div>  
                           
+                    <hr class="border-t-accents2 w-2/4 border-t-2 border-solid justify-self-center my-4 md:hidden">
                           
-                          <hr class="border-t-accents2 w-2/4 border-t-2 border-solid justify-self-center my-4 md:hidden">
-                          
-                          <!-- PARTIE FAMILLE -->
-                          <div class="w-full md:w-1/2">
+                    <!-- PARTIE FAMILLE -->
+                    <div class="w-full md:w-1/2">
                             
-                            <h3 class="font-body font-bold mb-4">Famille</h3>
+                      <h3 class="font-body font-bold mb-4">Famille</h3>
                             
-                            <div class="px-6 mb-3 md:grid-cols-2 md:grid">
-                              <div class="mb-2 mt-2">
-                                <p class="text-sm italic leading-3">Nom</p>
-                                <p class="text-base font-semibold"><%= animal.accueillant.nom %></p>
-                              </div>
-                              <div class="mb-2">
-                                <p class="text-sm italic leading-3">Téléphone</p>
-                                <p class="text-base font-semibold"><%= animal.accueillant.telephone %></p>
-                              </div>
-                              <div class="mb-2">
-                                <p class="text-sm italic leading-3">e-mail</p>
-                                <p class="text-base font-semibold"><%= animal.accueillant.identifiant_famille.email %></p>
-                              </div>
-                              <div class="mb-2">
-                                <p class="text-sm italic leading-4">Adresse</p>
-                                <p class="text-base font-semibold leading-3"><%= animal.accueillant.rue %></p>
-                                <p class="text-base font-semibold "><%= animal.accueillant.code_postal %> <%= animal.accueillant.commune  %></p>
-                              </div>
-                              <div class="mb-2">
-                                <p class="text-sm italic leading-3">Pays</p>
-                                <p class="text-base font-semibold"><%= animal.accueillant.pays %></p>
-                              </div>
-                              <div>
-                                <p class="text-sm italic leading-3">Hébergement</p>
-                                <p class="text-base font-semibold"><%= animal.accueillant.hebergement %></p>
-                              </div>
-                            </div>
-                            
-                          </div>
-                          
+                      <div class="px-6 mb-3 md:grid-cols-2 md:grid">
+                        <div class="mb-2 mt-2">
+                          <p class="text-sm italic leading-3">Nom</p>
+                          <p class="text-base font-semibold"><%= animal.accueillant.nom %></p>
                         </div>
-                        
-                        
+                        <div class="mb-2">
+                          <p class="text-sm italic leading-3">Téléphone</p>
+                          <p class="text-base font-semibold"><%= animal.accueillant.telephone %></p>
+                        </div>
+                        <div class="mb-2">
+                          <p class="text-sm italic leading-3">e-mail</p>
+                          <p class="text-base font-semibold"><%= animal.accueillant.identifiant_famille.email %></p>
+                        </div>
+                        <div class="mb-2">
+                          <p class="text-sm italic leading-4">Adresse</p>
+                          <p class="text-base font-semibold leading-3"><%= animal.accueillant.rue %></p>
+                          <p class="text-base font-semibold "><%= animal.accueillant.code_postal %> <%= animal.accueillant.commune  %></p>
+                        </div>
+                        <div class="mb-2">
+                          <p class="text-sm italic leading-3">Pays</p>
+                          <p class="text-base font-semibold"><%= animal.accueillant.pays %></p>
+                        </div>
+                        <div>
+                          <p class="text-sm italic leading-3">Hébergement</p>
+                          <p class="text-base font-semibold"><%= animal.accueillant.hebergement %></p>
+                        </div>
                       </div>
-                    </td>
-                    
-                    
-                  </tr>
-                  
-                  
-                  <% }) %>
-                  
-                </table>
-              </div>
-              
-            </section>
-            
-            
-          </main>
+                            
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>                  
+          </table>
+        </div>             
+      </section>
+    </div>
+  </div> 
+</main>
           
-          <script src="/utils/dashboardAssoSuiviAccueil.js"></script>
+<script src="/utils/dashboardAssoSuiviAccueil.js"></script>
           
-          <%- include('partials/footer') %>
+<%- include('partials/footer') %>
