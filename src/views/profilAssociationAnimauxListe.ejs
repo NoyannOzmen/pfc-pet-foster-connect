@@ -9,9 +9,9 @@
     
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button id="dashbtn-1" class="dashbtn ">Mon profil</button></li>
+        <li><button id="dashbtn-1" class="dashbtn ">Profil</button></li>
         <li><button id="dashbtn-2" class="dashbtn">Demandes</button></li>
-        <li><button id="dashbtn-3" class="dashbtn dashbtn-active">Nos animaux</button></li>
+        <li><button id="dashbtn-3" class="dashbtn dashbtn-active">Animaux</button></li>
       </ul>
     </nav>
     
@@ -47,7 +47,7 @@
             
             <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
             
-            <a class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="">
+            <a data-animalId="<%= animal.id %>" class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="">
               
               <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
               <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
@@ -75,16 +75,7 @@
   </main>
 
 
-  <template id="suivAccueil-template">
 
-    
-  </template>
-
-  <template id="suivAccueil-template">
-
-
-  </template>
-
-
+<script src="/utils/dashboardAssoListeAnimal.js"></script>
   
   <%- include('partials/footer') %>

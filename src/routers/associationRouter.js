@@ -32,6 +32,8 @@ associationRouter.get('/associations/:id(\\d+)/animals', catchErrors(association
 //Ajout un animal à l'association
 associationRouter.post('/associations/:id(\\d+)/animals',[auth,isRole.association], catchErrors(associationController.addAnimal));
 
+//* ROUTES AUTHENTIFIEES
+
 associationRouter.get('/associations/profil/animaux', associationController.dashboardAnimaux);
 
 associationRouter.get('/associations/profil/animaux/suivi', associationController.dashboardAnimauxSuivi);
