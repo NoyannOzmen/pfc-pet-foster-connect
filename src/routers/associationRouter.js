@@ -47,5 +47,8 @@ associationRouter.post('/associations/profil', catchErrors(associationController
 //Affichage du tableau de récapitulatif des demandes
 associationRouter.get('/associations/profil/demandes', associationController.dashboardRequests);
 
+//Affichage du détail d'une demande d'accueil
+associationRouter.get('/associations/profil/demandes/:id(\\d+)', associationController.dashboardRequestsDisplayOne)
+
 
 export { associationRouter };

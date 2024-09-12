@@ -44,17 +44,17 @@
                     <!-- TO DO : Add JS for unfurling row -->
                   <td colspan="3" scope="colgroup" class="px-2 pt-2  border-accents2-dark border-solid border-1">Nombre</td>
                 </tr>
-                <tr class="fold hidden mb-3 bg-fond rounded-b-lg ">
-                      <tr class="text-fond text-sm bg-accents2-light font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hover:bg-accents2-dark">
+                <tr class="fold mb-3 bg-fond rounded-b-lg hidden">
+                      <tr class="fold text-fond text-sm bg-accents2-light font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hover:bg-accents2-dark hidden">
                         <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Famille</td>
                         <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Date de demande</td>
                         <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Statut</td>
                       </tr>
                       <% animal.demandes.forEach(demande => { %>
-                      <tr>
+                      <tr class="fold text-sm font-body hidden">
                         <td colspan="2"><%= demande.nom %></td>
                         <td colspan="2"><%= demande.Demande.date_debut %></td>
-                        <td colspan="2"><a href=#><%= demande.Demande.statut_demande %></a></td>
+                        <td colspan="2"><a href='/associations/profil/demandes/<%= demande.id %>'><%= demande.Demande.statut_demande %></a></td>
                       </tr>
                       <% }) %>
                   </tr>
@@ -70,6 +70,6 @@
 </div>
 </main>
 
-<script src="/utils/dashboardAssoSuiviAccueil.js"></script>
+<script src="/utils/dashboardAssoSuiviDemande.js"></script>
 
 <%- include('partials/footer') %>

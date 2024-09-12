@@ -121,6 +121,7 @@ const associationController = {
         /* Sequelize Lazy Loading ? (Je crois) */
     },
 
+    /* Afficher le profil (dashboard) d'une association */
     async displayDashboard(req,res,next){
         
         //! A REMPLACER PAR REQ.SESSION.USERID !!
@@ -183,6 +184,36 @@ const associationController = {
         })
 
         res.render('profilAssociationDemande', { association, requestedAnimals });
+    },
+
+    /* Afficher les détails d'une demande en cours */
+    async dashboardRequestsDisplayOne(req,res) {
+        const associationId = 1;
+        const association = await Association.findByPk(associationId);
+                    
+        if (!association) {
+            return next();
+        }
+
+        const requestId = req.params.id;
+
+        const request = await Demande.findByPk(requestId);
+
+        const famille = await Famille.findOne({
+            where: { id : request.famille_id},
+            include : ['identifiant_famille']
+        })
+
+        const animal = await Animal.findOne({
+            where : { id : request.animal_id},
+            include : ['espece', 'tags', 'images_animal']
+        })
+
+        console.log("Request " + request);
+        console.log('Famille' + famille);
+        console.log("Animal : " + animal );
+
+        res.render('profilAssociationDemandeSuivi', { association, request, famille, animal })
     },
     
     async dashboardAnimaux(req,res,next){

@@ -18,15 +18,14 @@
       <div class=#>
         <h4>Nom Animal</h4>
         <p><%= animal.nom %></p>
-        <button class=#>v</button>
 
         <div>
-          <img src=# alt="Photo de <%= animal.nom %>">
+          <img src=<%= animal.images_animal[0].url %> alt="Photo de <%= animal.nom %>">
 
           <a href="/animaux/<%= animal.id %>">Détails</a>
 
           <h6>Espèce</h6>
-            <p><%= animal.espece %></p>
+            <p><%= animal.espece.nom %></p>
 
           <h6>Sexe</h6>
             <p><%= animal.sexe %></p>
@@ -37,7 +36,7 @@
           <h6>Age</h6>
             <p><%= animal.age %>&nbsp;ans</p>
 
-          <% tags.forEach(tag => { %>
+          <% animal.tags.forEach(tag => { %>
             <button><%= tag.nom %></button>
           <% }) %>
         </div>
@@ -46,28 +45,28 @@
       
       <div class=#>
         <h4>Famille d'accueil</h4>
-        <p>Famille <%= animal.accueillant.nom %></p>
+        <p>Famille <%= famille.nom %></p>
         <button class=#>v</button>
 
         <div>
           <h5>Coordonnées</h5>
           <h6>Nom</h6>
-            <p><%= animal.accueillant.nom %></p>
+            <p><%= famille.nom %></p>
 
           <h6>Adresse</h6>
-            <p><%= animal.accueillant.rue %>&nbsp;<%= animal.accueillant.code_postal %>&nbsp;<%= animal.accueillant.commune %></p>
+            <p><%= famille.rue %>&nbsp;<%= famille.code_postal %>&nbsp;<%= famille.commune %></p>
 
           <h6>Pays</h6>
-            <p><%= animal.accueillant.pays %></p>
+            <p><%= famille.pays %></p>
           
           <h6>Téléphone</h6>
-            <p><%= animal.accueillant.telephone %></p>
+            <p><%= famille.telephone %></p>
           
           <h6>e-mail</h6>
-            <p><%= animal.accueillant.email %></p>
+            <p><%= famille.identifiant_famille.email %></p>
         
           <h6>Hébergement</h6>
-            <p><%= animal.accueillant.hebergement %></p>
+            <p><%= famille.hebergement %></p>
         </div>
 
       </div>
