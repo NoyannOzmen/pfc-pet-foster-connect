@@ -7,6 +7,7 @@ const app = express();
 
 import { router } from './src/routers/router.js';
 import { errorHandler, notFound } from './src/middlewares/errorHandlers.js';
+import { userMiddleware } from './src/middlewares/user.js';
 
 app.use(
     cors({
@@ -30,6 +31,8 @@ app.use(
         secret: process.env.SESSION_SECRET,
     })
 );
+
+app.use(userMiddleware);
 
 app.use(router);
 

@@ -117,13 +117,13 @@ export const sessionController = {
         
         if(found === null) {
             if (!emailValidator.validate(email)) {
-                return res.render('/famille/inscription', {
-                    error: "Cet email n'est pas valide.",
+                return res.render('inscriptionFamille', {
+                    errorMessage: "Cet email n'est pas valide.",
                 });
             }
             // verifier si password correspond à password confirm
             if (mot_de_passe !== confirmation) {
-                return res.render('/famille/inscription', {
+                return res.render('inscriptionFamille', {
                     errorMessage:
                     'La confirmation du mot de passe ne correspond pas au mot de passe renseigné.',
                 });

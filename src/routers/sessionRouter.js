@@ -6,10 +6,10 @@ const sessionRouter = Router();
 
 /* routes connexion */
 sessionRouter.get('/connexion', catchErrors(sessionController.displayLogin));
-sessionRouter.post('/connexion', catchErrors(sessionController.logIn));
+sessionRouter.post('/connexion', catchErrors(sessionController.login));
 
 /* route déconnexion */
-sessionRouter.get('deconnexion', catchErrors(sessionController.logOut));
+sessionRouter.get('/deconnexion', catchErrors(sessionController.logOut));
 
 /* routes inscription famille d'accueil */
 sessionRouter.get('/famille/inscription', catchErrors(sessionController.displayFosterSignIn));
