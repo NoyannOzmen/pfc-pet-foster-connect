@@ -24,7 +24,6 @@ const associationController = {
     },
     
     /* Liste des associations RECHERCHEES */
-    
     async getSearched(req,res) {
         const species = req.body.espece;
         const departement = req.body.dptSelect;

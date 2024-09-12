@@ -3,6 +3,7 @@ import express from 'express';
 import session from 'express-session';
 import cors from 'cors';
 import multer from 'multer';
+import path from 'path';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 app.use(express.static("./src/assets"));
+app.use(express.urlencoded({extended: true}));
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -50,8 +52,6 @@ const upload = multer({
   }
 } 
 
-app.use(express.urlencoded({extended:true}));
-
 app.use(
     session({
         saveUninitialized: true,
@@ -70,7 +70,7 @@ app.post('/upload/logo', (req, res) => {
         return res.status(400).json({ error: 'Please send file' });
       }
       console.log(req.file);
-      res.redirect('/association/inscription')
+      res.redirect('/')
 /*       res.send('File uploaded!'); */
   });
 });
