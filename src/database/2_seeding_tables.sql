@@ -98,7 +98,7 @@ VALUES
   ( 18, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 13, NULL ),
   ( 19, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 2 ),
   ( 20, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 3 ),
-  ( 2, 'https://www.refuge-a-chats.io', 1, NULL, 1)
+  ( 2, 'https://cdn-icons-png.flaticon.com/512/8183/8183261.png', 1, NULL, 1)
 ;
 
 INSERT INTO "tag"

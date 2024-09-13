@@ -1,16 +1,20 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-  <section class="flex flex-col p-12 mx-auto">
+  <section class="flex flex-col pt-12 mx-auto">
 		<h2 class="font-grands text-center my-6 pb-4"><%= animal.nom %></h2>
 
-<!-- 		<div>
-			<% for( let i = 0; i < animal.images_animal.length; i++ ) { %>
-			<img src="<%= animal.images_animal[i].url %>" alt="Photo n° <%= i %> de <%= animal.nom %>">
-			<% } %>
-		</div> -->
+			
+<!-- 		<% if (animal.images_animal.length > 1) { %>
+			<div>
+				<% for( let i = 0; i < animal.images_animal.length; i++ ) { %>
+				<img src="<%= animal.images_animal[i].url %>" alt="Photo n° <%= i %> de <%= animal.nom %>">
+				<% } %>
+			</div>
+		<% } %>	 -->
+
 		<div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
-			<img src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+			<img class="mx-auto my-2" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
 		</div>
 
 
@@ -22,7 +26,12 @@
 				<% if (animal.tags.length > 0 ) { %>
 					<div class="text-center w-full py-2">
 						<% animal.tags.forEach(tag => { %>
-						<button class="p-1 rounded-lg bg-accents1-dark text-fond text-center"><%= tag.nom %></button>
+						<button class="group p-1 rounded-lg bg-accents1-dark text-fond text-center">
+							<%= tag.nom %>
+							<span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute px-2 py-2 text-xs rounded-b-xl rounded-tr-xl">
+								<%= tag.description  %>
+							</span>
+						</button>
 						<% }) %>
 					</div>
 				<% } %>
@@ -44,7 +53,7 @@
 				</div>
 
 				<div class="text-center w-full py-2">
-					<p class="font-body text-texte"><%= animal.description %></p>
+					<p class="font-body text-texte">Son petit truc en plus :<br><%= animal.description %></p>
 				</div>
 
 				<div class="text-center w-full py-2">
@@ -59,12 +68,13 @@
 	<!-- Mini association profile -->
 	<section class="flex flex-col p-12 mx-auto">
 		<article class="p-4 font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800">
-			<h3 class="font-grands text-3xl text-center my-2 pt-5 w-full"><%= animal.refuge.nom %></h3>
+			<h3 class="font-grands text-3xl text-center my-2 pt-5 w-full"><%= animal.nom %><br>vous attend chez<br><%= animal.refuge.nom %></h3>
 
-			<div class="font-body mx-auto w-[80%] rounded-lg my-4">
-				<img src="<%= animal.refuge.images_association[0].url %>" alt="Logo de <%= animal.refuge.nom %>">
-			</div>
-
+			<% if (animal.refuge.images_association.length > 0) { %>
+				<div class="font-body mx-auto w-[80%] rounded-lg my-4">
+					<img src="<%= animal.refuge.images_association[0].url %>" alt="Logo de <%= animal.refuge.nom %>">
+				</div>
+			<% } %>
 			<div class="text-center w-full py-2">
 				<p class="font-body text-texte">Adresse : <%= animal.refuge.rue %>,&nbsp;<%= animal.refuge.code_postal %>,&nbsp;<%= animal.refuge.commune%>,&nbsp;<%= animal.refuge.pays %></p>
 				<p class="font-body text-texte">Téléphone : <%= animal.refuge.telephone %></p>
