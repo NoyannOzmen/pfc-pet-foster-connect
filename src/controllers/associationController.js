@@ -138,7 +138,7 @@ const associationController = {
     async displayDashboard(req,res,next){
         
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         
         const association = await Association.findByPk(associationId);
         
@@ -149,7 +149,7 @@ const associationController = {
     async update(req,res) {
            /*  const associationId = req.params.id; */
                     //! A REMPLACER PAR REQ.SESSION.USERID !!
-            const associationId = 1;
+            const associationId = req.params.id;
             const association = await Association.findByPk(associationId);
             
             if (!association) {
@@ -173,7 +173,7 @@ const associationController = {
             console.log('success')
             console.log(updatedAssociation);
             //! A REMPLACER PAR REQ.SESSION.USERID !!
-            res.redirect("/associations/profil")
+            res.redirect("/associations/profil/" + associationId)
             
     },
 
@@ -181,7 +181,7 @@ const associationController = {
     async dashboardRequests(req,res) {
         /*  const associationId = req.params.id; */
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         const association = await Association.findByPk(associationId);
                     
         if (!association) {
@@ -201,7 +201,7 @@ const associationController = {
 
     /* Afficher les détails d'une demande en cours */
     async dashboardRequestsDisplayOne(req,res) {
-        const associationId = 1;
+        const associationId = req.params.id;
         const association = await Association.findByPk(associationId);
                     
         if (!association) {
@@ -263,7 +263,7 @@ const associationController = {
     async dashboardAnimaux(req,res,next){
         
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         
         const animals = await Animal.findAll({
             include: [
@@ -290,7 +290,7 @@ const associationController = {
     },
     async dashboardAnimauxSuivi (req, res ,next) {
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         
         const animals = await Animal.findAll({
             where : {statut:'Accueilli'},

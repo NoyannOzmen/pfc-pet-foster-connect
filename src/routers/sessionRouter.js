@@ -6,7 +6,7 @@ const sessionRouter = Router();
 
 /* routes connexion */
 sessionRouter.get('/connexion', catchErrors(sessionController.displayLogin));
-sessionRouter.post('/connexion', catchErrors(sessionController.login));
+sessionRouter.post('/connexion', catchErrors(sessionController.logIn));
 
 /* route déconnexion */
 sessionRouter.get('/deconnexion', catchErrors(sessionController.logOut));

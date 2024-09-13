@@ -34,14 +34,14 @@ associationRouter.post('/associations/:id(\\d+)/animals',[auth,isRole.associatio
 
 //* ROUTES AUTHENTIFIEES
 
-associationRouter.get('/associations/profil/animaux', associationController.dashboardAnimaux);
+associationRouter.get('/associations/profil/animaux', auth, isRole.association, associationController.dashboardAnimaux);
 
-associationRouter.get('/associations/profil/animaux/suivi', associationController.dashboardAnimauxSuivi);
+associationRouter.get('/associations/profil/animaux/suivi', auth, isRole.association, associationController.dashboardAnimauxSuivi);
 
-associationRouter.get('/associations/profil/animaux/nouveau-profil', associationController.dashboardAnimauxAjouter);
+associationRouter.get('/associations/profil/animaux/nouveau-profil', auth, isRole.association, associationController.dashboardAnimauxAjouter);
 
 //Affichage des informations depuis le compte association
-associationRouter.get('/associations/profil', associationController.displayDashboard);
+associationRouter.get('/associations/profil', auth, isRole.association, associationController.displayDashboard);
 
 //Mise à jour des informations depuis le compte association
 associationRouter.post('/associations/profil', catchErrors(associationController.update));
