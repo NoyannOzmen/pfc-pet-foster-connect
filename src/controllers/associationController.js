@@ -60,6 +60,7 @@ const associationController = {
                 'images_association',
                 'identifiant_association',
                 { model : Animal, as : "pensionnaires",
+                    where : { statut : "En refuge"},
                     include: ['images_animal', 'espece'] }
             ]
         });
