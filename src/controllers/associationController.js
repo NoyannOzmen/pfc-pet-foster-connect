@@ -30,11 +30,12 @@ const associationController = {
         const shelter_nom = req.body.shelterNom;
         
         const especes = await Espece.findAll();
-        
+        //* TO-DO : Mieux gérer les critères de filtrage
         const associations = await Association.findAll({
             include : [ 
                 'images_association',
-                { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }],
+                { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }
+            ],
             where : {
                 [Op.or] : [
                     { nom : shelter_nom},               
@@ -59,6 +60,7 @@ const associationController = {
                 'images_association',
                 'identifiant_association',
                 { model : Animal, as : "pensionnaires",
+                    where : { statut : "En refuge"},
                     include: ['images_animal', 'espece'] }
             ]
         });

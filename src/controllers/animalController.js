@@ -57,15 +57,16 @@ export const animalController = {
         
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
-        
+        //* TO-DO : Mieux gérer les critères de filtrage.
         const animals = await Animal.findAll({
-            include : [ 
+            include : [
+                "espece",
+                "images_animal",
                 { model : Association, as : "refuge"},
-                { model : Espece, as : "espece" },
                 { model : Tag, as : "tags" }
             ],
             where : {
-                [Op.and] : [
+                [Op.or] : [
                     { '$espece.nom$' : especeDropdown },
                     { sexe : sexe },             
                     { '$refuge.code_postal$' : { [Op.startsWith] : dptSelect }},
