@@ -148,6 +148,23 @@ export const sessionController = {
         }
     },
 
+    async displayProfile(req, res, next){
+        
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const familleId = req.params.id;
+        
+        const famille = await Famille.findByPk(familleId, {
+            include : 'identifiant_famille'
+        });
+        
+        if( !famille) {
+            next()
+        };
+        const especes = await Espece.findAll();
+
+        res.render('profilFamilleInfos', { famille, especes });
+    },
+
     async fosterUpdate(req,res) {
         const familleId = req.params.id;
         const famille = await Famille.findByPk(familleId);
@@ -168,7 +185,7 @@ export const sessionController = {
         });
         console.log('success')
         console.log(updatedFamille);
-        res.redirect("/famille/" + familleId)
+        res.redirect("/famille/profil/" + familleId)
     }, 
 
     async fosterDestroy(req, res, next) {
@@ -176,7 +193,7 @@ export const sessionController = {
         const familleId = req.params.id;
         const famille = await Famille.findByPk(familleId);
 
-        const user = await Utilisateur.findByPk({
+        const user = await Utilisateur.findOne({
             where : { id: famille.utilisateur_id }
         })
 
@@ -184,17 +201,10 @@ export const sessionController = {
             // Si pas entier ou pas existant dans la BDD => 404
             return next();
         };
-
-        const ok = confirm(
-            'Voulez-vous vraiment supprimer votre profil ? Cette action est irréversible !'
-          );
-
-        if (ok) {
-            await famille.destroy();
-            await user.destroy();
-            req.session.destroy();
-            res.redirect('/')
-        }
+        await famille.destroy();
+        await user.destroy();
+        req.session.destroy();
+        res.redirect('/')
     },
 
     async displayShelterSignIn(req,res) {
@@ -272,17 +282,17 @@ export const sessionController = {
     },
 
     async shelterDestroy(req, res, next) {
-        //*Vérification que l'utilisateur.ice connecté.e est bien cellui qui doit être supprimé.e
+/*         //*Vérification que l'utilisateur.ice connecté.e est bien cellui qui doit être supprimé.e
         //* (on ne veut pas que n'importe qui puisse supprimer un compte asso)    
         if (!(parseInt(req.session.id)===parseInt(req.params.id))){    
             res.status=401;
             return next(new Error('Unauthorized'))               
-        }
+        } */
         // Récupérer l'Id de l'asso à supprimer
         const assoId = req.params.id;
         const asso = await Association.findByPk(assoId);
 
-        const user = await Utilisateur.findByPk({
+        const user = await Utilisateur.findOne({
             where : { id: asso.utilisateur_id }
         })
 
@@ -291,15 +301,9 @@ export const sessionController = {
             return next();
         };
 
-        const ok = confirm(
-            'Voulez-vous vraiment supprimer votre profil ? Cette action est irréversible !'
-          );
-
-        if (ok) {
-            await asso.destroy();
-            await user.destroy();
-            req.session.destroy();
-            res.redirect('/')
-        }
+        await asso.destroy();
+        await user.destroy();
+        req.session.destroy();
+        res.redirect('/')
     },   
 };

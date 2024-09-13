@@ -15,16 +15,18 @@ sessionRouter.get('deconnexion', catchErrors(sessionController.logOut));
 /* Inscription famille d'accueil */
 sessionRouter.get('/famille/inscription', catchErrors(sessionController.displayFosterSignIn));
 sessionRouter.post('/famille/inscription', catchErrors(sessionController.fosterSignIn));
+/* Profil Famille */
+sessionRouter.get('/famille/profil/:id(\\d)', catchErrors(sessionController.displayProfile));
 /* Update des informations */
-sessionRouter.post('/famille/:id(\\d+)', catchErrors(sessionController.fosterUpdate));
+sessionRouter.post('/famille/profil/:id(\\d+)', catchErrors(sessionController.fosterUpdate));
 /* Suppression du compte */
-sessionRouter.post('/famille/:id(\\d+)/delete', catchErrors(sessionController.fosterDestroy));
+sessionRouter.post('/famille/profil/:id(\\d+)/delete', catchErrors(sessionController.fosterDestroy));
 
 //* ASSOCIATION
 /* Inscription association */
 sessionRouter.get('/association/inscription', catchErrors(sessionController.displayShelterSignIn));
 sessionRouter.post('/association/inscription', catchErrors(sessionController.shelterSignIn));
 
-sessionRouter.post('/association/:id(\\d+)/delete', catchErrors(sessionController.shelterDestroy));
+sessionRouter.post('/association/profil/:id(\\d+)/delete', catchErrors(sessionController.shelterDestroy));
 
 export { sessionRouter };

@@ -14,7 +14,7 @@
   <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
     <h3 class="font-grands text-3xl text-center my-2 pt-5">Mon profil</h3>
 
-    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/<%= famille.id %>" method="POST">
+    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/profil/<%= famille.id %>" method="POST">
       
       <fieldset class="w-[60%] font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
         <legend class="text-center">Mes informations&nbsp;<span class="material-symbols-outlined">edit</span></legend>
@@ -78,7 +78,7 @@
       <button class="hidden w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider les modifications</button>
         
     </form>
-    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/<%= famille.id %>/delete" method="POST">
+    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/profil/<%= famille.id %>/delete" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre profil ? Cette action est irréversible !')">
       <button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Supprimer mon profil</button>
       <p class="text-center w-full">ATTENTION ! Cette suppression est définitive !</p>
     </form>

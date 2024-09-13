@@ -75,18 +75,22 @@ const associationController = {
     async displayDashboard(req,res,next){
         
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         
         const association = await Association.findByPk(associationId);
+
+        if (association) {
+            next();
+        }
         
         res.render('profilAssociationInfos', { association });
     },
 
     /* MàJ Asso */
     async update(req,res) {
-           /*  const associationId = req.params.id; */
-                    //! A REMPLACER PAR REQ.SESSION.USERID !!
-            const associationId = 1;
+            /*  const associationId = req.params.id; */
+            //! A REMPLACER PAR REQ.SESSION.USERID !!
+            const associationId = req.params.id;
             const association = await Association.findByPk(associationId);
             
             if (!association) {
@@ -117,7 +121,7 @@ const associationController = {
     async dashboardAnimaux(req,res,next){
         
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         
         const animals = await Animal.findAll({
             include: [
@@ -142,9 +146,10 @@ const associationController = {
         
         res.render('profilAssociationAnimauxListe',{ animals });
     },
+
     async dashboardAnimauxSuivi (req, res ,next) {
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         
         const animals = await Animal.findAll({
             where : {statut:'Accueilli'},
@@ -178,22 +183,18 @@ const associationController = {
     },
     
     async dashboardAnimauxAjouter (req, res, next) {
+        const associationId = req.params.id;
 
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
 
-
-
         res.render('profilAssociationAnimauxAjouter', {especes,tags});
-
-
     },
 
     /* Afficher les demandes en cours */
     async dashboardRequests(req,res) {
-        /*  const associationId = req.params.id; */
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = 1;
+        const associationId = req.params.id;
         const association = await Association.findByPk(associationId);
                     
         if (!association) {
@@ -213,14 +214,14 @@ const associationController = {
 
     /* Afficher les détails d'une demande en cours */
     async dashboardRequestsDisplayOne(req,res) {
-        const associationId = 1;
+        const associationId = req.params.assoId;
         const association = await Association.findByPk(associationId);
                     
         if (!association) {
             return next();
         }
 
-        const requestId = req.params.id;
+        const requestId = req.params.demandeId;
 
         const request = await Demande.findOne({
             where : { id :requestId } });
@@ -243,7 +244,8 @@ const associationController = {
     },
 
     async approveRequest(req,res) {
-        const requestId = req.params.id;
+        const associationId = req.params.assoId;
+        const requestId = req.params.demandeId;
 
         const request = await Demande.findByPk(requestId);
 
@@ -258,7 +260,8 @@ const associationController = {
     },
 
     async denyRequest(req,res) {
-        const requestId = req.params.id;
+        const associationId = req.params.assoId;
+        const requestId = req.params.demandeId;
 
         const request = await Demande.findByPk(requestId);
 
