@@ -36,7 +36,15 @@ Association.init(
     telephone: {
       type: DataTypes.TEXT,
       allowNull: false,
-    }
+    },
+    site : {
+      type: DataTypes.TEXT,
+      allowNull : true
+    },
+    description : {
+      type: DataTypes.TEXT,
+      allowNull : true
+    },
   },
   {
     sequelize: sequelize,

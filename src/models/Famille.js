@@ -5,6 +5,10 @@ class Famille extends Model {}
 
 Famille.init(
   {
+    prenom : {
+      type: DataTypes.TEXT,
+      allowNull : true
+    },
     nom: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -32,7 +36,11 @@ Famille.init(
     hebergement: {
       type: DataTypes.TEXT,
       allowNull: false,
-    }
+    },
+    terrain : {
+      type: DataTypes.TEXT,
+      allowNull : true
+    },
   },
   {
     sequelize: sequelize,

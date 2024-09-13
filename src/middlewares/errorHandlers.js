@@ -1,7 +1,6 @@
 export function notFound(req, res, next) {
-  const error = new Error("La ressource n'existe pas");
-  error.status = 404;
-  next(error);
+  res.render("404");
+  next();
 }
 
 export function errorHandler(error, req, res, next) {
