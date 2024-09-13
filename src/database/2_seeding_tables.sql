@@ -68,14 +68,14 @@ INSERT INTO "animal"
   INSERT INTO "demande"
   ("id","famille_id","animal_id","statut_demande","date_debut","date_fin")
   VALUES
-  (1,1,2,'En attente', '01/01/2000','30/01/2010'),
-  (2,1,3,'En attente',' 01/01/2000','30/01/2010'),
-  (3,1,5,'En attente', ' 01/01/2000','30/01/2010'),
-  (4,1,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (5,2,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (6,3,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (7,4,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (8,4,8,'En attente', ' 01/01/2000','30/01/2010')
+  (1,1,2,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (2,1,3,'En attente',TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (3,1,5,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (4,1,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (5,2,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (6,3,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (7,4,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (8,4,8,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY'))
   ;
 
 INSERT INTO "media"
