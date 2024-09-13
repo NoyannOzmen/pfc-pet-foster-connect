@@ -248,11 +248,32 @@ const associationController = {
                 
                 const request = await Demande.findByPk(requestId);
                 
-                const updatedRequest = await request.update({
+                await request.update({
                     statut_demande : 'Validée'
                 });
-                await updatedRequest.save();
-
+                await request.save();
+                
+                
+                const otherRequests = await Demande.findAll({
+                    where :{
+                        animal_id:request.animal_id,
+                        [Op.not]: {
+                            id : parseInt(req.params.id)
+                        }
+                    }
+                });
+        
+                
+                for (const demande of otherRequests) {
+                    
+                    await demande.update({
+                        statut_demande:"Refusée"
+                    });
+                    
+                    await demande.save();
+                    
+                }
+                
                 const animal = await Animal.findByPk(request.animal_id);
                 await animal.update({famille_id:request.famille_id});
                 await animal.save();
@@ -338,7 +359,7 @@ const associationController = {
             async dashboardAnimalDetail (req,res,next) {
                 
                 //! A RECUPERER DEPUIS LA SESSION EN PROD!!!!
-               const associationId=1;
+                const associationId=1;
                 
                 
                 const animal = await Animal.findByPk(
@@ -362,7 +383,7 @@ const associationController = {
                         ]
                     });
                     
-                   // res.send(animal);
+                    // res.send(animal);
                     res.render('profilAssociationAnimauxDetail', {animal});
                     
                     
