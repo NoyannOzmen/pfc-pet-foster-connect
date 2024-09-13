@@ -63,19 +63,17 @@ INSERT INTO "animal"
   (13, 'Chachacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1)
 ;
 
-
-
-  INSERT INTO "demande"
+INSERT INTO "demande"
   ("id","famille_id","animal_id","statut_demande","date_debut","date_fin")
   VALUES
-  (1,1,2,'En attente', '01/01/2000','30/01/2010'),
-  (2,1,3,'En attente',' 01/01/2000','30/01/2010'),
-  (3,1,5,'En attente', ' 01/01/2000','30/01/2010'),
-  (4,1,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (5,2,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (6,3,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (7,4,3,'En attente', ' 01/01/2000','30/01/2010'),
-  (8,4,8,'En attente', ' 01/01/2000','30/01/2010')
+  (1,1,2,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (2,1,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (3,1,5,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (4,1,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (5,2,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (6,3,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (7,4,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (8,4,8,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY'))
   ;
 
 INSERT INTO "media"
@@ -100,11 +98,6 @@ VALUES
   ( 18, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 13, NULL ),
   ( 19, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 2 ),
   ( 20, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 3 ),
-
-
-
-
-
   ( 2, 'https://www.refuge-a-chats.io', 1, NULL, 1)
 ;
 
@@ -118,9 +111,9 @@ VALUES
   ( 5,'Maudit', 'Nécessite des ajustements particuliers')
 ;
 
-  INSERT INTO "animal_tag"
+INSERT INTO "animal_tag"
   ("id","animal_id","tag_id")
-  VALUES 
+VALUES 
   (1,1,1),
   (2,8,5),
   (3,8,4),

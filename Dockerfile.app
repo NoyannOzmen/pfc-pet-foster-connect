@@ -13,6 +13,9 @@ RUN npm i
 # Copie du code dans le conteneur
 COPY . .
 
+# Rebuilde l'output.css
+RUN npx tailwindcss -i /usr/src/app/src/assets/css/style.css -o /usr/src/app/src/assets/css/output.css
+
 # On expose le port 3000
 EXPOSE 3000
 
