@@ -22,6 +22,4 @@ familleRouter.post('/famille/:id(\\d+)/animals', catchErrors(familleController.a
 //Affichage des demandes réalisé par une famille - ok
 familleRouter.get('/famille/:id(\\d+)/requests', catchErrors(familleController.getAllRequests));
 
-familleRouter.get('/famille/profil', auth, isRole.famille, familleController.getOne);
-
 export { familleRouter };

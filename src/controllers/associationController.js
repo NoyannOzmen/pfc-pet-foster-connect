@@ -73,9 +73,8 @@ const associationController = {
 
     /* Afficher le profil (dashboard) d'une association */
     async displayDashboard(req,res,next){
-        
-        //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = req.params.id;
+
+        const associationId = req.session.userId;
         
         const association = await Association.findByPk(associationId);
 
@@ -119,9 +118,7 @@ const associationController = {
     },
     
     async dashboardAnimaux(req,res,next){
-        
-        //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = req.params.id;
+        const associationId = req.session.userId;
         
         const animals = await Animal.findAll({
             include: [
@@ -148,8 +145,7 @@ const associationController = {
     },
 
     async dashboardAnimauxSuivi (req, res ,next) {
-        //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = req.params.id;
+        const associationId = req.session.userId;
         
         const animals = await Animal.findAll({
             where : {statut:'Accueilli'},
@@ -183,9 +179,6 @@ const associationController = {
     },
     
     async dashboardAnimauxAjouter (req, res, next) {
-        //! REQ.SESSION
-        const associationId = req.params.id;
-
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
 
@@ -194,8 +187,7 @@ const associationController = {
 
     /* Afficher les demandes en cours */
     async dashboardRequests(req,res) {
-        //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const associationId = req.params.id;
+        const associationId = req.session.userId;
         const association = await Association.findByPk(associationId);
                     
         if (!association) {
@@ -215,8 +207,7 @@ const associationController = {
 
     /* Afficher les détails d'une demande en cours */
     async dashboardRequestsDisplayOne(req,res) {
-        //! REQ.SESSION
-        const associationId = req.params.assoId;
+        const associationId = req.session.userId;
         const association = await Association.findByPk(associationId);
                     
         if (!association) {
@@ -237,17 +228,11 @@ const associationController = {
             where : { id : request.animal_id},
             include : ['espece', 'tags', 'images_animal']
         })
-        /* 
-        console.log('Demande' + request )
-        console.log('Famille' + famille);
-        console.log("Animal : " + animal ); */
 
         res.render('profilAssociationDemandeSuivi', { association, request, famille, animal })
     },
 
     async approveRequest(req,res) {
-        //! REQ.SESSION
-        const associationId = req.params.assoId;
         const requestId = req.params.id;
 
         const request = await Demande.findByPk(requestId);
@@ -263,8 +248,6 @@ const associationController = {
     },
 
     async denyRequest(req,res) {
-        //! REQ.SESSION
-        const associationId = req.params.assoId;
         const requestId = req.params.id;
 
         const request = await Demande.findByPk(requestId);
