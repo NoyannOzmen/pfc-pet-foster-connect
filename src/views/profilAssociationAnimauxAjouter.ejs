@@ -75,9 +75,9 @@
           
           <fieldset class="flex flex-wrap justify-center content-start gap-x-4"">
             
-            <div class="mb-2">
-              <label for="espece-animal" class="block font-grands font-bold text-base ">Espèce</label>
-              <select name="espece-animal" id="espece-animal" class="custom-select w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond ">
+            <div class="mb-2 md:shrink md:grow-0 self-start">
+              <label for="espece_animal" class="block font-grands font-bold text-base ">Espèce</label>
+              <select name="espece_animal" id="espece_animal" class="custom-select w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond ">
                 <option value="">Choisissez</option>
                   <% especes.forEach(espece => { %>
                     <option value="<%= espece.id %>"> <%= espece.nom %></option>
@@ -87,7 +87,7 @@
                 
                 <div class="mb-2">
                   <label for="race_animal" class="block font-grands font-bold text-base ">Race</label>
-                  <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="race_animal" id="race_animal" required>
+                  <input class="w-56 rounded-md h-8 px-2 py-1 text-texte bg-fond " type="text" name="race_animal" id="race_animal">
                 </div>
                 <div class="mb-2">
                   <label for="couleur_animal" class="block font-grands font-bold text-base ">Couleur</label>

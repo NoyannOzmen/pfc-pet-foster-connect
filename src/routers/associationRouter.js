@@ -25,6 +25,8 @@ associationRouter.get('/associations/profil)', associationController.displayDash
 //Mise à jour des informations depuis le compte association
 associationRouter.post('/associations/profil)', catchErrors(associationController.update));
 
+//* ROUTES AUTHENTIFIEES
+
 associationRouter.get('/associations/profil/animaux', associationController.dashboardAnimaux);
 
 associationRouter.get('/associations/profil/animaux/suivi', associationController.dashboardAnimauxSuivi);

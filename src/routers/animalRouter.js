@@ -4,6 +4,7 @@ import { animalController } from "../controllers/animalController.js";
 import { catchErrors } from "../middlewares/catchErrors.js";
 import { auth } from "../middlewares/auth.js";
 import { isRole } from "../middlewares/isRole.js";
+import { Demande } from "../models/Demande.js";
 
 const animalRouter = Router();
 
