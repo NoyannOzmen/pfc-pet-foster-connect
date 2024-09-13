@@ -189,7 +189,7 @@ export const sessionController = {
     }, 
 
     async fosterDestroy(req, res, next) {
-        // Récupérer l'Id de la famille à supprimer
+        //! Récupérer l'Id de la famille à supprimer AVEC REQ.SESSION
         const familleId = req.params.id;
         const famille = await Famille.findByPk(familleId);
 
@@ -288,7 +288,7 @@ export const sessionController = {
             res.status=401;
             return next(new Error('Unauthorized'))               
         } */
-        // Récupérer l'Id de l'asso à supprimer
+        //! Récupérer l'Id de l'asso à supprimer AVEC REQ.SESSION
         const assoId = req.params.id;
         const asso = await Association.findByPk(assoId);
 

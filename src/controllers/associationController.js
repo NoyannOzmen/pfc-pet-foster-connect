@@ -183,6 +183,7 @@ const associationController = {
     },
     
     async dashboardAnimauxAjouter (req, res, next) {
+        //! REQ.SESSION
         const associationId = req.params.id;
 
         const especes = await Espece.findAll();
@@ -214,6 +215,7 @@ const associationController = {
 
     /* Afficher les détails d'une demande en cours */
     async dashboardRequestsDisplayOne(req,res) {
+        //! REQ.SESSION
         const associationId = req.params.assoId;
         const association = await Association.findByPk(associationId);
                     
@@ -244,8 +246,9 @@ const associationController = {
     },
 
     async approveRequest(req,res) {
+        //! REQ.SESSION
         const associationId = req.params.assoId;
-        const requestId = req.params.demandeId;
+        const requestId = req.params.id;
 
         const request = await Demande.findByPk(requestId);
 
@@ -260,8 +263,9 @@ const associationController = {
     },
 
     async denyRequest(req,res) {
+        //! REQ.SESSION
         const associationId = req.params.assoId;
-        const requestId = req.params.demandeId;
+        const requestId = req.params.id;
 
         const request = await Demande.findByPk(requestId);
 

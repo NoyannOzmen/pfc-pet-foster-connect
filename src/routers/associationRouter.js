@@ -20,28 +20,28 @@ associationRouter.get('/associations/:id(\\d+)', catchErrors(associationControll
 //* DASHBOARD
 
 //Affichage des informations depuis le compte association
-associationRouter.get('/associations/profil/:id(\\d)', associationController.displayDashboard);
+associationRouter.get('/associations/profil)', associationController.displayDashboard);
 
 //Mise à jour des informations depuis le compte association
-associationRouter.post('/associations/profil/:id(\\d)', catchErrors(associationController.update));
+associationRouter.post('/associations/profil)', catchErrors(associationController.update));
 
-associationRouter.get('/associations/profil/:id(\\d)/animaux', associationController.dashboardAnimaux);
+associationRouter.get('/associations/profil/animaux', associationController.dashboardAnimaux);
 
-associationRouter.get('/associations/profil/:id(\\d)/animaux/suivi', associationController.dashboardAnimauxSuivi);
+associationRouter.get('/associations/profil/animaux/suivi', associationController.dashboardAnimauxSuivi);
 
-associationRouter.get('/associations/profil/:id(\\d)/animaux/nouveau-profil', associationController.dashboardAnimauxAjouter);
+associationRouter.get('/associations/profil/animaux/nouveau-profil', associationController.dashboardAnimauxAjouter);
 
 //Affichage du tableau de récapitulatif des demandes
-associationRouter.get('/associations/profil/:id(\\d)/demandes', associationController.dashboardRequests);
+associationRouter.get('/associations/profil/demandes', associationController.dashboardRequests);
 
 //Affichage du détail d'une demande d'accueil
-associationRouter.get('/associations/profil/:assoId(\\d)/demandes/:demandeId(\\d+)', associationController.dashboardRequestsDisplayOne)
+associationRouter.get('/associations/profil/demandes/:id(\\d+)', associationController.dashboardRequestsDisplayOne)
 
 //Valider une demande d'accueil
-associationRouter.post('/associations/profil/:assoId(\\d)/demandes/:demandeId(\\d+)/accept', associationController.approveRequest);
+associationRouter.post('/associations/profil/demandes/:id(\\d+)/accept', associationController.approveRequest);
 
 //Refuser une demande d'accueil
-associationRouter.post('/associations/profil/:assoId(\\d)/demandes/:demandeId(\\d+)/deny', associationController.denyRequest);
+associationRouter.post('/associations/profil/demandes/:id(\\d+)/deny', associationController.denyRequest);
 
 
 export { associationRouter };
