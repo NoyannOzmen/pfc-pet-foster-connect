@@ -24,7 +24,6 @@ const associationController = {
     },
     
     /* Liste des associations RECHERCHEES */
-    
     async getSearched(req,res) {
         const species = req.body.espece;
         const departement = req.body.dptSelect;
@@ -54,7 +53,15 @@ const associationController = {
         // * Est-ce suffisant pour garantir une sécurité ?
         const associationId = req.params.id;
         // Récupérer l'association' en BDD (avec potentiellement ses tags)
-        const association = await Association.findByPk(associationId);
+        const association = await Association.findByPk(associationId, {
+            include : [
+                'pensionnaires',
+                'images_association',
+                'identifiant_association',
+                { model : Animal, as : "pensionnaires",
+                    include: ['images_animal', 'espece'] }
+            ]
+        });
         // Si l'associaiton n'existe pas (ID=90000 => null) ==> 404
         if (!association) {
             return next();
