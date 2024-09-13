@@ -10,7 +10,7 @@ import { Op } from "sequelize";
 
 const associationController = {
     
-    /* Liste des associations */
+    //* Liste des associations
     async getAll(req, res) {
         // Récupérer toutes les associations en BDD
         const associations = await Association.findAll({
@@ -23,14 +23,14 @@ const associationController = {
         res.render("listeAssociations",{ associations, especes });
     },
     
-    /* Liste des associations RECHERCHEES */
+    //* Liste des associations RECHERCHEES
     async getSearched(req,res) {
         const species = req.body.espece;
         const departement = req.body.dptSelect;
         const shelter_nom = req.body.shelterNom;
         
         const especes = await Espece.findAll();
-        
+        //* TO-DO : Mieux gérer les critères de filtrage
         const associations = await Association.findAll({
             include : [ 
                 'images_association',

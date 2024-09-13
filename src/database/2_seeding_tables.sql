@@ -63,13 +63,11 @@ INSERT INTO "animal"
   (13, 'Chachacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1)
 ;
 
-
-
-  INSERT INTO "demande"
+INSERT INTO "demande"
   ("id","famille_id","animal_id","statut_demande","date_debut","date_fin")
   VALUES
   (1,1,2,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
-  (2,1,3,'En attente',TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
+  (2,1,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
   (3,1,5,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
   (4,3,8,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
   (5,2,3,'En attente', TO_DATE('01/01/2000','DD/MM/YYYY'),TO_DATE('30/01/2010','DD/MM/YYYY')),
@@ -100,12 +98,7 @@ VALUES
   ( 18, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 13, NULL ),
   ( 19, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 2 ),
   ( 20, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 3 ),
-
-
-
-
-
-  ( 2, 'https://www.refuge-a-chats.io', 1, NULL, 1)
+  ( 2, 'https://cdn-icons-png.flaticon.com/512/8183/8183261.png', 1, NULL, 1)
 ;
 
 INSERT INTO "tag"
@@ -118,9 +111,9 @@ VALUES
   ( 5,'Maudit', 'Nécessite des ajustements particuliers')
 ;
 
-  INSERT INTO "animal_tag"
+INSERT INTO "animal_tag"
   ("id","animal_id","tag_id")
-  VALUES 
+VALUES 
   (1,1,1),
   (2,8,5),
   (3,8,4),

@@ -7,7 +7,7 @@
     <form class="mx-auto my-3 text-texte" action="/animaux" method="POST">
         <div id="fullSearch" class="col-span-3 flex justify-around items-center">
           <h3 class="col-span-1 font-grands text-2xl my-2">Rechercher un animal</h3>
-          <select tabindex=0 class="col-span-3 text-xs block" id="espece-dropdown" name="especeDropdown" required>
+          <select tabindex=0 class="col-span-3 text-xs block" id="espece-dropdown-small" name="especeDropdown" required>
               <option value="" disabled selected hidden>--Choisissez une espèce--</option>
               <% especes.forEach(espece => { %>
                 <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
@@ -26,7 +26,7 @@
               <!-- Choix de l'espèce -->
               <div class="my-2">
                 <label class=# for="espece-dropdown">Espèce</label>
-                  <select tabindex=0 class="text-xs block" id="espece-dropdown" name="especeDropdown" required>
+                  <select tabindex=0 class="text-xs block" id="espece-dropdown" name="especeDropdown">
                     <option value="" disabled selected hidden>--Choisissez une espèce--</option>
                     <% especes.forEach(espece => { %>
                       <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
@@ -48,9 +48,9 @@
               <div class="my-2">
                 <p>Age :</p>
                 <label class=# for="age-min">De&nbsp;</label>
-                <input class=# id="age-min" name="minAge" type="number" tabindex=0  placeholder="1" min="0" max="100">
+                <input class=# id="age-min" name="minAge" type="number" tabindex=0  value="0" min="0" max="3999">
                 <label class=# for="age-max">&nbsp;à&nbsp;</label>
-                <input class=# id="age-max" name="maxAge" type="number" tabindex=0  placeholder="12" min="1" max="100">
+                <input class=# id="age-max" name="maxAge" type="number" tabindex=0  value="20" min="1" max="4000">
                 <label>&nbsp;ans.</label>
               </div>
             </div>
@@ -222,9 +222,11 @@
       <% animals.forEach(animal => { %>
 
         <div class="flex bg-zoning rounded-lg shadow dark:bg-gray-800 flex-row md:flex-col mx-auto my-2 w-[75%]">
-          <div class="relative w-full md:w-full flex justify-center items-center">
-            <img class="object-contain w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
-          </div>
+          <% if (animal.images_animal.length > 0 ) { %>
+            <div class="relative w-full md:w-full flex justify-center items-center">
+              <img class="object-contain w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+            </div>
+          <% } %>
           <div class="flex-auto text-center p-6">
             <div class="flex flex-wrap my-2">
               <h3 class="flex-auto text-xl font-semibold dark:text-gray-50"><%= animal.nom %></h3>

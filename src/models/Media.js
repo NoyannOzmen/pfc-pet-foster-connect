@@ -5,8 +5,14 @@ class Media extends Model {}
 
 Media.init(
   {
-    animal_id: DataTypes.INTEGER,
-    association_id: DataTypes.INTEGER,
+    animal_id: {
+      type : DataTypes.INTEGER,
+      allowNull : true,
+    },
+    association_id: {
+      type : DataTypes.INTEGER,
+      allowNull : true,
+    },
     url: {
       type: DataTypes.TEXT,
       allowNull: false,
