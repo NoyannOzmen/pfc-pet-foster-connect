@@ -218,4 +218,15 @@ SELECT
         )
     );
 
+SELECT
+    setval(
+        'demande_id_seq',
+        (
+            SELECT
+                MAX(id)
+            from
+                "demande"
+        )
+    );
+
 COMMIT;

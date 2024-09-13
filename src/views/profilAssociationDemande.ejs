@@ -1,72 +1,75 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-  <h2>Bienvenue sur votre espace personnel</h2>
-  
-  <nav class=#>
-    <ul>
-      <li><button class=#>Mon profil</button></li>
-      <li><button class=#>Demandes d'accueil</button></li>
-      <li><button class=#>Nos animaux</button></li>
-    </ul>
-  </nav>
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
+  <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40"> 
+    <nav class=#>
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
+        <li><button id="dashbtn-1" class="dashbtn"><a href="/associations/profil">Mon profil</a></button></li>
+        <li><button id="dashbtn-2" class="dashbtn dashbtn-active"><a href="/associations/profil/demandes">Demandes</a></button></li>
+        <li><button id="dashbtn-3" class="dashbtn"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
+      </ul>
+    </nav>
 
-  <section class=#>
-    <h3>Gestion des demandes d'accueil</h3>
+    <div class="flex flex-col bg-zoning rounded-lg">
 
-    <div class="container">
+      <section class="flex flex-wrap justify-center" id="dashboard-container">
+        <h3 class="w-full text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Gestion des demandes d'accueil</h3>
 
-      <div class="row">
-        <div class="col">
-          <% if (demandesList.length < 1) { %>
-            <h4>Pas de demandes d'accueil en attente</h4>
-          <% } else { %>
-            <h4>Demandes en cours</h4>
-          <% } %>
-    
-          <% if (demandesList.length > 0) { %>
-           
-          <table class="table">
-            <col>
-            <colgroup span="4"></colgroup>
-            <colgroup span="2"></colgroup>
+        <div class="container">
 
-            <tr>
-              <th colspan="4" scope="colgroup">Nom Animal</th>
-              <th colspan="2" scope="colgroup">Nombre de demandes</th>
-            </tr>
-            <% animals.forEach(animal => { %>
-              <% if (animals.demandesList.length >0 ) { %>
-              <tr>
-                <th colspan="4" scope="colgroup"><%= animal.nom %></th>
-                <!-- TO DO : Add Count for # of Requests-->
-                <!-- TO DO : Add JS for unfurling row -->
-                <th colspan="2" scope="colgroup"><%= animal.demande %> <button onclick="">v</button></th>
-              </tr>
-              <tr>
-                <table class=#>
-                  <tr>
-                    <th colspan="2">Famille</th>
-                    <th colspan="3">Date de demande</th>
-                    <th colspan="1">Statut</th>
-                  </tr>
-                  <% animal.demandes.forEach(demande => { %>
-                    <tr colspan="2"><%= demande.famille.nom %></tr>
-                    <tr colspan="3"><%= demande.date_debut %></tr>
-                    <tr colspan="1"><a href=#><%= demande.statut %></a></tr>
-                  <% }) %>
-                </table>
-              </tr>
+          <div class="row w-full text-center my-6">
+            <div class="col w-full text-center my-6">
+              <% if (requestedAnimals.length < 1) { %>
+                <h4 class="w-full text-center font-grands text-2xl font-semibold my-4">Pas de demandes d'accueil en attente</h4>
+              <% } else { %>
+                <h4 class="w-full text-center font-grands text-2xl font-semibold my-4">Demandes en cours</h4>
               <% } %>
-            <% }) %>
-          </table>
+        
+              <% if (requestedAnimals.length > 0) { %>
+              
+              <table class="table text-center w-full">
+                <col>
+                <colgroup span="3"></colgroup>
+                <colgroup span="3"></colgroup>
 
-          <% } %>
+                <tr class="border-none bg-zoning text-sm font-grands">
+                  <td colspan="3" scope="colgroup">Nom Animal</td>
+                  <td colspan="3" scope="colgroup">Nombre de demandes</td>
+                </tr>
+                <% requestedAnimals.forEach(animal => { %>
+                <tr class="view text-fond text-sm bg-accents2 font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hover:bg-accents2-dark">
+                  <td colspan="3" scope="colgroup" class="px-2 pt-2  border-accents2-dark border-solid border-1"><%= animal.nom %></td>
+                    <!-- TO DO : Add Count for # of Requests-->
+                    <!-- TO DO : Add JS for unfurling row -->
+                  <td colspan="3" scope="colgroup" class="px-2 pt-2  border-accents2-dark border-solid border-1">Nombre</td>
+                </tr>
+                <tr class="fold mb-3 bg-fond rounded-b-lg hidden">
+                      <tr class="fold text-fond text-sm bg-accents2-light font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hover:bg-accents2-dark hidden">
+                        <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Famille</td>
+                        <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Date de demande</td>
+                        <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Statut</td>
+                      </tr>
+                      <% animal.demandes.forEach(demande => { %>
+                      <tr class="fold text-sm font-body hidden">
+                        <td colspan="2"><%= demande.nom %></td>
+                        <td colspan="2"><%= demande.Demande.date_debut %></td>
+                        <td colspan="2"><a href='/associations/profil/demandes/<%= demande.Demande.id %>'><%= demande.Demande.statut_demande %></a></td>
+                      </tr>
+                      <% }) %>
+                  </tr>
+                <% }) %>
+              </table>
+
+              <% } %>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
-  </section>
-
+</div>
 </main>
+
+<script src="/utils/dashboardAssoSuiviDemande.js"></script>
 
 <%- include('partials/footer') %>

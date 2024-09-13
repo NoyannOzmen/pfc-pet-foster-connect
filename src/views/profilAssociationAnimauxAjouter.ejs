@@ -1,17 +1,16 @@
 <%- include('partials/header') %>
 
-<main class="justify-self-stretch flex-shrink-0 flex-grow flex flex-wrap justify-center">
-  
-  <h1 class="my-6 ml-4 mb-6 text-xl w-full">Mon espace association</h1>
+<main class="justify-self-stretch flex-1">
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
   
   <!-- Conteneur général qui contient tout le dashboard -->
-  <div class="flex flex-col content-center justify-center mx-4 mb-4 w-4/5 sm:w-3/4 md:w-2/3">
+  <div class="flex flex-col content-center justify-center mx-4 mb-4">
     
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button id="dashbtn-1" class="dashbtn ">Profil</button></li>
-        <li><button id="dashbtn-2" class="dashbtn">Demandes</button></li>
-        <li><button id="dashbtn-3" class="dashbtn dashbtn-active">Animaux</button></li>
+        <li><button id="dashbtn-1" class="dashbtn"><a href="/associations/profil">Mon profil</a></button></li>
+        <li><button id="dashbtn-2" class="dashbtn"><a href="/associations/profil/demandes">Demandes</a></button></li>
+        <li><button id="dashbtn-3" class="dashbtn dashbtn-active"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
       </ul>
     </nav>
     
@@ -20,7 +19,7 @@
       
       <nav class="rounded-lg">
         <ul class="rounded-t-lg flex bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start md:pl-8">
-          <li class=" rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/animaux">Nos animaux</a></li>
+          <li class="rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/animaux">Nos animaux</a></li>
           <li class="block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 "><a href="/associations/profil/animaux/suivi">Suivi accueils</a></li>
           <li class="dashsubbtn-active block grow text-right pr-2 py-2 rounded-tr-lg hover:underline md:grow-0 md:px-4 md:rounded-none md:border-r-solid md:border-r-2 md:border-r-zoning"><a href="/associations/profil/animaux/nouveau-profil">Créer un profil</a></li>
         </ul>

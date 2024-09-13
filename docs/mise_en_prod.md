@@ -21,3 +21,7 @@
 Nous avons deux services qui sont lancés par Docker compose :
     - le container pfc-application : basé sur une image de node et qui fait tourner le serveur web
     - le container pfc-databse : basé sur une image postgres et qui fait tourner le service de BDD
+
+Les scripts d'initialisation de la BDD ne se lanceront que si celle ci n'existe pas, si les scripts d'initialisation ont été modifiés il faut supprimer le volume docker. Pour cela
+`docker volume ls` --> lister les volumes
+`docker volume rm {nom du volume a supprimer}` --> supprimer le volume concerné (ici pg-pfc)
