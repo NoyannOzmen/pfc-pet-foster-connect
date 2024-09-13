@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-	<h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
+  <h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
   
   <!-- Conteneur général qui contient tout le dashboard -->
   <div class="flex flex-col content-center justify-center mx-4 mb-4 md:px-4">
@@ -25,7 +25,7 @@
         </ul>
       </nav>
       
-      <section class="flex flex-col justify-center content-center">
+      <section id="dahboard-container" class="flex flex-col justify-center content-center">        
         
         <!-- Titre caché pour le mobile -->
         
@@ -35,7 +35,7 @@
         
         <!-- INSERER ICI LA FONCTION RECHERCHE et TRI -->
         <form class="my-4 px-4 w-full flex justify-center" action="">
-
+          
           <label class="hidden">Recherche</label>
           <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
         </form>
@@ -46,14 +46,14 @@
             
             <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
             
-            <a data-animalId="<%= animal.id %>" class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="">
+            <a data-animalId="<%= animal.id %>" class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="/associations/profil/animaux/<%= animal.id %>">
               
               <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
               <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
               
               <p class="text-sm text-center font-semibold md:text-base"><%= animal.nom %></p>
               <div class="flex flex-wrap justify-between px-2 pt-0.5">
-
+                
                 <div class="w-full flex justify-around content-center">
                   <p class="text-xs italic md:text-base"> <%= animal.espece.nom %></p>
                   <p class="text-xs italic md:text-base"> <%= animal.statut %></p>
@@ -72,9 +72,70 @@
       
     </div>
   </main>
-
-
-
-<script src="/utils/dashboardAssoListeAnimal.js"></script>
   
-  <%- include('partials/footer') %>
+  <template id="animal-detail">
+    <div id="animal-detail__main-container">
+      
+      <!-- ANIMAL INFO CONTAINER -->
+      <div id="animal-info-container" class="">
+        <div class="w-full md:w-1/2">
+          
+          <h3 id="animal-info__nom" class="font-body font-bold"></h3>
+          
+          <div class="flex p-6 pb-4">
+            <div class="flex flex-col gap-2">
+              <img id="animal-info-image"  class="w-28 rounded-lg" src="" alt="">
+            </div>
+            
+            
+            <div class="grid grid-cols-2 px-6 gap-y-2">
+              
+              <div >
+                <p class="text-sm italic leading-3">Age</p>
+                <p id="animal-info-age" class="text-base font-semibold"></p>
+              </div>
+              
+              <div>
+                <p class="text-sm italic leading-3">Sexe</p>
+                <p id="animal-info-sexe" class="text-base font-semibold"></p>
+              </div>
+              
+              <div class="">
+                <p class="text-sm italic leading-3">Espèce</p>
+                <p id="animal-info-espece" class="text-base font-semibold"></p>
+              </div>
+              
+              <div>
+                <p class="text-sm italic leading-3">Race</p>
+                <p id="animal-info-race" class="text-base font-semibold"></p>
+              </div>
+            </div>
+            
+            
+            <div class="flex flex-wrap mt-4 px-6 gap-1">
+              
+              <p class="group rounded-full block bg-accents1 text-fond text-center text-xs font-semibold py-1 px-2">
+                <span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute px-2 py-2 text-xs rounded-b-xl rounded-tr-xl">
+                </span>
+              </p>
+              
+            </div>
+            
+          </div>  
+          
+        </div>
+        
+        <!-- HISTORIQUE ACCUEIL CONTAINER -->
+        <div></div>
+        
+        <!-- DEMANDES HISTORIQUE CONTAINER -->
+        <div></div>
+        
+      </div>
+      
+    </template>
+    
+    
+    <script src="/utils/dashboardAssoListeAnimal.js"></script>
+    
+    <%- include('partials/footer') %>
