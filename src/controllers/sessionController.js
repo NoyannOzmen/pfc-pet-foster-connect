@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import emailValidator from 'email-validator';
 
 import { Famille, Utilisateur, Association, Espece } from '../models/Models.js';
-import { Association } from 'sequelize';
 
 export const sessionController = {
     async displayLogin(req, res) {

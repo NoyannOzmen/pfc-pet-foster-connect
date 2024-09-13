@@ -1,4 +1,4 @@
-import { Animal, Association, Demande, Espece, Animal_Tag, Tag } from "../models/Models.js";
+import { Animal, Association, Demande, Espece, Tag } from "../models/Models.js";
 import { Op } from "sequelize";
 
 
