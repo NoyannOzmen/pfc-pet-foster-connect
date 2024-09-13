@@ -6,10 +6,9 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "db:reset": "psql -U pfcadmin -d pfc -f ./src/database/create_tables.sql; psql -U pfcadmin -d pfc -f ./src/database/seeding_tables.sql ",
+    "db:reset": "psql -U pfcadmin -d pfc -f ./src/database/1_create_tables.sql; psql -U pfcadmin -d pfc -f ./src/database/2_seeding_tables.sql ",
     "tailwind": "npx tailwindcss -i ./src/assets/css/style.css -o ./src/assets/css/output.css --watch",
     "tailwindProd":"npx tailwindcss -i ./src/assets/css/style.css -o ./src/assets/css/output.css"
-    
   },
   "keywords": [],
   "author": "",

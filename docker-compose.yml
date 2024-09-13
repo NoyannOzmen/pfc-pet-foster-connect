@@ -1,8 +1,8 @@
 # ATTENTION !!! Rebuild les container s'il y a des changements dans le code ?
 # Dans un environnement de dev il faudrait lier un volume (probablement complètement séparer notre repo de travail ?)
 
-services: 
-  
+services:
+
   db:
     build:
       context: .
@@ -15,6 +15,7 @@ services:
     volumes: 
       - ./src/database:/docker-entrypoint-initdb.d
       - pg-pfc:/var/lib/postgresql/data
+
   app:
 
     build:
