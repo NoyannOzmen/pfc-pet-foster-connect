@@ -20,10 +20,10 @@ associationRouter.get('/associations/:id(\\d+)', catchErrors(associationControll
 //* DASHBOARD
 
 //Affichage des informations depuis le compte association
-associationRouter.get('/associations/profil)', associationController.displayDashboard);
+associationRouter.get('/associations/profil', associationController.displayDashboard);
 
 //Mise à jour des informations depuis le compte association
-associationRouter.post('/associations/profil)', catchErrors(associationController.update));
+associationRouter.post('/associations/profil', catchErrors(associationController.update));
 
 //* ROUTES AUTHENTIFIEES
 
