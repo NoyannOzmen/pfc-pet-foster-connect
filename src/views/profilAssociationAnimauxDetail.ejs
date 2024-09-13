@@ -1,10 +1,10 @@
 <%- include('partials/header') %>
 
-<main class="justify-self-stretch flex-1">
-  <h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
+<main class="justify-self-stretch flex-1 flex flex-wrap justify-center">
+  <h2 class="w-full font-grands text-3xl  my-2 pt-5 pl-8">Mon espace association</h2>
   
   <!-- Conteneur général qui contient tout le dashboard -->
-  <div class="flex flex-col content-center justify-center mx-4 mb-4 md:px-4">
+  <div class="grow flex flex-col content-center justify-center mx-4 mb-4 md:px-4 md:max-w-5xl">
     
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
@@ -25,10 +25,10 @@
         </ul>
       </nav>
       
-      <section id="dahboard-container" class="flex justify-center flex-wrap gap-x-6 gap-y-4">       
+      <section id="dahboard-container" class="flex justify-center flex-wrap gap-x-6 gap-y-4 p-6">       
         
         <!-- ANIMAL INFO -->
-        <div class="">
+        <div class="w-60 md:w-auto">
           
           <h3 class="font-body font-bold">Animal</h3>
           
@@ -90,72 +90,81 @@
               <!-- ACCUEILLANT INFOS-->
               <% if (animal.accueillant) { %>
                 
-                <div>
+                <div class="w-60 md:w-auto">
                   <h3 class="font-body font-bold mb-4">Famille d'accueil</h3>
                   
-                  <div class="px-6 mb-3 md:grid-cols-2 md:grid">
+                  <div class="px-6 mb-3 md:grid-cols-2 md:grid md:max-w-96">
                     <div class="mb-2 mt-2">
                       <p class="text-sm italic leading-3">Nom</p>
-                      <p class="text-base font-semibold"><%= animal.accueillant.nom %></p>
+                      <p class="text-sm font-semibold"><%= animal.accueillant.nom %></p>
                     </div>
                     <div class="mb-2">
                       <p class="text-sm italic leading-3">Téléphone</p>
-                      <p class="text-base font-semibold"><%= animal.accueillant.telephone %></p>
+                      <p class="text-sm font-semibold"><%= animal.accueillant.telephone %></p>
                     </div>
                     <div class="mb-2">
                       <p class="text-sm italic leading-3">e-mail</p>
-                      <p class="text-base font-semibold"><%= animal.accueillant.identifiant_famille.email %></p>
+                      <p class="text-sm font-semibold"><%= animal.accueillant.identifiant_famille.email %></p>
                     </div>
                     <div class="mb-2">
                       <p class="text-sm italic leading-4">Adresse</p>
-                      <p class="text-base font-semibold leading-3"><%= animal.accueillant.rue %></p>
-                      <p class="text-base font-semibold "><%= animal.accueillant.code_postal %> <%= animal.accueillant.commune  %></p>
+                      <p class="text-sm font-semibold leading-3"><%= animal.accueillant.rue %></p>
+                      <p class="text-sm font-semibold "><%= animal.accueillant.code_postal %> <%= animal.accueillant.commune  %></p>
                     </div>
                     <div class="mb-2">
                       <p class="text-sm italic leading-3">Pays</p>
-                      <p class="text-base font-semibold"><%= animal.accueillant.pays %></p>
+                      <p class="text-sm font-semibold"><%= animal.accueillant.pays %></p>
                     </div>
                     <div>
                       <p class="text-sm italic leading-3">Hébergement</p>
-                      <p class="text-base font-semibold"><%= animal.accueillant.hebergement %></p>
+                      <p class="text-sm font-semibold"><%= animal.accueillant.hebergement %></p>
                     </div>
                   </div>
                 </div>
                 <% } %>
                 
                 <!-- HISTORIQUE DES DEMANDES -->
-                <div class="">
+                
+                <% if (animal.demandes.length) { %>
                   
-                  <table class="mb-3 bg-fond rounded-b-lg ">
-                    <tr class=" text-fond text-sm bg-accents2-light font-grands font-semibold p-3 border-accents2-dark border-solid border-1">
-                      <th colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Famille</th>
-                      <th colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Date de demande</th>
-                      <th colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Statut</th>
-                    </tr>
+                  <div class="px-4 ">
                     
-                    <% animal.demandes.forEach(demande => { %>
-                      <tr class="fold text-sm font-body ">
-                        <td colspan="2"><%= demande.nom %></td>
-                        <td colspan="2"><%= demande.Demande.date_debut %></td>
-                        <td colspan="2"><a href='/associations/profil/demandes/<%= demande.Demande.id %>'><%= demande.Demande.statut_demande %></a></td>
-                      </tr>
-                      <% }) %>
+                    <h3 class="font-body font-bold mb-4">Historique des demandes d'accueil</h3>
+                    
+                    <table class="mb-3 rounded-b-lg rounded-lg border-separate ">
                       
-                    </table>
-                  </div>
+                      <thead class=" text-fond text-sm bg-accents2 font-grands font-semibold p-3 border-accents2-dark border-solid border-1">
+                        <th class="px-2 pt-2  border-accents2-light border-solid border-1 text-center">Famille</th>
+                        <th class="px-2 pt-2  border-accents2-light border-solid border-1 text-center">Date de demande</th>
+                        <th class="px-2 pt-2  border-accents2-light border-solid border-1 text-center">Statut</th>
+                      </thead>
+                      <tbody class="rounded-lg border-separate ">
+                        <% animal.demandes.forEach(demande => { %>
+                          <tr class="odd:bg-accents2-light even:bg-fond odd:text-fond text-sm font-body font-semibold p-4 rounded-lg ">
+                            <td class="text-center p-2 rounded-lg "><%= demande.nom %></td>
+                            <td class="text-center p-2 rounded-lg "><%= demande.Demande.date_debut %></td>
+                            <td class="text-center p-2 rounded-lg hover:underline"><a href='/associations/profil/demandes/<%= demande.Demande.id %>'><%= demande.Demande.statut_demande %></a></td>
+                          </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    <% } %>
+                    
+                    
+                    
+                  </section>
                   
-                  
-                </section>
+                </div>
+                
                 
               </div>
-              
-              
-            </div>
-          </main>
-          
-          
-          
-          
-          <script src="/utils/dashboardAssoListeAnimal.js"></script>
-          
-          <%- include('partials/footer') %>
+            </main>
+            
+            
+            
+            
+            <script src="/utils/dashboardAssoListeAnimal.js"></script>
+            
+            <%- include('partials/footer') %>
