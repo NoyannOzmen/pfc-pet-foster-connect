@@ -15,7 +15,7 @@ familleRouter.post('/famille', catchErrors(familleController.store));
 familleRouter.post('/famille/:id(\\d+)', catchErrors(familleController.update));
 
 //Suppression d'un compte famille - ok
-familleRouter.delete('/famille/:id(\\d+)', catchErrors(familleController.destroy));
+familleRouter.post('/famille/:id(\\d+)/delete', catchErrors(familleController.destroy));
 
 //Affichage des animaux possédé par une famille - ok
 familleRouter.get('/famille/:id(\\d+)/animals', catchErrors(familleController.getAllAnimals));

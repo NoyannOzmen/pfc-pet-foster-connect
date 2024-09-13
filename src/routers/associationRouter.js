@@ -24,7 +24,7 @@ associationRouter.post('/inscription/association', catchErrors(associationContro
 associationRouter.patch('/associations/:id(\\d+)',[auth,isRole.association], catchErrors(associationController.update)); */
 
 //Suppression d'un compte association
-associationRouter.delete('/associations/:id(\\d+)',[auth,isRole.association], catchErrors(associationController.destroy));
+associationRouter.delete('/associations/:id(\\d+)/delete',[auth,isRole.association], catchErrors(associationController.destroy));
 
 //Affichage des animaux proposés par une association
 associationRouter.get('/associations/:id(\\d+)/animals', catchErrors(associationController.getAllAnimals));
