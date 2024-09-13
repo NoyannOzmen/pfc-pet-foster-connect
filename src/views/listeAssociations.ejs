@@ -122,14 +122,14 @@
               <fieldset class="mx-auto p-2 my-2">
                 <!-- Nom du refuge -->
                 <label class=# for="shelter-nom">Nom du refuge</label>
-                <input class="text-xs block" type="text" id="shelter-nom" name="shelterNom" placeholder="--Entrez un nom--">
+                <input class="text-xs block" type="text" id="shelter-nom-small" name="shelterNom" placeholder="--Entrez un nom--">
               </fieldset>
           </div>
 
           <div class="col-span-1">
             <fieldset class="mx-auto p-2 my-2">
               <legend>Animaux</legend>
-                <% especes.forEach(function(espece, key) { %>
+                <% especes.forEach(espece => { %>
                   <div>
                     <label class=# for="<%= espece.nom %>"><%= espece.nom %></label>
                     <input class=# type="checkbox" name="espece" id="<%= espece.nom %>" value="<%= espece.nom %>"/>
