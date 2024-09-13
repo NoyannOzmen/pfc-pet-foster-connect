@@ -48,7 +48,9 @@
 				</div>
 
 				<div class="text-center w-full py-2">
-					<button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="button">Accueillir</button>
+					<form action="/animaux/<%= animal.id %>/faire-une-demande" method="POST">
+					<button type="submit" class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Faire une demande</button>
+					</form>
 				</div>
 			</article>
 
@@ -79,7 +81,7 @@
 		</article>
 	</section>
 	
-<!-- Insert Carousel here -->>
+<!-- Insert Carousel here -->
 	
 </main>
 

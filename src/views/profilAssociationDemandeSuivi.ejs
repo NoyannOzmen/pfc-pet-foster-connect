@@ -1,85 +1,134 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-<h2>Bienvenue sur votre espace personnel</h2>
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
+  <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40"> 
+    <nav class=#>
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
+        <li><button id="dashbtn-1" class="dashbtn"><a href="/associations/profil">Profil</a></button></li>
+        <li><button id="dashbtn-2" class="dashbtn dashbtn-active"><a href="/associations/profil/demandes">Demandes</a></button></li>
+        <li><button id="dashbtn-3" class="dashbtn"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
+      </ul>
+    </nav>
 
-<nav class=#>
-  <ul>
-    <li><button class=#>Profil</button></li>
-    <li><button class=#>Demandes d'accueil</button></li>
-    <li><button class=#>Nos animaux</button></li>
-  </ul>
-</nav>
+    <div class="flex flex-col bg-zoning rounded-lg">
+      <section class="flex flex-wrap justify-center" id="dashboard-container">
+        <h3 class="w-full text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Suivi de demande pour <%= animal.nom %></h3>
+            
+            <!-- CONTENEUR POUR LES INFORMATIONS -->
+            <div class="flex flex-wrap p-2 justify-center md:flex-nowrap" >
+              
+              <!-- Partie Animal -->
+              <div class="w-full md:w-1/2">
+                
+                <h3 class="font-body font-bold text-center">Animal</h3>
+                
+                <div class="flex p-6 pb-4">
+                  <div class="flex flex-col gap-2">
+                    <img class="w-28 rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                    <a class="rounded-full mx-auto block bg-accents1 text-fond w-16 text-center text-xs font-semibold py-1 hover:underline" href="/associations/profil/animaux/<%= animal.id %>">Détails</a>
+                  </div>
+                  
+                  <div class="pl-4">
+                    <p class="text-base italic leading-3">Nom</p>
+                    <p class="text-base font-semibold"><%= animal.nom %></p>
+                  </div>
+                </div>
+                
+                <div class="grid grid-cols-2 px-6 gap-y-2">
+                  
+                  <div>
+                    <p class="text-sm italic leading-3">Age</p>
+                    <p class="text-base font-semibold"><%= animal.age %> ans</p>
+                  </div>
+                  
+                  <div>
+                    <p class="text-sm italic leading-3">Sexe</p>
+                    <p class="text-base font-semibold"><%= animal.sexe %></p>
+                  </div>
+                  
+                  <div class="">
+                    <p class="text-sm italic leading-3">Espèce</p>
+                    <p class="text-base font-semibold"><%= animal.espece.nom %></p>
+                  </div>
 
-<section class=#>
-  <h3>Demande d'accueil de <%= animal.nom %> </h3>
-
-  <div class=#>
-      <div class=#>
-        <h4>Nom Animal</h4>
-        <p><%= animal.nom %></p>
-        <button class=#>v</button>
-
-        <div>
-          <img src=# alt="Photo de <%= animal.nom %>">
-
-          <a href="/animaux/<%= animal.id %>">Détails</a>
-
-          <h6>Espèce</h6>
-            <p><%= animal.espece %></p>
-
-          <h6>Sexe</h6>
-            <p><%= animal.sexe %></p>
-
-          <h6>Race</h6>
-            <p><%= animal.race %></p>
-
-          <h6>Age</h6>
-            <p><%= animal.age %>&nbsp;ans</p>
-
-          <% tags.forEach(tag => { %>
-            <button><%= tag.nom %></button>
-          <% }) %>
-        </div>
-
+                  <% if (animal.race) { %>
+                    <div>
+                      <p class="text-sm italic leading-3">Race</p>
+                      <p class="text-base font-semibold"><%= animal.race %></p>
+                    </div>
+                    <% } %>
+                  </div>
+                  
+                  
+                  <% if (animal.tags) { %>
+                    <div class="flex flex-wrap mt-4 px-6 gap-1">
+                      <% animal.tags.forEach(tag => { %>
+                        
+                        <p class="group rounded-full block bg-accents1 text-fond text-center text-xs font-semibold py-1 px-2">
+                          <%= tag.nom %>
+                          <span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute px-2 py-2 text-xs rounded-b-xl rounded-tr-xl">
+                            <%= tag.description  %>
+                          </span>
+                        </p>
+                        
+                        <% }) %>
+                      </div>
+                      <% } %>
+                      
+              </div>  
+                    
+              <hr class="border-t-accents2 w-2/4 border-t-2 border-solid justify-self-center my-4 md:hidden">
+                    
+              <!-- PARTIE FAMILLE -->
+              <div class="w-full md:w-1/2">
+                      
+                <h3 class="font-body font-bold mb-4 text-center">Famille</h3>
+                      
+                <div class="px-6 mb-3 md:grid-cols-2 md:grid">
+                  <div class="mb-2 mt-2">
+                    <p class="text-sm italic leading-3">Nom</p>
+                    <p class="text-base font-semibold"><%= famille.nom %></p>
+                  </div>
+                  <div class="mb-2">
+                    <p class="text-sm italic leading-3">Téléphone</p>
+                    <p class="text-base font-semibold"><%= famille.telephone %></p>
+                  </div>
+                  <div class="mb-2">
+                    <p class="text-sm italic leading-3">e-mail</p>
+                    <p class="text-base font-semibold"><%= famille.identifiant_famille.email %></p>
+                  </div>
+                  <div class="mb-2">
+                    <p class="text-sm italic leading-4">Adresse</p>
+                    <p class="text-base font-semibold leading-3"><%= famille.rue %></p>
+                    <p class="text-base font-semibold "><%= famille.code_postal %> <%= famille.commune  %></p>
+                  </div>
+                  <div class="mb-2">
+                    <p class="text-sm italic leading-3">Pays</p>
+                    <p class="text-base font-semibold"><%= famille.pays %></p>
+                  </div>
+                  <div>
+                    <p class="text-sm italic leading-3">Hébergement</p>
+                    <p class="text-base font-semibold"><%= famille.hebergement %></p>
+                  </div>
+                </div>
+                      
+              </div>
+            </div>
+      <!-- PARTIE GESTION -->
+      <div class="w-full flex flex-row flex-wrap md:flex-nowrap justify-around items-center">
+        <h3 class="font-body font-bold text-center">Statut de la demande :</h3>
+        <p id="request-status" class="font-body text-center"><%= request.statut_demande %></p>
+        <form class="w-[80%] md:w-[20%]" action="/associations/profil/demandes/<%= request.id %>/accept" method="POST">
+          <button type="submit" class="bg-accents1 w-full m-3 py-2 px-4 text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Accepter</button>
+        </form>
+        <form class="w-[80%] md:w-[20%]" action="/associations/profil/demandes/<%= request.id %>/deny" method="POST">
+          <button type="submit" class="bg-accents2-dark w-full m-3 py-2 px-4 text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Refuser</button>
+        </form>
       </div>
-      
-      <div class=#>
-        <h4>Famille d'accueil</h4>
-        <p>Famille <%= animal.accueillant.nom %></p>
-        <button class=#>v</button>
-
-        <div>
-          <h5>Coordonnées</h5>
-          <h6>Nom</h6>
-            <p><%= animal.accueillant.nom %></p>
-
-          <h6>Adresse</h6>
-            <p><%= animal.accueillant.rue %>&nbsp;<%= animal.accueillant.code_postal %>&nbsp;<%= animal.accueillant.commune %></p>
-
-          <h6>Pays</h6>
-            <p><%= animal.accueillant.pays %></p>
-          
-          <h6>Téléphone</h6>
-            <p><%= animal.accueillant.telephone %></p>
-          
-          <h6>e-mail</h6>
-            <p><%= animal.accueillant.email %></p>
-        
-          <h6>Hébergement</h6>
-            <p><%= animal.accueillant.hebergement %></p>
-        </div>
-
-      </div>
-
-      <div>
-        <button>Accepter la demande</button>
-        <button>Refuser la demande</button>
-      </div>
+      </section>
+    </div>
   </div>
-</section>
-
-
 </main>
 
 <%- include('partials/footer') %>

@@ -4,11 +4,8 @@ import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
 
-import { Famille } from "../models/Famille.js";
-import { Association, Espece, Animal } from "../models/Models.js";
+import { Association, Animal, Demande, Espece, Famille, Tag, Utilisateur } from "../models/Models.js";
 import { Op } from "sequelize";
-import { Utilisateur } from "../models/Utilisateur.js";
-import { Tag } from "../models/Tag.js";
 
 
 const associationController = {
@@ -27,18 +24,18 @@ const associationController = {
     },
     
     /* Liste des associations RECHERCHEES */
-    
     async getSearched(req,res) {
         const species = req.body.espece;
         const departement = req.body.dptSelect;
         const shelter_nom = req.body.shelterNom;
         
         const especes = await Espece.findAll();
-        
+        //* TO-DO : Mieux gérer les critères de filtrage
         const associations = await Association.findAll({
             include : [ 
                 'images_association',
-                { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }],
+                { model : Animal, as : "pensionnaires", include : { model : Espece, as : "espece" } }
+            ],
             where : {
                 [Op.or] : [
                     { nom : shelter_nom},               
@@ -57,7 +54,16 @@ const associationController = {
         // * Est-ce suffisant pour garantir une sécurité ?
         const associationId = req.params.id;
         // Récupérer l'association' en BDD (avec potentiellement ses tags)
-        const association = await Association.findByPk(associationId);
+        const association = await Association.findByPk(associationId, {
+            include : [
+                'pensionnaires',
+                'images_association',
+                'identifiant_association',
+                { model : Animal, as : "pensionnaires",
+                    where : { statut : "En refuge"},
+                    include: ['images_animal', 'espece'] }
+            ]
+        });
         // Si l'associaiton n'existe pas (ID=90000 => null) ==> 404
         if (!association) {
             return next();
@@ -69,35 +75,6 @@ const associationController = {
     /* Création d'une association (à mettre dans le login/signup) */
     async store(req,res) {
     },
-    
-    /* MàJ Asso */
-    async update(req,res) {
-        const associationId = req.params.id;
-        const association = await Association.findByPk(associationId);
-        
-        if (!association) {
-            return next();
-        }
-        
-        // Element à Update
-        const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
-        
-        const updatedAssociation = await association.update({
-            nom : nom || association.nom,
-            responsable : responsable || association.responsable,
-            rue : rue || association.rue,
-            commune : commune || association.commune,
-            code_postal : code_postal || association.code_postal,
-            pays : pays || association.pays,
-            siret : siret || association.siret,
-            telephone : telephone || association.telephone,
-        });
-        
-        res.render("A Voir");
-        
-    }, 
-    
-    
     
     /* Supprimer une association */
     async destroy(req, res, next) {
@@ -155,6 +132,132 @@ const associationController = {
         
         await association.addAnimal(newAnimal);
         /* Sequelize Lazy Loading ? (Je crois) */
+    },
+
+    /* Afficher le profil (dashboard) d'une association */
+    async displayDashboard(req,res,next){
+        
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        
+        const association = await Association.findByPk(associationId);
+        
+        res.render('profilAssociationInfos', { association });
+    },
+
+    /* MàJ Asso */
+    async update(req,res) {
+           /*  const associationId = req.params.id; */
+                    //! A REMPLACER PAR REQ.SESSION.USERID !!
+            const associationId = 1;
+            const association = await Association.findByPk(associationId);
+            
+            if (!association) {
+                return next();
+            }
+            
+            // Element à Update
+            const { nom, responsable, rue, commune, code_postal, pays, siret, telephone } = req.body;
+            
+            const updatedAssociation = await association.update({
+                nom : nom || association.nom,
+                responsable : responsable || association.responsable,
+                rue : rue || association.rue,
+                commune : commune || association.commune,
+                code_postal : code_postal || association.code_postal,
+                pays : pays || association.pays,
+                siret : siret || association.siret,
+                telephone : telephone || association.telephone,
+            });
+            
+            console.log('success')
+            console.log(updatedAssociation);
+            //! A REMPLACER PAR REQ.SESSION.USERID !!
+            res.redirect("/associations/profil")
+            
+    },
+
+    /* Afficher les demandes en cours */
+    async dashboardRequests(req,res) {
+        /*  const associationId = req.params.id; */
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const associationId = 1;
+        const association = await Association.findByPk(associationId);
+                    
+        if (!association) {
+            return next();
+        }
+
+        const requestedAnimals = await Animal.findAll({
+            where : [
+                { '$refuge.id$' : associationId },
+                { '$demandes.id$':  { [Op.not] : null }}
+            ],
+            include: [ "demandes", "refuge" ],
+        })
+
+        res.render('profilAssociationDemande', { association, requestedAnimals });
+    },
+
+    /* Afficher les détails d'une demande en cours */
+    async dashboardRequestsDisplayOne(req,res) {
+        const associationId = 1;
+        const association = await Association.findByPk(associationId);
+                    
+        if (!association) {
+            return next();
+        }
+
+        const requestId = req.params.id;
+
+        const request = await Demande.findOne({
+            where : { id :requestId } });
+
+        const famille = await Famille.findOne({
+            where: { id : request.famille_id},
+            include : ['identifiant_famille']
+        })
+
+        const animal = await Animal.findOne({
+            where : { id : request.animal_id},
+            include : ['espece', 'tags', 'images_animal']
+        })
+        /* 
+        console.log('Demande' + request )
+        console.log('Famille' + famille);
+        console.log("Animal : " + animal ); */
+
+        res.render('profilAssociationDemandeSuivi', { association, request, famille, animal })
+    },
+
+    async denyRequest(req,res) {
+        const requestId = req.params.id;
+
+        const request = await Demande.findByPk(requestId);
+
+        const updatedRequest = await request.update({
+            statut_demande : 'Refusée'
+        });
+
+        console.log(updatedRequest);
+        await updatedRequest.save();
+
+        res.redirect('/associations/profil/demandes/' + requestId)
+    },
+
+    async approveRequest(req,res) {
+        const requestId = req.params.id;
+
+        const request = await Demande.findByPk(requestId);
+
+        const updatedRequest = await request.update({
+            statut_demande : 'Validée'
+        });
+
+        console.log(updatedRequest);
+        await updatedRequest.save();
+
+        res.redirect('/associations/profil/demandes/' + requestId)
     },
     
     async dashboardAnimaux(req,res,next){

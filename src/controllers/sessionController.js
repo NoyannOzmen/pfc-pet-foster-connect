@@ -10,32 +10,26 @@ export const sessionController = {
         res.status(200).render("connexion");
     },
 
-    async login(req,res) {
-
-        
-        /*         // On récupère l'email et le mot de passe
-        const credentials = req.body;
-        //TODO VERIFICATION DES CREDENTIALS AVEC JOI */
-        
+    async logIn(req,res) {    
         const {
             email, 
             mot_de_passe
         } = req.body
-        
-        
-        const user = await Utilisateur.findOne({
-            //! ATTENTION : Peut être que les associations ont un problème au niveau lien association/user famille/user
-            //! A TESTER
-            
+
+        if (!emailValidator.validate(email)) {
+            return res.render('connexion', {
+                error: "Cet email n'est pas valide.",
+            });
+        }
+
+        //! ATTENTION : Peut être que les associations ont un problème au niveau lien association/user famille/user
+        //! A TESTER
+        const user = await Utilisateur.findOne({            
             where : {
                 email: email
             },
             include : ['refuge','accueillant']
         })
-        
-        
-        
-        /*         console.log('User is', user); */
         
         if (!user) {
             return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
@@ -153,13 +147,13 @@ export const sessionController = {
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
             await newFoster.save();
+            res.redirect('/')
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
-            console.log('Non')
+            console.log(found);
+            console.log("Déjà inscrit");
+            res.redirect('/')
         }
-        console.log(found)
-        console.log("Déjà inscrit")
-        res.redirect('/')
     },
 
     async displayShelterSignIn(req,res) {
@@ -182,6 +176,8 @@ export const sessionController = {
             mot_de_passe, 
             confirmation 
         } = req.body;
+
+        console.log(req.body);
         
         const found = await Utilisateur.findOne( { where: {email: email} });
         
@@ -211,7 +207,7 @@ export const sessionController = {
             console.log(newUser);
             await newUser.save();
             
-            const newFoster = await Association.create({
+            const newShelter = await Association.create({
                 nom : nom,
                 responsable : responsable,
                 rue : rue,
@@ -222,16 +218,16 @@ export const sessionController = {
                 telephone : telephone,
                 utilisateur_id: newUser.id,
             });
-            console.log(newFoster);
+            console.log(newShelter);
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
-            await newFoster.save();
+            await newShelter.save();
+            res.render("inscriptionAssociationImage")
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
-            console.log('Non')
+            console.log(found)
+            console.log("Déjà inscrit")
+            res.redirect('/')
         }
-        console.log(found)
-        console.log("Déjà inscrit")
-        res.redirect('/')
     },
 };

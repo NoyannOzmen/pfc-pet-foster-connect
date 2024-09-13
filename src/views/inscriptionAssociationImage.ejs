@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<main class="justify-self-stretch flex-1">
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Ajouter une photo ou un logo à votre profil</h2>
+  
+  <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
+    <form method="POST" action="/upload/logo" enctype="multipart/form-data">
+      <div class="flex flex-col">
+          <label>Par ici</label>
+          <input type="file" name="file" required/>
+      </div>
+      <div class="w-full">
+        <input type="submit" value="Uploader" class="my-3 py-2 px-4 mx-auto bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"/>
+      </div>
+    </form>
+  </div>
+</main>
+  
+  <%- include('partials/footer') %>

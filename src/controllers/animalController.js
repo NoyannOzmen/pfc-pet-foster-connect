@@ -57,15 +57,16 @@ export const animalController = {
         
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
-        
+        //* TO-DO : Mieux gérer les critères de filtrage.
         const animals = await Animal.findAll({
-            include : [ 
+            include : [
+                "espece",
+                "images_animal",
                 { model : Association, as : "refuge"},
-                { model : Espece, as : "espece" },
                 { model : Tag, as : "tags" }
             ],
             where : {
-                [Op.and] : [
+                [Op.or] : [
                     { '$espece.nom$' : especeDropdown },
                     { sexe : sexe },             
                     { '$refuge.code_postal$' : { [Op.startsWith] : dptSelect }},
@@ -102,42 +103,69 @@ export const animalController = {
         
     },
     
-    async hostRequest(req,res){
+    async hostRequest(req, res, next){
         
-        const animalId=req.params.id
-        
+        const animalId = req.params.id;
         // On sait que l'id est celui d'un user famille car on a vérifié le rôle avant
-        const familyId=req.session.id
+        /* const familyId=req.session.id */
+        const familyId = 1;
         
+        //* Ceci est un test en attendant la feature Auth
+/*         
         //* Si l'animal n'existe pas on sort du middleware
-        if (!Animal.findByPk(animalId)){
+        const isItHere = await Animal.findByPk(animalId);
+        if (!isItHere){
             next();
-        }
+        } */
         
-        const demandeData = {
+ /*        const demandeData = {
             
             famille_id:familyId,
             animal_id:animalId,
             statut_demande:'En attente',
             
             //!à récupérer depuis le formulaire
-            date_debut:'01/01/2000',
-            date_fin:'01/02/2000'
-        }
-        
+            date_debut:'13/09/2024',
+            date_fin:'31/12/3000'
+    }
+
+        console.log(JSON.stringify(demandeData));
+         */
+
         //* S'il y a déjà une demande de la famille pour l'animal on sort du middleware
-        if (Demande.findOne({where :{ famille_id:familyId, animal_id:animalId } })) {
+        const found = await Demande.findOne({
+            where :{ 
+                [Op.and] : [
+                    {famille_id: familyId},
+                    {animal_id: animalId}
+                ]
+            }
+        });
+
+        console.log(found)
+/*         
+        if (found) {
             next();
-        }
-        
-        //* On crée et sauvegarde l'instance de la demande
-        const hostRequest = await Demande.create(demandeData);
-        
-        if (hostRequest) {
-            res.redirect(`/animals/${animalId}`);
+        } */
+        if (found === null) {
+            //* On crée et sauvegarde l'instance de la demande
+            const newRequest = await Demande.create({
+                famille_id : familyId,
+                animal_id : animalId,
+                statut_demande:'En attente',
+                date_debut:'09/13/2024',
+                date_fin:'12/31/3000'
+            });
+
+            console.log(newRequest);
+            await newRequest.save();
+
+            console.log('Ok!')
+            res.redirect('/animaux/' + animalId);
         } else {
             //! Rediriger vers une page d'erreur ? Afficher un message d'erreur?
-            next();
+            console.log('Non');
+            res.redirect('/');
         }
         
     },

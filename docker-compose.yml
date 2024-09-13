@@ -2,6 +2,19 @@
 # Dans un environnement de dev il faudrait lier un volume (probablement complètement séparer notre repo de travail ?)
 
 services: 
+  
+  db:
+    build:
+      context: .
+      dockerfile: postgres.Dockerfile
+    container_name: pfc-database
+    environment:
+      - POSTGRES_USER=pfcadmin
+      - POSTGRES_PASSWORD=pfc
+      - POSTGRES_DB=pfc
+    volumes: 
+      - ./src/database:/docker-entrypoint-initdb.d
+      - pg-pfc:/var/lib/postgresql/data
   app:
 
     build:
@@ -14,16 +27,6 @@ services:
     depends_on:
       - db
     container_name: pfc-application
-  
-  db:
-    image: postgres
-    container_name: pfc-database
-    environment:
-      - POSTGRES_USER=pfcadmin
-      - POSTGRES_PASSWORD=pfc
-      - POSTGRES_DB=pfc
-    volumes: 
-      - ./src/database:/docker-entrypoint-initdb.d
-      - pg-pfc:/var/lib/postgresql/data
+    
 volumes:
   pg-pfc: 
