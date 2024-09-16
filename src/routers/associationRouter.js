@@ -25,6 +25,9 @@ associationRouter.get('/associations/profil', associationController.displayDashb
 //Mise à jour des informations depuis le compte association
 associationRouter.post('/associations/profil', catchErrors(associationController.update));
 
+//Ajout d'un logo
+associationRouter.get('/associations/profil/logo', catchErrors(associationController.displayUpload));
+
 //* ROUTES AUTHENTIFIEES
 
 associationRouter.get('/associations/profil/animaux', associationController.dashboardAnimaux);

@@ -142,6 +142,16 @@ const associationController = {
             
             res.render('profilAssociationInfos', { association });
         },
+
+        async displayUpload(req,res,next){
+            
+            //! A REMPLACER PAR REQ.SESSION.USERID !!
+            const associationId = 1;
+            
+            const association = await Association.findByPk(associationId);
+            
+            res.render('profilAssociationLogo', { association });
+        },
         
         /* MàJ Asso */
         async update(req,res) {
