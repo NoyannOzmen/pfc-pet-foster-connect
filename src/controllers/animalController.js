@@ -61,7 +61,7 @@ export const animalController = {
         
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
-        //* TO-DO : Mieux gérer les critères de filtrage.
+
         const animals = await Animal.findAll({
             include : [
                 "espece",
