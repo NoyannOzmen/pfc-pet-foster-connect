@@ -14,7 +14,12 @@
 		<% } %>	 -->
 
 		<div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
-			<img class="mx-auto my-2" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+			<% if (animal.images_animal.length > 0 ) { %>
+				<img class="mx-auto my-2"
+				src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+			<% } else { %>
+					<img class="mx-auto my-2" src="/images/empty.png" alt="Photo à venir">
+			<% } %>
 		</div>
 
 
