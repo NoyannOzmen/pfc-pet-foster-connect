@@ -1,11 +1,11 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-	<h2 class="font-grands text-3xl text-center my-2 pt-5">Création de votre compte</h2>
+  <h2 class="font-grands text-3xl text-center my-2 pt-5">Création de votre compte</h2>
   
   <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
     <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/inscription" method="POST">
-    
+      
       <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
         <legend class="text-center">Vos informations</legend>
         <div class="mx-auto p-2">        
@@ -26,13 +26,18 @@
           <input class="block bg-fond w-full" type="tel" id="telephone" name="telephone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
         </div>
       </fieldset>
-  
+      
       <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
-      <legend class="text-center">Votre capacité d'hébergement</legend>
+        <legend class="text-center">Votre capacité d'hébergement</legend>
         <div class="mx-auto p-2">
           <!-- Hébergement -->
           <label class="text-center w-full" for="hebergement">Type d'hébergement</label>
           <input class="block bg-fond w-full" type="text" id="hebergement" name="hebergement" placeholder="Maison" required>
+        </div>
+        <div class="mx-auto p-2">
+          <!-- Terrain -->
+          <label class="text-center w-full" for="terrain">Type de terrain</label>
+          <input class="block bg-fond w-full" type="text" id="terrain" name="terrain" placeholder="Jardin de 100m²">
         </div>
         <div class="mx-auto p-2">
           <!-- Adresse -->
@@ -55,7 +60,7 @@
           <input class="block bg-fond w-full" type="text" id="pays" name="pays" placeholder="France" required>
         </div>
       </fieldset>
-
+      
       <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
         <legend class="text-center">Mot de passe</legend>
         <div class="mx-auto p-2">

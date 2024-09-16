@@ -66,6 +66,7 @@ export const sessionController = {
                 req.session.loggedIn=true;
                 req.session.role='famille';
                 req.session.nom=user.accueillant.nom;
+                req.session.prenom=user.accueillant.prenom;
                 req.session.userId=familleId;
             }
             console.log(req.session)
@@ -84,10 +85,12 @@ export const sessionController = {
     
     async fosterSignIn(req,res) {    
         const { 
+            prenom,
             nom, 
             email,
             telephone,
             hebergement,
+            terrain,
             rue,
             commune,
             code_postal,
@@ -125,9 +128,11 @@ export const sessionController = {
             await newUser.save();
             
             const newFoster = await Famille.create({
+                prenom : prenom,
                 nom : nom,
                 telephone: telephone,
                 hebergement: hebergement,
+                terrain : terrain,
                 rue: rue,
                 commune : commune,
                 code_postal: code_postal,
@@ -171,8 +176,9 @@ export const sessionController = {
             return next();
         }
         // Element à Update
-        const { nom, telephone, rue, commune, code_postal, pays, hebergement } = req.body;
+        const { prenom, nom, telephone, rue, commune, code_postal, pays, hebergement, terrain } = req.body;
         const updatedFamille = await famille.update({
+            prenom : prenom || famille.prenom,
             nom : nom || famille.nom,
             telephone : telephone || famille.telephone,
             rue : rue || famille.rue,
@@ -180,7 +186,7 @@ export const sessionController = {
             code_postal : code_postal || famille.code_postal,
             pays : pays || famille.pays,
             hebergement : hebergement || famille.hebergement,
-            terrain : famille.terrain,
+            terrain : terrain || famille.terrain,
         });
         console.log('success')
         console.log(updatedFamille);
