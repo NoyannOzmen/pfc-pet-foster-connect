@@ -369,6 +369,7 @@ const associationController = {
                             'espece',
                             'images_animal',
                             'tags',
+                            'refuge',
                             {
                                 model : Famille,
                                 as :'accueillant',
@@ -382,6 +383,19 @@ const associationController = {
                             
                         ]
                     });
+
+                    if (animal) {
+
+                        if (!(associationId===animal.refuge.id)){
+                            return next();
+                        }
+                        
+                    } else {
+
+                        return next();
+                        
+                    }
+
                     
                     // res.send(animal);
                     res.render('profilAssociationAnimauxDetail', {animal});
