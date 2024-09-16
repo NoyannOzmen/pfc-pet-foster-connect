@@ -13,7 +13,14 @@
 
     <div class="flex flex-col bg-zoning rounded-lg">
 
+      <nav class="rounded-lg h-9">
+        <ul class="rounded-t-lg flex h-9 content-center bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start pl-2">
+
+        </ul>
+      </nav>
+
       <section class="flex flex-wrap justify-center" id="dashboard-container">
+        
         <h3 class="w-full text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Gestion des demandes d'accueil</h3>
 
         <div class="container">
@@ -29,9 +36,6 @@
               <% if (requestedAnimals.length > 0) { %>
               
               <table class="table text-center w-full">
-                <col>
-                <colgroup span="3"></colgroup>
-                <colgroup span="3"></colgroup>
 
                 <tr class="border-none bg-zoning text-sm font-grands">
                   <td colspan="3" scope="colgroup">Nom Animal</td>
@@ -50,11 +54,17 @@
                         <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Date de demande</td>
                         <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Statut</td>
                       </tr>
-                      <% animal.demandes.forEach(demande => { %>
-                      <tr class="fold text-sm font-body hidden">
+                      <% animal.demandes.forEach((demande,i) => { %>
+                        <% if (i % 2 > 0) { %>
+                          <tr class="fold text-sm font-semibold font-body hidden text-fond bg-accents2-light">                          
+                          <% } else { %>
+                            <tr class="fold text-sm font-body font-semibold hidden bg bg-fond">                          
+
+                          <% } %>
+                           
                         <td colspan="2"><%= demande.nom %></td>
                         <td colspan="2"><%= demande.Demande.date_debut %></td>
-                        <td colspan="2"><a href='/associations/profil/demandes/<%= demande.Demande.id %>'><%= demande.Demande.statut_demande %></a></td>
+                        <td colspan="2"><a class="hover:underline" href='/associations/profil/demandes/<%= demande.Demande.id %>'><%= demande.Demande.statut_demande %></a></td>
                       </tr>
                       <% }) %>
                   </tr>
