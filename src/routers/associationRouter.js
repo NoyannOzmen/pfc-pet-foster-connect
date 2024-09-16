@@ -33,6 +33,8 @@ associationRouter.get('/associations/profil/animaux/suivi', auth, isRole.associa
 
 associationRouter.get('/associations/profil/animaux/nouveau-profil', auth, isRole.association, associationController.dashboardAnimauxAjouter);
 
+associationRouter.get('/associations/profil/animaux/:animalId(\\d+)', associationController.dashboardAnimalDetail);
+
 //Affichage du tableau de récapitulatif des demandes
 associationRouter.get('/associations/profil/demandes', auth, isRole.association, associationController.dashboardRequests);
 

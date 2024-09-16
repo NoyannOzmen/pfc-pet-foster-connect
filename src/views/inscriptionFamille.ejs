@@ -23,7 +23,7 @@
         <div class="mx-auto p-2">
           <!-- telephone -->
           <label class="text-center w-full" for="telephone">N° telephone</label>
-          <input class="block bg-fond w-full" type="tel" id="telephone" name="telephone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
+          <input class="block bg-fond w-full" type="tel" id="telephone" name="telephone" pattern="^(0|\+33 )[1-9]([-. ]?[0-9]{2} ){3}([-. ]?[0-9]{2})|([0-9]{8})$" placeholder="01 23 45 67 89">
         </div>
       </fieldset>
       
@@ -52,7 +52,7 @@
         <div class="mx-auto p-2">
           <!-- Code Postal -->
           <label class="text-center w-full" for="code_postal">Code Postal</label>
-          <input class="block bg-fond w-full" type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" placeholder="75020" required>
+          <input class="block bg-fond w-full" type="text" id="code_postal" name="code_postal" pattern="^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$" placeholder="75020" required>
         </div>  
         <div class="mx-auto p-2">
           <!-- Pays -->

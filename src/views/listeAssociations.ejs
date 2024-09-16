@@ -287,8 +287,14 @@
   <div class="flex flex-wrap content-center justify-around my-8">
     <section class="mx-auto w-[80%]">
       <h2 class="font-grands text-3xl text-center my-2">Nos partenaires</h2>
-      <p class="mx-auto text-l font-body">Pet Foster Connect a l'honneur de travailler main dans la main avec des refuges et associations de protection animale sur tout le territoire Français.
-        <br>Retrouvez-les toutes ci-dessous. Vous pouvez également faire une recherche pour trouver les plus proches de chez vous !
+      <p class="mx-auto text-l font-body">
+        Pet Foster Connect a l'honneur de travailler main dans la main avec des refuges et associations de protection animale en France métropolitaine et Outre-Mer
+        <br>
+        Ces refuges recherchent des familles d’accueil pour accueillir temporairement un animal, dans l'attente d'une adoption.
+        <br>
+        Sachez que la durée d'accueil peut être variable, et que vous avez la possibilité d'adopter vous-même définitivement cet animal, si tel est votre souhait !
+        <br>
+        Retrouvez-les toutes ci-dessous. Vous pouvez également faire une recherche pour trouver les plus proches de chez vous !
       </p>
     </section>
   </div>
@@ -303,11 +309,14 @@
 
     <% associations.forEach(association => { %>
       <div class="flex bg-zoning rounded-lg shadow dark:bg-gray-800 flex-row md:flex-col mx-auto my-3 w-[75%]">
+        <div class="relative w-full md:w-full flex justify-center items-center">
           <% if (association.images_association.length > 0) { %>
-            <div class="relative w-full md:w-full flex justify-center items-center">
-              <img class="font-body mx-auto w-[80%] rounded-lg my-4" src="<%= association.images_association[0].url %>" alt="Logo de <%= association.nom %>">
-            </div>
+            <img class="font-body mx-auto w-[80%] rounded-lg my-4" src="<%= association.images_association[0].url %>" alt="Logo de <%= association.nom %>">
+          <% } else { %>
+            <img class="font-body mx-auto w-[80%] rounded-lg my-4" src="/images/empty.png" alt="Logo de <%= association.nom %> bientôt visible">
           <% } %>
+        </div>
+
         <div class="flex-auto text-center p-6">
           <div class="flex flex-wrap my-2">
             <h3 class="flex-auto text-xl font-semibold dark:text-gray-50"><%= association.nom %></h3>
