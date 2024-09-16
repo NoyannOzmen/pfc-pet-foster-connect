@@ -39,7 +39,7 @@ async function makeAdressList () {
             adresses.features.forEach((address,i) => {
                 
                 const addressBox = document.createElement('div');
-                addressBox.classList.add('bg-fond','text-sm', 'border-solid', 'border-texte','border-collapse', 'border-2','p-2','hover:bg-accents1');
+                addressBox.classList.add('text-sm', 'p-2','hover:bg-accents1', 'hover:text-fond');
                 addressBox.role='listitem';
                 
                 addressBox.addEventListener('click', ()=> {
