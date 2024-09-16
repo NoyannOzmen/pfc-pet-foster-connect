@@ -75,11 +75,15 @@
 		<article class="p-4 font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800">
 			<h3 class="font-grands text-3xl text-center my-2 pt-5 w-full"><%= animal.nom %><br>vous attend chez<br><%= animal.refuge.nom %></h3>
 
-			<% if (animal.refuge.images_association.length > 0) { %>
+
 				<div class="font-body mx-auto w-[80%] rounded-lg my-4">
-					<img src="<%= animal.refuge.images_association[0].url %>" alt="Logo de <%= animal.refuge.nom %>">
+					<% if (animal.refuge.images_association.length > 0) { %>
+						<img src="<%= animal.refuge.images_association[0].url %>" alt="Logo de <%= animal.refuge.nom %>">
+					<% } else { %>
+					<img src="/images/empty.png" alt="Logo de <%= animal.refuge.nom %> bientôt visible">
+					<% } %>
 				</div>
-			<% } %>
+
 			<div class="text-center w-full py-2">
 				<p class="font-body text-texte">Adresse : <%= animal.refuge.rue %>,&nbsp;<%= animal.refuge.code_postal %>,&nbsp;<%= animal.refuge.commune%>,&nbsp;<%= animal.refuge.pays %></p>
 				<p class="font-body text-texte">Téléphone : <%= animal.refuge.telephone %></p>
