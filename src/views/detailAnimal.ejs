@@ -18,7 +18,7 @@
 				<img class="mx-auto my-2"
 				src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
 			<% } else { %>
-					<img class="mx-auto my-2" src="/images/empty.png" alt="Photo à venir">
+					<img class="mx-auto my-2" src="/images/animal_empty.webp" alt="Photo à venir">
 			<% } %>
 		</div>
 
@@ -80,7 +80,7 @@
 					<% if (animal.refuge.images_association.length > 0) { %>
 						<img src="<%= animal.refuge.images_association[0].url %>" alt="Logo de <%= animal.refuge.nom %>">
 					<% } else { %>
-					<img src="/images/empty.png" alt="Logo de <%= animal.refuge.nom %> bientôt visible">
+					<img src="/images/shelter_empty.webp" alt="Logo de <%= animal.refuge.nom %> bientôt visible">
 					<% } %>
 				</div>
 
