@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/views/**/*.{html,js,ejs,jsx}", "./src/assets/integration/**/*.{html,js,ejs,jsx}", "./src/views/partials/**/*.ejs"],
+  content: ["./src/views/**/*.{html,js,ejs,jsx}", "./src/assets/integration/**/*.{html,js,ejs,jsx}", "./src/views/partials/**/*.ejs", "./src/assets/utils/**/*.js"],
   theme:{
         backgroundPosition: {
       bottom: 'bottom',
