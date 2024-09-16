@@ -58,7 +58,7 @@
 
         <div class="mx-auto p-2">
           <label class="text-center w-full" for="code_postal">Code Postal</label>
-          <input class="block w-full" type="number" id="code_postal" name="code_postal" pattern="[01-97]{1} [0-9]{3}" value="<%= famille.code_postal %>" disabled>
+          <input class="block w-full" type="text" id="code_postal" name="code_postal" pattern="^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$" value="<%= famille.code_postal %>" disabled>
         </div>
 
         <!-- <label for="departement">Département</label>
