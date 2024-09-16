@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import emailValidator from 'email-validator';
 
-import { Famille, Utilisateur, Association, Espece } from '../models/Models.js';
+import { Animal, Famille, Utilisateur, Association, Espece } from '../models/Models.js';
+import { Op } from 'sequelize';
 
 export const sessionController = {
     async displayLogin(req, res) {
@@ -151,7 +152,7 @@ export const sessionController = {
     async displayProfile(req, res, next){
         
         //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const familleId = req.params.id;
+        const familleId = 1;
         
         const famille = await Famille.findByPk(familleId, {
             include : 'identifiant_famille'
@@ -205,6 +206,31 @@ export const sessionController = {
         await user.destroy();
         req.session.destroy();
         res.redirect('/')
+    },
+
+    async displayRequest(req, res, next) {
+        //! A REMPLACER PAR REQ.SESSION.USERID !!
+        const familleId = 1;
+        
+        const famille = await Famille.findByPk(familleId, {
+            include : 'identifiant_famille'
+        });
+        
+        if( !famille) {
+            next()
+        };
+
+        const requestedAnimals = await Animal.findAll({
+            where : [
+                { '$demandes.Demande.famille_id$' : familleId },
+                { '$demandes.id$':  { [Op.not] : null }}
+            ],
+            include: [ "espece", "demandes", "refuge" ],
+        })
+
+        console.log(JSON.stringify(requestedAnimals));
+        
+        res.render('profilFamilleDemande', { famille, requestedAnimals });
     },
 
     async displayShelterSignIn(req,res) {

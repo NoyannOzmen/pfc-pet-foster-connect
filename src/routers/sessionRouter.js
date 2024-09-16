@@ -21,6 +21,8 @@ sessionRouter.get('/famille/profil', catchErrors(sessionController.displayProfil
 sessionRouter.post('/famille/profil', catchErrors(sessionController.fosterUpdate));
 /* Suppression du compte */
 sessionRouter.post('/famille/profil/delete', catchErrors(sessionController.fosterDestroy));
+/* Suivi des demandes */
+sessionRouter.get('/famille/profil/demandes', catchErrors(sessionController.displayRequest));
 
 //* ASSOCIATION
 /* Inscription association */
