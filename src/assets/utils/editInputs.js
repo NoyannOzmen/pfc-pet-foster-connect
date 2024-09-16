@@ -6,14 +6,19 @@ function enableEdit(e) {
   const field = e.target.closest('fieldset')
   const inputs = field.querySelectorAll('input')
   const validate = document.querySelector("button");
-
+  
   if (validate.classList.contains('hidden')) {
-  validate.classList.toggle('hidden')
+    validate.classList.toggle('hidden')
   }
-
+  
   inputs.forEach((input) => {
-      input.disabled = false;
-      input.required = true
-      input.classList.add('bg-fond')
+    input.disabled = false;
+    input.required = true
+    input.classList.add('bg-fond')
   })
+  
+  const terrain = document.getElementById('terrain');
+  terrain.required = false
+  const prenom = document.getElementById('prenom');
+  prenom.required = false
 }
