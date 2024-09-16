@@ -7,7 +7,9 @@
 			<div class="font-body mx-auto w-[80%] rounded-lg my-4">
 				<% if (association.images_association.length > 0 ) { %>
 					<img src="<%= association.images_association[0].url %>" alt="Logo de <%= association.nom %>">
-				<% } %>
+        <% } else { %>
+          <img src="/images/empty.png" alt="Logo de <%= association.nom %> bientôt visible">
+        <% } %>
 			</div>
 
 			<article class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
@@ -42,12 +44,16 @@
           <% association.pensionnaires.forEach(animal=> { %>
             <div class="hidden carousel-img">
               <div class="flex bg-fond rounded-lg shadow dark:bg-gray-800 flex-col md:flex-col mx-auto my-2 w-[75%] p-4">
-								<% if (animal.images_animal.length > 0 ) { %>
+
 									<div class="w-full md:w-full flex justify-center items-center">
-										<img class="object-contain md:h-full rounded-lg"
+                    <% if (animal.images_animal.length > 0 ) { %>
+										  <img class="object-contain md:h-full rounded-lg"
 											src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                    <% } else { %>
+                      <img class="object-contain md:h-full rounded-lg" src="/images/empty.png" alt="Photo à venir">
+                    <% } %>
 									</div>
-								<% } %>
+
 
                 <div class="flex-auto text-center">
                   <div class="flex flex-wrap my-2">
@@ -92,12 +98,15 @@
           <% association.pensionnaires.forEach(animal=> { %>
             <div class="hidden carousel3-img place-self-center">
               <div class="flex bg-zoning rounded-lg shadow dark:bg-gray-800 flex-row md:flex-col p-4">
-								<% if (animal.images_animal.length > 0 ) { %>
+
 									<div class="w-full md:w-full flex justify-center items-center">
-										<img class="object-contain w-[80%] h-48 md:h-full rounded-lg"
+                    <% if (animal.images_animal.length > 0 ) { %>
+										  <img class="object-contain w-[80%] h-48 md:h-full rounded-lg"
 											src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                    <% } else { %>
+                        <img class="object-contain w-[80%] h-48 md:h-full rounded-lg" src="/images/empty.png" alt="Photo à venir">
+                    <% } %>
 									</div>
-								<% } %>
 
                 <div class="flex-auto text-center">
                   <div class="flex flex-wrap my-2">

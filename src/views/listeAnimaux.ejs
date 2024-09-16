@@ -222,11 +222,14 @@
       <% animals.forEach(animal => { %>
 
         <div class="flex bg-zoning rounded-lg shadow dark:bg-gray-800 flex-row md:flex-col mx-auto my-2 w-[75%]">
-          <% if (animal.images_animal.length > 0 ) { %>
             <div class="relative w-full md:w-full flex justify-center items-center">
-              <img class="object-contain w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+              <% if (animal.images_animal.length > 0 ) { %>
+                <img class="object-contain w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+                src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+              <% } else { %>
+                <img class="object-contain w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none" src="/images/empty.png" alt="Photo à venir">
+              <% } %>
             </div>
-          <% } %>
           <div class="flex-auto text-center p-6">
             <div class="flex flex-wrap my-2">
               <h3 class="flex-auto text-xl font-semibold dark:text-gray-50"><%= animal.nom %></h3>
