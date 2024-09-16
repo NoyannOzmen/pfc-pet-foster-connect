@@ -41,10 +41,9 @@ export const animalController = {
             tags
         })
     },
-    
-    /* Liste des animaux recherchés */
+
     async getSearched(req,res) {
-        
+
         const {
             especeDropdown,
             dptSelect,
@@ -53,10 +52,16 @@ export const animalController = {
             maxAge,
             tag
         } = req.body;
+
+        if (req.body.especeDropdownFull) {
+            req.body.especeDropdown = req.body.especeDropdownFull
+        } else {
+            req.body.especeDropdown = req.body.especeDropdownSmall
+        }
         
         const especes = await Espece.findAll();
         const tags = await Tag.findAll();
-        //* TO-DO : Mieux gérer les critères de filtrage.
+
         const animals = await Animal.findAll({
             include : [
                 "espece",
@@ -65,19 +70,17 @@ export const animalController = {
                 { model : Tag, as : "tags" }
             ],
             where : {
-                [Op.or] : [
-                    { '$espece.nom$' : especeDropdown },
-                    { sexe : sexe },             
-                    { '$refuge.code_postal$' : { [Op.startsWith] : dptSelect }},
-                    { age : { [Op.between]:  [minAge, maxAge] }},
-                    { '$tags.nom$' : { [Op.not] : tag } || { [Op.notIn] : tag } },
-                ]
+                '$espece.nom$' : (req.body.especeDropdown) ? { [Op.like] : req.body.especeDropdown} : { [Op.ne]: null },
+                sexe : (req.body.sexe) ? (req.body.sexe) : { [Op.ne]: null },
+                '$refuge.code_postal$' : (req.body.dptSelect) ? { [Op.startsWith] : req.body.dptSelect } : { [Op.ne] : null },
+                age : (req.body.minAge && req.body.maxAge ) ? { [Op.between]:  [req.body.minAge, req.body.maxAge] } : { [Op.ne] : null },
+                '$tags.nom$' : (req.body.tag ) ? { [Op.notIn] : req.body.tag } : { [Op.is] : null}
             }
         });
         
-        console.log(animals)
         return res.render("listeAnimaux", { animals, especes, tags });
     },
+
     
     async detailAnimal(req,res){
         const animalId = req.params.id
