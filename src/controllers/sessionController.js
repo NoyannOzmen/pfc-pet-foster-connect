@@ -20,8 +20,7 @@ export const sessionController = {
                 error: "Cet email n'est pas valide.",
             });
         }
-        //! ATTENTION : Peut être que les associations ont un problème au niveau lien association/user famille/user
-        //! A TESTER
+
         const user = await Utilisateur.findOne({            
             where : {
                 email: email
@@ -68,6 +67,7 @@ export const sessionController = {
                 req.session.loggedIn=true;
                 req.session.role='famille';
                 req.session.nom=user.accueillant.nom;
+                req.session.prenom=user.accueillant.prenom;
                 req.session.userId=familleId;
             }
             console.log(req.session)
@@ -86,10 +86,12 @@ export const sessionController = {
     
     async fosterSignIn(req,res) {    
         const { 
+            prenom,
             nom, 
             email,
             telephone,
             hebergement,
+            terrain,
             rue,
             commune,
             code_postal,
@@ -105,7 +107,7 @@ export const sessionController = {
         if(found === null) {
             if (!emailValidator.validate(email)) {
                 return res.render('inscriptionFamille', {
-                    error: "Cet email n'est pas valide.",
+                    errorMessage: "Cet email n'est pas valide.",
                 });
             }
             // verifier si password correspond à password confirm
@@ -127,9 +129,11 @@ export const sessionController = {
             await newUser.save();
             
             const newFoster = await Famille.create({
+                prenom : prenom,
                 nom : nom,
                 telephone: telephone,
                 hebergement: hebergement,
+                terrain : terrain,
                 rue: rue,
                 commune : commune,
                 code_postal: code_postal,
@@ -151,8 +155,7 @@ export const sessionController = {
 
     async displayProfile(req, res, next){
         
-        //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const familleId = 1;
+        const familleId = req.session.userId;
         
         const famille = await Famille.findByPk(familleId, {
             include : 'identifiant_famille'
@@ -166,32 +169,33 @@ export const sessionController = {
         res.render('profilFamilleInfos', { famille, especes });
     },
 
-    async fosterUpdate(req,res) {
-        const familleId = req.params.id;
+    async fosterUpdate(req,res, next) {
+        const familleId = req.session.userId;
         const famille = await Famille.findByPk(familleId);
         
         if (!famille) {
             return next();
         }
         // Element à Update
-        const { nom, telephone, rue, commune, code_postal, pays, hebergement } = req.body;
+        const { prenom, nom, telephone, rue, commune, code_postal, pays, hebergement, terrain } = req.body;
         const updatedFamille = await famille.update({
+            prenom : prenom || famille.prenom,
             nom : nom || famille.nom,
             telephone : telephone || famille.telephone,
             rue : rue || famille.rue,
             commune : commune || famille.commune,
             code_postal : code_postal || famille.code_postal,
             pays : pays || famille.pays,
-            hebergement : hebergement || hebergement.hebergement,
+            hebergement : hebergement || famille.hebergement,
+            terrain : terrain || famille.terrain,
         });
         console.log('success')
         console.log(updatedFamille);
-        res.redirect("/famille/profil/" + familleId)
+        res.redirect("/famille/profil")
     }, 
 
     async fosterDestroy(req, res, next) {
-        //! Récupérer l'Id de la famille à supprimer AVEC REQ.SESSION
-        const familleId = req.params.id;
+        const familleId = req.session.userId;
         const famille = await Famille.findByPk(familleId);
 
         const user = await Utilisateur.findOne({
@@ -209,9 +213,7 @@ export const sessionController = {
     },
 
     async displayRequest(req, res, next) {
-        //! A REMPLACER PAR REQ.SESSION.USERID !!
-        const familleId = 1;
-        
+        const familleId = req.session.userId;
         const famille = await Famille.findByPk(familleId, {
             include : 'identifiant_famille'
         });
@@ -314,8 +316,7 @@ export const sessionController = {
             res.status=401;
             return next(new Error('Unauthorized'))               
         } */
-        //! Récupérer l'Id de l'asso à supprimer AVEC REQ.SESSION
-        const assoId = req.params.id;
+        const assoId = req.session.userId;
         const asso = await Association.findByPk(assoId);
 
         const user = await Utilisateur.findOne({

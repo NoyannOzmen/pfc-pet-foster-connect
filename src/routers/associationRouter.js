@@ -20,35 +20,35 @@ associationRouter.get('/associations/:id(\\d+)', catchErrors(associationControll
 //* DASHBOARD
 
 //Affichage des informations depuis le compte association
-associationRouter.get('/associations/profil', associationController.displayDashboard);
+associationRouter.get('/associations/profil', auth, isRole.association, associationController.displayDashboard);
 
 //Mise à jour des informations depuis le compte association
-associationRouter.post('/associations/profil', catchErrors(associationController.update));
+associationRouter.post('/associations/profil', auth, isRole.association, catchErrors(associationController.update));
 
 //Ajout d'un logo
 associationRouter.get('/associations/profil/logo', catchErrors(associationController.displayUpload));
 
 //* ROUTES AUTHENTIFIEES
 
-associationRouter.get('/associations/profil/animaux', associationController.dashboardAnimaux);
+associationRouter.get('/associations/profil/animaux', auth, isRole.association, associationController.dashboardAnimaux);
 
-associationRouter.get('/associations/profil/animaux/suivi', associationController.dashboardAnimauxSuivi);
+associationRouter.get('/associations/profil/animaux/suivi', auth, isRole.association, associationController.dashboardAnimauxSuivi);
 
-associationRouter.get('/associations/profil/animaux/nouveau-profil', associationController.dashboardAnimauxAjouter);
+associationRouter.get('/associations/profil/animaux/nouveau-profil', auth, isRole.association, associationController.dashboardAnimauxAjouter);
 
 associationRouter.get('/associations/profil/animaux/:animalId(\\d+)', associationController.dashboardAnimalDetail);
 
 //Affichage du tableau de récapitulatif des demandes
-associationRouter.get('/associations/profil/demandes', associationController.dashboardRequests);
+associationRouter.get('/associations/profil/demandes', auth, isRole.association, associationController.dashboardRequests);
 
 //Affichage du détail d'une demande d'accueil
-associationRouter.get('/associations/profil/demandes/:id(\\d+)', associationController.dashboardRequestsDisplayOne)
+associationRouter.get('/associations/profil/demandes/:id(\\d+)', auth, isRole.association, associationController.dashboardRequestsDisplayOne)
 
 //Valider une demande d'accueil
-associationRouter.post('/associations/profil/demandes/:id(\\d+)/accept', associationController.approveRequest);
+associationRouter.post('/associations/profil/demandes/:id(\\d+)/accept', auth, isRole.association, associationController.approveRequest);
 
 //Refuser une demande d'accueil
-associationRouter.post('/associations/profil/demandes/:id(\\d+)/deny', associationController.denyRequest);
+associationRouter.post('/associations/profil/demandes/:id(\\d+)/deny', auth, isRole.association, associationController.denyRequest);
 
 
 export { associationRouter };

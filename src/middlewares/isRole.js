@@ -7,8 +7,10 @@ export const isRole = {
         if (req.session.role==='association'){
             return next();
         }
-        res.status=401;
-        return next(new Error('Unauthorized'))
+    const error = new Error("Accès non autorisé");
+    res.status(401).render("403");
+    error.status = 401;
+    next(error);
     },
 
     famille(req,res,next){
@@ -16,7 +18,9 @@ export const isRole = {
         if (req.session.role==='famille'){
             return next();
         }
-        res.status=401;
-        return next(new Error('Unauthorized'))
+    const error = new Error("Accès non autorisé");
+    res.status(401).render("403");
+    error.status = 401;
+    next(error);
     }
 }

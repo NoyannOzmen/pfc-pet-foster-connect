@@ -7,7 +7,7 @@
     <form class="mx-auto my-3 text-texte" action="/animaux" method="POST">
         <div id="fullSearch" class="col-span-3 flex justify-around items-center">
           <h3 class="col-span-1 font-grands text-2xl my-2">Rechercher un animal</h3>
-          <select tabindex=0 class="col-span-3 text-xs block" id="espece-dropdown-small" name="especeDropdown" required>
+          <select tabindex=0 class="col-span-3 text-xs block" id="espece-dropdown-small" name="especeDropdownSmall">
               <option value="" disabled selected hidden>--Choisissez une espèce--</option>
               <% especes.forEach(espece => { %>
                 <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
@@ -26,7 +26,7 @@
               <!-- Choix de l'espèce -->
               <div class="my-2">
                 <label class=# for="espece-dropdown">Espèce</label>
-                  <select tabindex=0 class="text-xs block" id="espece-dropdown" name="especeDropdown">
+                  <select tabindex=0 class="text-xs block" id="espece-dropdown" name="especeDropdownFull">
                     <option value="" disabled selected hidden>--Choisissez une espèce--</option>
                     <% especes.forEach(espece => { %>
                       <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
@@ -40,7 +40,7 @@
                   <legend>Sexe</legend>
                   <label><input type="radio" name="sexe" value="Mâle" class="mx-1">Mâle</label>
                   <label><input type="radio" name="sexe" value="Femelle" class="mx-1">Femelle</label>
-                  <label><input type="radio" name="sexe" value="Inconnu" class="mx-1" checked>Inconnu</label>
+                  <label><input type="radio" name="sexe" value="Inconnu" class="mx-1">Inconnu</label>
                 </fieldset>
               </div>
 
@@ -48,9 +48,9 @@
               <div class="my-2">
                 <p>Age :</p>
                 <label class=# for="age-min">De&nbsp;</label>
-                <input class=# id="age-min" name="minAge" type="number" tabindex=0  value="0" min="0" max="3999">
+                <input class=# id="age-min" name="minAge" type="number" tabindex=0 min="0" max="3999">
                 <label class=# for="age-max">&nbsp;à&nbsp;</label>
-                <input class=# id="age-max" name="maxAge" type="number" tabindex=0  value="20" min="1" max="4000">
+                <input class=# id="age-max" name="maxAge" type="number" tabindex=0 min="1" max="4000">
                 <label>&nbsp;ans.</label>
               </div>
             </div>
@@ -236,7 +236,7 @@
               <h4 class="flex-none w-full mt-2 text-sm font-medium text-gray-500 dark:text-gray-300"><%= animal.espece.nom %></h4>
               <hr>
               <p class="flex-none w-full mt-2 text-sm font-medium text-gray-500 dark:text-gray-300">Age : <%= animal.age %></p>
-              <p class="flex-none w-full mt-2 text-sm font-medium text-gray-500 dark:text-gray-300">Localisation : <%= animal.departement %></p>
+              <p class="flex-none w-full mt-2 text-sm font-medium text-gray-500 dark:text-gray-300">Localisation : <%= animal.refuge.departement %></p>
             </div>
             <div class="flex mb-4 text-sm font-medium">
               <a class="py-2 px-4 bg-accents1-light text-fond w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" href="/animaux/<%= animal.id %>">Découvrir</a>
