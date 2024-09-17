@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import emailValidator from 'email-validator';
 
-import { Famille, Utilisateur, Association, Espece } from '../models/Models.js';
+import { Animal, Famille, Utilisateur, Association, Espece } from '../models/Models.js';
+import { Op } from 'sequelize';
 
 export const sessionController = {
     async displayLogin(req, res) {
@@ -211,6 +212,29 @@ export const sessionController = {
         res.redirect('/')
     },
 
+    async displayRequest(req, res, next) {
+        const familleId = req.session.userId;
+        const famille = await Famille.findByPk(familleId, {
+            include : 'identifiant_famille'
+        });
+        
+        if( !famille) {
+            next()
+        };
+
+        const requestedAnimals = await Animal.findAll({
+            where : [
+                { '$demandes.Demande.famille_id$' : familleId },
+                { '$demandes.id$':  { [Op.not] : null }}
+            ],
+            include: [ "espece", "demandes", "refuge" ],
+        })
+
+        console.log(JSON.stringify(requestedAnimals));
+        
+        res.render('profilFamilleDemande', { famille, requestedAnimals });
+    },
+
     async displayShelterSignIn(req,res) {
         const especes = await Espece.findAll();
         res.render("inscriptionAssociation", { especes })
@@ -276,7 +300,7 @@ export const sessionController = {
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
             await newShelter.save();
-            res.render("inscriptionAssociationImage")
+            res.render("/")
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log(found)

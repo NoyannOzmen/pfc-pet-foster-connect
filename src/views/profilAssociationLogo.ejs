@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<main class="justify-self-stretch flex-1">
+	<h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
+  <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40">
+    <nav class=#>
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
+        <li><button id="dashbtn-1" class="dashbtn dashbtn-active"><a href="/associations/profil">Mon profil</a></button></li>
+        <li><button id="dashbtn-2" class="dashbtn"><a href="/associations/profil/demandes">Demandes</a></button></li>
+        <li><button id="dashbtn-3" class="dashbtn"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
+      </ul>
+    </nav>
+
+    <div class="font-body bg-zoning rounded-lg shadow dark:bg-gray-800 mb-4">
+
+      <nav class="rounded-lg h-9">
+        <ul class="rounded-t-lg flex h-9 content-center bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start pl-2">
+              <li class="block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/">Mes informations</a></li>
+              <li class="dashsubbtn-active rounded-tl-lg block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4"><a href="/associations/profil/logo">Ajouter une image</a></li>
+        </ul>
+      </nav>
+
+      <section class="flex flex-wrap justify-center" id="dashboard-container">
+        <h2 class="font-grands text-3xl text-center my-2 pt-5">Ajouter une photo ou un logo à votre profil</h2>
+        
+        <form method="POST" action="/upload/logo" enctype="multipart/form-data">
+          <div class="flex flex-col">
+            <label>Par ici</label>
+            <input type="file" name="file" required/>
+          </div>
+          <div class="w-full">
+           <input type="submit" value="Uploader" class="my-3 py-2 px-4 mx-auto bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"/>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</main>
+  
+  <%- include('partials/footer') %>

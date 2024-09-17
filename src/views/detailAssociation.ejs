@@ -8,7 +8,7 @@
 				<% if (association.images_association.length > 0 ) { %>
 					<img src="<%= association.images_association[0].url %>" alt="Logo de <%= association.nom %>">
         <% } else { %>
-          <img src="/images/empty.png" alt="Logo de <%= association.nom %> bientôt visible">
+          <img src="/images/shelter_empty.webp" alt="Logo de <%= association.nom %> bientôt visible">
         <% } %>
 			</div>
 
@@ -50,7 +50,7 @@
 										  <img class="object-contain md:h-full rounded-lg"
 											src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
                     <% } else { %>
-                      <img class="object-contain md:h-full rounded-lg" src="/images/empty.png" alt="Photo à venir">
+                      <img class="object-contain md:h-full rounded-lg" src="/images/animal_empty.webp" alt="Photo à venir">
                     <% } %>
 									</div>
 
@@ -104,7 +104,7 @@
 										  <img class="object-contain w-[80%] h-48 md:h-full rounded-lg"
 											src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
                     <% } else { %>
-                        <img class="object-contain w-[80%] h-48 md:h-full rounded-lg" src="/images/empty.png" alt="Photo à venir">
+                        <img class="object-contain w-[80%] h-48 md:h-full rounded-lg" src="/images/animal_empty.webp" alt="Photo à venir">
                     <% } %>
 									</div>
 

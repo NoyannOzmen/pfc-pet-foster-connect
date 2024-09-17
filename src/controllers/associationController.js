@@ -134,13 +134,21 @@ const associationController = {
     /* Afficher le profil (dashboard) d'une association */
     async displayDashboard(req,res,next){
         
-
         const associationId = req.session.userId;
         
         const association = await Association.findByPk(associationId);
         
         res.render('profilAssociationInfos', { association });
     },
+  
+    async displayUpload(req,res,next){
+         
+         const associationId = req.session.userId;
+            
+         const association = await Association.findByPk(associationId);
+            
+         res.render('profilAssociationLogo', { association });
+     },
     
     /* MàJ Asso */
     async update(req,res) {
