@@ -148,8 +148,8 @@ export const animalController = {
             res.redirect('/');
         }   
     },
-    async addAnimal (req,res,next) {
 
+    async addAnimal (req,res,next) {
         //!userId est en fait l'id du refuge ou de la famille
         const assoId = req.session.userId;
 
@@ -165,7 +165,6 @@ export const animalController = {
             if (hasProperty){
                 tagIdArray.push(parseInt(req.body[`tag_${i+1}`]));
             }
-
         }
 
         const {
@@ -178,7 +177,6 @@ export const animalController = {
             couleur_animal,
             description_animal
         } = req.body
-
 
         const refuge = await Association.findByPk(assoId)
 
@@ -202,7 +200,6 @@ export const animalController = {
                     url:test_animal,
                     ordre:1
                 }
-
             },
             {
                 include : [
@@ -211,19 +208,54 @@ export const animalController = {
             }
             );
 
-            if (tagIdArray) {
-
-                for (const tagId of tagIdArray) {
-
-                    const tag = await Tag.findByPk(tagId);
-                    await newAnimal.addTag(tag)
-
-                }
-
+        if (tagIdArray) {
+            for (const tagId of tagIdArray) {
+                const tag = await Tag.findByPk(tagId);
+                await newAnimal.addTag(tag)
             }
-            res.redirect('/associations/profil/animaux');
         }
+        res.redirect('/associations/profil/animaux');
+    },
 
+    async displayUpload (req,res, next) {
+        const animalId = req.params.id
 
+        const animal = await Animal.findByPk(animalId, {
+            include : 'images_association'
+        });
+      
+        res.render("profilAssociationAnimauxPhoto", { animal })
+    },
+
+    async uploadPhoto(req, res,next){
+        let userImage = req.file.path;
+        const trim = userImage.replace("./src/assets", "");
+        console.log('path is' + trim);
+        const animalId = req.params.id;
+        console.log(animalId);
+
+        const animal = await Animal.findByPk(animalId, {
+            include : 'images_association'
+        });
+
+        console.log('asso is' + JSON.stringify(association))
+
+        const newMedia = await Media.create({
+            animal_id : animal.id,
+            url : trim,
+            ordre : 1
+        })
+
+        const assoId = req.session.userId;
+
+        const animals = await Animal.findAll({
+            where : association_id = assoId
+        })
+
+        console.log('image is' + JSON.stringify(newMedia));
+        console.log(`C'est good`)
+        await newMedia.save();
+        res.render("profilAssociationAnimaux", {animals});
+    },
 }
     
