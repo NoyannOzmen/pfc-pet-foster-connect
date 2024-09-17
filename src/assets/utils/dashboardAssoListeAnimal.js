@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     
     handleSpeciesFilters();
+    handleStatutFilters();
 });
 
 
@@ -51,4 +52,35 @@ function handleSpeciesFilters () {
     });
     
     
+}
+
+function handleStatutFilters () {
+
+    const statutCheckboxes = document.querySelectorAll('.statut-checkbox');
+    const allCheckbox = document.getElementById('statut_all');
+
+    statutCheckboxes.forEach(statutCheck => {
+
+        statutCheck.addEventListener('change', () => {
+            
+            if (allCheckbox.checked) {
+                
+                const visibleCards =  document.querySelectorAll('.animal_card--visible');
+                allCheckbox.checked=false
+                visibleCards.forEach(animalCard => {
+                    animalCard.classList.add('hidden')
+                    animalCard.classList.remove('animal_card--visible')
+                })
+            }
+            
+            const visibleCards =  document.querySelectorAll(`[data-espece*="${statutCheck.value}"]`);
+            visibleCards.forEach(card => {
+                card.classList.toggle('hidden');
+            });
+            
+        })
+
+    })
+
+
 }

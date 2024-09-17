@@ -40,6 +40,8 @@
             <label class="hidden">Recherche</label>
             <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
           </div>
+
+          <fieldset>
           <% especes.forEach(espece => { %>
             <div class="flex gap-x-1.5 content-center"> 
               <input type="checkbox" id="espece_<%= espece.id %>" name="espece_<%= espece.id %>" value="<%= espece.id %>"  class="species-checkbox leading-3"/>
@@ -50,6 +52,32 @@
               <input type="checkbox" id="espece_all" name="espece_all" value="all" checked class="leading-3"/>
               <label for="espece_all" class=" font-grands font-semibold text-xs leading-3 self-center"> Tous</label>
             </div>   
+          </fieldset>
+
+          <fieldset>
+
+            <div class="flex gap-x-1.5 content-center"> 
+              <input type="checkbox" id="satut_En_refuge" name="satut_En_refuge" value="En_refuge"  class="statut-checkbox leading-3"/>
+              <label for="satut_En_refuge" class=" font-grands font-semibold text-xs leading-3 self-center">En refuge</label>
+            </div>   
+
+            <div class="flex gap-x-1.5 content-center"> 
+              <input type="checkbox" id="satut_Accueilli" name="satut_Accueilli" value="Accueilli"  class="statut-checkbox leading-3"/>
+              <label for="satut_Accueilli" class=" font-grands font-semibold text-xs leading-3 self-center">Accueilli</label>
+            </div> 
+
+            <div class="flex gap-x-1.5 content-center"> 
+              <input type="checkbox" id="satut_Adopté" name="satut_Adopté" value="Adopté"  class="statut-checkbox leading-3"/>
+              <label for="satut_Adopté" class=" font-grands font-semibold text-xs leading-3 self-center">Adopté</label>
+            </div> 
+
+            
+            <div class="flex gap-x-1.5 content-center"> 
+              <input type="checkbox" id="statut_all" name="statut_all" value="all" checked class="leading-3"/>
+              <label for="statut_all" class=" font-grands font-semibold text-xs leading-3 self-center"> Tous</label>
+            </div>   
+
+          </fieldset>
             
             
           </form>
@@ -60,7 +88,7 @@
               
               <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
               
-              <a data-animalId="<%= animal.id %>" data-nom="<%= animal.nom %>" data-espece="<%= animal.espece.id %>"  data-statut="<%= animal.statut %>" class="animal_card flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="/associations/profil/animaux/<%= animal.id %>">
+              <a data-animalId="<%= animal.id %>" data-nom="<%= animal.nom %>" data-espece="<%= animal.espece.id %>"  data-statut="<%= animal.statut %>" class="animal_card animal_card--visible flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="/associations/profil/animaux/<%= animal.id %>">
                 
                 <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
                 <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
