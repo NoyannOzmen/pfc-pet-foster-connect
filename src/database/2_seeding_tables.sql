@@ -32,27 +32,31 @@ VALUES
 INSERT INTO "espece"
   ("id", "nom" )
 VALUES
-  ( 1, 'Chat' ),
+  (1, 'Chat' ),
   (2, 'Chien'),
-  (3, 'Ornythorinque'),
+  (3, 'Ornithorynque'),
   (4, 'Capybara'),
   (5, 'Champignon'),
-  (6, 'Mystère')
+  (6, 'Mystère'),
+  (7, 'Oiseau'),
+  (8, 'Reptile'),
+  (9, 'Amphibien'),
+  (10, 'Rongeur')
 ;
 
 INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id")
 VALUES
-  (2, 'Animal2', 'Angora', 'Rouge',20,'Mâle','un autre chat','En refuge',1,1),
-  (3, 'Animal3', 'Angora', 'bleu',20,'Mâle','un autre chat','En refuge',1,1),
-  (4, 'Animal4', 'Angora', 'à pois verts',20,'Mâle','un autre chat','En refuge',1,1),
+  (2, 'Choupette', 'Siamois', 'Blanc',20,'Femelle','une petit choupette','En refuge',1,1),
+  (3, 'Léon', 'Bengal', 'Tigré',4,'Mâle','le professionnel','En refuge',1,1),
+  (4, 'Boubou', 'Ragdoll', 'Crème',8,'Mâle','une boule de poils pleine de vie','En refuge',1,1),
   (5, 'Mimi', 'Zigoto', 'à pois bleus', 1000,'Femelle','missingN0','En refuge',1,6),
-  (6, 'DINGO', 'dingo', 'jaune',20,'Mâle','un chien fou','En refuge',1,2),
-  (7, 'Sympa', '/', 'marron',20,'Mâle','Cool Raoul','En refuge',1,4),
-  (8, 'Fun-Guy', 'Coulemelle', 'Blanc Gris',20340,'Inconnu','Il porte des lunettes de soleil','En refuge',1,5),
+  (6, 'Dingo', 'Dingo', 'jaune',20,'Mâle','un chien fou','En refuge',1,2),
+  (7, 'Sympa','','Marron',5,'Inconnu','Cool Raoul','En refuge',1,4),
+  (8, 'Fun-Guy', 'Bolet', 'Blanc Gris',340,'Inconnu','Il porte des lunettes de soleil','En refuge',1,5),
   (9, 'Médor', 'Jack-russell', 'blanc et noir',4,'Mâle','Un ptit chien','Adopté',2,2),
-  (10, 'Médor', 'Jack-russell', 'blanc et noir',4,'Mâle','Un ptit chien','Adopté',3,2),
-  (11, 'Médor', 'Jack-russell', 'blanc et noir',4,'Mâle','Un ptit chien','Adopté',2,2)
+  (10, 'Médou', 'Airedale Terrier', 'sale',14,'Mâle','Un gros chien','Adopté',3,2),
+  (11, 'Philippe', 'Corgi', 'Orange', 1,'Mâle','Un tout p''tit chien','Adopté',2,2)
 ;
 
 INSERT INTO "animal"
