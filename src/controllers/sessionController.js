@@ -300,12 +300,12 @@ export const sessionController = {
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
             await newShelter.save();
-            res.render("accueil")
+            res.redirect('/')
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log(found)
             console.log("Déjà inscrit")
-            res.render('accueil')
+            res.redirect('/')
         }
     },
 
