@@ -4,8 +4,9 @@ import { Card, List } from '../models/index.js';
 import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 */
 
-import { Association, Animal, Demande, Espece, Famille, Tag, Utilisateur } from "../models/Models.js";
+import { Association, Animal, Demande, Espece, Famille, Media, Tag, Utilisateur } from "../models/Models.js";
 import { Op } from "sequelize";
+import upload from 'multer';
 
 
 const associationController = {
@@ -149,6 +150,29 @@ const associationController = {
             
          res.render('profilAssociationLogo', { association });
      },
+
+    async uploadImage(req, res,next){
+        let userImage = req.file.path;
+        const trim = userImage.replace("./src/assets", "");
+        console.log('path is' + trim);
+        const assoId = req.session.userId;
+        console.log(assoId);
+
+        const association = await Association.findByPk(assoId);
+
+        console.log('asso is' + JSON.stringify(association))
+
+        const newMedia = await Media.create({
+            association_id : association.id,
+            url : trim,
+            ordre : 1
+        })
+
+        console.log('image is' + JSON.stringify(newMedia));
+        console.log(`C'est good`)
+        await newMedia.save();
+        res.render("profilAssociationLogo");
+    },
     
     /* MàJ Asso */
     async update(req,res) {
