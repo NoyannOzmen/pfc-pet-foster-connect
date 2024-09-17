@@ -5,35 +5,35 @@
   <!-- Menu de recherche -->
   <div class="md:my-3 flex flex-wrap font-body w-full bg-zoning rounded-lg shadow dark:bg-gray-800 justify-around">
     <form class="text-texte justify-around" action="/animaux" method="POST">
-        <div id="fullSearch" class="mx-2 col-span-3 items-center flex flex-wrap justify-between">
-          <h3 class="font-grands text-2xl w-full my-2 text-center">Rechercher un animal</h3>
-          <select tabindex=0 class="col-span-3 text-xs block w-full" id="espece-dropdown-small" name="especeDropdown" required>
-              <option value="" disabled selected hidden>--Choisissez une espèce--</option>
-              <% especes.forEach(espece => { %>
-                <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
-              <% }) %>
+      <div id="fullSearch" class="mx-2 col-span-3 items-center flex flex-wrap justify-between">
+        <h3 class="font-grands text-2xl w-full my-2 text-center">Rechercher un animal</h3>
+        <select tabindex=0 class="col-span-3 text-xs block w-full" id="espece-dropdown-small" name="especeDropdown" required>
+          <option value="" disabled selected hidden>--Choisissez une espèce--</option>
+          <% especes.forEach(espece => { %>
+            <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
+            <% }) %>
           </select>
           <input class="w-1/3 col-span-1 my-3 py-2 px-2 bg-accents1-light text-fond transition ease-in duration-200 text-center text-xs font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit" value="Rechercher">
           <input id="deploy" class="w-1/3 col-span-1 my-1 py-2 px-2 bg-accents2-dark text-fond transition ease-in duration-200 text-center text-xs font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" value="Filtres">
-
+          
         </div>
         <div id="searchCriterias" class="hidden grid grid-cols-3 gap-1 mx-auto my-3 text-texte">
           <h3 class="col-span-3 font-grands text-3xl text-center my-2">Rechercher un animal</h3> 
           
-            <div class="col-span-1 mx-auto">
-              <h4>Caractéristiques</h4>
-        
-              <!-- Choix de l'espèce -->
-              <div class="my-2">
-                <label class=# for="espece-dropdown">Espèce</label>
-                  <select tabindex=0 class="text-xs block" id="espece-dropdown" name="especeDropdown">
-                    <option value="" disabled selected hidden>--Choisissez une espèce--</option>
-                    <% especes.forEach(espece => { %>
-                      <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
-                    <% }) %>
-                  </select>
-              </div>
+          <div class="col-span-1 mx-auto">
+            <h4>Caractéristiques</h4>
             
+            <!-- Choix de l'espèce -->
+            <div class="my-2">
+              <label class=# for="espece-dropdown">Espèce</label>
+              <select tabindex=0 class="text-xs block" id="espece-dropdown" name="especeDropdown">
+                <option value="" disabled selected hidden>--Choisissez une espèce--</option>
+                <% especes.forEach(espece => { %>
+                  <option name=espece value="<%= espece.nom %>"><%= espece.nom %></option> 
+                  <% }) %>
+                </select>
+              </div>
+              
               <!-- Sexe -->
               <div class="my-2">
                 <fieldset id="sexe">
@@ -43,7 +43,7 @@
                   <label><input type="radio" name="sexe" value="Inconnu" class="mx-1" checked>Inconnu</label>
                 </fieldset>
               </div>
-
+              
               <!-- Selection Age -->
               <div class="my-2">
                 <p>Age :</p>
@@ -54,7 +54,7 @@
                 <label>&nbsp;ans.</label>
               </div>
             </div>
-
+            
             <!-- Sélection Tags -->
             <div class="col-span-1">
               <p>Exclure si :</p>
@@ -63,39 +63,39 @@
                   <label class=# for="<%= tag.nom %>"><%= tag.nom %></label>
                   <input class=# type="checkbox" name="tag" id="<%= tag.nom %>" value="<%= tag.nom %>"/>
                 </div>
-              <% }) %>
-            </div>
-        
-            <div class="col-span-1">
-              <div class="my-2">
-              <!-- Région -->
-              <label class=# for="region-select">Région</label>
-              <select tabindex=0 class="text-xs block" id="region-select" name="regionSelect">
-                  <option value="0" disabled selected hidden>--Choisissez une région--</option>
-                  <option value="1">Auvergne-Rhône-Alpes</option> 
-                  <option value="2">Bourgogne-Franche-Comté</option> 
-                  <option value="3">Bretagne</option> 
-                  <option value="4">Centre-Val de Loire</option> 
-                  <option value="5">Corse</option> 
-                  <option value="6">Grand Est</option> 
-                  <option value="7">Hauts-de-France</option> 
-                  <option value="8">Île-de-France</option> 
-                  <option value="9">Normandie</option> 
-                  <option value="10">Nouvelle-Aquitaine</option>
-                  <option value="11">Occitanie</option>
-                  <option value="12">Pays de la Loire</option>
-                  <option value="13">Provence-Alpes-Côte d'Azur</option>
-                  <option value="14">Guadeloupe</option> 
-                  <option value="15">Guyane</option> 
-                  <option value="16">La Réunion</option> 
-                  <option value="17">Martinique</option> 
-                  <option value="18">Mayotte</option> 
-              </select>
+                <% }) %>
               </div>
-              <div class="my-2">
-                <!-- Département -->
-                <label for="dpt-select">Département</label>
-                <select tabindex=0 class="text-xs block" id="dpt-select" name="dptSelect">
+              
+              <div class="col-span-1">
+                <div class="my-2">
+                  <!-- Région -->
+                  <label class=# for="region-select">Région</label>
+                  <select tabindex=0 class="text-xs block" id="region-select" name="regionSelect">
+                    <option value="0" disabled selected hidden>--Choisissez une région--</option>
+                    <option value="1">Auvergne-Rhône-Alpes</option> 
+                    <option value="2">Bourgogne-Franche-Comté</option> 
+                    <option value="3">Bretagne</option> 
+                    <option value="4">Centre-Val de Loire</option> 
+                    <option value="5">Corse</option> 
+                    <option value="6">Grand Est</option> 
+                    <option value="7">Hauts-de-France</option> 
+                    <option value="8">Île-de-France</option> 
+                    <option value="9">Normandie</option> 
+                    <option value="10">Nouvelle-Aquitaine</option>
+                    <option value="11">Occitanie</option>
+                    <option value="12">Pays de la Loire</option>
+                    <option value="13">Provence-Alpes-Côte d'Azur</option>
+                    <option value="14">Guadeloupe</option> 
+                    <option value="15">Guyane</option> 
+                    <option value="16">La Réunion</option> 
+                    <option value="17">Martinique</option> 
+                    <option value="18">Mayotte</option> 
+                  </select>
+                </div>
+                <div class="my-2">
+                  <!-- Département -->
+                  <label for="dpt-select">Département</label>
+                  <select tabindex=0 class="text-xs block" id="dpt-select" name="dptSelect">
                     <option value="00" disabled selected hidden>--Choisissez un département--</option>
                     <option value="01">01 - Ain</option> 
                     <option value="02">02 - Aisne</option> 
@@ -198,52 +198,50 @@
                     <option value="973">973 - Guyane</option> 
                     <option value="974">974 - La Réunion</option> 
                     <option value="976">976 - Mayotte</option> 
-                </select>
-                
-                <!-- Agrandir aux départements limitrophes -->
-                <label class=# for="nearby-dpt">Départements limitrophes</label>
-                <input class=# type="checkbox" id="nearby-dpt" name="nearby-dpt" />
+                  </select>
+                  
+                  <!-- Agrandir aux départements limitrophes -->
+                  <label class=# for="nearby-dpt">Départements limitrophes</label>
+                  <input class=# type="checkbox" id="nearby-dpt" name="nearby-dpt" />
+                </div>
               </div>
+              
+              <input class="col-span-3 w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit" value="Rechercher">
             </div>
-
-          <input class="col-span-3 w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit" value="Rechercher">
+          </form>
         </div>
-      </form>
-  </div>
-    
-    <div class="grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-3 m-3">
-    
-      <section class = "hidden">
-        <% if (animals.length < 1) { %>
-          <h3>Aucun animal ne correspond à votre recherche</h3>
-        <% } %>
-      </section>
-  
-      <% animals.forEach(animal => { %>
-
-        <div class=" bg-zoning rounded-lg shadow dark:bg-gray-800 md:flex-col ">
-          <% if (animal.images_animal.length > 0 ) { %>
-            <div class="relative md:w-full flex justify-center items-center">
-              <img class="font-body rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
-            </div>
-          <% } %>
-          <div class="flex-auto text-center">
-            <div class="flex flex-wrap">
-              <h3 class="flex-auto text-xl md:text-3xl font-semibold dark:text-gray-50"><%= animal.nom %></h3>
-              <h4 class="flex-none w-full mt-2 text-xs md:text-xl font-medium text-gray-500 dark:text-gray-300"><%= animal.espece.nom %></h4>
-              <hr>
-              <p class="flex-none w-full mt-2 text-xs md:text-xl font-medium text-gray-500 dark:text-gray-300">Age : <%= animal.age %></p>
-              <p class="flex-none w-full mt-2 text-xs md:text-xl font-medium text-gray-500 dark:text-gray-300">Localisation : <%= animal.departement %></p>
-            </div>
-            <div class="flex text-sm font-medium justify-center">
-              <a class="my-2 bg-accents1-light text-fond w-[90%] transition ease-in duration-200 text-center text-xs md:text-2xl font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" href="/animaux/<%= animal.id %>">Découvrir</a>
-            </div>
-          </div>
-        </div>
-      <% }) %>
-    </div>
-
-  </main>
-
-  <script src="/utils/deploySearch.js" async></script>
-  <%- include('partials/footer') %>
+        
+        <div class="grid grid-flow-row-dense grid-cols-3 gap-3 m-3">
+          
+          <section class = "hidden">
+            <% if (animals.length < 1) { %>
+              <h3>Aucun animal ne correspond à votre recherche</h3>
+              <% } %>
+            </section>
+            <% animals.forEach(animal => { %>
+              <div class="bg-zoning rounded-lg shadow dark:bg-gray-800 md:flex-col">
+                <% if (animal.images_animal.length > 0 ) { %>
+                  <div class="relative md:w-full flex justify-center items-center">
+                    <img class="font-body rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                  </div>
+                  <% } %>
+                  <div class="flex-auto text-center">
+                    <div class="flex flex-wrap">
+                      <h3 class="flex-auto text-xl md:text-3xl font-semibold dark:text-gray-50"><%= animal.nom %></h3>
+                      <h4 class="flex-none w-full mt-2 text-xs md:text-xl font-medium text-gray-500 dark:text-gray-300"><%= animal.espece.nom %></h4>
+                      <hr>
+                      <p class="flex-none w-full mt-2 text-xs md:text-xl font-medium text-gray-500 dark:text-gray-300">Age : <%= animal.age %></p>
+                      <p class="flex-none w-full mt-2 text-xs md:text-xl font-medium text-gray-500 dark:text-gray-300">Localisation : <%= animal.departement %></p>
+                    </div>
+                    <div class="flex text-sm font-medium justify-center">
+                      <a class="my-2 bg-accents1-light text-fond w-[90%] transition ease-in duration-200 text-center text-xs md:text-2xl font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" href="/animaux/<%= animal.id %>">Découvrir</a>
+                    </div>
+                  </div>
+                </div>
+                <% }) %>
+              </div>
+              
+            </main>
+            
+            <script src="/utils/deploySearch.js" async></script>
+            <%- include('partials/footer') %>
