@@ -20,7 +20,7 @@ associationRouter.get('/associations/:id(\\d+)', catchErrors(associationControll
 //* DASHBOARD
 
 //Affichage des informations depuis le compte association
-associationRouter.get('/associations/profil', auth, isRole.association, associationController.displayDashboard);
+associationRouter.get('/associations/profil', auth, isRole.association, catchErrors(associationController.displayDashboard));
 
 //Mise à jour des informations depuis le compte association
 associationRouter.post('/associations/profil', auth, isRole.association, catchErrors(associationController.update));
