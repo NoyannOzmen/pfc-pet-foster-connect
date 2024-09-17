@@ -3,6 +3,7 @@ import { associationController } from "../controllers/associationController.js";
 import { catchErrors } from "../middlewares/catchErrors.js";
 import { auth } from "../middlewares/auth.js";
 import { isRole } from "../middlewares/isRole.js";
+import { upload } from "../middlewares/upload.js";
 
 //TODO NE PAS OUBLIER D'AJOUTER LES MIDDLEWARE D'AUTHENTIFICATION AUX ROUTES CONCERNEES
 
@@ -25,8 +26,11 @@ associationRouter.get('/associations/profil', auth, isRole.association, catchErr
 //Mise à jour des informations depuis le compte association
 associationRouter.post('/associations/profil', auth, isRole.association, catchErrors(associationController.update));
 
-//Ajout d'un logo
+//Affichage de la page Ajout d'un logo
 associationRouter.get('/associations/profil/logo', auth, isRole.association, catchErrors(associationController.displayUpload));
+
+//Ajout d'un logo
+associationRouter.post("/upload/logo", auth, isRole.association, upload, catchErrors(associationController.uploadImage));
 
 //* ROUTES AUTHENTIFIEES
 

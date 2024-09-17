@@ -300,7 +300,7 @@ export const sessionController = {
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
             await newShelter.save();
-            res.render("profilAssociationInfos")
+            res.redirect('/')
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log(found)
