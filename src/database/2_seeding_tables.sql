@@ -62,9 +62,9 @@ VALUES
 INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id","famille_id")
   VALUES
-  (1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1),
-  (12, 'Chacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 2),
-  (13, 'Chachacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1)
+  (1, 'Hades', 'Angora', 'Noir', 4, 'Mâle', 'Un bon gros chat', 'Accueilli', 1, 1, 1),
+  (12, 'Ivan', 'Van', 'Blanc & Orange', 7, 'Femelle', 'Il adore l''eau', 'Accueilli', 1, 1, 2),
+  (13, 'Princesse', 'Européen', 'Calico', 11, 'Femelle', 'Un peu craintive', 'Accueilli', 1, 1, 1)
 ;
 
 INSERT INTO "demande"

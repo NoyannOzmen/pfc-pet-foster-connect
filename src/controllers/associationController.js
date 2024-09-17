@@ -6,8 +6,6 @@ import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 
 import { Association, Animal, Demande, Espece, Famille, Media, Tag, Utilisateur } from "../models/Models.js";
 import { Op } from "sequelize";
-import upload from 'multer';
-
 
 const associationController = {
     
@@ -410,8 +408,7 @@ const associationController = {
                 return next();
                 
             }
-
-            
+            req.session.animalId=animal.id;            
             // res.send(animal);
             res.render('profilAssociationAnimauxDetail', {animal});
             

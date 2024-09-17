@@ -23,11 +23,11 @@ animalRouter.post('/animaux/:id(\\d+)/faire-une-demande',[auth,isRole.famille] ,
 //* Ajouter un animal à l'asssociation
 animalRouter.post('/animaux/nouveau-profil', [auth,isRole.association], catchErrors(animalController.addAnimal));
 
-//* Accéder à l'upload de photo depuis la liste des animaux d'une association
-animalRouter.get('/animaux/:id(\\d)/photo', [auth,isRole.association], catchErrors(animalController.displayUploader));
+/* //* Accéder à l'upload de photo depuis la liste des animaux d'une association
+animalRouter.get('/animaux/:id(\\d)/photo', [auth,isRole.association], catchErrors(animalController.displayUploader)); */
 
 //* Ajouter une image à un animal
-animalRouter.post("/animaux/:id(\\d)/upload/photo", [auth,isRole.association], upload, catchErrors(animalController.uploadPhoto));
+animalRouter.post("/upload/photo", [auth,isRole.association], upload, catchErrors(animalController.uploadPhoto));
 
 
 
