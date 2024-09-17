@@ -6,6 +6,7 @@ import { hexadecimalColorSchema } from './JOI-VALIDATE-HEX-STRING.js';
 
 import { Association, Animal, Demande, Espece, Famille, Tag, Utilisateur } from "../models/Models.js";
 import { Op } from "sequelize";
+import { sequelize } from "../models/sequelizeClient.js";
 
 
 const associationController = {
@@ -276,9 +277,11 @@ const associationController = {
     
     async dashboardAnimaux(req,res,next){
         
-        const associationId = req.session.userId;
-        
+        // const associationId = req.session.userId;
+        const associationId = 1;
+
         const animals = await Animal.findAll({
+            order:sequelize.col('espece_id'),
             include: [
                 'espece',
                 'images_animal',
@@ -292,14 +295,27 @@ const associationController = {
                 
             ]
         });
-        
+
+        const especes = await Espece.findAll(
+            {
+                where: {'$representants.association_id$':associationId},
+                include : {
+                    model :Animal,
+                    as :'representants',
+                    attributes:[]
+                    
+
+                }
+            }
+        )
+
         /*
         animaux : tableau d'animaux contenant notamment un objet espece,
         un tableau images_animal, un objet refuge, un object accueillant,
         un tableau tags et un tableau demande
         */
         
-        res.render('profilAssociationAnimauxListe',{ animals });
+        res.render('profilAssociationAnimauxListe',{ animals,especes });
     },
     async dashboardAnimauxSuivi (req, res ,next) {
 

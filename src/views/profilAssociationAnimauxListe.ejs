@@ -29,111 +29,64 @@
         
         <!-- Titre caché pour le mobile -->
         
-        <h3 class="text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Nos Animaux</h3>
+        <h3 class="text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Animaux</h3>
         
         <!-- TRI DES ANIMAUX -->
         
         <!-- INSERER ICI LA FONCTION RECHERCHE et TRI -->
-        <form class="my-4 px-4 w-full flex justify-center" action="">
+        <form autocomplete="off" class="my-4 px-4 w-full flex justify-center flex-wrap gap-3" action="">
           
-          <label class="hidden">Recherche</label>
-          <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
-        </form>
-        
-        <div class=" self-center flex flex-wrap p-4 justify-center gap-3.5">
-          
-          <% animals.forEach(animal => { %>
-            
-            <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
-            
-            <a data-animalId="<%= animal.id %>" class="flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="/associations/profil/animaux/<%= animal.id %>">
-              
-              <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
-              <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
-              
-              <p class="text-sm text-center font-semibold md:text-base"><%= animal.nom %></p>
-              <div class="flex flex-wrap justify-between px-2 pt-0.5">
-                
-                <div class="w-full flex justify-around content-center">
-                  <p class="text-xs italic md:text-base"> <%= animal.espece.nom %></p>
-                  <p class="text-xs italic md:text-base"> <%= animal.statut %></p>
-                </div>
-              </div>
-              
-            </a>
-            
-            <% }) %>
-            
+          <div class="flex gap-x-1.5">
+            <label class="hidden">Recherche</label>
+            <input class="bg-fond rounded-full" type="text" placeholder="Rechercher">
           </div>
-        </section>
-        
-      </div>
-      
-      
-    </div>
-  </main>
-  
-  <template id="animal-detail">
-    <div id="animal-detail__main-container">
-      
-      <!-- ANIMAL INFO CONTAINER -->
-      <div id="animal-info-container" class="">
-        <div class="w-full md:w-1/2">
+          <% especes.forEach(espece => { %>
+            <div class="flex gap-x-1.5 content-center"> 
+              <input type="checkbox" id="espece_<%= espece.id %>" name="espece_<%= espece.id %>" value="<%= espece.id %>"  class="species-checkbox leading-3"/>
+              <label for="espece_<%= espece.id %>" class=" font-grands font-semibold text-xs leading-3 self-center"> <%= espece.nom %></label>
+            </div>   
+            <% }) %>
+            <div class="flex gap-x-1.5 content-center"> 
+              <input type="checkbox" id="espece_all" name="espece_all" value="all" checked class="leading-3"/>
+              <label for="espece_all" class=" font-grands font-semibold text-xs leading-3 self-center"> Tous</label>
+            </div>   
+            
+            
+          </form>
           
-          <h3 id="animal-info__nom" class="font-body font-bold"></h3>
-          
-          <div class="flex p-6 pb-4">
-            <div class="flex flex-col gap-2">
-              <img id="animal-info-image"  class="w-28 rounded-lg" src="" alt="">
-            </div>
+          <div class=" self-center flex flex-wrap p-4 justify-center gap-3.5">
             
-            
-            <div class="grid grid-cols-2 px-6 gap-y-2">
+            <% animals.forEach(animal => { %>
               
-              <div >
-                <p class="text-sm italic leading-3">Age</p>
-                <p id="animal-info-age" class="text-base font-semibold"></p>
-              </div>
+              <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
               
-              <div>
-                <p class="text-sm italic leading-3">Sexe</p>
-                <p id="animal-info-sexe" class="text-base font-semibold"></p>
-              </div>
+              <a data-animalId="<%= animal.id %>" data-nom="<%= animal.nom %>" data-espece="<%= animal.espece.id %>"  data-statut="<%= animal.statut %>" class="animal_card flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="/associations/profil/animaux/<%= animal.id %>">
+                
+                <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
+                <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                
+                <p class="text-sm text-center font-semibold md:text-base"><%= animal.nom %></p>
+                <div class="flex flex-wrap justify-between px-2 pt-0.5">
+                  
+                  <div class="w-full flex justify-around content-center">
+                    <p class="text-xs italic md:text-base"> <%= animal.espece.nom %></p>
+                    <p class="text-xs italic md:text-base"> <%= animal.statut %></p>
+                  </div>
+                </div>
+                
+              </a>
               
-              <div class="">
-                <p class="text-sm italic leading-3">Espèce</p>
-                <p id="animal-info-espece" class="text-base font-semibold"></p>
-              </div>
-              
-              <div>
-                <p class="text-sm italic leading-3">Race</p>
-                <p id="animal-info-race" class="text-base font-semibold"></p>
-              </div>
-            </div>
-            
-            
-            <div class="flex flex-wrap mt-4 px-6 gap-1">
-              
-              <p class="group rounded-full block bg-accents1 text-fond text-center text-xs font-semibold py-1 px-2">
-                <span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute px-2 py-2 text-xs rounded-b-xl rounded-tr-xl">
-                </span>
-              </p>
+              <% }) %>
               
             </div>
-            
-          </div>  
+          </section>
           
         </div>
         
-        <!-- HISTORIQUE ACCUEIL CONTAINER -->
-        <div></div>
-        
-        <!-- DEMANDES HISTORIQUE CONTAINER -->
-        <div></div>
         
       </div>
-      
-    </template>
+    </main>
+    
     
     
     <script src="/utils/dashboardAssoListeAnimal.js"></script>

@@ -30,7 +30,7 @@ associationRouter.get('/associations/profil/logo', auth, isRole.association, cat
 
 //* ROUTES AUTHENTIFIEES
 
-associationRouter.get('/associations/profil/animaux', auth, isRole.association, catchErrors(associationController.dashboardAnimaux));
+associationRouter.get('/associations/profil/animaux', catchErrors(associationController.dashboardAnimaux));
 
 associationRouter.get('/associations/profil/animaux/suivi', auth, isRole.association, catchErrors(associationController.dashboardAnimauxSuivi));
 
