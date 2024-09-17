@@ -107,54 +107,33 @@ export const animalController = {
     
     async hostRequest(req, res, next){
         const animalId = req.params.id;
-        // On sait que l'id est celui d'un user famille car on a vérifié le rôle avant
-        /* const familyId=req.session.id */
-        const familyId = 1;
-        
-        //* Ceci est un test en attendant la feature Auth
-/*         
+        const familleId = req.session.userId;
+       
         //* Si l'animal n'existe pas on sort du middleware
-        const isItHere = await Animal.findByPk(animalId);
-        if (!isItHere){
+        const animalExists = await Animal.findByPk(animalId);
+        if (!animalExists){
             next();
-        } */
-        
- /*        const demandeData = {
-            
-            famille_id:familyId,
-            animal_id:animalId,
-            statut_demande:'En attente',
-            
-            //!à récupérer depuis le formulaire
-            date_debut:'13/09/2024',
-            date_fin:'31/12/3000'
-    }
-
-        console.log(JSON.stringify(demandeData));
-         */
+        }
 
         //* S'il y a déjà une demande de la famille pour l'animal on sort du middleware
         const found = await Demande.findOne({
             where :{ 
                 [Op.and] : [
-                    {famille_id: familyId},
+                    {famille_id: familleId},
                     {animal_id: animalId}
                 ]
             }
         });
 
         console.log(found)
-/*         
-        if (found) {
-            next();
-        } */
+
         if (found === null) {
             //* On crée et sauvegarde l'instance de la demande
             const newRequest = await Demande.create({
-                famille_id : familyId,
+                famille_id : familleId,
                 animal_id : animalId,
                 statut_demande:'En attente',
-                date_debut:'09/13/2024',
+                date_debut:'09/17/2024',
                 date_fin:'12/31/3000'
             });
 
