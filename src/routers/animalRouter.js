@@ -17,6 +17,10 @@ animalRouter.post('/animaux', catchErrors(animalController.getSearched));
 animalRouter.get('/animaux/:id(\\d+)', catchErrors(animalController.detailAnimal));
 
 //* Route de demande d'accueil d'un animal par un.e user
-animalRouter.post('/animaux/:id(\\d+)/faire-une-demande', auth, isRole.famille, catchErrors(animalController.hostRequest));
+animalRouter.post('/animaux/:id(\\d+)/faire-une-demande',[auth,isRole.famille] , catchErrors(animalController.hostRequest));
+
+animalRouter.post('/animaux/nouveau-profil', [auth,isRole.association], catchErrors(animalController.addAnimal));
+
+
 
 export { animalRouter };
