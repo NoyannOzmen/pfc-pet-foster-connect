@@ -147,6 +147,83 @@ export const animalController = {
             console.log('Non');
             res.redirect('/');
         }   
-    }
+    },
+    async addAnimal (req,res,next) {
+
+        //!userId est en fait l'id du refuge ou de la famille
+        const assoId = req.session.userId;
+
+        //* On récupère le nombre de tag en BDD
+        const tagNumber = await Tag.count();
+        const tagIdArray = [];
+        //* Pour récupérer les id des tag sélectionnés par l'utilisateur on boucle autant de fois que de tag en BDD
+        //* On vérifie si la propriété de req.body.tag_number existe
+        //* Si elle existe on ajoute la valeur de l'id du tag dans le tableau
+        for (let i = 0; i < tagNumber; i++) {
+
+            const hasProperty = Object.hasOwn(req.body, `tag_${i+1}`);
+            if (hasProperty){
+                tagIdArray.push(parseInt(req.body[`tag_${i+1}`]));
+            }
+
+        }
+
+        const {
+            nom_animal,
+            age_animal,
+            sexe_animal,
+            test_animal,
+            espece_animal,
+            race_animal,
+            couleur_animal,
+            description_animal
+        } = req.body
+
+
+        const refuge = await Association.findByPk(assoId)
+
+        if (!refuge){
+            next();
+        }
+
+        //* On crée un nouveau profil animal ET un nouveau média (d'où le include)
+        const newAnimal = await Animal.create(
+            {
+                nom : nom_animal,
+                couleur: couleur_animal,
+                age:age_animal,
+                sexe:sexe_animal,
+                race:race_animal,
+                description:description_animal,
+                statut:'En refuge',
+                association_id:assoId,
+                espece_id:espece_animal,
+                images_animal : {
+                    url:test_animal,
+                    ordre:1
+                }
+
+            },
+            {
+                include : [
+                    'images_animal',
+                ]
+            }
+            );
+
+            if (tagIdArray) {
+
+                for (const tagId of tagIdArray) {
+
+                    const tag = await Tag.findByPk(tagId);
+                    await newAnimal.addTag(tag)
+
+                }
+
+            }
+            res.redirect('/associations/profil/animaux');
+        }
+
+
 }
     

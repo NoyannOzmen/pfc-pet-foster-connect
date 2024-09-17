@@ -1,6 +1,7 @@
 /* A middleware for import session info to all views */
 
 export const userMiddleware = (req, res, next) => {
+
     if (!req.session.loggedIn) {
         res.locals.loggedIn = false;
     } else {
@@ -10,6 +11,6 @@ export const userMiddleware = (req, res, next) => {
         res.locals.userId = req.session.userId;
         res.locals.prenom = req.session.prenom
     }
-    console.log(res.locals)
+
     next();
 };

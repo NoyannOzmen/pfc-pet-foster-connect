@@ -8,7 +8,6 @@ export  function auth(req,res,next) {
         return next();
     }
     const error = new Error("Accès non autorisé");
-    res.status(403).render("403");
     error.status = 403;
-    next(error);
+    res.status(403).render("403");
 }

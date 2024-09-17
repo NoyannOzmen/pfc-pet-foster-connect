@@ -119,19 +119,7 @@ const associationController = {
         res.render("detailAssociation",{ association });
     },
     
-    /* Ajouter un animal à une asso */
-    async addAnimal(req,res, next) {
-        const associationId = req.params.id;
-        const association = await Association.findByPk(associationId);
-        
-        if(!association) {
-            return next();
-        }
-        
-        await association.addAnimal(newAnimal);
-        /* Sequelize Lazy Loading ? (Je crois) */
-    },
-    
+   
     /* Afficher le profil (dashboard) d'une association */
     async displayDashboard(req,res,next){
         
