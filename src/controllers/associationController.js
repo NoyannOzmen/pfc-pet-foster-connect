@@ -146,7 +146,9 @@ const associationController = {
          
          const associationId = req.session.userId;
             
-         const association = await Association.findByPk(associationId);
+         const association = await Association.findByPk(associationId, {
+            include: 'images_association'
+         });
             
          res.render('profilAssociationLogo', { association });
      },
@@ -158,7 +160,9 @@ const associationController = {
         const assoId = req.session.userId;
         console.log(assoId);
 
-        const association = await Association.findByPk(assoId);
+        const association = await Association.findByPk(assoId, {
+            include : 'images_association'
+        });
 
         console.log('asso is' + JSON.stringify(association))
 
@@ -171,7 +175,7 @@ const associationController = {
         console.log('image is' + JSON.stringify(newMedia));
         console.log(`C'est good`)
         await newMedia.save();
-        res.render("profilAssociationLogo");
+        res.render("profilAssociationLogo", {association});
     },
     
     /* MàJ Asso */
