@@ -2,13 +2,12 @@
 //* Si c'est le cas on appelle le middleware suivant
 
 
-export  const auth=(req,res,next) => {
-    
+export  function auth(req,res,next) {
+
     if (req.session.loggedIn){
         return next();
     }
-    
-    req.status=403;
-    return next(new Error('Forbidden'));
-
+    const error = new Error("Accès non autorisé");
+    error.status = 403;
+    res.status(403).render("403");
 }
