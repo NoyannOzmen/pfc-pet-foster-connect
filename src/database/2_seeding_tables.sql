@@ -3,64 +3,68 @@ BEGIN;
 INSERT INTO "utilisateur"
   ("id", "email", "mot_de_passe")
 VALUES
-  ( 1, 'b.campbell@pet-smart.fr', 'boomstick'),
-  ( 2, 'j.lopez@mail.io', 'saintesmaries' ),
-  ( 3, 'j.lolopez@mail.io', 'saintesmaries' ),
-  ( 4, 'jiji.lopez@mail.io', 'saintesmaries' ),
-  ( 5, 'Juju.lopez@mail.io', 'saintesmaries' ),
-  ( 6, 'jiju.lopez@mail.io', 'saintesmaries' ),
-  ( 7, 'jaja.lopez@mail.io', 'saintesmaries' )
+  ( 1, 'b.campbell@pet-smart.fr', '$2b$08$hKV4.9nQ2cch50Ub6DVhi.VRMaJVaVVtN5ivbfGVo/9VWt07LTE3e'),
+  ( 2, 'j.lopez@mail.io', '$2b$08$IgpTOYSy6gqvFEiBTkEpy.R.UGbcKON/TvP5LLK9LYf7ZUTkutd76'),
+  ( 3, 'j.venchi@maimail.io', '$2b$08$HTY4jfz8o5SmYfwnWGseb.CC9dWjO2umeuMRHXbCtYGPdHu0q.Rbq'),
+  ( 4, 'c.pagrav@proton.fr', '$2b$08$EiGT8Z2c/xHKsZb/ofUJt.ostO/EwqlLx1c5E6pyAbPhx055CEq1S'),
+  ( 5, 'llm@wanadoux.fr', '$2b$08$GqKC4IdBIWqFy/nHKZWgMOMyaDze383c7dpUpLYtWNEb9Lv1TxtoS'),
+  ( 6, 'cha@perlipop.et', '$2b$08$xyziNtII/luJphK4Wv4QTuWcnMBzgfeSsPf.whw1H06O1rDRhFW2u'),
+  ( 7, 'zeb@manege.com', '$2b$08$q2UqhQfdPDHL7C7bZCpNd.sq9PoQ5A0rDGjBQ6yaxCPgB.W1ozy2W')
 ;
 
 INSERT INTO "association"
   ("id", "nom", "responsable", "rue", "commune", "code_postal", "pays", "siret", "telephone", "utilisateur_id")
 VALUES
   ( 1, 'PetSmart', 'B. Campbell', '38 rue des pinèdes', 'Paris', '75020', 'France', '732 829 320 00074', '01 45 49 36 17', 1),
-  ( 2, 'Asso2', 'B. Campbell', '38 rue des pinèdes', 'Toulouse', '31000', 'France', '732 829 320 00072', '01 45 49 36 13', 3),
-  ( 3, 'Asso3', 'BB. Campbell', '39 rue des pinèdes', 'Limoges', '87000', 'France', '732 829 320 00070', '01 45 49 36 10', 4)
+  ( 2, 'SPB', 'J. Venchi', '60, place du capitole', 'Toulouse', '31000', 'France', '735 654 140 00072', '02 14 18 39 45', 3),
+  ( 3, 'L''arche de Chloé', 'C. Pagrav', '145 avenue Eblé', 'Limoges', '87000', 'France', '722 344 180 00070', '01 59 64 14 15', 4)
 ;
 
 INSERT INTO "famille"
   ("id", "nom", "telephone", "rue", "commune", "code_postal", "pays", "hebergement", "utilisateur_id")
 VALUES 
   ( 1, 'Lopez', '02 48 37 14 15', '1 Place de la gare', 'Argelès', '66008', 'France', 'Maison', 2),
-  ( 2, 'Martin', '02 48 37 14 15', '2 Place de la gare', 'Argelès', '66008', 'France', 'Maison', 5),
-  ( 3, 'Chatmere', '02 48 37 14 15', '3 Place de la gare', 'Argelès', '66008', 'France', 'Maison', 6),
-  ( 4, 'Zébulon', '02 48 37 14 15', '4 Place de la gare', 'Argelès', '66008', 'France', 'Maison', 7)
+  ( 2, 'Martin', '04 24 32 78 46', '63, rue d''Avron', 'Clermont-Ferrand', '63113', 'France', 'Appartement', 5),
+  ( 3, 'Chatmere', '03 28 56 89 45', '5 impasse de la tour', 'Niort', '79191', 'France', 'Maison', 6),
+  ( 4, 'Zébulon', '06 01 45 59 56', '27 boulevard Colle', 'Metz', '57463', 'France', 'Maison', 7)
 ;
 
 INSERT INTO "espece"
   ("id", "nom" )
 VALUES
-  ( 1, 'Chat' ),
+  (1, 'Chat' ),
   (2, 'Chien'),
-  (3, 'Ornythorinque'),
+  (3, 'Ornithorynque'),
   (4, 'Capybara'),
   (5, 'Champignon'),
-  (6, 'Mystère')
+  (6, 'Mystère'),
+  (7, 'Oiseau'),
+  (8, 'Reptile'),
+  (9, 'Amphibien'),
+  (10, 'Rongeur')
 ;
 
 INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id")
 VALUES
-  (2, 'Animal2', 'Angora', 'Rouge',20,'Mâle','un autre chat','En refuge',1,1),
-  (3, 'Animal3', 'Angora', 'bleu',20,'Mâle','un autre chat','En refuge',1,1),
-  (4, 'Animal4', 'Angora', 'à pois verts',20,'Mâle','un autre chat','En refuge',1,1),
+  (2, 'Choupette', 'Siamois', 'Blanc',20,'Femelle','une petit choupette','En refuge',1,1),
+  (3, 'Léon', 'Bengal', 'Tigré',4,'Mâle','le professionnel','En refuge',1,1),
+  (4, 'Boubou', 'Ragdoll', 'Crème',8,'Mâle','une boule de poils pleine de vie','En refuge',1,1),
   (5, 'Mimi', 'Zigoto', 'à pois bleus', 1000,'Femelle','missingN0','En refuge',1,6),
-  (6, 'DINGO', 'dingo', 'jaune',20,'Mâle','un chien fou','En refuge',1,2),
-  (7, 'Sympa', '/', 'marron',20,'Mâle','Cool Raoul','En refuge',1,4),
-  (8, 'Fun-Guy', 'Coulemelle', 'Blanc Gris',20340,'Inconnu','Il porte des lunettes de soleil','En refuge',1,5),
+  (6, 'Dingo', 'Dingo', 'jaune',20,'Mâle','un chien fou','En refuge',1,2),
+  (7, 'Sympa','','Marron',5,'Inconnu','Cool Raoul','En refuge',1,4),
+  (8, 'Fun-Guy', 'Bolet', 'Blanc Gris',340,'Inconnu','Il porte des lunettes de soleil','En refuge',1,5),
   (9, 'Médor', 'Jack-russell', 'blanc et noir',4,'Mâle','Un ptit chien','Adopté',2,2),
-  (10, 'Médor', 'Jack-russell', 'blanc et noir',4,'Mâle','Un ptit chien','Adopté',3,2),
-  (11, 'Médor', 'Jack-russell', 'blanc et noir',4,'Mâle','Un ptit chien','Adopté',2,2)
+  (10, 'Médou', 'Airedale Terrier', 'sale',14,'Mâle','Un gros chien','Adopté',3,2),
+  (11, 'Philippe', 'Corgi', 'Orange', 1,'Mâle','Un tout p''tit chien','Adopté',2,2)
 ;
 
 INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id","famille_id")
   VALUES
-  (1, 'Chat', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1),
-  (12, 'Chacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 2),
-  (13, 'Chachacha', 'Angora', 'Noir', 4, 'Mâle', 'Un chat', 'Accueilli', 1, 1, 1)
+  (1, 'Hades', 'Angora', 'Noir', 4, 'Mâle', 'Un bon gros chat', 'Accueilli', 1, 1, 1),
+  (12, 'Ivan', 'Van', 'Blanc & Orange', 7, 'Femelle', 'Il adore l''eau', 'Accueilli', 1, 1, 2),
+  (13, 'Princesse', 'Européen', 'Calico', 11, 'Femelle', 'Un peu craintive', 'Accueilli', 1, 1, 1)
 ;
 
 INSERT INTO "demande"
