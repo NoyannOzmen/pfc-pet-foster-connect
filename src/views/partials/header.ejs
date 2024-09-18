@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" conctent="Pet Foster Connect, mise en relations entre refuges de protection animale et familles d'accueil">
+  <meta name="description" content="Pet Foster Connect, mise en relations entre refuges de protection animale et familles d'accueil">
   <title>Pet Foster Connect</title>
   <link rel="icon" type="image/x-icon" href="/icons/iconv">
   <link rel="stylesheet" href="/css/output.css">
@@ -40,7 +40,7 @@
     
     
     <div class="grow-1 flex flex-col md:flex-row flex-auto max-[767px]:nav-links" id="nav-links">
-      <div class="flex flex-auto flex-col place-self-start md:flex-row-reverse md:absolute md:top-0 md:right-0">
+      <div class="flex flex-auto flex-col place-self-center w-full md:w-[80%] lg:w-[70%] md:flex-row-reverse md:absolute md:top-0 md:right-0">
         <nav class="rounded-br-lg md:rounded-b-lg flex-auto  bg-accents2-dark text-fond p-3 text-base md:text-lg md:mr-4">
           <ul class="flex flex-col md:flex-row flex-wrap gap-2">
             <!-- Login Navigation -->
@@ -65,15 +65,15 @@
                     
                     
                     <% if (!locals.loggedIn) { %>
-                      <li id="log-in" class="border-2 border-accents2-dark max-[767px]:border-b-fond md:mr-4 md:border-r-fond px-4 max-[767px]:pb-2 place-self-start pl-2">
+                      <li id="log-in" class="border-2 border-accents2-dark max-[767px]:border-b-fond md:mr-4 md:border-r-fond px-4 max-[767px]:pb-2 place-self-center md:place-self-start pl-2">
                         <a href="/connexion" class="hover:text-accents1-light">Se Connecter</a>
                       </li>
                       
-                      <li class="border-2 border-accents2-dark place-self-start pl-2">
-                        <p>S'Inscrire :</p>
-                      </li>
-                      
-                      <div id="log-in" class="flex flex-row place-self-start pl-2 gap-2">
+                      <div id="log-in" class="flex flex-row place-self-center md:place-self-start pl-2 gap-2">
+                        <li class="border-2 border-accents2-dark place-self-center md:place-self-start pl-2">
+                          <p>S'Inscrire :</p>
+                        </li>  
+
                         <li class="border-2 border-accents2-dark">
                           <a href="/famille/inscription" class="hover:text-accents1-light">Famille</a>
                         </li>
@@ -85,10 +85,10 @@
                     </ul>
                     <% } %>
                     
-                  </nav>
+        </nav>
                   
                   <!-- Social Media Navigation -->
-                  <nav class="flex flex-row flex-auto p-3 gap-2">
+                  <nav class="flex flex-row flex-auto justify-center p-3 gap-2">
                     <a href="#" class="">
                       <!-- Icone FB -->
                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0,0,256,256">
@@ -118,11 +118,11 @@
                 </g>
               </svg></a>
               
-            </nav>
-          </div>
+                  </nav>
+      </div>
           
           <!-- Menu Navigation -->
-          <nav class="flex flex-auto grow-1  place-self-start md:place-self-end pb-4 pr-4 text-base text-[75%] md:text-[70%]">
+          <nav class="flex flex-auto grow-1  place-self-center md:place-self-end pb-4 pr-4 text-m md:text-base xl:text-xl">
             <ul class="flex flex-auto flex-col md:flex-row md:place-content-end md:gap-5 pl-4 gap-2">
               <% if (locals.role==='association' ) { %>
                 <li class="hover:text-accents1-light place-self-start">
@@ -149,13 +149,13 @@
                   <li class="hover:text-accents1-light place-self-start">
                     <a tabindex=0 class=# href="/devenir-famille-d-accueil">Devenez Famille&nbsp;d'accueil</a>
                   </li>
-                </ul>
+            </ul>
+          </nav>
                 
-              </div>
+    </div>
               <div class="hamburger absolute top-0 right-4 p-4">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
               </div>
-            </nav>
-          </header>
+</header>

@@ -4,13 +4,13 @@
 	<h2 class="font-grands text-3xl text-center my-2 pt-5">Mon espace association</h2>
   
   <!-- Conteneur général qui contient tout le dashboard -->
-  <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40">
+  <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
     
     <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button id="dashbtn-1" class="dashbtn"><a href="/associations/profil">Profil</a></button></li>
-        <li><button id="dashbtn-2" class="dashbtn"><a href="/associations/profil/demandes">Demandes</a></button></li>
-        <li><button id="dashbtn-3" class="dashbtn dashbtn-active"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
+        <li><a href="/associations/profil"><button id="dashbtn-1" class="dashbtn px-8 py-3">Mon profil</button></a></li>
+        <li><a href="/associations/profil/demandes"><button id="dashbtn-2" class="dashbtn px-8 py-3">Demandes</button></a></li>
+        <li><a href="/associations/profil/animaux"><button id="dashbtn-3" class="dashbtn dashbtn-active px-8 py-3">Nos animaux</button></a></li>
       </ul>
     </nav>
     
@@ -19,15 +19,15 @@
       
       <nav class="rounded-lg">
         <ul class="rounded-t-lg flex bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start md:pl-8">
-          <li class=" rounded-tl-lg block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/animaux">Nos animaux</a></li>
+          <li class=" rounded-tl-lg block grow text-center pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/animaux">Nos animaux</a></li>
           <li class="dashsubbtn-active block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 "><a href="/associations/profil/animaux/suivi">Suivi accueils</a></li>
-          <li class="block grow text-right pr-2 py-2 rounded-tr-lg hover:underline md:grow-0 md:px-4 md:rounded-none md:border-r-solid md:border-r-2 md:border-r-zoning"><a href="/associations/profil/animaux/nouveau-profil">Créer un profil</a></li>
+          <li class="block grow text-center pr-2 py-2 rounded-tr-lg hover:underline md:grow-0 md:px-4 md:rounded-none md:border-r-solid md:border-r-2 md:border-r-zoning"><a href="/associations/profil/animaux/nouveau-profil">Créer un profil</a></li>
         </ul>
       </nav>
       
       <section class="flex flex-wrap justify-center" id="dashboard-container">
         
-        <h3 class="w-full text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Suivi des animaux accueillis</h3>
+        <h3 class="hidden md:inline font-grands text-3xl text-center my-2 pt-5 w-full">Suivi des animaux accueillis</h3>
         
         <div class="w-full mx-4 my-6">
           <table class="text-left w-full">
@@ -58,7 +58,11 @@
                       
                       <div class="flex p-6 pb-4">
                         <div class="flex flex-col gap-2">
-                          <img class="w-28 rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                          <% if (animal.images_animal.length > 0) { %>
+                            <img class="w-28 rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                          <% } else { %>
+                            <img class="w-28 rounded-lg" src="/images/animal_empty.webp" alt="Photo à venir">
+                          <% } %>
                           <a class="rounded-full block bg-accents1 text-fond w-16 text-center text-xs font-semibold py-1 hover:underline" href="/associations/profil/animaux/<%= animal.id %>">Détails</a>
                         </div>
                         

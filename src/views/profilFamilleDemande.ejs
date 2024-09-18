@@ -1,12 +1,12 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-	<h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
-  <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40">
-    <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button id="dashbtn-1" class="dashbtn"><a href="/famille/profil">Mon profil</a></button></li>
-        <li><button id="dashbtn-2" class="dashbtn dashbtn-active"><a href="/famille/profil/demandes">Demandes</a></button></li>
+	<h2 class="font-grands text-3xl text-center my-2 py-6">Bienvenue sur votre espace personnel</h2>
+  <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
+    <nav class="pt-2">
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
+        <li><a href="/famille/profil"><button id="dashbtn-1" class="dashbtn px-8 py-3">Mon profil</button></a></li>
+        <li><a href="/famille/profil/demandes"><button id="dashbtn-2" class="dashbtn dashbtn-active px-8 py-3">Demandes</button></a></li>
       </ul>
     </nav>
 
@@ -14,16 +14,16 @@
 
       <section class="flex flex-wrap justify-center" id="dashboard-container">
         
-        <h3 class="w-full text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Gestion des demandes d'accueil</h3>
+        <h3 class="font-grands text-3xl text-center my-2 pt-5 w-full">Gestion des demandes d'accueil</h3>
 
-        <div class="container">
+        <div class="container w-[80%]">
 
           <div class="row w-full text-center my-6">
             <div class="col w-full text-center my-6">
               <% if (requestedAnimals.length < 1) { %>
-                <h4 class="w-full text-center font-grands text-2xl font-semibold my-4">Pas de demandes d'accueil en attente</h4>
+                <h4 class="w-full text-center font-grands text-2xl my-4">Pas de demandes d'accueil en attente</h4>
               <% } else { %>
-                <h4 class="w-full text-center font-grands text-2xl font-semibold my-4">Demandes en cours</h4>
+                <h4 class="w-full text-center font-grands text-2xl my-4">Demandes en cours</h4>
               <% } %>
         
               <% if (requestedAnimals.length > 0) { %>
