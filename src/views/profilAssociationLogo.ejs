@@ -2,12 +2,12 @@
 
 <main class="justify-self-stretch flex-1">
 	<h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
-  <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40">
+  <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
     <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button id="dashbtn-1" class="dashbtn dashbtn-active"><a href="/associations/profil">Mon profil</a></button></li>
-        <li><button id="dashbtn-2" class="dashbtn"><a href="/associations/profil/demandes">Demandes</a></button></li>
-        <li><button id="dashbtn-3" class="dashbtn"><a href="/associations/profil/animaux">Nos animaux</a></button></li>
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
+        <li><a href="/associations/profil"><button id="dashbtn-1" class="dashbtn dashbtn-active px-8 py-3">Mon profil</button></a></li>
+        <li><a href="/associations/profil/demandes"><button id="dashbtn-2" class="dashbtn px-8 py-3">Demandes</button></a></li>
+        <li><a href="/associations/profil/animaux"><button id="dashbtn-3" class="dashbtn px-8 py-3">Nos animaux</button></a></li>
       </ul>
     </nav>
 
@@ -15,21 +15,21 @@
 
       <nav class="rounded-lg h-9">
         <ul class="rounded-t-lg flex h-9 content-center bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start pl-2">
-              <li class="block grow text-left pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/">Mes informations</a></li>
+              <li class="block grow text-center pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/">Mes informations</a></li>
               <li class="dashsubbtn-active rounded-tl-lg block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4"><a href="/associations/profil/logo">Ajouter une image</a></li>
         </ul>
       </nav>
 
       <section class="flex flex-col flex-wrap justify-center" id="dashboard-container">
-        <h2 class="font-grands text-3xl text-center my-2 pt-5">Ajouter une photo ou un logo à votre profil</h2>
+        <h3 class="font-grands text-3xl text-center my-2 pt-5 w-full">Ajouter une image</h3>
         
         <form class="self-center" method="POST" action="/upload/logo" enctype="multipart/form-data">
           <div class="flex flex-col">
-            <label class="text-center">Par ici</label>
-            <input type="file" name="file" required/>
+            <label for="file" class="text-center">Importer une image</label>
+            <input id="file" type="file" name="file" required/>
           </div>
           <div class="flex justify-center">
-           <input type="submit" value="Uploader" class="my-3 py-2 px-4 mx-auto bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"/>
+           <input type="submit" value="Importer" class="my-3 py-2 px-4 mx-auto bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"/>
           </div>
         </form>
       </section>

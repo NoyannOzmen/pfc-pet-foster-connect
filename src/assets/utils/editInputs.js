@@ -5,7 +5,7 @@ editBtns.forEach(n => n.addEventListener("click", enableEdit));
 function enableEdit(e) {
   const field = e.target.closest('fieldset')
   const inputs = field.querySelectorAll('input')
-  const validate = document.querySelector("button");
+  const validate = document.getElementById("validate");
   
   if (validate.classList.contains('hidden')) {
     validate.classList.toggle('hidden')
