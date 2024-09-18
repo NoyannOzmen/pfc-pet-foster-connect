@@ -8,7 +8,7 @@ const storage =
     imageOptions:{
     fileFormat: "webp",
     quality: 70,
-    resize: { width: 450, height: 300 },
+    resize: { width: 450, height: 300, },
       }
 });
 
