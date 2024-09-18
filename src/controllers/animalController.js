@@ -238,6 +238,9 @@ export const animalController = {
         console.log('image is' + JSON.stringify(newMedia));
         console.log(`C'est good`)
         await newMedia.save();
+        console.log(req.session.animalId)
+        delete req.session.animalId
+        console.log(req.session)
         res.redirect("/associations/profil/animaux");
     },
 }
