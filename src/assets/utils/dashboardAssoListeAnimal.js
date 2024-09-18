@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     handleFilters();
     handlesSearchBar();
+
+    dropDownSearch();
 });
 
 function filterCards (searchFlag,animalCards) {
@@ -32,13 +34,13 @@ function filterCards (searchFlag,animalCards) {
             animalCard.dataset.statut.toLowerCase(),
             animalCard.querySelector('.espece-nom').innerText.toLowerCase()
         ]
-
+        
         
         const F1 = speciesFilter.length ? speciesFilter.includes(animalCard.dataset.espece) : true;
         const F2 = statutFilter.length ? statutFilter.includes(animalCard.dataset.statut) : true;
         const F3 = searchArray.some(e => {return e.includes(searchBar.value.toLowerCase())});
         
-
+        
         if (!searchFlag) {
             return (F1&&F2)
         } else {
@@ -164,7 +166,7 @@ function handlesSearchBar () {
     const searchBar = document.getElementById('search-bar');
     
     searchBar.addEventListener('input', () => {
-
+        
         const animalCards =  document.querySelectorAll('.animal_card');
         animalCards.forEach(animalCard => {
             animalCard.classList.add('hidden');
@@ -179,4 +181,13 @@ function handlesSearchBar () {
         
     })
     
+}
+
+function dropDownSearch () {
+    const searchButton = document.getElementById('search-dropdown-button');
+    
+    searchButton.addEventListener('click', ()=>{
+        const searchFilters = document.getElementById('search-filters');
+        searchFilters.classList.toggle('hidden')
+    })
 }
