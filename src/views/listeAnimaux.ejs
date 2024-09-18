@@ -220,16 +220,17 @@
             <% if (animals.length < 1) { %>
               <h3>Aucun animal ne correspond à votre recherche</h3>
               <% } %>
-            </section>
+          </section>
             <% animals.forEach(animal => { %>
-        <div class="flex bg-zoning rounded-lg shadow dark:bg-gray-800 flex-row md:flex-col mx-auto my-2 w-[75%]">
-            <div class="relative w-full md:w-full flex justify-center items-center">
-              <% if (animal.images_animal.length > 0) { %>
-                <img class="object-contain w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
-                src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
-              <% } else { %>
-                <img class="object-contain w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none" src="/images/animal_empty.webp" alt="Photo à venir">
-                  <% } %>
+              <div class="bg-zoning rounded-lg shadow dark:bg-gray-800 md:flex-col">
+                <div class="relative md:w-full flex justify-center items-center">
+                  <% if (animal.images_animal.length > 0) { %>
+                    <img class="font-body rounded-lg"
+                    src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                  <% } else { %>
+                    <img class="font-body rounded-lg" src="/images/animal_empty.webp" alt="Photo à venir">
+                      <% } %>
+                </div>
                   <div class="flex-auto text-center">
                     <div class="flex flex-wrap">
                       <h3 class="flex-auto text-xl md:text-3xl font-semibold dark:text-gray-50"><%= animal.nom %></h3>
@@ -242,11 +243,12 @@
                       <a class="my-2 bg-accents1-light text-fond w-[90%] transition ease-in duration-200 text-center text-xs md:text-2xl font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" href="/animaux/<%= animal.id %>">Découvrir</a>
                     </div>
                   </div>
-                </div>
-                <% }) %>
               </div>
+            <% }) %>
+        </div>
               
-            </main>
-            
-            <script src="/utils/deploySearch.js" async></script>
-            <%- include('partials/footer') %>
+</main>
+
+<script src="/utils/deploySearch.js" async></script>
+
+<%- include('partials/footer') %>
