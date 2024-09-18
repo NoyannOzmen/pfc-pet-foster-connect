@@ -277,8 +277,7 @@ const associationController = {
             
             async dashboardAnimaux(req,res,next){
                 
-                // const associationId = req.session.userId;
-                const associationId = 1;
+                const associationId = req.session.userId;
                 
                 const animals = await Animal.findAll({
                     order: [
