@@ -90,10 +90,12 @@
 	
 	.hamburger.active .bar:nth-child(1) {
 		transform: translateY(12.5px) rotate(45deg);
+		background-color: #fffbe4
 	}
 	
 	.hamburger.active .bar:nth-child(3) {
 		transform: translateY(-12.5px) rotate(-45deg);
+		background-color: #fffbe4
 	}
 	
 	.nav-links {

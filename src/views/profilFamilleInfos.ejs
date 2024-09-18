@@ -1,21 +1,21 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-	<h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
-  <div class="flex flex-col content-center justify-center mx-4 mb-4 lg:px-40">
-    <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10">
-        <li><button id="dashbtn-1" class="dashbtn dashbtn-active"><a href="/famille/profil">Mon profil</a></button></li>
-        <li><button id="dashbtn-2" class="dashbtn"><a href="/famille/profil/demandes">Demandes</a></button></li>
+	<h2 class="font-grands text-3xl text-center my-2 py-6">Bienvenue sur votre espace personnel</h2>
+  <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
+    <nav class="pt-2">
+      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
+        <li><a href="/famille/profil"><button id="dashbtn-1" class="dashbtn dashbtn-active px-8 py-3">Mon profil</button></a></li>
+        <li><a href="/famille/profil/demandes"><button id="dashbtn-2" class="dashbtn px-8 py-3">Demandes</button></a></li>
       </ul>
     </nav>
 
     <div class="font-body bg-zoning rounded-lg shadow dark:bg-gray-800 mb-4">
 
       <section class="flex flex-wrap justify-center" id="dashboard-container">
-        <h3 class="font-grands text-3xl text-center my-2 pt-5">Mon profil</h3>
+        <h3 class="font-grands text-3xl text-center my-2 pt-5 w-full">Mon profil</h3>
 
-        <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/profil" method="POST">
+        <form class="flex flex-col flex-wrap content-center justify-around text-texte w-full" action="/famille/profil" method="POST">
           
           <fieldset class="w-[60%] font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
             <legend class="text-center">Mes informations&nbsp;<span class="material-symbols-outlined">edit</span></legend>
@@ -64,9 +64,9 @@
 
             <!-- <label for="departement">Département</label>
             <input class="block w-full" type="number" id="departement" name="departement" value="<%= famille.departement %>" disabled> -->
-          </fieldset>
+      </fieldset>
 
-          <!-- <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+      <!-- <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
             <legend class="text-center">Je peux accueillir</legend>
               <% especes.forEach(espece => { %>
                 <div>
@@ -74,18 +74,18 @@
                   <input class=# type="checkbox" id="<%= espece.nom %>" name="<%= espece.nom %>" />
                 </div>
               <% }) %>
-          </fieldset> -->
+      </fieldset> -->
 
-          <button class="hidden w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider les modifications</button>
+      <button id="validate" class="hidden w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider les modifications</button>
             
-        </form>
-        <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/profil/delete" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre profil ? Cette action est irréversible !')">
-          <button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Supprimer mon profil</button>
-          <p class="text-center w-full">ATTENTION ! Cette suppression est définitive !</p>
-        </form>
-      </div>
-    </main>
+    </form>
+    <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/famille/profil/delete" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre profil ? Cette action est irréversible !')">
+      <button id="deleteAccount" class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents2-dark text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Supprimer mon profil</button>
+      <p class="text-center w-full">ATTENTION ! Cette suppression est définitive !</p>
+    </form>
+  </div>
+</main>
 
-    <script src='/utils/editInputs.js' async></script>
+<script src='/utils/editInputs.js' async></script>
 
-    <%- include('partials/footer') %>
+<%- include('partials/footer') %>
