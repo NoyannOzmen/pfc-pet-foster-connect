@@ -44,7 +44,7 @@
           <fieldset>
           <% especes.forEach(espece => { %>
             <div class="flex gap-x-1.5 content-center"> 
-              <input type="checkbox" id="espece_<%= espece.id %>" name="espece_<%= espece.id %>" value="<%= espece.id %>"  class="species-checkbox leading-3"/>
+              <input type="checkbox" id="espece_<%= espece.id %>" name="espece_<%= espece.id %>" value="<%= espece.id %>"  class="species-checkbox checkbox leading-3"/>
               <label for="espece_<%= espece.id %>" class=" font-grands font-semibold text-xs leading-3 self-center"> <%= espece.nom %></label>
             </div>   
             <% }) %>
@@ -57,17 +57,17 @@
           <fieldset>
 
             <div class="flex gap-x-1.5 content-center"> 
-              <input type="checkbox" id="satut_En_refuge" name="satut_En_refuge" value="En_refuge"  class="statut-checkbox leading-3"/>
+              <input type="checkbox" id="satut_En_refuge" name="satut_En_refuge" value="En refuge"  class="statut-checkbox checkbox leading-3"/>
               <label for="satut_En_refuge" class=" font-grands font-semibold text-xs leading-3 self-center">En refuge</label>
             </div>   
 
             <div class="flex gap-x-1.5 content-center"> 
-              <input type="checkbox" id="satut_Accueilli" name="satut_Accueilli" value="Accueilli"  class="statut-checkbox leading-3"/>
+              <input type="checkbox" id="satut_Accueilli" name="satut_Accueilli" value="Accueilli"  class="statut-checkbox checkbox leading-3"/>
               <label for="satut_Accueilli" class=" font-grands font-semibold text-xs leading-3 self-center">Accueilli</label>
             </div> 
 
             <div class="flex gap-x-1.5 content-center"> 
-              <input type="checkbox" id="satut_Adopté" name="satut_Adopté" value="Adopté"  class="statut-checkbox leading-3"/>
+              <input type="checkbox" id="satut_Adopté" name="satut_Adopté" value="Adopté"  class="statut-checkbox checkbox leading-3"/>
               <label for="satut_Adopté" class=" font-grands font-semibold text-xs leading-3 self-center">Adopté</label>
             </div> 
 

@@ -1,86 +1,138 @@
 document.addEventListener('DOMContentLoaded', ()=>{
-    
-    handleSpeciesFilters();
-    handleStatutFilters();
+    handleFilters();
 });
 
 
-
-function handleSpeciesFilters () {
+function handleFilters () {
     
-    const animalCards =  document.querySelectorAll('.animal_card');
+    const checkboxes = document.querySelectorAll('.checkbox');
     
-    const speciesCheckboxes = document.querySelectorAll('.species-checkbox');
-    
-    const allCheckbox = document.getElementById('espece_all');
-    
-    allCheckbox.addEventListener('change', () => {
+    checkboxes.forEach(checkbox => {
         
-        if (allCheckbox.checked) {
+        checkbox.addEventListener('change', (event) => {
             
-            speciesCheckboxes.forEach(element => {
-                element.checked=false;
-            });
-            
-            animalCards.forEach(animalCard => {
-                animalCard.classList.remove('hidden')
-            })
-            
-        }
-    })
-    
-    
-    speciesCheckboxes.forEach(speciesCheck => {
-        
-        speciesCheck.addEventListener('change', () => {
-            
-            if (allCheckbox.checked) {
-                const animalCards =  document.querySelectorAll('.animal_card');
-                allCheckbox.checked=false
-                animalCards.forEach(animalCard => {
-                    animalCard.classList.add('hidden')
-                })
+            if (event.target.classList.contains('species-checkbox') ) {
+                const allSpeciesCheckbox = document.getElementById('espece_all');
+                allSpeciesCheckbox.checked=false
+            }
+            const allStatutCheckbox = document.getElementById('statut_all');
+            if (event.target.classList.contains('statut-checkbox') ) {
+                allStatutCheckbox.checked=false
             }
             
-            const animalCards =  document.querySelectorAll(`[data-espece*="${speciesCheck.value}"]`);
-            animalCards.forEach(card => {
-                card.classList.toggle('hidden');
+            //* On initialise et remplit un tableau avec les valeurs qui doivent filtrer 
+            const speciesFilter = [];
+            const speciesCheckboxes = document.querySelectorAll('.species-checkbox');
+            speciesCheckboxes.forEach(species => {
+                if (species.checked) {
+                    speciesFilter.push(species.value)
+                }
             });
+            
+            const statutFilter = [];
+            const statutCheckboxes = document.querySelectorAll('.statut-checkbox');
+            statutCheckboxes.forEach(statut => {
+                if (statut.checked) {
+                    statutFilter.push(statut.value)
+                }
+            });
+            
+            const animalCards =  document.querySelectorAll('.animal_card');
+            animalCards.forEach(animalCard => {
+                
+                animalCard.classList.add('hidden');
+            });
+            
+            const visibleCards = Array.from(animalCards).filter(animalCard => {
+                
+                const F1 = speciesFilter.length ? speciesFilter.includes(animalCard.dataset.espece) : true;
+                const F2 = statutFilter.length ? statutFilter.includes(animalCard.dataset.statut) : true;
+                
+                return (F1 && F2)
+                
+            })
+            
+            visibleCards.forEach(visibleCard => {
+                visibleCard.classList.remove('hidden');
+            });
+            
             
         })
         
     });
     
-    
-}
-
-function handleStatutFilters () {
-
-    const statutCheckboxes = document.querySelectorAll('.statut-checkbox');
-    const allCheckbox = document.getElementById('statut_all');
-
-    statutCheckboxes.forEach(statutCheck => {
-
-        statutCheck.addEventListener('change', () => {
-            
-            if (allCheckbox.checked) {
-                
-                const visibleCards =  document.querySelectorAll('.animal_card--visible');
-                allCheckbox.checked=false
-                visibleCards.forEach(animalCard => {
-                    animalCard.classList.add('hidden')
-                    animalCard.classList.remove('animal_card--visible')
-                })
+    const allSpeciesCheckbox = document.getElementById('espece_all');
+    allSpeciesCheckbox.addEventListener('change', () => {
+        
+        const speciesCheckboxes = document.querySelectorAll('.species-checkbox');
+        
+        speciesCheckboxes.forEach(checkbox => {
+            checkbox.checked=false
+        });
+        
+        const statutFilter = [];
+        const statutCheckboxes = document.querySelectorAll('.statut-checkbox');
+        statutCheckboxes.forEach(statut => {
+            if (statut.checked) {
+                statutFilter.push(statut.value)
             }
+        });
+        
+        const animalCards =  document.querySelectorAll('.animal_card');
+        animalCards.forEach(animalCard => {
             
-            const visibleCards =  document.querySelectorAll(`[data-espece*="${statutCheck.value}"]`);
-            visibleCards.forEach(card => {
-                card.classList.toggle('hidden');
-            });
+            animalCard.classList.add('hidden');
+        });
+        
+        const visibleCards = Array.from(animalCards).filter(animalCard => {
+            
+            const F2 = statutFilter.length ? statutFilter.includes(animalCard.dataset.statut) : true;
+            return F2
             
         })
-
+        
+        visibleCards.forEach(visibleCard => {
+            visibleCard.classList.remove('hidden');
+        });
+        
+        
     })
-
-
+    
+    const allStatutCheckbox = document.getElementById('statut_all');
+    allStatutCheckbox.addEventListener('change', () => {
+        
+        const statutCheckboxes = document.querySelectorAll('.statut-checkbox');
+        
+        statutCheckboxes.forEach(checkbox => {
+            checkbox.checked=false
+        });
+        
+        const speciesFilter = [];
+        const speciesCheckboxes = document.querySelectorAll('.species-checkbox');
+        speciesCheckboxes.forEach(species => {
+            if (species.checked) {
+                speciesFilter.push(species.value)
+            }
+        });
+        
+        const animalCards =  document.querySelectorAll('.animal_card');
+        animalCards.forEach(animalCard => {
+            
+            animalCard.classList.add('hidden');
+        });
+        
+        const visibleCards = Array.from(animalCards).filter(animalCard => {
+            
+            const F2 = speciesFilter.length ? speciesFilter.includes(animalCard.dataset.espece) : true;
+            return F2
+            
+        })
+        
+        visibleCards.forEach(visibleCard => {
+            visibleCard.classList.remove('hidden');
+        });
+        
+        
+    })
+    
 }
