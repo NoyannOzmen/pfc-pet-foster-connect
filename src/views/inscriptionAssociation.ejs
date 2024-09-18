@@ -23,8 +23,8 @@
         
         <!-- API Adresse -->
         <div id="api-container" class="mx-auto p-2 relative my-4">
-          <label class="text-center w-full font-semibold" for="api-gouv">Remplissage Automatique</label>
-          <input class="block bg-fond w-full" type="text" id="api-gouv" name="api_gouv" placeholder="entrez votre adresse">
+          <label class="text-center w-full" for="api-gouv">Adresse <span class="italic font-semibold">(Remplissage Automatique)</span></label>
+          <input class="block bg-fond w-full" type="text" id="api-gouv" name="api_gouv" placeholder="Entrez votre adresse">
           <div id="address-container" class=" bg-accents2-light absolute w-5/6 divide-y divide-text border-solid border-texte rounded-lg z-10" >
           </div>
         </div>
@@ -181,7 +181,7 @@
           <input class="block bg-fond w-full" type="url" name="url" id="url" placeholder="https://exemple.com" pattern="https://.*" size="40" required /> -->
         </fieldset>
         
-        <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 px-4 py-5 grid grid-cols-1 md:grid-cols-2 max-w-xl">
+<!--         <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 px-4 py-5 grid grid-cols-1 md:grid-cols-2 max-w-xl">
           <legend class="font-bold text-lg font-grands text-center">Vos animaux</legend>
           <% especes.forEach(espece => { %>
             <div class="flex gap-2 justify-start">
@@ -189,7 +189,7 @@
               <label class= "w-full" for="<%= espece.nom %>"><%= espece.nom %></label>
             </div>
             <% }) %>
-          </fieldset>
+          </fieldset> -->
           
           <!-- Cette section est en commentaire car pas utile pour le moment      
             <fieldset>

@@ -1,4 +1,4 @@
-import { Animal, Association, Demande, Espece, Tag } from "../models/Models.js";
+import { Animal, Association, Demande, Espece, Media, Tag } from "../models/Models.js";
 import { Op } from "sequelize";
 
 
@@ -148,8 +148,8 @@ export const animalController = {
             res.redirect('/');
         }   
     },
-    async addAnimal (req,res,next) {
 
+    async addAnimal (req,res,next) {
         //!userId est en fait l'id du refuge ou de la famille
         const assoId = req.session.userId;
 
@@ -165,20 +165,17 @@ export const animalController = {
             if (hasProperty){
                 tagIdArray.push(parseInt(req.body[`tag_${i+1}`]));
             }
-
         }
-
+        
         const {
             nom_animal,
             age_animal,
             sexe_animal,
-            test_animal,
             espece_animal,
             race_animal,
             couleur_animal,
             description_animal
         } = req.body
-
 
         const refuge = await Association.findByPk(assoId)
 
@@ -197,33 +194,54 @@ export const animalController = {
                 description:description_animal,
                 statut:'En refuge',
                 association_id:assoId,
-                espece_id:espece_animal,
-                images_animal : {
-                    url:test_animal,
-                    ordre:1
-                }
+                espece_id:espece_animal
+            });
 
-            },
-            {
-                include : [
-                    'images_animal',
-                ]
+        if (tagIdArray) {
+            for (const tagId of tagIdArray) {
+                const tag = await Tag.findByPk(tagId);
+                await newAnimal.addTag(tag)
             }
-            );
-
-            if (tagIdArray) {
-
-                for (const tagId of tagIdArray) {
-
-                    const tag = await Tag.findByPk(tagId);
-                    await newAnimal.addTag(tag)
-
-                }
-
-            }
-            res.redirect('/associations/profil/animaux');
         }
+        res.redirect('/associations/profil/animaux');
+    },
 
+/*     async displayUploader (req,res, next) {
+        const animalId = req.params.id
 
+        const animal = await Animal.findByPk(animalId, {
+            include : 'images_association'
+        });
+      
+        res.render("profilAssociationAnimauxPhoto", { animal })
+    }, */
+
+    async uploadPhoto(req, res,next){
+        let userImage = req.file.path;
+        const trim = userImage.replace("./src/assets", "");
+        console.log('path is' + trim);
+        const animalId = req.session.animalId;
+        console.log(animalId);
+
+        const animal = await Animal.findByPk(animalId, {
+            include : 'images_animal'
+        });
+
+        console.log('asso is' + JSON.stringify(animal));
+
+        const newMedia = await Media.create({
+            animal_id : animal.id,
+            url : trim,
+            ordre : 1
+        })
+
+        console.log('image is' + JSON.stringify(newMedia));
+        console.log(`C'est good`)
+        await newMedia.save();
+        console.log(req.session.animalId)
+        delete req.session.animalId
+        console.log(req.session)
+        res.redirect("/associations/profil/animaux");
+    },
 }
     
