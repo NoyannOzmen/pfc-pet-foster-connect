@@ -42,7 +42,7 @@
     <div class="grow-1 flex flex-col md:flex-row flex-auto max-[767px]:nav-links" id="nav-links">
       <div class="flex flex-auto flex-col place-self-center w-full md:w-[80%] lg:w-[70%] md:flex-row-reverse md:absolute md:top-0 md:right-0">
         <nav class="rounded-br-lg md:rounded-b-lg flex-auto  bg-accents2-dark text-fond p-3 text-base md:text-lg md:mr-4">
-          <ul class="flex flex-col md:flex-row flex-wrap gap-2">
+          <ul class="flex flex-col md:flex-row flex-nowrap justify-around">
             <!-- Login Navigation -->
             <% if (locals.loggedIn) { %>
               <li class="border-2 border-accents2-dark max-[767px]:border-b-fond md:mr-4 md:border-r-fond px-4 max-[767px]:pb-2 place-self-center md:place-self-start pl-2">
@@ -58,6 +58,17 @@
                   <% } %>
                 <% } %>
                     </li>
+
+                    <% if (locals.role==='association' ) { %>
+                      <li class="border-2 border-accents2-dark mr-0 max-[767px]:border-b-fond  md:border-r-fond px-4 pr-6 max-[767px]:pb-2 place-self-start">
+                        <a tabindex=0 class="hover:text-accents1-light" href="/associations/profil/animaux">Tableau de&nbsp;bord</a>
+                      </li>
+                      <% } %>
+                      <% if (locals.role==='famille' ) { %>
+                        <li class="border-2 border-accents2-dark mr-0 max-[767px]:border-b-fond  md:border-r-fond px-4 pr-6 max-[767px]:pb-2 place-self-start">
+                          <a tabindex=0 class="hover:text-accents1-light" href="/famille/profil">Tableau de&nbsp;bord</a>
+                        </li>
+                      <% } %>
                     <li id="log-out" class="border-2 border-accents2-dark place-self-center md:place-self-start pl-2">
                       <a href="/deconnexion" class="hover:text-accents1-light">Se Déconnecter</a>
                     </li>
@@ -124,16 +135,6 @@
           <!-- Menu Navigation -->
           <nav class="flex flex-auto grow-1  place-self-center md:place-self-end pb-4 pr-4 text-m md:text-base xl:text-xl">
             <ul class="flex flex-auto flex-col md:flex-row md:place-content-end md:gap-5 pl-4 gap-2">
-              <% if (locals.role==='association' ) { %>
-                <li class="hover:text-accents1-light place-self-start">
-                  <a tabindex=0 class=# href="/associations/profil/animaux">Tableau de&nbsp;bord</a>
-                </li>
-                <% } %>
-                <% if (locals.role==='famille' ) { %>
-                  <li class="hover:text-accents1-light place-self-start">
-                    <a tabindex=0 class=# href="/famille/profil">Tableau de&nbsp;bord</a>
-                  </li>
-                  <% } %>
                   <li class="hover:text-accents1-light place-self-start">
                     <a  tabindex=0 class=# href="/animaux">Nos Animaux</a>
                   </li>
