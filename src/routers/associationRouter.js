@@ -34,7 +34,7 @@ associationRouter.post("/upload/logo", auth, isRole.association, upload, catchEr
 
 //* ROUTES AUTHENTIFIEES
 
-associationRouter.get('/associations/profil/animaux', auth, isRole.association, catchErrors(associationController.dashboardAnimaux));
+associationRouter.get('/associations/profil/animaux',auth, isRole, catchErrors(associationController.dashboardAnimaux));
 
 associationRouter.get('/associations/profil/animaux/suivi', auth, isRole.association, catchErrors(associationController.dashboardAnimauxSuivi));
 
