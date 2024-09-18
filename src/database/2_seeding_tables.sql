@@ -50,12 +50,12 @@ VALUES
   (2, 'Choupette', 'Siamois', 'Blanc',20,'Femelle','une petit choupette','En refuge',1,1),
   (3, 'Léon', 'Bengal', 'Tigré',4,'Mâle','le professionnel','En refuge',1,1),
   (4, 'Boubou', 'Ragdoll', 'Crème',8,'Mâle','une boule de poils pleine de vie','En refuge',1,1),
-  (5, 'Mimi', 'Zigoto', 'à pois bleus', 1000,'Femelle','missingN0','En refuge',1,6),
-  (6, 'Dingo', 'Dingo', 'jaune',20,'Mâle','un chien fou','En refuge',1,2),
-  (7, 'Sympa','','Marron',5,'Inconnu','Cool Raoul','En refuge',1,4),
+  (5, 'Pipou', 'Perruche', 'Bleu', 3,'Femelle','adore Earth, Wind & Fire','En refuge',1,7),
+  (6, 'Snoop', 'Chihuahua', 'Jaunâtre', 20,'Mâle','un chien très calme','En refuge',1,2),
+  (7, 'Capy','','Marron',5,'Inconnu','Cool Raoul','En refuge',1,4),
   (8, 'Fun-Guy', 'Bolet', 'Blanc Gris',340,'Inconnu','Il porte des lunettes de soleil','En refuge',1,5),
   (9, 'Médor', 'Jack-russell', 'blanc et noir',4,'Mâle','Un ptit chien','Adopté',2,2),
-  (10, 'Médou', 'Airedale Terrier', 'sale',14,'Mâle','Un gros chien','Adopté',3,2),
+  (10, 'Médou', 'Bichon frisé', 'blanc',1,'Mâle','Un jeune chien','Adopté',3,2),
   (11, 'Philippe', 'Corgi', 'Orange', 1,'Mâle','Un tout p''tit chien','Adopté',2,2)
 ;
 
@@ -63,7 +63,7 @@ INSERT INTO "animal"
   ("id", "nom", "race", "couleur", "age", "sexe", "description", "statut", "association_id", "espece_id","famille_id")
   VALUES
   (1, 'Hades', 'Angora', 'Noir', 4, 'Mâle', 'Un bon gros chat', 'Accueilli', 1, 1, 1),
-  (12, 'Ivan', 'Van', 'Blanc & Orange', 7, 'Femelle', 'Il adore l''eau', 'Accueilli', 1, 1, 2),
+  (12, 'Ivan', 'Chat', 'Orange', 7, 'Mâle', 'C''est probablement un chat', 'Accueilli', 1, 1, 2),
   (13, 'Princesse', 'Européen', 'Calico', 11, 'Femelle', 'Un peu craintive', 'Accueilli', 1, 1, 1)
 ;
 
@@ -83,26 +83,22 @@ INSERT INTO "demande"
 INSERT INTO "media"
   ("id", "url", "ordre", "animal_id", "association_id")
 VALUES
-  ( 1, 'https://cdn.pixabay.com/photo/2024/03/07/10/38/simba-8618301_960_720.jpg', 1, 2, NULL ),
-  ( 3, 'https://cdn.pixabay.com/photo/2024/03/07/10/38/simba-8618301_960_720.jpg', 1, 2, NULL ),
-  ( 4, 'https://cdn.pixabay.com/photo/2024/03/07/10/38/simba-8618301_960_720.jpg', 1, 3, NULL ),
-  ( 5, 'https://cdn.pixabay.com/photo/2024/03/07/10/38/simba-8618301_960_720.jpg', 1, 4, NULL ),
-  ( 6, 'https://cdn.pixabay.com/photo/2024/03/07/10/38/simba-8618301_960_720.jpg', 1, 4, NULL ),
-  ( 7, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 1, NULL ),
-  ( 8, 'https://cdn.pixabay.com/photo/2023/12/15/21/47/cat-8451431_960_720.jpg', 3, 1, NULL ),
-  ( 9, 'https://cdn.pixabay.com/photo/2019/11/18/00/38/dog-4633734_960_720.jpg', 1, 4, NULL ),
-  ( 10, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, 5, NULL ),
-  ( 11, 'https://cdn.pixabay.com/photo/2022/07/09/11/27/capybara-7310694_960_720.jpg', 1, 7, NULL ),
-  ( 12, 'https://cdn.pixabay.com/photo/2017/11/23/21/06/coulemelle-2973661_960_720.jpg', 1, 8, NULL ),
-  ( 13, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 9, NULL ),
-  ( 14, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 10, NULL ),
-  ( 15, 'https://cdn.pixabay.com/photo/2022/04/05/20/21/jack-russell-terrier-7114378_960_720.jpg', 1, 11, NULL ),
-  ( 16, 'https://cdn.pixabay.com/photo/2019/11/18/00/38/dog-4633734_960_720.jpg', 1, 6, NULL ),
-  ( 17, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 12, NULL ),
-  ( 18, 'https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_960_720.jpg', 2, 13, NULL ),
-  ( 19, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 2 ),
-  ( 20, 'https://cdn.pixabay.com/photo/2017/06/17/22/55/ufo-2413965_960_720.jpg', 1, NULL, 3 ),
-  ( 2, 'https://cdn-icons-png.flaticon.com/512/8183/8183261.png', 1, NULL, 1)
+  ( 1, '/images/animaux/Hades.webp', 1, 1, NULL ),
+  ( 2, '/images/animaux/PFC.webp', 1, NULL, 1),
+  ( 3, '/images/animaux/Siam.webp', 1, 2, NULL ),
+  ( 4, '/images/animaux/Eurochat.webp', 1, 3, NULL ),
+  ( 5, '/images/animaux/Challonge.webp', 1, 4, NULL ),
+  ( 9, '/images/animaux/Perruche.webp', 1, 5, NULL ),
+  ( 10, '/images/animaux/Capy.webp', 1, 7, NULL ),
+  ( 11, '/images/animaux/Champi.webp', 1, 8, NULL ),
+  ( 12, '/images/animaux/Jack.webp', 1, 9, NULL ),
+  ( 13, '/images/animaux/Chiot.webp', 1, 10, NULL ),
+  ( 14, '/images/animaux/Corgi.webp', 1, 11, NULL ),
+  ( 15, '/images/animaux/Snoop.webp', 1, 6, NULL ),
+  ( 16, '/images/animaux/Roux.webp', 1, 12, NULL ),
+  ( 17, '/images/animaux/Calico.webp', 1, 13, NULL ),
+  ( 18, '/images/animaux/PFC.webp', 1, NULL, 2 ),
+  ( 19, '/images/animaux/PFC.webp', 1, NULL, 3 )
 ;
 
 INSERT INTO "tag"
