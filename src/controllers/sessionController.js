@@ -144,12 +144,12 @@ export const sessionController = {
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
             await newFoster.save();
-            res.redirect('/')
+            res.redirect("/")
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log(found);
             console.log("Déjà inscrit");
-            res.redirect('/')
+            res.redirect("/")
         }
     },
 
@@ -251,6 +251,8 @@ export const sessionController = {
             siret, 
             telephone, 
             email, 
+            site,
+            description,
             mot_de_passe, 
             confirmation 
         } = req.body;
@@ -294,18 +296,20 @@ export const sessionController = {
                 pays : pays,
                 siret : siret,
                 telephone : telephone,
+                site: site,
+                description: description,
                 utilisateur_id: newUser.id,
             });
             console.log(newShelter);
             /* req.flash('success', `Merci pour votre inscription !`); */
             console.log(`C'est good`)
             await newShelter.save();
-            res.redirect('/')
+            res.redirect("/")
         } else {
             /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log(found)
             console.log("Déjà inscrit")
-            res.redirect('/')
+            res.redirect("/")
         }
     },
 

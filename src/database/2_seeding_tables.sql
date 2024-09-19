@@ -114,7 +114,7 @@ INSERT INTO "tag"
 VALUES
   ( 1,'Besoin spécifiques', 'Nécessite des ajustements particuliers'),
   ( 2,'Hargneux', 'Très méchant'),
-  ( 3, 'Propre', 'Super propre, va aux toilettes tout seul'),
+  ( 3,'Propre', 'Super propre, va aux toilettes tout seul'),
   ( 4,'Mystique', 'Possède des pouvoirs psys !'),
   ( 5,'Maudit', 'Nécessite des ajustements particuliers')
 ;

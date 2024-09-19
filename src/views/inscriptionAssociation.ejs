@@ -172,66 +172,75 @@
         <div class="mx-auto p-2">
           <!-- Email -->
           <label class="text-center w-full" for="email">Email</label>
-          <input class="block bg-fond w-full" type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io"
-          required>
+          <input class="block bg-fond w-full" type="email" id="email" name="email" placeholder="chacripan@domain-expansion.io" autocomplete="email" required>
         </div>
-        
+
         <!-- Site Web -->
-        <!--       <label class="text-center w-full" for="url">Site Web</label>
-          <input class="block bg-fond w-full" type="url" name="url" id="url" placeholder="https://exemple.com" pattern="https://.*" size="40" required /> -->
-        </fieldset>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="site">Site Web</label>
+          <input class="block bg-fond w-full" type="url" name="site" id="site" placeholder="https://exemple.com" pattern="https://.*" size="40"/>
+        </div>
+
+        <!-- Description -->
+        <div class="mx-auto p-2">
+            <label class="text-center w-full" for="description">Description</label>
+            <textarea class="block bg-fond w-full" type="text" rows="5" cols="33" id="description" name="description"
+            placeholder="Une courte description de votre refuge !"></textarea>
+        </div>
+      </fieldset>
         
-<!--         <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 px-4 py-5 grid grid-cols-1 md:grid-cols-2 max-w-xl">
-          <legend class="font-bold text-lg font-grands text-center">Vos animaux</legend>
-          <% especes.forEach(espece => { %>
-            <div class="flex gap-2 justify-start">
-              <input class="block bg-fond" type="checkbox" id="<%= espece.nom %>" name="<%= espece.nom %>" />
-              <label class= "w-full" for="<%= espece.nom %>"><%= espece.nom %></label>
-            </div>
-            <% }) %>
-          </fieldset> -->
+      <!--
+      <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 px-4 py-5 grid grid-cols-1 md:grid-cols-2 max-w-xl">
+      <legend class="font-bold text-lg font-grands text-center">Vos animaux</legend>
+      <% especes.forEach(espece => { %>
+        <div class="flex gap-2 justify-start">
+          <input class="block bg-fond" type="checkbox" id="<%= espece.nom %>" name="<%= espece.nom %>" />
+          <label class= "w-full" for="<%= espece.nom %>"><%= espece.nom %></label>
+        </div>
+        <% }) %>
+      </fieldset>
+      -->
+      
+      <!-- Cette section est en commentaire car pas utile pour le moment      
+        <fieldset>
+          <legend class="font-bold text-lg font-grands text-center">Contact</legend>
           
-          <!-- Cette section est en commentaire car pas utile pour le moment      
-            <fieldset>
-              <legend class="font-bold text-lg font-grands text-center">Contact</legend>
-              
-              Prénom 
-              <label class="text-center w-full" for="firstname">Prénom</label>
-              <input class="block bg-fond w-full" type="text" id="text" name="firstname" placeholder="Charlotte" required>
-              
-              Nom
-              <label class="text-center w-full" for="lastname">Nom</label>
-              <input class="block bg-fond w-full" type="text" id="text" name="lastname" placeholder="Cripan" required>
-              
-              Email
-              <label class="text-center w-full" for="contact-email">Email</label>
-              <input class="block bg-fond w-full" type="email" id="contact-email" name="contact-email" placeholder="chacripan@domain-expansion.io" required>
-              
-              N° telephone
-              <label class="text-center w-full" for="contact-phone">N° telephone</label>
-              <input class="block bg-fond w-full" type="tel" id="contact-phone" name="contact-phone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
-            </fieldset>
-          -->
+          Prénom 
+          <label class="text-center w-full" for="firstname">Prénom</label>
+          <input class="block bg-fond w-full" type="text" id="text" name="firstname" placeholder="Charlotte" required>
           
-          <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
-            <legend class="font-bold text-lg font-grands text-center">Mot de passe</legend>
-            <div class="mx-auto p-2">
-              <label class="text-center w-full" for="mot_de_passe">Créez votre mot de passe</label>
-              <input class="block bg-fond w-full" type="password" id="mot_de_passe" name="mot_de_passe" placeholder="*********" required>
-            </div>
-            <div class="mx-auto p-2">
-              <label class="text-center w-full" for="confirmation">Confirmez votre mot de passe</label>
-              <input class="block bg-fond w-full" type="password" id="confirmation" name="confirmation" placeholder="*********" required>
-            </div>
-          </fieldset>
+          Nom
+          <label class="text-center w-full" for="lastname">Nom</label>
+          <input class="block bg-fond w-full" type="text" id="text" name="lastname" placeholder="Cripan" required>
           
-          <button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider votre inscription</button> 
+          Email
+          <label class="text-center w-full" for="contact-email">Email</label>
+          <input class="block bg-fond w-full" type="email" id="contact-email" name="contact-email" placeholder="chacripan@domain-expansion.io" required>
           
-        </form>
-      </div>
-    </main>
+          N° telephone
+          <label class="text-center w-full" for="contact-phone">N° telephone</label>
+          <input class="block bg-fond w-full" type="tel" id="contact-phone" name="contact-phone" pattern="^(?:\+33\s|0)[1-9](?:\s\d{2}){4}$" placeholder="01 23 45 67 89">
+        </fieldset>
+      -->
+      
+      <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
+        <legend class="font-bold text-lg font-grands text-center">Mot de passe</legend>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="mot_de_passe">Créez votre mot de passe</label>
+          <input class="block bg-fond w-full" type="password" id="mot_de_passe" name="mot_de_passe" placeholder="*********" autocomplete="new-password" required>
+        </div>
+        <div class="mx-auto p-2">
+          <label class="text-center w-full" for="confirmation">Confirmez votre mot de passe</label>
+          <input class="block bg-fond w-full" type="password" id="confirmation" name="confirmation" placeholder="*********" autocomplete="new-password" required>
+        </div>
+      </fieldset>
+          
+      <button class="w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider votre inscription</button> 
+          
+    </form>
+  </div>
+</main>
 
 <script src="/utils/apiGouv.js"></script>
 
-    
-    <%- include('partials/footer') %>
+<%- include('partials/footer') %>

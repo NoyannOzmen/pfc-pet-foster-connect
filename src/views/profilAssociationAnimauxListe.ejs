@@ -8,9 +8,9 @@
     
     <nav class="flex flex-wrap justify-center md:justify-start">
       <ul class="flex flex-wrap-reverse gap-x-2 mx-3 justify-center font-semibold md:justify-end md:ml-10 text-xl">
-        <li><a href="/associations/profil"><button id="dashbtn-1" class="dashbtn">Profil</button></a></li>
-        <li><a href="/associations/profil/demandes"><button id="dashbtn-2" class="dashbtn">Demandes</button></a></li>
-        <li><a href="/associations/profil/animaux"><button id="dashbtn-3" class="dashbtn dashbtn-active">Animaux</button></a></li>
+        <li><a href="/associations/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn" tabindex="-1">Profil</button></a></li>
+        <li><a href="/associations/profil/demandes" tabindex="0"><button id="dashbtn-2" class="dashbtn" tabindex="-1">Demandes</button></a></li>
+        <li><a href="/associations/profil/animaux" tabindex="0"><button id="dashbtn-3" class="dashbtn dashbtn-active" tabindex="-1">Animaux</button></a></li>
       </ul>
       <div class="mx-2 grow w-[90%] h-2 bg-accents1-dark rounded-t-lg"></div>
     </nav>
@@ -29,15 +29,11 @@
       <section id="dahboard-container" class="flex flex-col justify-center content-center">        
         
         <!-- Titre caché pour le mobile -->
-        
-
         <h3 class="text-center hidden md:inline font-grands text-4xl font-extrabold mt-4">Animaux</h3>
 
-        
-        
         <!-- FONCTION RECHERCHE et TRI -->
         <form autocomplete="off" class="my-4 px-4 flex flex-wrap gap-3 justify-center md:w-1/4 md:absolute md:top-0 md:right-5 md:my-2 md:p-0 md:pr-4 md:justify-end z-10" action="">
-          
+
           <div class=" flex gap-x-1.5 text-center h-5">
             <label class="hidden">Recherche</label>
             <input id="search-bar" class="bg-fond rounded-full block pl-2 md:w-32 lg:w-full shrink-0" type="text" placeholder="Rechercher">
@@ -53,50 +49,41 @@
                   <input type="checkbox" id="espece_<%= espece.id %>" name="espece_<%= espece.id %>" value="<%= espece.id %>"  class="species-checkbox checkbox leading-3"/>
                   <label for="espece_<%= espece.id %>" class=" font-grands font-semibold text-xs leading-3 self-center"> <%= espece.nom %></label>
                 </div>   
-                <% }) %>
+              <% }) %>
                 <div class="flex gap-x-1.5 content-center"> 
                   <input type="checkbox" id="espece_all" name="espece_all" value="all" checked class="leading-3"/>
                   <label for="espece_all" class=" font-grands font-semibold text-xs leading-3 self-center"> Tous</label>
                 </div>   
-              </fieldset>
+            </fieldset>
 
+            <fieldset> 
+              <div class="flex gap-x-1.5 content-center"> 
+                <input type="checkbox" id="satut_En_refuge" name="satut_En_refuge" value="En refuge"  class="mb-1 statut-checkbox checkbox leading-3"/>
+                <label for="satut_En_refuge" class=" font-grands font-semibold text-xs leading-3 self-center">En refuge</label>
+              </div>   
               
-              <fieldset>
-                
-                <div class="flex gap-x-1.5 content-center"> 
-                  <input type="checkbox" id="satut_En_refuge" name="satut_En_refuge" value="En refuge"  class="mb-1 statut-checkbox checkbox leading-3"/>
-                  <label for="satut_En_refuge" class=" font-grands font-semibold text-xs leading-3 self-center">En refuge</label>
-                </div>   
-                
-                <div class="flex gap-x-1.5 content-center"> 
-                  <input type="checkbox" id="satut_Accueilli" name="satut_Accueilli" value="Accueilli"  class="mb-1 statut-checkbox checkbox leading-3"/>
-                  <label for="satut_Accueilli" class=" font-grands font-semibold text-xs leading-3 self-center">Accueilli</label>
-                </div> 
-                
-                <div class="flex gap-x-1.5 content-center"> 
-                  <input type="checkbox" id="satut_Adopté" name="satut_Adopté" value="Adopté"  class="mb-1 statut-checkbox checkbox leading-3"/>
-                  <label for="satut_Adopté" class=" font-grands font-semibold text-xs leading-3 self-center">Adopté</label>
-                </div> 
-                
-                
-                <div class="flex gap-x-1.5 content-center"> 
-                  <input type="checkbox" id="statut_all" name="statut_all" value="all" checked class="leading-3"/>
-                  <label for="statut_all" class=" font-grands font-semibold text-xs leading-3 self-center"> Tous</label>
-                </div>   
-                
-              </fieldset>
-            </div>
-            
-          </form>
+              <div class="flex gap-x-1.5 content-center"> 
+                <input type="checkbox" id="satut_Accueilli" name="satut_Accueilli" value="Accueilli"  class="mb-1 statut-checkbox checkbox leading-3"/>
+                <label for="satut_Accueilli" class=" font-grands font-semibold text-xs leading-3 self-center">Accueilli</label>
+              </div> 
+              
+              <div class="flex gap-x-1.5 content-center"> 
+                <input type="checkbox" id="satut_Adopté" name="satut_Adopté" value="Adopté"  class="mb-1 statut-checkbox checkbox leading-3"/>
+                <label for="satut_Adopté" class=" font-grands font-semibold text-xs leading-3 self-center">Adopté</label>
+              </div> 
+
+              <div class="flex gap-x-1.5 content-center"> 
+                <input type="checkbox" id="statut_all" name="statut_all" value="all" checked class="leading-3"/>
+                <label for="statut_all" class=" font-grands font-semibold text-xs leading-3 self-center"> Tous</label>
+              </div>   
+            </fieldset>
+          </div> 
+        </form>
           
-          <div class=" self-center flex flex-wrap p-4 justify-center gap-3.5">
-            
-            <% animals.forEach(animal => { %>
-              
-              <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->
-              
+        <div class=" self-center flex flex-wrap p-4 justify-center gap-3.5">            
+            <% animals.forEach(animal => { %>  
+              <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->  
               <a data-animalId="<%= animal.id %>" data-nom="<%= animal.nom %>" data-espece="<%= animal.espece.id %>"  data-statut="<%= animal.statut %>" class="animal_card animal_card--visible flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="/associations/profil/animaux/<%= animal.id %>">
-                
                 <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
                 <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
                 
@@ -108,22 +95,14 @@
                     <p class="text-xs italic md:text-base"> <%= animal.statut %></p>
                   </div>
                 </div>
-                
-              </a>
-              
-              <% }) %>
-              
-            </div>
-          </section>
-          
+              </a> 
+            <% }) %>    
         </div>
-        
-        
-      </div>
-    </main>
-    
-    
-    
-    <script src="/utils/dashboardAssoListeAnimal.js"></script>
-    
-    <%- include('partials/footer') %>
+      </section>
+    </div>    
+  </div>
+</main>
+
+<script src="/utils/dashboardAssoListeAnimal.js"></script>
+
+<%- include('partials/footer') %>

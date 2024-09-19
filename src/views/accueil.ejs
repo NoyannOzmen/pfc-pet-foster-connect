@@ -18,7 +18,7 @@
 
         <button
           class="absolute top-0 start-0 z-1 flex items-center justify-center h-full pl-2 cursor-pointer group focus:outline-none  size-10 opacity-75"
-          type="button" id="previous" aria-label="Précédent"><img src="/icons/left.svg" alt=""></button>
+          type="button" id="previous" aria-label="Précédent" tabindex="0"><img src="/icons/left.svg" alt=""></button>
 
         <div class="h-auto mx-auto rounded-lg p-4">
           <% animals.forEach(animal=> { %>
@@ -55,12 +55,12 @@
                 </div>
               </div>
             </div>
-            <% }) %>
+          <% }) %>
         </div>
 
         <button
           class="absolute top-0 end-0 z-1 flex items-center justify-center h-full pr-2 cursor-pointer group focus:outline-none size-10 opacity-75"
-          type="button" id="next" aria-label="Suivant"><img src="/icons/right.svg" alt=""></button>
+          type="button" id="next" aria-label="Suivant" tabindex="0"><img src="/icons/right.svg" alt=""></button>
 
       </section>
 
@@ -69,7 +69,7 @@
       
         <button
           class="absolute top-0 start-0 z-1 flex items-center justify-center h-full pl-2 cursor-pointer group focus:outline-none size-10 opacity-75"
-          type="button" id="previous3" aria-label="Précédent"><img src="/icons/left.svg" alt=""></button>
+          type="button" id="previous3" aria-label="Précédent" tabindex="0"><img src="/icons/left.svg" alt=""></button>
       
         <div class="h-auto w-auto flex rounded-lg my-6 gap-4 px-8">
           <% animals.forEach(animal=> { %>
@@ -107,17 +107,15 @@
                 </div>
               </div>
             </div>
-            <% }) %>
+          <% }) %>
         </div>
       
         <button
           class="absolute top-0 end-0 z-1 flex items-center justify-center h-full pr-2 cursor-pointer group focus:outline-none size-10 opacity-75"
-          type="button" id="next3" aria-label="Suivant"><img src="/icons/right.svg" alt=""></button>
+          type="button" id="next3" aria-label="Suivant" tabindex="0"><img src="/icons/right.svg" alt=""></button>
       
       </section>
   </section>
-  
-  
 </main>
 
 <script async src="/utils/carousel.js"></script>

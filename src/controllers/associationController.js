@@ -30,7 +30,7 @@ const associationController = {
             dptSelect,
             shelterNom
         } = req.body;
-        
+
         const especes = await Espece.findAll();
         
         const associations = await Association.findAll({
@@ -40,7 +40,7 @@ const associationController = {
                 where : {
                     nom : (req.body.nom) ? (req.body.shelterNom) : { [Op.ne]: null },
                     code_postal : (req.body.dptSelect) ? { [Op.startsWith] : req.body.dptSelect } : { [Op.ne] : null },
-                    '$pensionnaires.espece.nom$' : (req.body.espece ) ? { [Op.like] : req.body.espece } || { [Op.in] : req.body.espece } : { [Op.ne] : null}
+                    '$pensionnaires.espece.nom$' : (req.body.espece ) ? req.body.espece : { [Op.ne] : null },
                 }
             });
             
@@ -61,7 +61,7 @@ const associationController = {
                     include: ['images_animal', 'espece'] }
                 ]
             });
-            // Si l'associaiton n'existe pas (ID=90000 => null) ==> 404
+            // Si l'associaton n'existe pas (ID=90000 => null) ==> 404
             if (!association) {
                 return next();
             }
@@ -120,7 +120,6 @@ const associationController = {
     
     /* MàJ Asso */
     async update(req,res) {
-        /*  const associationId = req.params.id; */
         const associationId = req.session.userId;
         const association = await Association.findByPk(associationId);
         
@@ -233,7 +232,6 @@ const associationController = {
         
         /* MàJ Asso */
         async update(req,res) {
-            /*  const associationId = req.params.id; */
             const associationId = req.session.userId;
             const association = await Association.findByPk(associationId);
             
@@ -263,7 +261,6 @@ const associationController = {
         
         /* Afficher les demandes en cours */
         async dashboardRequests(req,res) {
-            /*  const associationId = req.params.id; */
             
             const associationId = req.session.userId;
             const association = await Association.findByPk(associationId);
