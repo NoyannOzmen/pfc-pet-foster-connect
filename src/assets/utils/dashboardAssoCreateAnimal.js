@@ -38,7 +38,7 @@ function handleAddTag() {
         //* FETCH POUR AJOUTER UN TAG EN BDD 
         //! ATTENTION ICI A REVOIR : L'ADRESSE A CHANGER EN PROD ? LA RECUPERER DEPUIS UN .ENV ?
         //! EGALEMENT MANQUE DE SECURISATION ?
-        let url = `http://localhost:3000/tags/create`;
+        let url = `https://maximelizere-server.eddi.cloud/tags/create`;
         
         const response = await fetch(
             url, 
