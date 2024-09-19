@@ -131,3 +131,5 @@ dist
 
 # Tames Tailwind errors for each PR
 /src/assets/css/output.css
+
+/src/assets/uploads/*.*
