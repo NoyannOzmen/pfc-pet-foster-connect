@@ -40,7 +40,7 @@ associationRouter.get('/associations/profil/animaux/suivi', auth, isRole.associa
 
 associationRouter.get('/associations/profil/animaux/nouveau-profil', auth, isRole.association, catchErrors(associationController.dashboardAnimauxAjouter));
 
-associationRouter.get('/associations/profil/animaux/:animalId(\\d+)', catchErrors(associationController.dashboardAnimalDetail));
+associationRouter.get('/associations/profil/animaux/:animalId(\\d+)',auth, isRole.association, catchErrors(associationController.dashboardAnimalDetail));
 
 //Affichage du tableau de récapitulatif des demandes
 associationRouter.get('/associations/profil/demandes', auth, isRole.association, catchErrors(associationController.dashboardRequests));
