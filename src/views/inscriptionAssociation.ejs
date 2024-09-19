@@ -4,10 +4,17 @@
   <h2 class="font-grands text-3xl text-center my-2 pt-5">Création de votre compte</h2>
   
   <div class="font-body mx-auto w-[80%] bg-zoning rounded-lg shadow dark:bg-gray-800 my-4">
+    
     <form class="flex flex-col flex-wrap content-center justify-around text-texte" action="/association/inscription" method="POST">
       
       <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
         <legend class="font-bold text-lg font-grands text-center">Votre organisme</legend>
+
+        <% if(locals.message.length != 0){ %>
+          <div>
+            <p class="font-grands font-base text-accents1 text-center"><%= message.erreur %></p>
+          </div>
+        <% } %>
         
         <!-- Nom -->
         <div class="mx-auto p-2">  
@@ -82,7 +89,7 @@
             placeholder="Une courte description de votre refuge !"></textarea>
         </div>
       </fieldset>
-    
+
       <fieldset class="font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
         <legend class="font-bold text-lg font-grands text-center">Mot de passe</legend>
         <div class="mx-auto p-2">
