@@ -75,7 +75,7 @@ export const animalController = {
                 sexe : (req.body.sexe) ? (req.body.sexe) : { [Op.ne]: null },
                 '$refuge.code_postal$' : (req.body.dptSelect) ? { [Op.startsWith] : req.body.dptSelect } : { [Op.ne] : null },
                 age : (req.body.minAge && req.body.maxAge ) ? { [Op.between]:  [req.body.minAge, req.body.maxAge] } : { [Op.ne] : null },
-                '$tags.nom$' : (req.body.tag) ? { [Op.not] : req.body.tag } : { [Op.is] : null}
+                '$tags.nom$' : (req.body.tag) ? { [Op.not] : req.body.tag } : { [Op.or] : [ { [Op.ne] : null }, { [Op.is] : null } ] },
             }
         });
         
@@ -152,12 +152,11 @@ export const animalController = {
             console.log(newRequest);
             await newRequest.save();
 
-            console.log('Ok!')
+            req.flash('succes', 'Votre demande a bien été prise en compte !');
             res.redirect('/animaux/' + animalId);
         } else {
-            //! Rediriger vers une page d'erreur ? Afficher un message d'erreur?
-            console.log('Non');
-            res.redirect('/');
+            req.flash('erreur', 'Vous avez déjà effectué une demande pour cet animal !');
+            res.redirect('/animaux/' + animalId);
         }   
     },
 
