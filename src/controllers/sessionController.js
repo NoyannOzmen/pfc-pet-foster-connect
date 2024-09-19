@@ -203,6 +203,17 @@ export const sessionController = {
             // Si pas entier ou pas existant dans la BDD => 404
             return next();
         };
+
+        const fostered = Animal.findAll({
+            where :  { famille_id : familleId } 
+        })
+
+        console.log('foster is' + fostered);
+
+        if (fostered) {
+            req.flash('erreur', 'Vous accueillez actuellement un animal. Merci de contacter le refuge concerné avant de supprimer votre compte !');
+            return res.redirect('/famille/profil');
+        }
         await famille.destroy();
         await user.destroy();
         req.session.destroy();
