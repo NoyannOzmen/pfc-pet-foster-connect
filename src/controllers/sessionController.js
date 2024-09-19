@@ -16,9 +16,8 @@ export const sessionController = {
         } = req.body
 
         if (!emailValidator.validate(email)) {
-            return res.render('connexion', {
-                error: "Cet email n'est pas valide.",
-            });
+            req.flash('erreur', `Cet email n'est pas valide.`);
+            return res.redirect('/connexion')
         }
 
         const user = await Utilisateur.findOne({            
@@ -29,14 +28,17 @@ export const sessionController = {
         })
         
         if (!user) {
-            return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
+            req.flash('erreur', "Utilisateur ou mot de passe incorrect.");
+            return res.redirect('/connexion')
         }
         
         //* Bcrypt compare le hash du mot de passe récupéré depuis la requète avec celui en BDD
         const hasMatchingPassword = await bcrypt.compare(mot_de_passe, user.mot_de_passe);
         
         if(!hasMatchingPassword) {
-            return res.render('connexion', {error : "utilisateur ou mot de passe incorrect"})
+            req.flash('erreur', "Utilisateur ou mot de passe incorrect.");
+            return res.redirect('/connexion')
+
         } else {  
             //* Check si user est association OU famille en vérifiant si les sous-champs id existent.
             //* Normalement l'include ne devrait renvoyer que l'un OU l'autre.
@@ -103,21 +105,19 @@ export const sessionController = {
         const found = await Utilisateur.findOne( { where: {email: email} });
         
         console.log(found);
+
+        if (!emailValidator.validate(email)) {
+            req.flash('erreur', "Cet email n'est pas valide.");
+            return res.redirect('/famille/inscription');
+        }
+        // verifier si password correspond à password confirm
+        if (mot_de_passe !== confirmation) {
+            req.flash('erreur', 'La confirmation du mot de passe ne correspond pas au mot de passe renseigné.');
+            return res.redirect('/famille/inscription');
+        }
         
         if(found === null) {
-            if (!emailValidator.validate(email)) {
-                return res.render('inscriptionFamille', {
-                    errorMessage: "Cet email n'est pas valide.",
-                });
-            }
-            // verifier si password correspond à password confirm
-            if (mot_de_passe !== confirmation) {
-                return res.render('inscriptionFamille', {
-                    errorMessage:
-                    'La confirmation du mot de passe ne correspond pas au mot de passe renseigné.',
-                });
-            }
-            
+
             const encryptedPassword = await bcrypt.hash(mot_de_passe, 8);
             console.log('HASH', encryptedPassword);
             
@@ -141,15 +141,12 @@ export const sessionController = {
                 utilisateur_id: newUser.id,
             });
             console.log(newFoster);
-            /* req.flash('success', `Merci pour votre inscription !`); */
-            console.log(`C'est good`)
             await newFoster.save();
             res.redirect("/")
         } else {
-            /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log(found);
-            console.log("Déjà inscrit");
-            res.redirect("/")
+            req.flash('erreur', 'Inscription incorrecte');
+            return res.redirect('/famille/inscription');
         }
     },
 
@@ -265,16 +262,13 @@ export const sessionController = {
         
         if(found === null) {
             if (!emailValidator.validate(email)) {
-                return res.render('/association/inscription', {
-                    error: "Cet email n'est pas valide.",
-                });
+                req.flash('erreur', "Cet email n'est pas valide.");
+                return res.redirect('/association/inscription');
             }
             // verifier si password correspond à password confirm
             if (mot_de_passe !== confirmation) {
-                return res.render('/association/inscription', {
-                    errorMessage:
-                    'La confirmation du mot de passe ne correspond pas au mot de passe renseigné.',
-                });
+                req.flash('erreur', 'La confirmation du mot de passe ne correspond pas au mot de passe renseigné.');
+                return res.redirect('/association/inscription');
             }
             
             const encryptedPassword = await bcrypt.hash(mot_de_passe, 8);
@@ -301,15 +295,12 @@ export const sessionController = {
                 utilisateur_id: newUser.id,
             });
             console.log(newShelter);
-            /* req.flash('success', `Merci pour votre inscription !`); */
-            console.log(`C'est good`)
             await newShelter.save();
             res.redirect("/")
         } else {
-            /* req.flash('success', 'Cet utilisateur existe déjà !'); */
             console.log(found)
-            console.log("Déjà inscrit")
-            res.redirect("/")
+            req.flash('erreur', 'Inscription incorrecte');
+            return res.redirect('/association/inscription');
         }
     },
 
