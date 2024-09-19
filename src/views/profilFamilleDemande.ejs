@@ -5,8 +5,8 @@
   <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
     <nav class="pt-2">
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
-        <li><a href="/famille/profil"><button id="dashbtn-1" class="dashbtn px-8 py-3">Mon profil</button></a></li>
-        <li><a href="/famille/profil/demandes"><button id="dashbtn-2" class="dashbtn dashbtn-active px-8 py-3">Demandes</button></a></li>
+        <li><a href="/famille/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn px-8 py-3" tabindex="-1">Mon profil</button></a></li>
+        <li><a href="/famille/profil/demandes" tabindex="0"><button id="dashbtn-2" class="dashbtn dashbtn-active px-8 py-3" tabindex="-1">Demandes</button></a></li>
       </ul>
     </nav>
 
@@ -27,36 +27,34 @@
               <% } %>
         
               <% if (requestedAnimals.length > 0) { %>
-              
-              <table class="table text-center w-full">
+                <table class="table text-center w-full">
 
-                <tr class="border-none bg-zoning text-sm font-grands">
-                  <td colspan="3" scope="colgroup">Nom Animal</td>
-                  <td colspan="3" scope="colgroup">Demande</td>
-                </tr>
-                <% requestedAnimals.forEach(animal => { %>
-                <tr class="view text-fond text-sm bg-accents2 font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hover:bg-accents2-dark">
-                  <td colspan="3" scope="colgroup" class="px-2 pt-2  border-accents2-dark border-solid border-1"><%= animal.nom %></td>
-                  <td colspan="3" scope="colgroup" class="px-2 pt-2  border-accents2-dark border-solid border-1">Demande</td>
-                </tr>
-                  <% animal.demandes.forEach(demande => { %>
-                    <tr class="fold mb-3 bg-fond rounded-b-lg hidden">
-                      <tr class="fold text-fond text-sm bg-accents2-light font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hidden">
-                        <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Refuge</td>
-                        <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Date de demande</td>
-                        <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Statut</td>
-                      </tr>
-                      <tr class="fold text-sm font-body font-semibold hidden bg bg-fond">                          
-                        <td colspan="2"><%= animal.refuge.nom %></td>
-                        <td colspan="2"><%= demande.Demande.date_debut %></td>
-                        <td colspan="2"><%= demande.Demande.statut_demande %></td>
-                      </tr>
+                  <tr class="border-none bg-zoning text-sm font-grands">
+                    <td colspan="3" scope="colgroup">Nom Animal</td>
+                    <td colspan="3" scope="colgroup">Demande</td>
                   </tr>
+                  <% requestedAnimals.forEach(animal => { %>
+                    <tr tabindex="0" class="view text-fond text-sm bg-accents2 font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hover:bg-accents2-dark">
+                      <td colspan="3" scope="colgroup" class="px-2 pt-2  border-accents2-dark border-solid border-1"><%= animal.nom %></td>
+                      <td colspan="3" scope="colgroup" class="px-2 pt-2  border-accents2-dark border-solid border-1">Demande</td>
+                    </tr>
+                    <% animal.demandes.forEach(demande => { %>
+                      <tr class="fold mb-3 bg-fond rounded-b-lg hidden">
+                        <tr class="fold text-fond text-sm bg-accents2-light font-grands font-semibold p-3 border-accents2-dark border-solid border-1 hidden">
+                          <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Refuge</td>
+                          <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Date de demande</td>
+                          <td colspan="2" class="px-2 pt-2  border-accents2-light border-solid border-1">Statut</td>
+                        </tr>
+                        <tr class="fold text-sm font-body font-semibold hidden bg bg-fond">                          
+                          <td colspan="2"><%= animal.refuge.nom %></td>
+                          <td colspan="2"><%= demande.Demande.date_debut %></td>
+                          <td colspan="2"><%= demande.Demande.statut_demande %></td>
+                        </tr>
+                    </tr>
+                    <% }) %>
+
                   <% }) %>
-
-                <% }) %>
-              </table>
-
+                </table>
               <% } %>
             </div>
           </div>

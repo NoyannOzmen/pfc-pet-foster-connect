@@ -70,11 +70,12 @@ export const animalController = {
                 { model : Tag, as : "tags" }
             ],
             where : {
+                statut:'En refuge',
                 '$espece.nom$' : (req.body.especeDropdown) ? { [Op.like] : req.body.especeDropdown} : { [Op.ne]: null },
                 sexe : (req.body.sexe) ? (req.body.sexe) : { [Op.ne]: null },
                 '$refuge.code_postal$' : (req.body.dptSelect) ? { [Op.startsWith] : req.body.dptSelect } : { [Op.ne] : null },
                 age : (req.body.minAge && req.body.maxAge ) ? { [Op.between]:  [req.body.minAge, req.body.maxAge] } : { [Op.ne] : null },
-                '$tags.nom$' : (req.body.tag ) ? { [Op.notIn] : req.body.tag } : { [Op.is] : null}
+                '$tags.nom$' : (req.body.tag) ? { [Op.not] : req.body.tag } : { [Op.is] : null}
             }
         });
         
@@ -84,6 +85,17 @@ export const animalController = {
     
     async detailAnimal(req,res){
         const animalId = req.params.id
+	
+        //* On veut récupérer tout les animaux qui sont dans les refuges, en incluant leurs frimousses, leurs tags et la localisation des associations qui les gèrent
+        const animals = await Animal.findAll({
+            where: {
+                statut:'En refuge'
+            },
+            include : ['espece', 'refuge', 'tags', 'images_animal']
+        })
+
+        const especes = await Espece.findAll();
+        const tags = await Tag.findAll();   
         
         const animal = await Animal.findByPk(animalId, {
             include : [
@@ -100,7 +112,7 @@ export const animalController = {
         }
         
         res.render('detailAnimal',{
-            animal
+            animal, animals, especes, tags
         })
         
     },

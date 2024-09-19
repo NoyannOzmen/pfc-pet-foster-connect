@@ -82,6 +82,7 @@
 	.hamburger {
 		display: block;
 		cursor: pointer;
+		z-index: 1
 	}
 	
 	.hamburger.active .bar:nth-child(2) {
@@ -100,6 +101,7 @@
 	
 	.nav-links {
 		position: fixed;
+		z-index: 0;
 		left: -100%;
 		background-color: #d5edb7;
 		width: 100%;

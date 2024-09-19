@@ -8,9 +8,9 @@
     
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
-        <li><a href="/associations/profil"><button id="dashbtn-1" class="dashbtn px-8 py-3">Mon profil</button></a></li>
-        <li><a href="/associations/profil/demandes"><button id="dashbtn-2" class="dashbtn px-8 py-3">Demandes</button></a></li>
-        <li><a href="/associations/profil/animaux"><button id="dashbtn-3" class="dashbtn dashbtn-active px-8 py-3">Nos animaux</button></a></li>
+        <li><a href="/associations/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn px-8 py-3" tabindex="-1">Mon profil</button></a></li>
+        <li><a href="/associations/profil/demandes" tabindex="0"><button id="dashbtn-2" class="dashbtn px-8 py-3" tabindex="-1">Demandes</button></a></li>
+        <li><a href="/associations/profil/animaux" tabindex="0"><button id="dashbtn-3" class="dashbtn dashbtn-active px-8 py-3" tabindex="-1">Nos animaux</button></a></li>
       </ul>
     </nav>
     
@@ -29,7 +29,6 @@
         
         <!-- ANIMAL INFO -->
         <div class="w-60 md:w-auto">
-          
           <h3 class="hidden md:inline font-grands text-3xl text-center my-2 pt-5 w-full">Fiche de suivi d'un animal</h3>
           
           <div class="flex p-6 pb-4">
@@ -69,7 +68,7 @@
                 <p class="text-sm italic leading-3">Race</p>
                 <p class="text-base font-semibold"><%= animal.race %></p>
               </div>
-              <% } %>
+            <% } %>
           </div>
             
             
@@ -98,13 +97,11 @@
                 <input type="submit" value="Importer" class="hover:bg-accents1-dark rounded-full hover:underline bg-accents1 text-center font-grands text-fond font-semibold text-xs py-0.5 px-4"/>
               </div>
             </form>
-          </div>
-                
+          </div>     
         </div>
               
         <!-- ACCUEILLANT INFOS-->
-        <% if (animal.accueillant) { %>
-          
+        <% if (animal.accueillant) { %> 
           <div class="w-60 md:w-auto">
             <h3 class="font-body font-bold mb-4">Famille d'accueil</h3>
             
@@ -138,16 +135,12 @@
           </div>
         <% } %>
                 
-        <!-- HISTORIQUE DES DEMANDES -->
-          
-        <% if (animal.demandes.length) { %>
-            
+        <!-- HISTORIQUE DES DEMANDES -->  
+        <% if (animal.demandes.length) { %>  
             <div class="px-4 ">
-              
               <h3 class="font-body font-bold mb-4">Historique des demandes d'accueil</h3>
               
-              <table class="mb-3 rounded-b-lg rounded-lg border-separate ">
-                
+              <table class="mb-3 rounded-b-lg rounded-lg border-separate "> 
                 <thead class=" text-fond text-sm bg-accents2 font-grands font-semibold p-3 border-accents2-dark border-solid border-1">
                   <th class="px-2 pt-2  border-accents2-light border-solid border-1 text-center">Famille</th>
                   <th class="px-2 pt-2  border-accents2-light border-solid border-1 text-center">Date de demande</th>
@@ -160,14 +153,12 @@
                       <td class="text-center p-2 rounded-lg "><%= demande.Demande.date_debut %></td>
                       <td class="text-center p-2 rounded-lg hover:underline"><a href='/associations/profil/demandes/<%= demande.Demande.id %>'><%= demande.Demande.statut_demande %></a></td>
                     </tr>
-                    <% }) %>
-                  </tbody>
-                </table>
-              </div>
-              
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>    
         <% } %>
-      </section>
-                  
+      </section>             
     </div>
   </div>
 </main>

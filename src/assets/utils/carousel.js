@@ -7,23 +7,37 @@ const suivant = document.getElementById('next');
 const carouselPics = document.querySelectorAll('.carousel-img');
 carouselPics[0].classList.toggle('hidden');
 
-suivant.addEventListener('click', function () {
+suivant.addEventListener('click', getOneNextPic);
+suivant.addEventListener("keydown", function(e) {
+  if(e.key==13){
+    getOneNextPic()
+   }
+});
+
+function getOneNextPic() {
   const carouselPics = document.querySelectorAll('.carousel-img');
   if (i < carouselPics.length - 1) {
     carouselPics[i].classList.toggle('hidden');
     carouselPics[i+1].classList.toggle('hidden');
     i++;   
   };
+}
+
+precedent.addEventListener('click', getOnePreviousPic);
+precedent.addEventListener("keydown", function(e) {
+  if(e.key==13){
+    getOnePreviousPic()
+   }
 });
 
-precedent.addEventListener('click', function () {
+function getOnePreviousPic() {
   const carouselPics = document.querySelectorAll('.carousel-img');
   if (i > 0) {
     carouselPics[i].classList.toggle('hidden');
     carouselPics[i-1].classList.toggle('hidden');
     i--;   
   };  
-});
+};
 
 /*Display 3 cards for deskstop*/
 
@@ -36,20 +50,34 @@ carouselPics3[0].classList.toggle('hidden');
 carouselPics3[1].classList.toggle('hidden');
 carouselPics3[2].classList.toggle('hidden');
 
-suivant3.addEventListener('click', function () {
+suivant3.addEventListener('click', getThreeNextPic);
+suivant3.addEventListener("keydown", function(e) {
+  if(e.key==13){
+    getThreeNextPic()
+    }
+});
+
+function getThreeNextPic() {
   const carouselPics3 = document.querySelectorAll('.carousel3-img');
   if (i < carouselPics3.length - 3) {
     carouselPics3[i].classList.toggle('hidden');
     carouselPics3[i+3].classList.toggle('hidden');
     i++;   
   };
+}
+
+precedent3.addEventListener('click', getThreePreviousPic);
+precedent3.addEventListener("keydown", function(e) {
+  if(e.key==13){
+    getThreePreviousPic()
+    }
 });
 
-precedent3.addEventListener('click', function () {
+function getThreePreviousPic() {
   const carouselPics3 = document.querySelectorAll('.carousel3-img');
   if (i > 0) {
     carouselPics3[i+2].classList.toggle('hidden');
     carouselPics3[i-1].classList.toggle('hidden');
     i--;   
-  };  
-});
+  }; 
+};

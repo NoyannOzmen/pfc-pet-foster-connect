@@ -5,9 +5,9 @@
   <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]"> 
     <nav class=#>
       <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
-        <li><a href="/associations/profil"><button id="dashbtn-1" class="dashbtn px-8 py-3">Mon profil</button></a></li>
-        <li><a href="/associations/profil/demandes"><button id="dashbtn-2" class="dashbtn dashbtn-active px-8 py-3">Demandes</button></a></li>
-        <li><a href="/associations/profil/animaux"><button id="dashbtn-3" class="dashbtn px-8 py-3">Nos animaux</button></a></li>
+        <li><a href="/associations/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn px-8 py-3" tabindex="-1">Mon profil</button></a></li>
+        <li><a href="/associations/profil/demandes" tabindex="0"><button id="dashbtn-2" class="dashbtn dashbtn-active px-8 py-3" tabindex="-1">Demandes</button></a></li>
+        <li><a href="/associations/profil/animaux" tabindex="0"><button id="dashbtn-3" class="dashbtn px-8 py-3" tabindex="-1">Nos animaux</button></a></li>
       </ul>
     </nav>
     
@@ -73,77 +73,75 @@
                   <p class="text-base font-semibold"><%= animal.race %></p>
                 </div>
                 <% } %>
-              </div>
+            </div>
               
               
-              <% if (animal.tags) { %>
-                <div class="flex flex-wrap mt-4 px-6 gap-1">
-                  <% animal.tags.forEach(tag => { %>
-                    
-                    <p class="group rounded-full block bg-accents1 text-fond text-center text-xs font-semibold py-1 px-2">
-                      <%= tag.nom %>
-                      <span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute px-2 py-2 text-xs rounded-b-xl rounded-tr-xl">
-                        <%= tag.description  %>
-                      </span>
-                    </p>
-                    
-                    <% }) %>
-                  </div>
-                  <% } %>
+            <% if (animal.tags) { %>
+              <div class="flex flex-wrap mt-4 px-6 gap-1">
+                <% animal.tags.forEach(tag => { %>
                   
-                </div>  
-                
-                <hr class="border-t-accents2 w-2/4 border-t-2 border-solid justify-self-center my-4 md:hidden">
-                
-                <!-- PARTIE FAMILLE -->
-                <div class="w-full md:w-1/2">
+                  <p class="group rounded-full block bg-accents1 text-fond text-center text-xs font-semibold py-1 px-2">
+                    <%= tag.nom %>
+                    <span class="group-hover:block hidden z-10 bg-accents2-dark text-fond absolute px-2 py-2 text-xs rounded-b-xl rounded-tr-xl">
+                      <%= tag.description  %>
+                    </span>
+                  </p>
                   
-                  <h4 class="font-body font-bold mb-4 text-center">Famille</h4>
-                  
-                  <div class="px-6 mb-3 md:grid md:grid-cols-2 md:gap-2">
-                    <div class="mb-2 mt-2">
-                      <p class="text-sm italic leading-3">Nom</p>
-                      <p class="text-base font-semibold"><%= famille.nom %></p>
-                    </div>
-                    <div class="mb-2">
-                      <p class="text-sm italic leading-3">Téléphone</p>
-                      <p class="text-base font-semibold"><%= famille.telephone %></p>
-                    </div>
-                    <div class="mb-2">
-                      <p class="text-sm italic leading-3">e-mail</p>
-                      <p class="text-base font-semibold"><%= famille.identifiant_famille.email %></p>
-                    </div>
-                    <div class="mb-2">
-                      <p class="text-sm italic leading-4">Adresse</p>
-                      <p class="text-base font-semibold leading-3"><%= famille.rue %></p>
-                      <p class="text-base font-semibold "><%= famille.code_postal %> <%= famille.commune  %></p>
-                    </div>
-                    <div class="mb-2">
-                      <p class="text-sm italic leading-3">Pays</p>
-                      <p class="text-base font-semibold"><%= famille.pays %></p>
-                    </div>
-                    <div>
-                      <p class="text-sm italic leading-3">Hébergement</p>
-                      <p class="text-base font-semibold"><%= famille.hebergement %></p>
-                    </div>
-                  </div>
-                  
-                </div>
+                <% }) %>
               </div>
-              <!-- PARTIE GESTION -->
-              <div class="w-full flex flex-row flex-wrap md:flex-nowrap justify-center gap-2 items-center">
-                <h4 class="font-body font-bold text-center">Statut de la demande :</h4>
-                <p id="request-status" class="font-body text-center"><%= request.statut_demande %></p>
-                <form class="w-[80%] md:w-[20%]" action="/associations/profil/demandes/<%= request.id %>/accept" method="POST">
-                  <button type="submit" class="bg-accents1 w-full m-3 py-2 px-4 text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Accepter</button>
-                </form>
-                <form class="w-[80%] md:w-[20%]" action="/associations/profil/demandes/<%= request.id %>/deny" method="POST">
-                  <button type="submit" class="bg-accents2-dark w-full m-3 py-2 px-4 text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Refuser</button>
-                </form>
+            <% } %>
+                  
+          </div>  
+                
+          <hr class="border-t-accents2 w-2/4 border-t-2 border-solid justify-self-center my-4 md:hidden">
+                
+          <!-- PARTIE FAMILLE -->
+          <div class="w-full md:w-1/2">                
+            <h4 class="font-body font-bold mb-4 text-center">Famille</h4>
+            
+            <div class="px-6 mb-3 md:grid md:grid-cols-2 md:gap-2">
+              <div class="mb-2 mt-2">
+                <p class="text-sm italic leading-3">Nom</p>
+                <p class="text-base font-semibold"><%= famille.nom %></p>
               </div>
-            </section>
+              <div class="mb-2">
+                <p class="text-sm italic leading-3">Téléphone</p>
+                <p class="text-base font-semibold"><%= famille.telephone %></p>
+              </div>
+              <div class="mb-2">
+                <p class="text-sm italic leading-3">e-mail</p>
+                <p class="text-base font-semibold"><%= famille.identifiant_famille.email %></p>
+              </div>
+              <div class="mb-2">
+                <p class="text-sm italic leading-4">Adresse</p>
+                <p class="text-base font-semibold leading-3"><%= famille.rue %></p>
+                <p class="text-base font-semibold "><%= famille.code_postal %> <%= famille.commune  %></p>
+              </div>
+              <div class="mb-2">
+                <p class="text-sm italic leading-3">Pays</p>
+                <p class="text-base font-semibold"><%= famille.pays %></p>
+              </div>
+              <div>
+                <p class="text-sm italic leading-3">Hébergement</p>
+                <p class="text-base font-semibold"><%= famille.hebergement %></p>
+              </div>
+            </div>
           </div>
         </div>
-      </main>
-      
-      <%- include('partials/footer') %>
+        <!-- PARTIE GESTION -->
+        <div class="w-full flex flex-row flex-wrap md:flex-nowrap justify-center gap-2 items-center">
+          <h4 class="font-body font-bold text-center">Statut de la demande :</h4>
+          <p id="request-status" class="font-body text-center"><%= request.statut_demande %></p>
+          <form class="w-[80%] md:w-[20%]" action="/associations/profil/demandes/<%= request.id %>/accept" method="POST">
+            <button type="submit" class="bg-accents1 w-full m-3 py-2 px-4 text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Accepter</button>
+          </form>
+          <form class="w-[80%] md:w-[20%]" action="/associations/profil/demandes/<%= request.id %>/deny" method="POST">
+            <button type="submit" class="bg-accents2-dark w-full m-3 py-2 px-4 text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Refuser</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

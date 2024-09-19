@@ -3,7 +3,17 @@ const navMenu = document.querySelector("#nav-links");
 const navLink = document.querySelectorAll(".item-link");
 
 hamburger.addEventListener("click", mobileMenu);
+hamburger.addEventListener("keydown", function(e) {
+    if(e.keyCode==13){
+      mobileMenu();
+     }
+  });
 navLink.forEach(n => n.addEventListener("click", closeMenu));
+navLink.forEach(n => n.addEventListener("keydown", function(e) {
+    if(e.keyCode==13){
+      closeMenu();
+     }
+  }))
 
 function mobileMenu() {
     hamburger.classList.toggle("active");

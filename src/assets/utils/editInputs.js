@@ -1,6 +1,11 @@
 const editBtns = document.querySelectorAll('.material-symbols-outlined');
 
 editBtns.forEach(n => n.addEventListener("click", enableEdit));
+editBtns.forEach(n => n.addEventListener("keydown", function(e) {
+  if(e.keyCode==13){
+    enableEdit(e)
+   }
+}))
 
 function enableEdit(e) {
   const field = e.target.closest('fieldset')
