@@ -152,12 +152,11 @@ export const animalController = {
             console.log(newRequest);
             await newRequest.save();
 
-            console.log('Ok!')
+            req.flash('succes', 'Votre demande a bien été prise en compte !');
             res.redirect('/animaux/' + animalId);
         } else {
-            //! Rediriger vers une page d'erreur ? Afficher un message d'erreur?
-            console.log('Non');
-            res.redirect('/');
+            req.flash('erreur', 'Vous avez déjà effectué une demande pour cet animal !');
+            res.redirect('/animaux/' + animalId);
         }   
     },
 
