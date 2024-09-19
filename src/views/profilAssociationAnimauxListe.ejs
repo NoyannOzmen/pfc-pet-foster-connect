@@ -85,7 +85,12 @@
               <!-- ANIMAL CARD POUR LE DASHBOARD ASSO -->  
               <a data-animalId="<%= animal.id %>" data-nom="<%= animal.nom %>" data-espece="<%= animal.espece.id %>"  data-statut="<%= animal.statut %>" class="animal_card animal_card--visible flex flex-col justify-between content-center relative bg-fond rounded-xl w-36 h-36 shrink-0 md:size-60" href="/associations/profil/animaux/<%= animal.id %>">
                 <!-- ICI ATTENTION IL FAUDRAIT PEUT ËTRE CHERCHER L'IMAGE AVEC L'ORDRE LE PLUS FAIBLE ?? -->
-                <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                <% if (animal.images_animal.length) { %>
+                  <img class="rounded-t-xl" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
+                 <% } else { %>
+                  <img class="rounded-t-xl" src="/images/animal_empty.webp" alt="image par défaut">
+                  
+                <% } %>
                 
                 <p class="text-sm text-center font-semibold md:text-base"><%= animal.nom %></p>
                 <div class="flex flex-wrap justify-between px-2 pt-0.5">
