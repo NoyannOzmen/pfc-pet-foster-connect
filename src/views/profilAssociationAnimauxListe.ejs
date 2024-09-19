@@ -6,12 +6,13 @@
   <!-- Conteneur général qui contient tout le dashboard -->
   <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
     
-    <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
-        <li><a href="/associations/profil"><button id="dashbtn-1" class="dashbtn px-8 py-3">Mon profil</button></a></li>
-        <li><a href="/associations/profil/demandes"><button id="dashbtn-2" class="dashbtn px-8 py-3">Demandes</button></a></li>
-        <li><a href="/associations/profil/animaux"><button id="dashbtn-3" class="dashbtn dashbtn-active px-8 py-3">Nos animaux</button></a></li>
+    <nav class="flex flex-wrap justify-center md:justify-start">
+      <ul class="flex flex-wrap-reverse gap-x-2 mx-3 justify-center font-semibold md:justify-end md:ml-10 text-xl">
+        <li><a href="/associations/profil"><button id="dashbtn-1" class="dashbtn">Profil</button></a></li>
+        <li><a href="/associations/profil/demandes"><button id="dashbtn-2" class="dashbtn">Demandes</button></a></li>
+        <li><a href="/associations/profil/animaux"><button id="dashbtn-3" class="dashbtn dashbtn-active">Animaux</button></a></li>
       </ul>
+      <div class="mx-2 grow w-[90%] h-2 bg-accents1-dark rounded-t-lg"></div>
     </nav>
     
     <!-- Conteneur du sous menu et de la section -->
@@ -37,15 +38,15 @@
         <!-- FONCTION RECHERCHE et TRI -->
         <form autocomplete="off" class="my-4 px-4 flex flex-wrap gap-3 justify-center md:w-1/4 md:absolute md:top-0 md:right-5 md:my-2 md:p-0 md:pr-4 md:justify-end z-10" action="">
           
-          <div class=" flex gap-x-1.5  text-center h-5">
+          <div class=" flex gap-x-1.5 text-center h-5">
             <label class="hidden">Recherche</label>
-            <input id="search-bar" class="bg-fond rounded-full block pl-2" type="text" placeholder="Rechercher">
+            <input id="search-bar" class="bg-fond rounded-full block pl-2 md:w-32 lg:w-full shrink-0" type="text" placeholder="Rechercher">
             <span id="search-dropdown-button" role="button" class="material-symbols-outlined bg-fond rounded-full">
               arrow_drop_down
               </span>
           </div>
           
-          <div id="search-filters" class="flex gap-4 hidden md:bg-fond p-4 rounded-lg md:border border-accents2 md:border-4">
+          <div id="search-filters" class="flex gap-4 hidden md:bg-fond p-4 rounded-lg border-accents2 md:border-4">
             <fieldset>
               <% especes.forEach(espece => { %>
                 <div class="flex gap-x-1.5 content-center mb-1"> 

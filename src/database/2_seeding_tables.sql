@@ -12,6 +12,14 @@ VALUES
   ( 7, 'zeb@manege.com', '$2b$08$q2UqhQfdPDHL7C7bZCpNd.sq9PoQ5A0rDGjBQ6yaxCPgB.W1ozy2W')
 ;
 
+/*( 1, 'b.campbell@pet-smart.fr', 'boomstick'),
+  ( 2, 'j.lopez@mail.io', 'saintesmaries'),
+  ( 3, 'j.venchi@maimail.io', 'califourchon'),
+  ( 4, 'c.pagrav@proton.fr', 'bubulle'),
+  ( 5, 'llm@wanadoux.fr', 'pecheur'),
+  ( 6, 'cha@perlipop.et', 'chachacha'),
+  ( 7, 'zeb@manege.com', 'tournicoton')*/
+
 INSERT INTO "association"
   ("id", "nom", "responsable", "rue", "commune", "code_postal", "pays", "siret", "telephone", "utilisateur_id")
 VALUES
