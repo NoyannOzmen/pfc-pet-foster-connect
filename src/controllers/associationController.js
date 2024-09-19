@@ -30,6 +30,12 @@ const associationController = {
             dptSelect,
             shelterNom
         } = req.body;
+
+        if (req.body.dptSelectFull) {
+            req.body.dptSelect = req.body.dptSelectFull
+        } else {
+            req.body.dptSelect = req.body.dptSelectSmall
+        }
         
         const especes = await Espece.findAll();
         
