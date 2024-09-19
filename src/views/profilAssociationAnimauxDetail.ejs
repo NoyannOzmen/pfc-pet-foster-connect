@@ -6,12 +6,13 @@
   <!-- Conteneur général qui contient tout le dashboard -->
   <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
     
-    <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
-        <li><a href="/associations/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn px-8 py-3" tabindex="-1">Mon profil</button></a></li>
-        <li><a href="/associations/profil/demandes" tabindex="0"><button id="dashbtn-2" class="dashbtn px-8 py-3" tabindex="-1">Demandes</button></a></li>
-        <li><a href="/associations/profil/animaux" tabindex="0"><button id="dashbtn-3" class="dashbtn dashbtn-active px-8 py-3" tabindex="-1">Nos animaux</button></a></li>
+    <nav class="flex flex-wrap justify-center md:justify-start">
+      <ul class="flex flex-wrap-reverse gap-x-2 mx-3 justify-center font-semibold md:justify-start md:ml-10 text-xl">
+        <li><a href="/associations/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn" tabindex="-1">Profil</button></a></li>
+        <li><a href="/associations/profil/demandes" tabindex="0"><button id="dashbtn-2" class="dashbtn" tabindex="-1">Demandes</button></a></li>
+        <li><a href="/associations/profil/animaux" tabindex="0"><button id="dashbtn-3" class="dashbtn dashbtn-active" tabindex="-1">Animaux</button></a></li>
       </ul>
+      <div class="mx-2 grow w-[90%] h-2 bg-accents1-dark rounded-t-lg"></div>
     </nav>
     
     <!-- Conteneur du sous menu et de la section -->
@@ -35,11 +36,11 @@
             <div class="flex flex-col gap-2">
               <% if (animal.images_animal.length > 0) { %>
                 <img class="w-28 rounded-lg" src="<%= animal.images_animal[0].url %>" alt="Photo de <%= animal.nom %>">
-              <% } else { %>
-                <img class="w-28 rounded-lg" src="/images/animal_empty.webp" alt="Photo à venir">
-              <% } %>
+               <% } else { %>
+                 <img class="w-28 rounded-lg" src="/images/animal_empty.webp" alt="Photo à venir">
+                <% } %>
             </div>
-            
+                
             <div class="pl-4">
               <p class="text-base italic leading-3">Nom</p>
               <p class="text-base font-semibold"><%= animal.nom %></p>
@@ -70,7 +71,6 @@
               </div>
             <% } %>
           </div>
-            
             
           <% if (animal.tags) { %>
             <div class="flex flex-wrap mt-4 px-6 gap-1">

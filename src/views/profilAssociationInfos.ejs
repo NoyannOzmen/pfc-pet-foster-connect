@@ -1,30 +1,32 @@
 <%- include('partials/header') %>
 
 <main class="justify-self-stretch flex-1">
-	<h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
+  <h2 class="font-grands text-3xl text-center my-2 pt-5">Bienvenue sur votre espace personnel</h2>
   <div class="flex flex-col content-center justify-center mx-auto mb-4 w-[80%]">
-    <nav class=#>
-      <ul class="flex gap-x-2 justify-center font-semibold md:justify-start md:ml-10 text-xl">
-        <li><a href="/associations/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn dashbtn-active px-8 py-3" tabindex="-1">Mon profil</button></a></li>
+    
+    <nav class="flex flex-wrap justify-center md:justify-start">
+      <ul class="flex flex-wrap-reverse gap-x-2 mx-3 justify-center font-semibold md:justify-start md:ml-10 text-xl">
+        <li><a href="/associations/profil" tabindex="0"><button id="dashbtn-1" class="dashbtn dashbtn-active px-8 py-3" tabindex="-1">Profil</button></a></li>
         <li><a href="/associations/profil/demandes" tabindex="0"><button id="dashbtn-2" class="dashbtn px-8 py-3" tabindex="-1">Demandes</button></a></li>
-        <li><a href="/associations/profil/animaux" tabindex="0"><button id="dashbtn-3" class="dashbtn px-8 py-3" tabindex="-1">Nos animaux</button></a></li>
+        <li><a href="/associations/profil/animaux" tabindex="0"><button id="dashbtn-3" class="dashbtn px-8 py-3" tabindex="-1">Animaux</button></a></li>
       </ul>
+      <div class="mx-2 grow w-[90%] h-2 bg-accents1-dark rounded-t-lg"></div>
     </nav>
-
+    
     <div class="font-body bg-zoning rounded-lg shadow dark:bg-gray-800 mb-4">
-
+      
       <nav class="rounded-lg h-9">
         <ul class="rounded-t-lg flex h-9 content-center bg-accents2 justify-stretch font-semibold text-fond text-sm md:justify-start pl-2">
-              <li class="dashsubbtn-active rounded-tl-lg block grow text-center pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/">Mes informations</a></li>
-              <li class="block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4"><a href="/associations/profil/logo">Ajouter une image</a></li>
+          <li class="dashsubbtn-active rounded-tl-lg block grow text-center pl-2 border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4 md:rounded-none md:border-l-2 md:border-l-zoning bor"><a href="/associations/profil/">Mes informations</a></li>
+          <li class="block grow text-center border-r-solid border-r-2 border-r-zoning py-2 hover:underline md:grow-0 md:px-4"><a href="/associations/profil/logo">Ajouter une image</a></li>
         </ul>
       </nav>
-
+      
       <section class="flex flex-wrap justify-center" id="dashboard-container">
         <h3 class="font-grands text-3xl text-center my-2 pt-5 w-full">Mon profil</h3>
-
+        
         <form class="flex flex-col flex-wrap content-center w-[60%] mx-auto justify-center text-texte" action="/associations/profil" method="POST">
-            
+          
           <fieldset class="w-full font-body rounded-lg shadow dark:bg-gray-800 my-2 py-5">
             <legend class="text-center">Mon organisme&nbsp;<span tabindex="0" class="material-symbols-outlined">edit</span></legend>
             
@@ -88,7 +90,7 @@
               <textarea rows="5" cols="33" class=# type="text" name="description" id="description" disabled><%= association.description %></textarea>
             </div>
           </fieldset>
-
+          
           <button id="validateBtn" class="hidden w-full md:w-[60%] mx-auto my-3 py-2 px-4 bg-accents1-light text-fond transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">Valider les modifications</button>
           
         </form>
