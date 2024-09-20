@@ -1,0 +1,41 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "db:reset": "psql -U pfcadmin -d pfc -f ./src/database/1_create_tables.sql; psql -U pfcadmin -d pfc -f ./src/database/2_seeding_tables.sql ",
+    "tailwind": "npx tailwindcss -i ./src/assets/css/style.css -o ./src/assets/css/output.css --watch",
+    "tailwindProd": "npx tailwindcss -i ./src/assets/css/style.css -o ./src/assets/css/output.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "## Présentation",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "email-validator": "^2.0.4",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "joi": "^17.13.3",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.12.0",
+    "sequelize": "^6.37.3",
+    "sharp-multer": "^0.3.3",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4"
+  },
+  "directories": {
+    "doc": "docs"
+  }
+}
